@@ -6,6 +6,7 @@
 <body>
   <div id="app">
     @include('widget.header')
+    <div class="header-push"></div>
     <div class="main">
       @yield('content')
     </div>
