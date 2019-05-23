@@ -6,6 +6,7 @@ html {
 }
 body {
   min-width: 320px;
+  max-width: 9999px;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -16,9 +17,20 @@ body {
   font-size: 16px;
   font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
+div#app {
+  min-height: 100%;
+  margin-bottom: -86px;
+}
 div.header-push {
   height: 70px;
 }
+div.footer-push {
+  height: 86px;
+}
+div.main {
+  min-height: 640px;
+}
+
 /* #endregion */
 
 /* #region fixity */
@@ -29,32 +41,7 @@ a {
 
 /* #endregion */
 
-/* #region media-queries */
-/* 460px以下 */
-@media (max-width: 460px) {
-  .hidden-sm-below {
-    display: none;
-  }
-}
-/* 680px以下 */
-@media (max-width: 680px) {
-  .hidden-md-below {
-    display: none;
-  }
-  ul.navbar-nav li.nav-item i {
-    font-size: 16px;
-  }
-}
-/* 960px以下 */
-@media (max-width: 960px) {
-  .hidden-lg-below {
-    display: none;
-  }
-}
-
-/* #endregion */
-
-/* #region navbar */
+/* #region header */
 nav.navbar {
   position: fixed;
   z-index: 9999;
@@ -181,6 +168,56 @@ li.inverse-dialog-item a:hover {
 li.danger-dialog-item a:hover {
 	background: #f2dede;
 	color: #a94442;
+}
+
+/* #endregion */
+
+/* #region footer */
+div.footer {
+  height: 86px;
+  box-shadow: 0 -2px 2px #232323;
+  background: #232323;
+}
+div.footer-wrapper {
+  color: #aaa;
+}
+div.external {
+  padding-top: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+div.external a {
+  margin: 0 4px;
+}
+div.external a:hover {
+  text-decoration: underline;
+}
+div.copyright {
+  padding-top: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* #endregion */
+
+/* #region media-queries */
+/* 460px以下 */
+@media (max-width: 460px) {
+  .hidden-sm-below {
+    display: none;
+  }
+}
+/* 680px以下 */
+@media (max-width: 680px) {
+  .hidden-md-below {
+    display: none;
+  }
+}
+/* 960px以下 */
+@media (max-width: 960px) {
+  .hidden-lg-below {
+    display: none;
+  }
 }
 
 /* #endregion */
