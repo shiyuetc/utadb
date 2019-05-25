@@ -10,7 +10,7 @@
   <div class="introducts inner-margin">
     <div class="introduct animated fadeIn" style="animation-delay: 0.2s;">
       <div class="description">
-        <h2 class="title">分かりやすい持ち曲の管理</h2>
+        <h2 class="title">シンプルな持ち曲の管理システム</h2>
         <p class="text">曲の状態をメモ記録、習得中、習得済みの3つに振り分けて現在の状態を一目できます。</p>
         <p class="text text-small">※分け方の目安<br>
           メモ記録 : 気になっている又は、習得する予定の曲等<br>
@@ -23,7 +23,7 @@
     </div>
     <div class="introduct animated fadeIn" style="animation-delay: 1.2s;">
       <div class="description">
-        <h2 class="title">シンプルなタイムライン機能</h2>
+        <h2 class="title">みんなの更新が見れるタイムライン機能</h2>
         <p class="text">自分もしくは他のユーザーの更新をリスト形式で表示され、このページからサンプル音源の視聴や状態の更新を行うことが出来ます。</p>
         <p class="text text-small">※曲はiTunes及びDAMで配信されている項目を取得できます。</p>
       </div>
@@ -33,7 +33,7 @@
     </div>
     <div class="introduct animated fadeIn" style="animation-delay: 2.2s;">
       <div class="description">
-        <h2 class="title">他のユーザーとの共有</h2>
+        <h2 class="title">他のユーザーとの情報共有</h2>
         <p class="text">他のユーザーがそれぞれの状態に登録している曲やお互いに習得済みに登録している曲のリストを確認できます。</p>
         <p class="text text-small">※この項目に関しては今後のアップデートで徐々に追加していく予定です。</p>
       </div>
