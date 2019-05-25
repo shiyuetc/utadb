@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
-  @include('widget.head')
+  @include('const.head')
 </head>
 <body>
   <div id="app">
-    @include('widget.header')
-    <div class="header-push"></div>
-    <div class="main">
-      @yield('content')
-    </div>
-    <div class="footer-push"></div>
+    @include('const.header')
+    @include('const.main')
   </div>
-  @include('widget.footer')
+  @include('const.footer')
 </body>
 </html>
