@@ -1,3 +1,4 @@
+<div class="header">
 <nav class="navbar">
   <div class="navbar-container">
     <div class="navbar-left">
@@ -16,11 +17,11 @@
     <div class="navbar-right">
       <ul class="navbar-nav">
         @guest
-      <li class="nav-item{{ Request::is('login') ? ' active' : '' }}">
-          <a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i><span class="hidden-sm-below">&nbsp;ログイン</span></a>
-        </li>
         <li class="nav-item{{ Request::is('register') ? ' active' : '' }}">
           <a href="{{ route('register') }}"><i class="fas fa-user"></i><span class="hidden-sm-below">&nbsp;新規登録</span></a>
+        </li>
+        <li class="nav-item{{ Request::is('login') ? ' active' : '' }}">
+          <a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i><span class="hidden-sm-below">&nbsp;ログイン</span></a>
         </li>
         @else
         <li class="nav-item">
@@ -67,3 +68,4 @@ document.getElementById("avatar-button").onblur = function() {
 };
 </script>
 @endauth
+</div>
