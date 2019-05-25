@@ -12,23 +12,33 @@ body {
   padding: 0;
   -webkit-overflow-scrolling: touch;
   overflow-y: scroll;
-  background: #fafafa;
+  background: #fafafa url("../images/background-noize.png");
   color: #555555;
   font-size: 16px;
   font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 div#app {
   min-height: 100%;
-  margin-bottom: -86px;
+  margin-bottom: -96px;
 }
 div.header-push {
-  height: 70px;
+  height: 58px;
 }
 div.footer-push {
-  height: 86px;
+  height: 96px;
 }
 div.main {
   min-height: 640px;
+}
+div.main-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.inner-margin {
+  margin: 0 10px;
+}
+.inner-padding {
+  padding: 0 10px;
 }
 
 /* #endregion */
@@ -71,7 +81,7 @@ ul.navbar-nav {
   margin: 0;
   padding-left: 0;
 }
-ul.navbar-nav li {
+ul.navbar-nav > li {
   float: left;
 }
 ul.navbar-nav li.nav-item {
@@ -174,7 +184,7 @@ li.danger-dialog-item a:hover {
 
 /* #region footer */
 div.footer {
-  height: 86px;
+  height: 96px;
   box-shadow: 0 -2px 2px #232323;
   background: #232323;
 }
@@ -183,18 +193,26 @@ div.footer-wrapper {
 }
 div.external {
   padding-top: 10px;
-  font-size: 16px;
+  font-size: 22px;
   text-align: center;
 }
 div.external a {
   margin: 0 4px;
 }
-div.external a:hover {
-  text-decoration: underline;
+div.external a i {
+  transition: opacity 0.2s, transform 0.2s;
+	-moz-transition: opacity 0.2s, transform 0.2s;
+	-webkit-transition: opacity 0.2s, transform 0.2s;
+	-o-transition: opacity 0.2s, transform 0.2s;
+  -ms-transition: opacity 0.2s, transform 0.2s;
+}
+div.external a i:hover {
+  opacity: 0.9;
+  transform: rotate(12deg);
 }
 div.copyright {
-  padding-top: 10px;
-  font-size: 14px;
+  padding-top: 12px;
+  font-size: 12px;
   text-align: center;
 }
 
@@ -212,12 +230,115 @@ div.copyright {
   .hidden-md-below {
     display: none;
   }
+
+  div.introduct > div {
+    float: none !important;
+    width: 100% !important;
+  }
 }
 /* 960px以下 */
 @media (max-width: 960px) {
   .hidden-lg-below {
     display: none;
   }
+}
+
+/* #endregion */
+
+/* #region height */
+.height-small {
+  height: 150px;
+}
+.height-medium {
+  height: 300px;
+}
+.height-large {
+  height: 450px;
+}
+
+/* #endregion */
+
+/* #region UI */
+/* button */
+button.button {
+
+}
+
+/* #endregion */
+
+/* #region top */
+div.banner {
+  padding: 48px 0;
+  background-image: url('../images/banner-karaoke.jpeg');
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+}
+div.banner img {
+  padding: 6px;
+  border: 1px solid #e15542;
+  border-radius: 100%;
+}
+div.banner h1.title {
+  font-weight: normal;
+  text-shadow: 1px 1px 1px #666;
+}
+div.banner p.text {
+  padding: 0 10px;
+  color: #eee;
+  text-shadow: 1px 1px 1px #666;
+}
+div.introducts {
+  margin-top: 60px;
+}
+div.introduct {
+  max-width: 800px;
+  margin: auto;
+  padding: 8px 12px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 4px 2px #eeeeee;
+  background: #fff;
+}
+div.introduct:nth-child(n + 2) {
+  margin-top: 32px;
+}
+div.introduct:after {
+  display: block;
+	clear: both;
+	content: "";
+}
+div.introduct > div {
+  width: 50%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+div.introduct:nth-child(odd) > div {
+  float: left;
+}
+div.introduct:nth-child(even) > div {
+  float: right;
+}
+div.introduct div.description h2.title {
+  margin-top: 4px;
+  padding-left: 10px;
+  border-left: 6px solid #ccc;
+  font-size: 18px;
+}
+div.introduct div.description p.text {
+  margin-bottom: 0px;
+}
+div.introduct div.description p.text-small {
+  color: #666;
+  font-size: 14px;
+}
+div.introduct div.capture {
+  text-align: center;
+}
+div.introduct div.capture img {
+  width: 100%;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
 }
 
 /* #endregion */
