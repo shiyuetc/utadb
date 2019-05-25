@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-@include('components.top')
+@include('widgets.top')
 @endsection

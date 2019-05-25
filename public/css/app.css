@@ -311,6 +311,26 @@ button.button-danger-disabled {
 
 /* #endregion */
 
+/* #region page-top */
+#page-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+#page-top a {
+  color: #e15542;
+  display: block;
+  transition: color 0.2s;
+	-moz-transition: color 0.2s;
+	-webkit-transition: color 0.2s;
+	-o-transition: color 0.2s;
+	-ms-transition: color 0.2s;
+}
+#page-top a:hover {
+  color: #c32222;
+}
+/* #endregion */
+
 /* #region top */
 div.banner {
   padding: 48px 0;
