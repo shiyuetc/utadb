@@ -129,6 +129,11 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'screen_name' => 'ユーザーID',
+        'name' => '名前',
+        'email' => 'メールアドレス',
+        'password' => 'パスワード',
+    ],
 
 ];
