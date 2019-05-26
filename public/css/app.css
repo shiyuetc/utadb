@@ -32,12 +32,12 @@ div.main {
 }
 div.main-inner {
   max-width: 1080px;
-  margin: 0 auto;
+  margin: 12px auto 0 auto;
 }
-.inner-margin {
+.margin-const {
   margin: 0 10px;
 }
-.inner-padding {
+.padding-const {
   padding: 0 10px;
 }
 
@@ -197,7 +197,7 @@ div.external {
   text-align: center;
 }
 div.external a {
-  margin: 0 4px;
+  margin: 0 6px;
 }
 div.external a i {
   transition: opacity 0.2s, transform 0.2s;
@@ -247,18 +247,85 @@ div.copyright {
 
 /* #region height */
 .height-small {
-  height: 150px;
+  height: 50px;
 }
 .height-medium {
-  height: 300px;
+  height: 100px;
 }
 .height-large {
-  height: 450px;
+  height: 150px;
 }
 
 /* #endregion */
 
+/* #region common */
+.section {
+  padding: 8px 12px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 4px 2px #eeeeee;
+  background: #fff;
+}
+/* #endregion */
+
 /* #region UI */
+/* layout */
+div.form-compact {
+  max-width: 500px;
+  padding: 16px 20px;
+  box-sizing: border-box;
+}
+div.form-group {
+  padding: 6px 0;
+}
+
+/* string */
+h2.form-title {
+  margin-top: 6px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed #ccc;
+  font-size: 16px;
+  font-weight: normal;
+  text-align: center;
+}
+label.label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+p.supplement {
+  margin: 0;
+  font-size: 12px;
+  text-align: right;
+}
+p.supplement a {
+  color: #db3333;
+}
+p.supplement a:hover {
+  color: #c32222;
+  text-decoration: underline;
+}
+
+/* text */
+input.text {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background: #f1f1f1;
+  color: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: background-color 0.2s;
+	-moz-transition: background-color 0.2s;
+	-webkit-transition: background-color 0.2s;
+	-o-transition: background-color 0.2s;
+	-ms-transition: background-color 0.2s;
+}
+input.text:focus {
+  background: #e6e6e6;
+}
+
 /* button */
 button.button {
   width: 100%;
@@ -309,6 +376,20 @@ button.button-danger-disabled {
 	background: #c32222 !important;
 }
 
+/* #endregion */
+
+/* #region logo */
+div.logo {
+  text-align: center;
+}
+div.logo img {
+  padding: 6px;
+  border: 1px solid #e15542;
+  border-radius: 100%;
+}
+div.logo h2.title {
+  margin-top: 12px;
+}
 /* #endregion */
 
 /* #region page-top */
@@ -365,9 +446,6 @@ div.introduct {
   max-width: 800px;
   margin: 0 auto;
   padding: 8px 12px;
-  border-radius: 4px;
-  box-shadow: 0px 0px 4px 2px #eeeeee;
-  background: #fff;
 }
 div.introduct:nth-child(n + 2) {
   margin-top: 32px;

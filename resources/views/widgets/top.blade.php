@@ -1,14 +1,14 @@
 <div class="top">
-  <div class="banner inner-padding">
-    <img id="icon" src="images/icons/icon-48x.png" alt="icon">
+  <div class="banner padding-const">
+    <img id="icon" class="animated pulse" src="images/icons/icon-48x.png" alt="icon">
     <h1 class="title">Utad<span style="opacity: 0.6;">ata</span>b<span style="opacity: 0.6;">ase</span></h1>
     <p class="text">Utadb は自分の持ち歌（歌える曲）や気になった曲を記録して管理したりユーザー同士で共有ができるWebサービスです。<br>カラオケ等へ行くとき用にメモ感覚で簡単に使えます。</p>
   </div>
   <div class="prompt">
     <button class="button button-danger auto" onclick="location.href='{{ route('register') }}'">今すぐ曲の管理を始める</button>
   </div>
-  <div class="introducts inner-margin">
-    <div class="introduct animated fadeIn" style="animation-delay: 0.2s;">
+  <div class="introducts margin-const">
+    <div class="introduct section animated fadeIn" style="animation-delay: 0.2s;">
       <div class="description">
         <h2 class="title">シンプルな持ち曲の管理システム</h2>
         <p class="text">曲の状態をメモ記録、習得中、習得済みの3つに振り分けて現在の状態を一目できます。</p>
@@ -21,7 +21,7 @@
         <img src="images/captures/training.jpg" alt="capture">
       </div>
     </div>
-    <div class="introduct animated fadeIn" style="animation-delay: 1.2s;">
+    <div class="introduct section animated fadeIn" style="animation-delay: 1.2s;">
       <div class="description">
         <h2 class="title">みんなの更新が見れるタイムライン機能</h2>
         <p class="text">自分もしくは他のユーザーの更新をリスト形式で表示され、このページからサンプル音源の視聴や状態の更新を行うことが出来ます。</p>
@@ -31,7 +31,7 @@
         <img src="images/captures/timeline.jpg" alt="capture">
       </div>
     </div>
-    <div class="introduct animated fadeIn" style="animation-delay: 2.2s;">
+    <div class="introduct section animated fadeIn" style="animation-delay: 2.2s;">
       <div class="description">
         <h2 class="title">他のユーザーとの情報共有</h2>
         <p class="text">他のユーザーがそれぞれの状態に登録している曲やお互いに習得済みに登録している曲のリストを確認できます。</p>
@@ -42,7 +42,20 @@
       </div>
     </div>
   </div>
+  <div class="height-small"></div>
   <div class="prompt">
     <button class="button button-danger auto" onclick="location.href='{{ route('register') }}'">今すぐ曲の管理を始める</button>
   </div>
 </div>
+<script type="text/javascript">
+  $(function () {
+    $("#icon").on({
+      "click": function () {
+        $(this).addClass("animated pulse");
+      },
+      "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend": function () {
+        $(this).removeClass("animated pulse");
+      }
+    });
+  });
+</script>
