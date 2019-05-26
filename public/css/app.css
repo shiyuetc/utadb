@@ -265,6 +265,7 @@ div.copyright {
   box-shadow: 0px 0px 4px 2px #eeeeee;
   background: #fff;
 }
+
 /* #endregion */
 
 /* #region UI */
@@ -290,6 +291,11 @@ h2.form-title {
 label.label {
   display: block;
   margin-bottom: 4px;
+  font-size: 14px;
+}
+.help-block p {
+  margin: 4px 0 0 0;
+  color: #db3333;
   font-size: 14px;
 }
 p.supplement {
@@ -376,20 +382,14 @@ button.button-danger-disabled {
 	background: #c32222 !important;
 }
 
-/* #endregion */
+/* checkbox */
+div.checkbox input {
+  vertical-align: middle;
+}
+div.checkbox span {
+  font-size: 14px;
+}
 
-/* #region logo */
-div.logo {
-  text-align: center;
-}
-div.logo img {
-  padding: 6px;
-  border: 1px solid #e15542;
-  border-radius: 100%;
-}
-div.logo h2.title {
-  margin-top: 12px;
-}
 /* #endregion */
 
 /* #region page-top */

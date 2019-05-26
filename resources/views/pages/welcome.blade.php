@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @php
 $head_margin = false;
-$alert_visible = false;
+$visible_alert = false;
 @endphp
 
 @section('content')

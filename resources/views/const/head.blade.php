@@ -11,7 +11,7 @@
 <meta property="og:description" content="Utadb は自分の持ち歌（歌える曲）や気になった曲を記録して管理したりユーザー同士で共有ができるWebサービスです。カラオケ等へ行くとき用にメモ感覚で簡単に使えます。">
 <meta property="og:site_name" content="utadb">
 <meta property="og:locale" content="ja_JP">
-<title>{{ config('app.name', 'Utadb') }}</title>
+<title>@isset($title){{ $title }} - @endisset{{ config('app.name', 'Utadb') }}</title>
 <link rel="icon" type="image/png" href="{{ asset('favicon.ico') }}">
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
