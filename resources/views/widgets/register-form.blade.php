@@ -1,4 +1,4 @@
-<div class="form-compact section main-inner">
+<div class="form-compact section">
   <form method="POST" action="{{ route('register') }}">
     {{ csrf_field() }}
     <h2 class="form-title"><i class="fas fa-user"></i>&nbsp;新規登録</h2>

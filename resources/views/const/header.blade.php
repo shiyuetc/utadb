@@ -5,7 +5,7 @@
         <ul class="navbar-nav">
           <li class="nav-brand">
             <img src="{{ asset('images/icons/icon-32x.png') }}" alt="logo" onclick="location='{{ route('home') }}'">
-            <a href="{{ route('home') }}"><span class="hidden-sm-below">&nbsp;Utadb</span></a>
+            <a href="{{ route('home') }}"><span class="hidden-sm-below">&nbsp;Utadb&nbsp;</span></a>
           </li>
           @auth
           <li class="nav-item{{ Request::is('/') ? ' active' : '' }}">
@@ -36,7 +36,7 @@
       <div id="nav-dialog" class="nav-dialog">
         <ul class="dialog-group">
           <li class="dialog-item success-dialog-item">
-            <a href=""><i class="fa fa-user"></i>&nbsp;マイページ</a>
+          <a href="&#64;{{ Auth::user()->screen_name }}"><i class="fa fa-user"></i>&nbsp;マイページ</a>
           </li>
         </ul>
         <ul class="dialog-group">

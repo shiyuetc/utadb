@@ -36,7 +36,7 @@ div.main:after {
 	content: "";
 }
 div.main-inner {
-  max-width: 1080px;
+  max-width: 1000px;
   margin: 14px auto 0 auto;
 }
 .margin-const {
@@ -53,13 +53,11 @@ div.content {
   margin-left: 250px;
 }
 .section {
-  margin-bottom: 10px;
-  padding: 8px 12px;
+  margin: 0 auto 10px auto;
   border-radius: 4px;
   box-shadow: 0px 0px 4px 2px #eeeeee;
   background: #fff;
 }
-
 
 /* #endregion */
 
