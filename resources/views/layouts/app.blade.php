@@ -1,3 +1,4 @@
+@section('page_type', 'standard')
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
@@ -6,7 +7,17 @@
 <body>
   <div id="app">
     @include('const.header')
-    @include('const.main')
+    <div class="header-push"></div>
+    @if($__env->yieldContent('page_type') == 'standard')
+      @include('const.main-standard')
+    @elseif($__env->yieldContent('page_type') == 'inner')
+      @include('const.main-inner')
+    @elseif($__env->yieldContent('page_type') == 'outer')
+      @include('const.main-outer')
+    @endif
+    @include('widgets.page-top')
+    <div class="height-large"></div>
+    <div class="footer-push"></div>
   </div>
   @include('const.footer')
 </body>

@@ -1,11 +1,9 @@
 @extends('layouts.app')
+@section('page_type', 'inner')
 @php
 $title = 'ログイン';
-$visible_alert = false;
 @endphp
 
 @section('content')
-<div class="margin-const">
-  @include('widgets.login-form')
-</div>
+@include('widgets.login-form')
 @endsection

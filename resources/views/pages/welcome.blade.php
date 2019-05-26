@@ -1,8 +1,5 @@
 @extends('layouts.app')
-@php
-$head_margin = false;
-$visible_alert = false;
-@endphp
+@section('page_type', 'outer')
 
 @section('content')
 @include('widgets.top')
