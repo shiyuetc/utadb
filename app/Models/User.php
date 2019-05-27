@@ -24,7 +24,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'email', 'password', 'remember_token', 'updated_at'
     ];
 
     public function allStateCount() 

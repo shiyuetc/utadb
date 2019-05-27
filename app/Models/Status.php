@@ -14,6 +14,10 @@ class Status extends Model
         'state'
     ];
 
+    protected $hidden = [
+        'user_id', 'song_id'
+    ];
+
     public function user()
     {
         return $this->belongsTo('App\Models\User');

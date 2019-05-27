@@ -14,4 +14,7 @@ class Song extends Model
     
     protected $fillable = [];
     
+    protected $hidden = [
+        'artist_id', 'created_at'
+    ];
 }
