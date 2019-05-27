@@ -26,4 +26,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function allStateCount() 
+    {
+        return $this->stacked_state_count + $this->training_state_count + $this->mastered_state_count;
+    }
 }

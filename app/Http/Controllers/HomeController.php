@@ -10,7 +10,7 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            
+            return view('pages.home');
         } else {
             return view('pages.welcome');
         }

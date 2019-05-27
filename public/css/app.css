@@ -40,23 +40,19 @@ div.main-inner {
   margin: 14px auto 0 auto;
 }
 .margin-const {
-  margin: 0 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .padding-const {
-  padding: 0 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 div.sidebar {
   float: left;
-  width: 240px;
+  width: 250px;
 }
 div.content {
-  margin-left: 250px;
-}
-.section {
-  margin: 0 auto 10px auto;
-  border-radius: 4px;
-  box-shadow: 0px 0px 4px 2px #eeeeee;
-  background: #fff;
+  margin-left: 260px;
 }
 
 /* #endregion */
@@ -65,6 +61,30 @@ div.content {
 a {
   color: inherit;
   text-decoration: none;
+}
+i {
+  text-align: center;
+  min-width: 18px;
+}
+/* #endregion */
+
+/* #region common */
+.section {
+  margin: 0 auto 10px auto;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0px 0px 4px 2px #eeeeee;
+  background: #fff;
+  word-wrap: break-word;
+}
+
+a.default-link {
+  color: inherit;
+  text-decoration: none;
+}
+a.default-link:hover {
+  color: #c32222;
+  text-decoration: underline;
 }
 
 /* #endregion */
@@ -431,7 +451,7 @@ div.checkbox span {
 }
 /* #endregion */
 
-/* #region top */
+/* #region welcome */
 div.banner {
   padding: 48px 0;
   background-image: url('../images/banner-karaoke.jpeg');
@@ -453,13 +473,16 @@ div.banner p.text {
   color: #eee;
   text-shadow: 1px 1px 1px #666;
 }
+
 div.prompt {
   padding: 24px;
   background: #232323;
   text-align: center;
 }
+
 div.introducts {
-  margin: 64px 10px;
+  margin-top: 64px;
+  margin-bottom: 64px;
 }
 div.introduct {
   max-width: 800px;
@@ -506,6 +529,79 @@ div.introduct div.capture img {
   border: 2px solid #ccc;
   border-radius: 6px;
   box-sizing: border-box;
+}
+
+/* #endregion */
+
+/* #region user-infomation */
+div.user-profile {
+  padding: 0 12px;
+  text-align: center;
+}
+div.user-profile div.avatar-box {
+  width: 120px;
+  height: 120px;
+  margin: 12px auto 14px auto;
+  overflow: hidden;
+  border: 6px solid #cccccc;
+  border-radius: 100%;
+}
+div.user-profile div.avatar-box img#avatar {
+  display: block;
+  width: 100%;
+  height: 100%;
+	background: #fafafa;
+  transition: background-color 0.3s, transform 0.3s;
+	-moz-transition: background-color 0.3s, transform 0.3s;
+	-webkit-transition: background-color 0.3s, transform 0.3s;
+	-o-transition: background-color 0.3s, transform 0.3s;
+	-ms-transition: background-color 0.3s, transform 0.3s;
+}
+div.user-profile div.avatar-box img#avatar:hover {
+	background-color: #f3f3f3;
+  transform: scale(1.1) rotate(6deg);
+}
+div.user-profile p {
+  font-size: 14px;
+}
+div.user-profile p.name {
+  margin-bottom: 8px;
+}
+div.user-profile p.description {
+  margin-top: 8px;
+}
+div.user-profile p.created {
+  margin-bottom: 8px;
+  color: #777;
+}
+
+ul.user-statuses {
+  list-style: none;
+  margin: 0;
+	padding-left: 0;
+}
+ul.user-statuses li a {
+  display: block;
+  padding: 10px 12px;
+  border-top: 1px solid #eaeaea;
+  border-left: 0px solid #fff;
+  transition: background-color 0.2s, border 0.2s;
+	-moz-transition: background-color 0.2s, border 0.2s;
+	-webkit-transition: background-color 0.2s, border 0.2s;
+	-o-transition: background-color 0.2s, border 0.2s;
+  -ms-transition: background-color 0.2s, border 0.2s;
+}
+ul.user-statuses li a:hover {
+  border-left: 2px solid #999999;
+  background: #fafafa;
+}
+ul.user-statuses span.status-count {
+  float: right;
+}
+ul.user-statuses span.status-count :after {
+  display: block;
+	clear: both;
+	content: "";
 }
 
 /* #endregion */
