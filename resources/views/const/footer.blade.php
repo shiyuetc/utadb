@@ -12,13 +12,18 @@
 <script src="{{ mix('js/app.js') }}"></script>
 @php
   $scripts = [
-    'page_top',
-    'animation_icon',
-    'avatar_button',
+    ['page_top'],
+    ['animation_icon'],
+    ['avatar_button'],
+    ['twitter_widgets', 'https://platform.twitter.com/widgets.js'],
   ]
 @endphp
 @foreach ($scripts as $script)
-  @if($__env->yieldContent("js_$script"))
-  <script type="text/javascript" src="js/{{ $script }}.js"></script>
+  @if($__env->yieldContent("js_$script[0]"))
+    @if(count($script) == 1)
+      <script type="text/javascript" src="js/{{ $script[0] }}.js"></script>
+    @else
+      <script async type="text/javascript" src="{{ $script[1] }}"></script>
+    @endif
   @endif
 @endforeach

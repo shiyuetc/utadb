@@ -2,9 +2,10 @@
 
 @section('sidebar')
 @include('widgets.user-infomation', ['user' => Auth::user()])
+@include('widgets.tweet-notification')
+
 @endsection
 @section('content')
-<div class="section">
-  b
-</div>
+<timeline-component/>
+
 @endsection
