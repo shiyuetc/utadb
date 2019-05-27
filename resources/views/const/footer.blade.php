@@ -9,4 +9,16 @@
     </div>
   </div>
 </div>
-<!--<script src="{{ mix('js/app.js') }}"></script>-->
+<script src="{{ mix('js/app.js') }}"></script>
+@php
+  $scripts = [
+    'page_top',
+    'animation_icon',
+    'avatar_button',
+  ]
+@endphp
+@foreach ($scripts as $script)
+  @if($__env->yieldContent("js_$script"))
+  <script type="text/javascript" src="js/{{ $script }}.js"></script>
+  @endif
+@endforeach

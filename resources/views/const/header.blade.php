@@ -31,47 +31,26 @@
           </li>
           @endguest
         </ul>
+        @auth
+        @section('js_avatar_button', true)
+        <div id="nav-dialog" class="nav-dialog">
+          <ul class="dialog-group">
+            <li class="dialog-item success-dialog-item">
+              <a href="&#64;{{ Auth::user()->screen_name }}"><i class="fa fa-user"></i>&nbsp;マイページ</a>
+            </li>
+          </ul>
+          <ul class="dialog-group">
+            <li class="dialog-item danger-dialog-item">
+              <a href="{{ route('logout') }}"
+                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                  class="fas fa-power-off"></i>&nbsp;ログアウト</a>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}</form>
+            </li>
+          </ul>
+        </div>
+        @endauth
       </div>
-      @auth
-      <div id="nav-dialog" class="nav-dialog">
-        <ul class="dialog-group">
-          <li class="dialog-item success-dialog-item">
-          <a href="&#64;{{ Auth::user()->screen_name }}"><i class="fa fa-user"></i>&nbsp;マイページ</a>
-          </li>
-        </ul>
-        <ul class="dialog-group">
-          <li class="dialog-item danger-dialog-item">
-            <a href="{{ route('logout') }}"
-              onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
-                class="fas fa-power-off"></i>&nbsp;ログアウト</a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              {{ csrf_field() }}</form>
-          </li>
-        </ul>
-      </div>
-      @endauth
     </div>
   </nav>
-  @auth
-  <script type="text/javascript">
-    document.getElementById("avatar-button").onclick = function () {
-      var dialog = $("#nav-dialog");
-      if (dialog.hasClass("active")) {
-        dialog.fadeOut('fast');
-      } else {
-        dialog.fadeIn('fast');
-      }
-      dialog.toggleClass("active");
-      $("#avatar-button").parent().toggleClass("active");
-    };
-    document.getElementById("avatar-button").onblur = function () {
-      var dialog = $("#nav-dialog");
-      if (dialog.hasClass("active")) {
-        dialog.fadeOut('fast');
-        dialog.removeClass("active");
-        $("#avatar-button").parent().removeClass("active");
-      }
-    };
-  </script>
-  @endauth
 </div>
