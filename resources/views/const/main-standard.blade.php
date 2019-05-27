@@ -1,14 +1,14 @@
 @php
-  if ($errors->any()) {
-    foreach ($errors->all() as $error) {
-      $alert = ['type' => 'danger', 'text' => $error];
-      break;
-    }
+if ($errors->any()) {
+  foreach ($errors->all() as $error) {
+    $alert = ['type' => 'danger', 'text' => $error];
+    break;
   }
+}
 @endphp
 <div class="main main-inner">
   <div class="margin-const">
-    @if(isset($alert)) 
+    @if(isset($alert))
       @include('components.alert')
     @endif
     <div class="sidebar">

@@ -14,9 +14,9 @@
     @endslot
     @slot('subtext')
       ※分け方の目安<br>
-      メモ記録 : 気になっている又は、習得する予定の曲等<br>
-      習得中　 : 練習中や、歌詞を覚えている途中の曲等<br>
-      習得済み : 既に習得していて最後まで歌える状態の曲等
+      習得済み : 既に習得していて最後まで歌える状態の曲等<br>
+      練習中　 : 練習中や、歌詞を覚えている途中の曲等<br>
+      気になる曲 : 気になっている又は、習得する予定の曲等
     @endslot
   @endcomponent
   @component('components.introduct', ['delay_time' => '1.2', 'capture_image' => 'timeline.jpg'])
