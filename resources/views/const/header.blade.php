@@ -26,7 +26,7 @@
                 class="hidden-sm-below">&nbsp;ログイン</span></a>
           </li>
           @else
-          <li class="nav-item">
+          <li class="nav-button">
             <button id="avatar-button"><img src="{{ asset('images/sample_avatar.png') }}" alt="avatar"></button>
           </li>
           @endguest

@@ -122,19 +122,6 @@ ul.navbar-nav {
 ul.navbar-nav > li {
   float: left;
 }
-ul.navbar-nav li.nav-item {
-  transition: background-color 0.2s;
-	-moz-transition: background-color 0.2s;
-	-webkit-transition: background-color 0.2s;
-	-o-transition: background-color 0.2s;
-  -ms-transition: background-color 0.2s;
-}
-ul.navbar-nav li.nav-item:hover {
-  background: #fafafa;
-}
-ul.navbar-nav li.nav-item.active {
-  background: #f2f2f2;
-}
 ul.navbar-nav li.nav-brand {
   display: flex;
   height: 58px;
@@ -143,7 +130,7 @@ ul.navbar-nav li.nav-brand {
   align-items: center;
   cursor: pointer;
 }
-ul.navbar-nav li a {
+ul.navbar-nav li > a {
   display: block;
   line-height: 58px;
   text-decoration: none;
@@ -151,11 +138,40 @@ ul.navbar-nav li a {
 ul.navbar-nav li.nav-item a {
   min-width: 30px;
   padding: 0 18px;
+  border-bottom: 0 solid #999;
   font-size: 14px;
   text-align: center;
+  transition: border-color 0.2s, background-color 0.2s;
+	-moz-transition: border-color 0.2s, background-color 0.2s;
+	-webkit-transition: border-color 0.2s, background-color 0.2s;
+	-o-transition: border-color 0.2s, background-color 0.2s;
+  -ms-transition: border-color 0.2s, background-color 0.2s;
+}
+ul.navbar-nav li.nav-item a:hover {
+  height: 56px;
+  border-bottom: 2px solid #999;
+  background: #fafafa;
+}
+ul.navbar-nav li.nav-item.active a {
+  height: 56px;
+  border-bottom: 2px solid #666666;
+  background: #f2f2f2;
 }
 ul.navbar-nav li.nav-brand a {
   font-size: 22px;
+}
+ul.navbar-nav li.nav-button {
+  transition: background-color 0.2s;
+	-moz-transition: background-color 0.2s;
+	-webkit-transition: background-color 0.2s;
+	-o-transition: background-color 0.2s;
+  -ms-transition: background-color 0.2s;
+}
+ul.navbar-nav li.nav-button:hover {
+  background: #fafafa;
+}
+ul.navbar-nav li.nav-button.active {
+  background: #b3a4a4;
 }
 button#avatar-button {
   height: 58px;
@@ -297,7 +313,7 @@ div.copyright {
 /* #region alert */
 div.alert {
   position: relative;
-  margin-bottom: 12px;
+  margin: 12px 0;
   padding: 8px 36px 8px 12px;
   overflow-wrap: break-word;
   border-radius: 2px;
