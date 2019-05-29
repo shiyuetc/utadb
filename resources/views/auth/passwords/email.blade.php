@@ -1,47 +1,27 @@
 @extends('layouts.app')
+@section('title', 'パスワードのリセット')
+@section('page_type', 'inner')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
-
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <form class="form-horizontal" method="POST" action="{{ route('password.email') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Send Password Reset Link
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+@if (session('status'))
+  @include('components.alert', ['type' => 'success', 'text' => session('status')])
+@endif
+<div class="form-compact section">
+  <form method="POST" action="{{ route('password.email') }}">
+    {{ csrf_field() }}
+    <h2 class="form-title"><i class="fas fa-lock"></i>&nbsp;パスワードのリセット</h2>
+    <div class="form-group">
+      <label for="email" class="label"><i class="fas fa-envelope"></i>&nbsp;メールアドレス</label>
+      <input id="email" type="email" class="text" name="email" value="{{ old('email') }}" required>
+      @if ($errors->has('email'))
+      <span class="help-block">
+        <p>{{ $errors->first('email') }}</p>
+      </span>
+      @endif
     </div>
+    <div class="form-group">
+      <button type="submit" class="button button-danger">メールを送信</button>
+    </div>
+  </form>
 </div>
 @endsection
