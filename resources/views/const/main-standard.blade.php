@@ -9,7 +9,7 @@ if ($errors->any()) {
 <div class="main main-inner">
   <div class="margin-const">
     @if(isset($alert))
-      @include('components.alert')
+      @include('components.alert', ['type' => $alert['type'], 'text' => $alert['text']])
     @endif
     <div class="sidebar">
       @yield('sidebar')
