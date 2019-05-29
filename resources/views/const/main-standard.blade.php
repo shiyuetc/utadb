@@ -1,4 +1,5 @@
 @php
+//$alert = ['type' => 'success', 'text' => 'テストメッセージ'];
 if ($errors->any()) {
   foreach ($errors->all() as $error) {
     $alert = ['type' => 'danger', 'text' => $error];
