@@ -49,10 +49,10 @@ div.main-inner {
 }
 div.sidebar {
   float: left;
-  width: 250px;
+  width: 240px;
 }
 div.content {
-  margin-left: 260px;
+  margin-left: 250px;
 }
 
 /* #endregion */
@@ -294,6 +294,52 @@ div.copyright {
 
 /* #endregion */
 
+/* #region alert */
+div.alert {
+  position: relative;
+  margin-bottom: 12px;
+  padding: 8px 36px 8px 12px;
+  overflow-wrap: break-word;
+  border-radius: 2px;
+  background: #cccccc;
+  font-size: 14px;
+}
+div.alert .alert-close {
+  opacity: 0.7;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  color: inherit;
+  cursor: pointer;
+  transition: opacity 0.3s;
+	-moz-transition: opacity 0.3s;
+	-webkit-transition: opacity 0.3s;
+	-o-transition: opacity 0.3s;
+	-ms-transition: opacity 0.3s;
+}
+div.alert .alert-close:hover {
+  opacity: 1;
+}
+div.alert p.text {
+  margin: 0;
+}
+div.alert-success {
+  background: #def2de;
+	color: #42a942;
+}
+div.alert.alert-success .alert-close line {
+  stroke: #42a942;
+}
+div.alert-danger {
+  background: #f2dede;
+	color: #a94442;
+}
+div.alert.alert-danger .alert-close line {
+  stroke: #a94442;
+}
+
+/* #endregion */
+
 /* #region height */
 .height-small {
   height: 50px;
@@ -320,10 +366,10 @@ div.form-group {
 
 /* string */
 h2.form-title {
-  margin-top: 6px;
+  margin: 0 0 6px 0;
   padding-bottom: 12px;
   border-bottom: 1px dashed #ccc;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: normal;
   text-align: center;
 }
@@ -337,15 +383,22 @@ label.label {
   color: #db3333;
   font-size: 14px;
 }
-p.supplement {
+p.supplement-title {
+  font-size: 12px;
+  text-align: center;
+}
+p.supplement-title a:hover {
+  text-decoration: underline;
+}
+p.supplement-text {
   margin: 0;
   font-size: 12px;
   text-align: right;
 }
-p.supplement a {
+p.supplement-text a {
   color: #db3333;
 }
-p.supplement a:hover {
+p.supplement-text a:hover {
   color: #c32222;
   text-decoration: underline;
 }
@@ -571,8 +624,10 @@ div.user-profile p.description {
   margin-top: 8px;
 }
 div.user-profile p.created {
-  margin-bottom: 8px;
+  margin-top: 32px;
+  margin-bottom: 12px;
   color: #777;
+  font-size: 12px;
 }
 
 ul.user-statuses {
@@ -585,6 +640,7 @@ ul.user-statuses li a {
   padding: 10px 12px;
   border-top: 1px solid #eaeaea;
   border-left: 0px solid #fff;
+  font-size: 14px;
   transition: background-color 0.2s, border 0.2s;
 	-moz-transition: background-color 0.2s, border 0.2s;
 	-webkit-transition: background-color 0.2s, border 0.2s;
@@ -598,7 +654,7 @@ ul.user-statuses li a:hover {
 ul.user-statuses span.status-count {
   float: right;
 }
-ul.user-statuses span.status-count :after {
+ul.user-statuses span.status-count:after {
   display: block;
 	clear: both;
 	content: "";
