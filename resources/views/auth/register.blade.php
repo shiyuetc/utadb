@@ -1,8 +1,6 @@
 @extends('layouts.app')
+@section('title', '新規登録')
 @section('page_type', 'inner')
-@php
-$title = '新規登録';
-@endphp
 
 @section('content')
 @include('widgets.register-form')

@@ -11,7 +11,7 @@
 </div>
 <script src="{{ mix('js/app.js') }}"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.js"></script>
-<script type="text/javascript" src="js/player.js"></script>
+<script type="text/javascript" src="{{ asset('js/player.js') }}"></script>
 <script>
 
 </script>
@@ -26,7 +26,7 @@
 @foreach ($scripts as $script)
   @if($__env->yieldContent("js_$script[0]"))
     @if(count($script) == 1)
-      <script type="text/javascript" src="js/{{ $script[0] }}.js"></script>
+      <script type="text/javascript" src="{{ asset('js/'.$script[0].'.js') }}"></script>
     @else
       <script async type="text/javascript" src="{{ $script[1] }}"></script>
     @endif

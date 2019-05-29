@@ -1,8 +1,6 @@
 @extends('layouts.app')
+@section('title', 'ログイン')
 @section('page_type', 'inner')
-@php
-$title = 'ログイン';
-@endphp
 
 @section('content')
 @include('widgets.login-form')
