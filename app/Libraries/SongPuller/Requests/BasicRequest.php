@@ -6,6 +6,14 @@ use Exception;
 
 class BasicRequest 
 {
+    public $directUrl = '';
+
+    public $lookSongPath = '';
+
+    public $searchSongPath = '';
+
+    public $searchArtistPath = '';
+
     public function getRequest($url, $parameter = [])
 	{
 		$response = [];

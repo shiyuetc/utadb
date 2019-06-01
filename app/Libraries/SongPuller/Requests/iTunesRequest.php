@@ -4,8 +4,14 @@ namespace App\Libraries\SongPuller\Requests;
 
 class iTunesRequest extends BasicRequest 
 {
-    private const DIRECT_URL = 'https://itunes.apple.com/';
-    
+    public $directUrl = 'https://itunes.apple.com/';
+
+    public $lookSongPath = 'lookup';
+
+    public $searchSongPath = 'search';
+
+    public $searchArtistPath = 'search';
+
     public function lookSong($id)
     {
         $parameter = [
@@ -15,7 +21,7 @@ class iTunesRequest extends BasicRequest
 			'entity' => 'song',
 			'id' => $id
         ];
-        $song = $this->toJson($this->getRequest(self::DIRECT_URL . 'lookup', $parameter))['results'];
+        $song = $this->toJson($this->getRequest($this->directUrl . $this->lookSongPath, $parameter))['results'];
         if(count($song) == 1) {
             $song = $song[0];
             return $this->toSongModel(
@@ -42,7 +48,7 @@ class iTunesRequest extends BasicRequest
 			'limit' => '20',
 			'offset' => ($page - 1) * 20
         ];
-        $songs = $this->toJson($this->getRequest(self::DIRECT_URL . 'search', $parameter))['results'];
+        $songs = $this->toJson($this->getRequest($this->directUrl . $this->searchSongPath, $parameter))['results'];
         foreach($songs as $song)
         {
             $response[] = $this->toSongModel(
@@ -69,7 +75,7 @@ class iTunesRequest extends BasicRequest
 			'limit' => '20',
 			'offset' => ($page - 1) * 20
         ];
-        $artists = $this->toJson($this->getRequest(self::DIRECT_URL . 'search', $parameter))['results'];
+        $artists = $this->toJson($this->getRequest($this->directUrl . $this->searchArtistPath, $parameter))['results'];
         foreach($artists as $artist)
         {
             $response[] = $this->toArtistModel(
