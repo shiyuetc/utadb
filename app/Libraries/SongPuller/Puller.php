@@ -5,7 +5,7 @@ namespace App\Libraries\SongPuller;
 class Puller 
 {
     protected $useRequest = [
-        'iTunes',
+        'iTunes', 'Dam'
     ];
 
     public function getUsingClass($source_id)
