@@ -15,6 +15,13 @@ class Puller
         return new $usingPath;
     }
 
+    public function lookSong($song_id)
+    {
+        if(count($this->useRequest) <= $song_id[0]) return [];
+        $class = $this->getUsingClass($song_id[0]);
+        return $class->lookSong(ltrim($song_id, $song_id[0]));
+    }
+
     public function searchSong($source_id, $q, $page = 1)
     {
         if(count($this->useRequest) <= $source_id) return [];
@@ -28,5 +35,5 @@ class Puller
         $class = $this->getUsingClass($source_id);
         return $class->searchArtist($q, $page);
     }
-    
+
 }

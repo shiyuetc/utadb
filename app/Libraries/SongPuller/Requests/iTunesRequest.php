@@ -6,6 +6,30 @@ class iTunesRequest extends BasicRequest
 {
     private const DIRECT_URL = 'https://itunes.apple.com/';
     
+    public function lookSong($id)
+    {
+        $parameter = [
+			'country' => 'JP',
+			'lang' => 'ja_jp',
+			'media' => 'music',
+			'entity' => 'song',
+			'id' => $id
+        ];
+        $song = $this->toJson($this->getRequest(self::DIRECT_URL . 'lookup', $parameter))['results'];
+        if(count($song) == 1) {
+            $song = $song[0];
+            return $this->toSongModel(
+                '0' . $song["trackId"],
+                $song["trackCensoredName"],
+                (string)$song["artistId"],
+                $song["artistName"],
+                $song["artworkUrl60"],
+                isset($song["previewUrl"]) ? $song["previewUrl"] : null
+            );
+        }
+        return null;
+    }
+
     public function searchSong($q, $page = 1)
     {
         $response = [];
