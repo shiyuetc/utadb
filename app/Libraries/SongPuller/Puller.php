@@ -4,7 +4,9 @@ namespace App\Libraries\SongPuller;
 
 class Puller 
 {
-    protected $useRequest = [];
+    protected $useRequest = [
+        'iTunes',
+    ];
 
     public function searchSong($source_id, $q, $page = 1)
     {
