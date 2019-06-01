@@ -42,7 +42,22 @@ class DamRequest extends BasicRequest
 
     public function searchArtist($q, $page)
     {
-        return null;
+        $response = [];
+        $parameter = [
+			'searchType' => '0',
+			'keyword' => $q,
+			'pageNo' => $page
+        ];
+        $doc = \phpQuery::newDocument($this->postRequest($this->directUrl . $this->searchArtistPath, $parameter));
+        foreach($doc["table.list:eq(0) tr:not(:first)"] as $row) {
+            preg_match("/[0-9]+/", pq($row)->find("td:eq(0) a")->attr("href"), $artist_id);
+            
+            $response[] = $this->toArtistModel(
+                $artist_id[0],
+                pq($row)->find("td:eq(0)")->text()
+            );
+		}
+        return $response;
     }
 
 }
