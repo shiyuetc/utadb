@@ -9,7 +9,7 @@ class iTunesRequest extends BasicRequest
     public function searchSong($q, $page = 1)
     {
         $response = [];
-        $data = [
+        $parameter = [
 			'country' => 'JP',
 			'lang' => 'ja_jp',
 			'media' => 'music',
@@ -18,7 +18,7 @@ class iTunesRequest extends BasicRequest
 			'limit' => '20',
 			'offset' => ($page - 1) * 20
         ];
-        $songs = $this->toJson($this->getRequest(self::DIRECT_URL . 'search', $data))['results'];
+        $songs = $this->toJson($this->getRequest(self::DIRECT_URL . 'search', $parameter))['results'];
         foreach($songs as $song)
         {
             $response[] = $this->toSongModel(
@@ -32,5 +32,28 @@ class iTunesRequest extends BasicRequest
         }
         return $response;
     }
-    
+
+    public function searchArtist($q, $page = 1)
+    {
+        $parameter = [
+			'country' => 'JP',
+			'lang' => 'ja_jp',
+			'media' => 'music',
+			'entity' => 'musicArtist',
+			'attribute' => 'artistTerm',
+			'term' => $q,
+			'limit' => '20',
+			'offset' => ($page - 1) * 20
+        ];
+        $artists = $this->toJson($this->getRequest(self::DIRECT_URL . 'search', $parameter))['results'];
+        foreach($artists as $artist)
+        {
+            $response[] = $this->toArtistModel(
+                (string)$artist["artistId"],
+                $artist["artistName"]
+            );
+        }
+        return $response;
+    }
+
 }
