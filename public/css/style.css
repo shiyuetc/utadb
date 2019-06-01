@@ -13,7 +13,7 @@ body {
   -webkit-overflow-scrolling: touch;
   overflow-y: scroll;
   background: #fafafa url("../images/background-noize.png");
-  color: #555555;
+  color: #555;
   font-size: 16px;
   font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
@@ -55,20 +55,6 @@ div.content {
   margin-left: 250px;
 }
 
-/* #endregion */
-
-/* #region fixity */
-a {
-  color: inherit;
-  text-decoration: none;
-}
-i {
-  text-align: center;
-  min-width: 18px;
-}
-/* #endregion */
-
-/* #region common */
 .section {
   margin: 0 auto 10px auto;
   overflow: hidden;
@@ -89,13 +75,24 @@ a.default-link:hover {
 
 /* #endregion */
 
+/* #region fixity */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+i {
+  text-align: center;
+  min-width: 18px;
+}
+/* #endregion */
+
 /* #region header */
 nav.navbar {
   position: fixed;
   z-index: 9999;
   width: 100%;
   min-width: 320px;
-  box-shadow: 0 2px 2px #eeeeee;
+  box-shadow: 0 2px 2px #eee;
   background: #fff;
 }
 div.navbar-container {
@@ -138,7 +135,7 @@ ul.navbar-nav li > a {
 ul.navbar-nav li.nav-item a {
   min-width: 30px;
   padding: 0 18px;
-  border-bottom: 0 solid #999;
+  border-bottom: 0 solid transparent;
   font-size: 14px;
   text-align: center;
   transition: border-color 0.2s, background-color 0.2s;
@@ -154,7 +151,7 @@ ul.navbar-nav li.nav-item a:hover {
 }
 ul.navbar-nav li.nav-item.active a {
   height: 56px;
-  border-bottom: 2px solid #666666;
+  border-bottom: 2px solid #666;
   background: #f2f2f2;
 }
 ul.navbar-nav li.nav-brand a {
@@ -171,7 +168,7 @@ ul.navbar-nav li.nav-button:hover {
   background: #fafafa;
 }
 ul.navbar-nav li.nav-button.active {
-  background: #b3a4a4;
+  background: #f2f2f2;
 }
 button#avatar-button {
   height: 58px;
@@ -209,7 +206,7 @@ li.dialog-item a {
   display: block;
   min-width: 140px;
   padding: 10px 18px;
-  color: #666666;
+  color: #666;
   font-size: 12px;
   text-decoration: none;
   transition: background-color 0.1s;
@@ -676,4 +673,108 @@ ul.user-statuses span.status-count:after {
 	content: "";
 }
 
+/* #endregion */
+
+/* #region music-table */
+table.music-table {
+  width: 100%;
+}
+table.music-table td.media-cell {
+	width: 48px;
+}
+table.music-table td.media-cell img {
+  width: 48px;
+  height: 48px;
+  vertical-align: bottom;
+  background-image: url('../images//no-cover-image.png');
+}
+table.music-table td.text-cell {
+	padding-left: 6px;
+}
+table.music-table td.text-cell p {
+  font-size: 14px;
+}
+table.music-table td.text-cell p.title {
+  margin: 0;
+  font-weight: bold;
+}
+table.music-table td.text-cell p.artist {
+  margin: 2px 0;
+}
+table.music-table td.action-cell {
+  width: 72px;
+}
+select.status-select {
+  padding: 6px 12px;
+  border-radius: 2px;
+  font-size: 12px;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+	-moz-transition: background-color 0.2s, border-color 0.2s;
+	-webkit-transition: background-color 0.2s, border-color 0.2s;
+	-o-transition: background-color 0.2s, border-color 0.2s;
+  -ms-transition: background-color 0.2s, border-color 0.2s;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+select.status-select.active {
+	background: #db3333;
+	border: 1px solid #db3333;
+	color: #fafafa;
+}
+select.status-select option {
+	background: #ffffff;
+	color: #333333;
+	cursor: pointer;
+}
+
+/* #endregion */
+
+/* #region timeline */
+div.statuses div.status:nth-child(n + 2) {
+  border-top: 1px solid #eaeaea;
+}
+div.status {
+  padding: 6px 12px;
+  transition: background-color 0.2;
+	-moz-transition: background-color 0.2s;
+	-webkit-transition: background-color 0.2s;
+	-o-transition: background-color 0.2s;
+  -ms-transition: background-color 0.2s;
+}
+div.status:hover {
+  background: #fafafa;
+}
+div.status-header p {
+  display: table-cell;
+  margin: 0;
+  vertical-align: middle;
+}
+div.status p.avatar img {
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  transition: opacity 0.2s;
+	-moz-transition: opacity 0.2s;
+	-webkit-transition: opacity 0.2s;
+	-o-transition: opacity 0.2s;
+	-ms-transition: opacity 0.2s;
+}
+div.status p.avatar img:hover {
+  opacity: 0.8;
+}
+div.status p.text {
+  padding-left: 6px;
+  font-size: 14px;
+}
+div.status div.status-body {
+  padding: 6px 4px;
+  border: 1px solid #eeeeee;
+}
+div.status p.date {
+  margin: 4px 0 0 4px;
+  font-size: 12px;
+}
 /* #endregion */
