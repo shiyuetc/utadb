@@ -14,6 +14,21 @@ class DamRequest extends BasicRequest
 
     public function lookSong($id)
     {
+        $parameter = [
+			'contentsId' => $id
+        ];
+        $doc = \phpQuery::newDocument($this->getRequest($this->directUrl . $this->lookSongPath, $parameter));
+        $info = $doc["div#search01"];
+        if(isset($info[0])) {
+            $info = $info[0];
+            preg_match("/[0-9]+/", pq($info)->find("td.singer a")->attr("href"), $artist_id);
+            return $this->toSongModel(
+                $id,
+                pq($info)->find("p.artist")->text(),
+                $artist_id[0],
+                pq($info)->find("td.singer")->text()
+            );
+        }
         return null;
     }
 
@@ -29,7 +44,6 @@ class DamRequest extends BasicRequest
 		foreach($doc["table.list:eq(0) tr:not(:first)"] as $row) {
 			preg_match("/[0-9]+/", pq($row)->find("td:eq(0) a")->attr("href"), $song_id);
             preg_match("/[0-9]+/", pq($row)->find("td:eq(1) a")->attr("href"), $artist_id);
-            
             $response[] = $this->toSongModel(
                 '1' . $song_id[0],
                 pq($row)->find("td:eq(0)")->text(),
@@ -51,7 +65,6 @@ class DamRequest extends BasicRequest
         $doc = \phpQuery::newDocument($this->postRequest($this->directUrl . $this->searchArtistPath, $parameter));
         foreach($doc["table.list:eq(0) tr:not(:first)"] as $row) {
             preg_match("/[0-9]+/", pq($row)->find("td:eq(0) a")->attr("href"), $artist_id);
-            
             $response[] = $this->toArtistModel(
                 $artist_id[0],
                 pq($row)->find("td:eq(0)")->text()
