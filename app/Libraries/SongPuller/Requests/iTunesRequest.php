@@ -36,7 +36,7 @@ class iTunesRequest extends BasicRequest
         return null;
     }
 
-    public function searchSong($q, $page = 1)
+    public function searchSong($q, $page)
     {
         $response = [];
         $parameter = [
@@ -63,7 +63,7 @@ class iTunesRequest extends BasicRequest
         return $response;
     }
 
-    public function searchArtist($q, $page = 1)
+    public function searchArtist($q, $page)
     {
         $parameter = [
 			'country' => 'JP',

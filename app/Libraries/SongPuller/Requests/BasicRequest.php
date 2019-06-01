@@ -34,7 +34,7 @@ class BasicRequest
     
     public function toSongModel($id, $title, $artistId, $artist, $imageUrl = null, $audioUrl = null)
     {
-        $object = [
+        return [
             'id' => $id,
             'title' => $title,
             'artist_id' => $artistId,
@@ -42,16 +42,14 @@ class BasicRequest
             'image_url' => $imageUrl,
             'audio_url' => $audioUrl,
         ];
-        return $object;
     }
 
     public function toArtistModel($artistId, $artist)
     {
-        $object = [
+        return [
             'artist_id' => $artistId,
             'artist' => $artist,
         ];
-        return $object;
     }
     
 }
