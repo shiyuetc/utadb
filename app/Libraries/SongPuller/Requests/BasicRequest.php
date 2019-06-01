@@ -27,6 +27,23 @@ class BasicRequest
 		return $response;
 	}
 
+    public function postRequest($url, $parameter = [])
+    {
+        $response = [];
+		try {
+            $data = http_build_query($parameter, '', '&');
+            $context = [
+                'http' => [
+                    'method' => 'POST',
+                    'header'  => implode("\r\n", array('Content-Type: application/x-www-form-urlencoded', 'Content-Length: ' . strlen($data))),
+                    'content' => $data
+                ],
+            ];
+            $response = file_get_contents($url, false, stream_context_create($context));
+		} catch (Exception $e) { }
+		return $response;
+    }
+
     public function toJson($html)
 	{
 		return json_decode(mb_convert_encoding($html, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN'), true);
