@@ -21,11 +21,11 @@ class DamRequest extends BasicRequest
         $info = $doc["div#search01"];
         if(isset($info[0])) {
             $info = $info[0];
-            preg_match("/[0-9]+/", pq($info)->find("td.singer a")->attr("href"), $artist_id);
+            preg_match("/[0-9]+/", pq($info)->find("td.singer a")->attr("href"), $artistId);
             return $this->toSongModel(
                 $id,
                 pq($info)->find("p.artist")->text(),
-                $artist_id[0],
+                $artistId[0],
                 pq($info)->find("td.singer")->text()
             );
         }
@@ -42,12 +42,12 @@ class DamRequest extends BasicRequest
         ];
         $doc = \phpQuery::newDocument($this->postRequest($this->directUrl . $this->searchSongPath, $parameter));
 		foreach($doc["table.list:eq(0) tr:not(:first)"] as $row) {
-			preg_match("/[0-9]+/", pq($row)->find("td:eq(0) a")->attr("href"), $song_id);
-            preg_match("/[0-9]+/", pq($row)->find("td:eq(1) a")->attr("href"), $artist_id);
+			preg_match("/[0-9]+/", pq($row)->find("td:eq(0) a")->attr("href"), $songId);
+            preg_match("/[0-9]+/", pq($row)->find("td:eq(1) a")->attr("href"), $artistId);
             $response[] = $this->toSongModel(
-                '1' . $song_id[0],
+                '1' . $songId[0],
                 pq($row)->find("td:eq(0)")->text(),
-                $artist_id[0],
+                $artistId[0],
                 pq($row)->find("td:eq(1)")->text()
             );
 		}
@@ -64,9 +64,9 @@ class DamRequest extends BasicRequest
         ];
         $doc = \phpQuery::newDocument($this->postRequest($this->directUrl . $this->searchArtistPath, $parameter));
         foreach($doc["table.list:eq(0) tr:not(:first)"] as $row) {
-            preg_match("/[0-9]+/", pq($row)->find("td:eq(0) a")->attr("href"), $artist_id);
+            preg_match("/[0-9]+/", pq($row)->find("td:eq(0) a")->attr("href"), $artistId);
             $response[] = $this->toArtistModel(
-                $artist_id[0],
+                $artistId[0],
                 pq($row)->find("td:eq(0)")->text()
             );
 		}
