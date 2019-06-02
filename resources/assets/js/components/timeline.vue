@@ -2,8 +2,8 @@
 <div class="statuses section animated fadeIn">
   <div class="status" v-for="(status, index) in statuses" :key="status.id">
     <div class="status-header">
-      <p class="avatar"><a v-bind:href="'@' + status.user.name"><img src="images/sample_avatar.png" alt=""></a></p>
-      <p class="text"><a class="default-link" v-bind:href="'@' + status.user.name">{{ status.user.name }}</a>さんが『{{ status_jp[status.state - 1] }}』に登録しました</p>
+      <p class="avatar"><a v-bind:href="'@' + status.user.screen_name"><img src="images/sample_avatar.png" alt=""></a></p>
+      <p class="text"><a class="default-link" v-bind:href="'@' + status.user.screen_name">{{ status.user.name }}</a>さんが『{{ status_jp[status.state - 1] }}』に登録しました</p>
     </div>
     <div class="status-body">
       <table class="music-table">
