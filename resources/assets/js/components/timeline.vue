@@ -40,6 +40,15 @@
 
 <script>
 export default {
+  props: {
+    timeline: {
+      type: String,
+      default: 'public'
+    },
+    user_id: {
+      type: String
+    }
+  },
   data() {
     return {
       status_jp: ['気になる曲', '練習中の曲', '習得済みの曲'],
@@ -53,19 +62,19 @@ export default {
       var target = new Date(date.replace(/-/g,"/"));
       var timestamp = Math.round(now.getTime() / 1000 - target.getTime() / 1000);
       if(timestamp < 60) {
-        return timestamp + " 秒前";
+        return timestamp + ' 秒前';
       } if(timestamp < 3600) {
-        return (Math.round(timestamp / 60)) + " 分前";
+        return (Math.round(timestamp / 60)) + ' 分前';
       } if(timestamp < 86400) {
-        return (Math.round(timestamp / 3600)) + " 時間前";
+        return (Math.round(timestamp / 3600)) + ' 時間前';
       }
-      return (Math.round(timestamp / 86400)) + " 日前";
+      return (Math.round(timestamp / 86400)) + ' 日前';
     },
     updateStatus: function(index, song_id) {
       if(this.isBusy) return;
       this.isBusy = true;
       var state = this.statuses[index].user_state;
-      axios.post("api/update_status", {
+      axios.post('api/update_status', {
         id: song_id,
         state: state
       }).then(res => {
@@ -81,9 +90,10 @@ export default {
     }
   },
   mounted() {
-    axios.get("api/public_timeline").then(res => {
+    var data = this.user_id != null ? '?id=' + this.user_id : '';
+    axios.get('api/' + this.timeline + '_timeline' + data).then(res => {
       this.statuses = res.data;
-      setTimeout("initializePlayer()", 1000);
+      setTimeout('initializePlayer()', 1000);
     }).catch(err => { });
   }
 };
