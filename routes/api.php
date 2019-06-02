@@ -13,8 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['middleware' => ['api', 'auth']], function(){
-    Route::post('/update_status', 'ApiController@updateStatus');
+Route::group(['middleware' => ['api']], function(){
     Route::get('/user_timeline', 'ApiController@userTimeline');
     Route::get('/public_timeline', 'ApiController@publicTimeline');
+});
+
+Route::group(['middleware' => ['api', 'auth']], function(){
+    Route::post('/update_status', 'ApiController@updateStatus');
 });

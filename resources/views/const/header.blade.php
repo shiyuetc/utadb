@@ -36,7 +36,7 @@
         <div id="nav-dialog" class="nav-dialog">
           <ul class="dialog-group">
             <li class="dialog-item success-dialog-item">
-              <a href="&#64;{{ Auth::user()->screen_name }}"><i class="fa fa-user"></i>&nbsp;マイページ</a>
+              <a href="{{ route('user', ['id' => Auth::user()->screen_name]) }}"><i class="fa fa-user"></i>&nbsp;マイページ</a>
             </li>
           </ul>
           <ul class="dialog-group">
