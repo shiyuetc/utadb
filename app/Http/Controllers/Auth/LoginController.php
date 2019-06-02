@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -40,5 +41,10 @@ class LoginController extends Controller
     public function username()
     {
         return 'screen_name';
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        return redirect('/')->with('status', __("@{$user->screen_name}でログインに成功しました"));
     }
 }
