@@ -24,7 +24,7 @@ class StatusRequest extends ApiRequest
     public function rules()
     {
         return [
-            'id' => 'required|string|digits_between:6,18|regex:/^[0-1].*/',
+            'id' => 'required|string|digits_between:5,18|regex:/^[0-1].*/',
             'state' => 'required|numeric|between:0,3',
         ];
     }

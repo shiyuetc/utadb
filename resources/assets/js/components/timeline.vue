@@ -21,7 +21,7 @@
             <p class="artist">{{ status.song.artist }}</p>
           </td>
           <td class="action-cell">
-            <select v-bind:id="'select' + index" class="status-select" v-bind:class="{ 'active' : status.user_state != 0 }" v-model="status.user_state" v-on:change="updateStatus(index, status.song.id)">
+            <select v-bind:id="index" class="status-select" v-bind:class="[status.song.id , { 'active' : status.user_state != 0 }]" v-model="status.user_state" v-on:change="updateStatus(index, status.song.id)" v-bind:disabled="isBusy">
               <option value="0" selected>記録なし</option>
               <option value="1">気になる</option>
               <option value="2">練習中</option>
@@ -44,6 +44,7 @@ export default {
     return {
       status_jp: ['気になる曲', '練習中の曲', '習得済みの曲'],
       statuses: [],
+      isBusy: false,
     };
   },
   methods: {
@@ -61,7 +62,22 @@ export default {
       return (Math.round(timestamp / 86400)) + " 日前";
     },
     updateStatus: function(index, song_id) {
-      
+      if(this.isBusy) return;
+      this.isBusy = true;
+      var state = this.statuses[index].user_state;
+      axios.post("api/update_status", {
+        id: song_id,
+        state: state
+      }).then(res => {
+        var selects = $('.' + song_id);
+        for(var i = 0; i < selects.length; i++) {
+          if(selects[i].id == index) continue;
+          this.statuses[selects[i].id].user_state = state;
+        }
+        this.isBusy = false;
+      }).catch(err => { 
+        window.location.href = '/login';
+      });
     }
   },
   mounted() {
