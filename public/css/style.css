@@ -39,7 +39,7 @@ div.main-inner {
   max-width: 1000px;
   margin: 14px auto 0 auto;
 }
-.margin-const {
+.margin, .margin-const {
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -280,6 +280,14 @@ div.copyright {
 @media (max-width: 460px) {
   .hidden-sm-below {
     display: none;
+  }
+
+  .margin {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .margin .section, .margin .alert { 
+    border-radius: 0 !important;
   }
 }
 /* 680px以下 */

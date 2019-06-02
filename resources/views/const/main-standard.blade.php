@@ -10,7 +10,7 @@ if ($errors->any()) {
 }
 @endphp
 <div class="main main-inner">
-  <div class="margin-const">
+  <div class="margin">
     @if(isset($alert))
       @include('components.alert', ['type' => $alert['type'], 'text' => $alert['text']])
     @endif

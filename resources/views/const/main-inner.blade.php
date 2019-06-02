@@ -1,5 +1,5 @@
 <div class="main main-inner">
-  <div class="margin-const">
+  <div class="margin">
     @yield('content')
   </div>
 </div>
