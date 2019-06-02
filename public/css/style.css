@@ -497,6 +497,17 @@ div.checkbox span {
 
 /* #endregion */
 
+/* #region error */
+div.error {
+  text-align: center;
+}
+div.error p.fallback a {
+  color: #e15542;
+  font-size: 13px;
+}
+
+/* #endregion */
+
 /* #region page-top */
 #page-top {
   position: fixed;
