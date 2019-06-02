@@ -23,7 +23,7 @@ class DamRequest extends BasicRequest
             $info = $info[0];
             preg_match("/[0-9]+/", pq($info)->find("td.singer a")->attr("href"), $artistId);
             return $this->toSongModel(
-                $id,
+                '1' . $id,
                 pq($info)->find("p.artist")->text(),
                 $artistId[0],
                 pq($info)->find("td.singer")->text()
