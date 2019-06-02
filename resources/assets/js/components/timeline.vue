@@ -1,9 +1,10 @@
 <template>
-<div class="statuses section animated fadeIn">
+<div v-if="isMounted" class="statuses section animated fadeIn">
+  <h1 class="title"><i class="fab fa-react"></i>&nbsp;タイムライン</h1>
   <div class="status" v-for="(status, index) in statuses" :key="status.id">
     <div class="status-header">
       <p class="avatar"><a v-bind:href="'@' + status.user.screen_name"><img src="images/sample_avatar.png" alt=""></a></p>
-      <p class="text"><a class="default-link" v-bind:href="'@' + status.user.screen_name">{{ status.user.name }}</a>さんが『{{ status_jp[status.state - 1] }}』に登録しました</p>
+      <p class="text"><a class="default-link" v-bind:href="'@' + status.user.screen_name">{{ status.user.name }}</a>さんが『{{ statusJp[status.state - 1] }}』に登録しました</p>
     </div>
     <div class="status-body">
       <table class="music-table">
@@ -35,6 +36,9 @@
       <p class="date">{{ subtractDate(status.used_at) }}</p>
     </div>
   </div>
+  <div v-if="statuses.length == 0" class="not-exist">
+    <p></p>
+  </div>
 </div>
 </template>
 
@@ -51,8 +55,9 @@ export default {
   },
   data() {
     return {
-      status_jp: ['気になる曲', '練習中の曲', '習得済みの曲'],
+      statusJp: ['気になる曲', '練習中の曲', '習得済みの曲'],
       statuses: [],
+      isMounted: false,
       isBusy: false,
     };
   },
@@ -93,6 +98,7 @@ export default {
     var data = this.user_id != null ? '?id=' + this.user_id : '';
     axios.get('api/' + this.timeline + '_timeline' + data).then(res => {
       this.statuses = res.data;
+      this.isMounted = true;
       setTimeout('initializePlayer()', 1000);
     }).catch(err => { });
   }

@@ -63,6 +63,12 @@ div.content {
   background: #fff;
   word-wrap: break-word;
 }
+.section > h1.title {
+  margin: 0;
+  padding: 8px 12px;
+  border-bottom: 1px solid #eaeaea;
+  font-size: 15px;
+}
 
 a.default-link {
   color: inherit;
@@ -744,8 +750,8 @@ select.status-select option {
 /* #endregion */
 
 /* #region timeline */
-div.statuses div.status:nth-child(n + 2) {
-  border-top: 1px solid #eaeaea;
+div.statuses > div.status:nth-child(n+2) {
+  border-bottom: 1px solid #eaeaea;
 }
 div.status {
   padding: 6px 12px;
