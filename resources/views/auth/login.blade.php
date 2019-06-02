@@ -35,7 +35,7 @@
     <div class="form-group">
       <button type="submit" class="button button-danger">ログイン</button>
     </div>
-    <p class="supplement-text">アカウントをお持ちの方は <a href="{{ route('register') }}">ログイン</a></p>
+    <p class="supplement-text">アカウントを持っていない方は <a href="{{ route('register') }}">新規登録</a></p>
   </form>
 </div>
 <p class="supplement-title"><a href="{{ route('password.request') }}">パスワードを忘れた場合はこちら</a></p>
