@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('sidebar')
-@include('widgets.user-infomation', ['user' => Auth::user()])
+@include('widgets.user-infomation', ['user' => Auth::user(), 'hide' => true])
 @include('widgets.tweet-notification')
 
 @endsection

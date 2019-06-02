@@ -1,4 +1,4 @@
-<div class="user-infomation section">
+<div class="user-infomation section{{ (isset($hide) && $hide) ? ' section-hide' : '' }}">
   <div class="user-profile">
     <div class="avatar-box">
       <a href="&#64;{{ $user->screen_name }}"><img id="avatar" src="images/sample_avatar.png" alt="avatar"></a>
