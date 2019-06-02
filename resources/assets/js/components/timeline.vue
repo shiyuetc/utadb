@@ -1,6 +1,6 @@
 <template>
 <div v-if="isMounted" class="statuses section animated fadeIn">
-  <h1 class="title"><i class="fab fa-react"></i>&nbsp;タイムライン</h1>
+  <h1 class="title"><i class="fab fa-react"></i>&nbsp;{{timeline == 'public' ? 'ローカル': 'ユーザー'}}タイムライン</h1>
   <div class="status" v-for="(status, index) in statuses" :key="status.id">
     <div class="status-header">
       <p class="avatar"><a v-bind:href="'@' + status.user.screen_name"><img src="images/sample_avatar.png" alt=""></a></p>
