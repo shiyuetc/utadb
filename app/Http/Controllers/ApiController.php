@@ -17,13 +17,13 @@ class ApiController extends Controller
 
     public function userTimeline(request $request)
     {
-        $statuses = Status::userTimeline($request->id);
+        $statuses = Status::getTimeline($request->id);
         return response()->json($statuses);
     }
 
     public function publicTimeline()
     {
-        $statuses = Status::publicTimeline();
+        $statuses = Status::getTimeline();
         return response()->json($statuses);
     }
 }

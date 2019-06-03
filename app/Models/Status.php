@@ -34,7 +34,8 @@ class Status extends Model
         return $this->belongsTo('App\Models\Song');
     }
     
-    public static function updateStatus($id, $newState) {
+    public static function updateStatus($id, $state) 
+    {
         $statusArray = [
             'stacked', 'training', 'mastered'
         ];
@@ -48,12 +49,12 @@ class Status extends Model
                 ->where('song_id', $id)
                 ->first();
             $statusId = isset($status) ? $status->id : null;
-            $state = isset($status) ? $status->state : 0;
-            if($state == $newState) {
+            $nowState = isset($status) ? $status->state : 0;
+            if($nowState == $state) {
                 throw new Exception('変更前と変更後のステータスが同じです');
             }
             
-            if($state == 0) { 
+            if($nowState == 0) { 
                 // ステータスの追加
                 if(!Song::where('id', $id)->exists()) {
                     $puller = new Puller();
@@ -78,31 +79,31 @@ class Status extends Model
                 Status::insert([
                     'user_id' => $user->id,
                     'song_id' => $id,
-                    'state' => $newState
+                    'state' => $state
                 ]);
-                $user[$statusArray[$newState - 1] . '_state_count'] += 1;
+                $user[$statusArray[$state - 1] . '_state_count'] += 1;
 
-            } elseif($newState != 0) { 
+            } elseif($state != 0) { 
                 // ステータスの更新
                 Status::find($statusId)->update([
-                    'state' => $newState,
+                    'state' => $state,
                     'used_at' => Carbon::now()
                 ]);
-                $user["{$statusArray[$newState - 1]}_state_count"] += 1;
-                $user["{$statusArray[$state - 1]}_state_count"] -= 1;
+                $user["{$statusArray[$state - 1]}_state_count"] += 1;
+                $user["{$statusArray[$nowState - 1]}_state_count"] -= 1;
 
             } else { 
                 // ステータスの削除
                 Status::find($statusId)->delete();
-                $user["{$statusArray[$state - 1]}_state_count"] -= 1;
+                $user["{$statusArray[$nowState - 1]}_state_count"] -= 1;
                 
             }
             $user->save();
             DB::commit();
             return [
                 'id' => $id,
-                'old_state' => $state,
-                'new_state' => $newState
+                'old_state' => $nowState,
+                'new_state' => $state
             ];
         } catch (Exception $e){
             DB::rollBack();
@@ -110,28 +111,19 @@ class Status extends Model
         }
     }
 
-    public static function userTimeline($id)
+    public static function getTimeline($id = null)
     {
-        return Status::select('user_statuses.id', 'user_statuses.user_id', 'user_statuses.song_id', 'user_statuses.state', DB::raw('IFNULL(s1.state, 0) as user_state'), 'user_statuses.used_at')
+        $query = Status::select('user_statuses.id', 'user_statuses.user_id', 'user_statuses.song_id', 'user_statuses.state', DB::raw('IFNULL(s1.state, 0) as user_state'), 'user_statuses.used_at')
         ->leftjoin('user_statuses as s1', function($join) {
             $join->where('s1.user_id', auth()->id())
             ->on('user_statuses.song_id', '=', 's1.song_id');
-        })
-        ->where('user_statuses.user_id', $id)
-        ->with(['user', 'song'])
-        ->orderBy('used_at', 'desc')
-        ->get();
-    }
+        });
 
-    public static function publicTimeline()
-    {
-        return Status::select('user_statuses.id', 'user_statuses.user_id', 'user_statuses.song_id', 'user_statuses.state', DB::raw('IFNULL(s1.state, 0) as user_state'), 'user_statuses.used_at')
-        ->leftjoin('user_statuses as s1', function($join) {
-            $join->where('s1.user_id', auth()->id())
-            ->on('user_statuses.song_id', '=', 's1.song_id');
-        })
-        ->with(['user', 'song'])
-        ->orderBy('used_at', 'desc')
-        ->get();
+        if(!is_null($id)) $query = $query->where('user_statuses.user_id', $id);
+
+        return $query
+            ->with(['user', 'song'])
+            ->orderBy('used_at', 'desc')
+            ->get();
     }
 }
