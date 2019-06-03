@@ -111,6 +111,23 @@ class Status extends Model
         }
     }
 
+    public static function userStatuses($id, $state = 0)
+    {
+        $query =  Status::select('user_statuses.song_id', DB::raw('IFNULL(s1.state, 0) as user_state'))
+        ->leftjoin('user_statuses as s1', function($join) {
+            $join->where('s1.user_id', auth()->id())
+            ->on('user_statuses.song_id', '=', 's1.song_id');
+        })
+        ->where('user_statuses.user_id', $id);
+
+        if($state != 0) $query = $query->where('user_statuses.state', $state);
+
+        return $query
+            ->with(['song'])
+            ->get()
+            ->sortBy('song.artist');
+    }
+
     public static function getTimeline($id = null)
     {
         $query = Status::select('user_statuses.id', 'user_statuses.user_id', 'user_statuses.song_id', 'user_statuses.state', DB::raw('IFNULL(s1.state, 0) as user_state'), 'user_statuses.used_at')

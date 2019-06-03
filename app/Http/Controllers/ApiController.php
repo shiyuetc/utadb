@@ -15,6 +15,12 @@ class ApiController extends Controller
         return response()->json($update);
     }
 
+    public function userStatuses(Request $request)
+    {
+        $statuses = Status::userStatuses($request->id, $request->state);
+        return response()->json($statuses);
+    }
+
     public function userTimeline(request $request)
     {
         $statuses = Status::getTimeline($request->id);
