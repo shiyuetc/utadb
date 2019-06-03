@@ -689,6 +689,10 @@ ul.user-statuses li a:hover {
   border-left: 2px solid #999999;
   background: #fafafa;
 }
+ul.user-statuses li.active a {
+  border-left: 2px solid #666666;
+  background: #f2f2f2;
+}
 ul.user-statuses span.status-count {
   float: right;
 }
@@ -758,11 +762,9 @@ select.status-select option {
 /* #endregion */
 
 /* #region timeline */
-div.statuses > div.status:nth-child(n+2) {
-  border-bottom: 1px solid #eaeaea;
-}
-div.status {
+div.statuses > div.status {
   padding: 6px 12px;
+  border-bottom: 1px solid #eaeaea;
   transition: background-color 0.2;
 	-moz-transition: background-color 0.2s;
 	-webkit-transition: background-color 0.2s;
