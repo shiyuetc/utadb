@@ -1,15 +1,15 @@
 <template>
   <div class="section">
     <h1 class="title">
-      <span v-if="type == 'public'"><i class="fab fa-react"></i>&nbsp;ローカルタイムライン</span>
-      <span v-if="type == 'user'"><i class="fab fa-react"></i>&nbsp;ユーザータイムライン</span>
+      <span v-if="user_id == null"><i class="fab fa-react"></i>&nbsp;ローカルタイムライン</span>
+      <span v-if="user_id != null"><i class="fab fa-react"></i>&nbsp;ユーザータイムライン</span>
     </h1>
     <div v-if="isMounted" class="statuses animated fadeIn">
       <div class="status" v-for="(status, index) in statuses" :key="status.id">
         <div class="status-header">
           <p class="avatar">
             <a v-bind:href="'@' + status.user.screen_name">
-              <img src="images/sample_avatar.png" alt>
+              <img src="images/sample_avatar.png" alt="">
             </a>
           </p>
           <p class="text">
@@ -38,8 +38,7 @@
                   v-bind:class="[status.song.id , { 'active' : status.user_state != 0 }]"
                   v-model="status.user_state"
                   @change="updateStatus(index, status.song.id)"
-                  v-bind:disabled="isBusy"
-                >
+                  v-bind:disabled="isBusy">
                   <option value="0" selected>記録なし</option>
                   <option value="1">気になる</option>
                   <option value="2">練習中</option>
@@ -63,10 +62,6 @@
 <script>
 export default {
   props: {
-    type: {
-      type: String,
-      default: 'public'
-    },
     user_id: {
       type: String
     }
@@ -118,7 +113,8 @@ export default {
   },
   mounted() {
     var data = this.user_id != null ? "?id=" + this.user_id : "";
-    axios.get("/api/" + this.type + "_timeline" + data).then(res => {
+    var timeline = this.user_id == null ? "public" : "user";
+    axios.get("/api/" + timeline+ "_timeline" + data).then(res => {
         this.statuses = res.data;
         this.isMounted = true;
         setTimeout("initializePlayer()", 1000);

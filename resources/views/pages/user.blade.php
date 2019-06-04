@@ -6,5 +6,5 @@
 
 @endsection
 @section('content')
-<timeline-component :type="'user'" :user_id="'{{ $user->id }}'"/>
+<timeline-component :user_id="'{{ $user->id }}'"/>
 @endsection
