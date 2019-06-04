@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="description" content="Utadb は自分の持ち歌（歌える曲）や気になった曲を記録して管理したりユーザー同士で共有ができるWebサービスです。カラオケ等へ行くとき用にメモ感覚で簡単に使えます。">
 <meta name="keywords" content="music, memo, review">
