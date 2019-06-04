@@ -1,23 +1,14 @@
 <template>
   <div class="section">
     <h1 class="title">
-      <span v-if="type == 'public'"><i class="fab fa-react"></i>&nbsp;ローカルタイムライン</span>
-      <span v-if="type == 'user'"><i class="fab fa-react"></i>&nbsp;ユーザータイムライン</span>
+      <span v-if="type == 'all'"><i class="fa fa-check"></i>&nbsp;登録済みの曲</span>
+      <span v-if="type == 'mastered'"><i class="fa fa-check"></i>&nbsp;習得済みの曲</span>
+      <span v-if="type == 'training'"><i class="fas fa-graduation-cap"></i>&nbsp;練習中の曲</span>
+      <span v-if="type == 'stacked'"><i class="far fa-sticky-note"></i>&nbsp;気になる曲</span>
     </h1>
     <div v-if="isMounted" class="statuses animated fadeIn">
-      <div class="status" v-for="(status, index) in statuses" :key="status.id">
-        <div class="status-header">
-          <p class="avatar">
-            <a v-bind:href="'@' + status.user.screen_name">
-              <img src="images/sample_avatar.png" alt>
-            </a>
-          </p>
-          <p class="text">
-            <a class="default-link" v-bind:href="'@' + status.user.screen_name">{{ status.user.name }}</a>さんが『{{ statusJp[status.state - 1] }}』に登録しました
-          </p>
-        </div>
-        <div class="status-body">
-          <table class="music-table">
+      <div class="status" v-for="(status, index) in statuses" :key='index'>
+        <table class="music-table">
             <tr>
               <td class="media-cell">
                 <div class="cover-image">
@@ -37,7 +28,7 @@
                   class="status-select"
                   v-bind:class="[status.song.id , { 'active' : status.user_state != 0 }]"
                   v-model="status.user_state"
-                  @change="updateStatus(index, status.song.id)"
+                  v-on:change="updateStatus(index, status.song.id)"
                   v-bind:disabled="isBusy"
                 >
                   <option value="0" selected>記録なし</option>
@@ -48,10 +39,6 @@
               </td>
             </tr>
           </table>
-        </div>
-        <div class="status-footer">
-          <p class="date">{{ subtractDate(status.used_at) }}</p>
-        </div>
       </div>
       <div v-if="statuses.length == 0" class="not-exist">
         <p></p>
@@ -65,7 +52,7 @@ export default {
   props: {
     type: {
       type: String,
-      default: 'public'
+      default: 'all'
     },
     user_id: {
       type: String
@@ -73,30 +60,12 @@ export default {
   },
   data() {
     return {
-      statusJp: ['気になる曲', '練習中の曲', '習得済みの曲'],
       statuses: [],
       isMounted: false,
       isBusy: false
     };
   },
   methods: {
-    subtractDate: function(date) {
-      var now = new Date();
-      var target = new Date(date.replace(/-/g, "/"));
-      var timestamp = Math.round(
-        now.getTime() / 1000 - target.getTime() / 1000
-      );
-      if (timestamp < 60) {
-        return timestamp + " 秒前";
-      }
-      if (timestamp < 3600) {
-        return Math.round(timestamp / 60) + " 分前";
-      }
-      if (timestamp < 86400) {
-        return Math.round(timestamp / 3600) + " 時間前";
-      }
-      return Math.round(timestamp / 86400) + " 日前";
-    },
     updateStatus: function(index, song_id) {
       if (this.isBusy) return;
       this.isBusy = true;
@@ -117,13 +86,18 @@ export default {
     }
   },
   mounted() {
-    var data = this.user_id != null ? "?id=" + this.user_id : "";
-    axios.get("/api/" + this.type + "_timeline" + data).then(res => {
+    var state = 0;
+    switch(this.type) {
+      case 'mastered': state = 3; break;
+      case 'training': state = 2; break;
+      case 'stacked': state = 1; break;
+    }
+    var data = "?id=" + this.user_id + "&state=" + state;
+    axios.get("/api/user_statuses" + data).then(res => {
         this.statuses = res.data;
         this.isMounted = true;
         setTimeout("initializePlayer()", 1000);
     }).catch(err => {});
   }
-};
+}
 </script>
-
