@@ -1,10 +1,10 @@
 <template>
   <div class="section">
     <h1 class="title">
-      <span v-if="type == 'all'"><i class="fa fa-check"></i>&nbsp;登録済みの曲</span>
-      <span v-if="type == 'mastered'"><i class="fa fa-check"></i>&nbsp;習得済みの曲</span>
-      <span v-if="type == 'training'"><i class="fas fa-graduation-cap"></i>&nbsp;練習中の曲</span>
-      <span v-if="type == 'stacked'"><i class="far fa-sticky-note"></i>&nbsp;気になる曲</span>
+      <span v-if="state == 0"><i class="fa fa-check"></i>&nbsp;登録済みの曲</span>
+      <span v-if="state == 3"><i class="fa fa-check"></i>&nbsp;習得済みの曲</span>
+      <span v-if="state == 2"><i class="fas fa-graduation-cap"></i>&nbsp;練習中の曲</span>
+      <span v-if="state == 1"><i class="far fa-sticky-note"></i>&nbsp;気になる曲</span>
     </h1>
     <div v-if="isMounted" class="statuses animated fadeIn">
       <div class="status" v-for="(status, index) in statuses" :key='index'>
@@ -12,7 +12,7 @@
             <tr>
               <td class="media-cell">
                 <div class="cover-image">
-                  <img v-bind:src="status.song.image_url" onerror="this.src='images/no-cover-image.png'" alt>
+                  <img v-bind:src="status.song.image_url" onerror="this.src='images/no-cover-image.png'" alt="">
                   <div class="mediPlayer" v-if="status.song.audio_url">
                     <audio class="listen" preload="none" data-size="40" v-bind:src="status.song.audio_url"></audio>
                   </div>
@@ -50,9 +50,9 @@
 <script>
 export default {
   props: {
-    type: {
-      type: String,
-      default: 'all'
+    state: {
+      type: Number,
+      default: 0
     },
     user_id: {
       type: String
@@ -69,10 +69,9 @@ export default {
     updateStatus: function(index, song_id) {
       if (this.isBusy) return;
       this.isBusy = true;
-      var state = this.statuses[index].user_state;
       axios.post("/api/update_status", {
           id: song_id,
-          state: state
+          state: this.statuses[index].user_state
         }).then(res => {
           this.isBusy = false;
         }).catch(err => {
@@ -81,14 +80,7 @@ export default {
     }
   },
   mounted() {
-    var state = 0;
-    switch(this.type) {
-      case 'mastered': state = 3; break;
-      case 'training': state = 2; break;
-      case 'stacked': state = 1; break;
-    }
-    var data = "?id=" + this.user_id + "&state=" + state;
-    axios.get("/api/user_statuses" + data).then(res => {
+    axios.get("/api/user_statuses?id=" + this.user_id + "&state=" + this.state).then(res => {
         this.statuses = res.data;
         this.isMounted = true;
         setTimeout("initializePlayer()", 1000);

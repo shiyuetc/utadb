@@ -6,5 +6,5 @@
 
 @endsection
 @section('content')
-<user-statuses-component :type="'{{ $state['en'] }}'" :user_id="'{{ $user->id }}'"/>
+<user-statuses-component :state="'{{ $state['index'] }}'" :user_id="'{{ $user->id }}'"/>
 @endsection
