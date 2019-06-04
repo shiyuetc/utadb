@@ -1,4 +1,5 @@
 @extends('layouts.error')
+@section('title', '404 Error')
 
 @section('content')
 <div class="height-medium"></div>
