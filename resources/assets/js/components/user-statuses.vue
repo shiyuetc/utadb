@@ -74,11 +74,6 @@ export default {
           id: song_id,
           state: state
         }).then(res => {
-          var selects = $("." + song_id);
-          for (var i = 0; i < selects.length; i++) {
-            if (selects[i].id == index) continue;
-            this.statuses[selects[i].id].user_state = state;
-          }
           this.isBusy = false;
         }).catch(err => {
           window.location.href = "/login";
