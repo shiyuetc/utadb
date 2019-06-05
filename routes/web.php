@@ -13,9 +13,11 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/@{id}', 'UserController@index')->name('user');
-Route::get('/@{id}/status/{state}', 'UserController@status')->name('user.status')
-  ->where('state', 'all|mastered|training|stacked');
+Route::prefix('@{id}')->group(function() {
+  Route::get('/', 'UserController@index')->name('user');
+  Route::get('/status/{state}', 'UserController@status')->name('user.status')
+    ->where('state', 'all|mastered|training|stacked');
+});
 
 Route::get('/song/{id}', 'SongController@index')->name('song')
   ->where('id', '\d{5,18}');
