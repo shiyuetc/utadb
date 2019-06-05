@@ -1,10 +1,10 @@
 <template>
-  <div class="section">
+  <div v-if="isMounted" class="section">
     <h1 class="title">
-      <span v-if="user_id == null"><i class="fab fa-react"></i>&nbsp;ローカルタイムライン</span>
-      <span v-if="user_id != null"><i class="fab fa-react"></i>&nbsp;ユーザータイムライン</span>
+      <span v-if="this.user_id == null"><i class="fab fa-react"></i>&nbsp;ローカルタイムライン</span>
+      <span v-else><i class="fab fa-react"></i>&nbsp;ユーザータイムライン</span>
     </h1>
-    <div v-if="isMounted" class="statuses animated fadeIn">
+    <div class="statuses">
       <div class="status" v-for="(status, index) in statuses" :key="status.id">
         <div class="status-header">
           <p class="avatar">
@@ -120,9 +120,8 @@ export default {
     }
   },
   mounted() {
-    var data = this.user_id != null ? "?id=" + this.user_id : "";
-    var timeline = this.user_id == null ? "public" : "user";
-    axios.get("/api/" + timeline+ "_timeline" + data).then(res => {
+    var timeline = this.user_id == null ? "public_timeline" : "user_timeline?id=" + this.user_id;
+    axios.get("/api/" + timeline).then(res => {
         this.statuses = res.data;
         this.isMounted = true;
         setTimeout("initializePlayer()", 1000);
