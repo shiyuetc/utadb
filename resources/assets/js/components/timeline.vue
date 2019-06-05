@@ -9,11 +9,11 @@
         <div class="status-header">
           <p class="avatar">
             <a v-bind:href="'@' + status.user.screen_name">
-              <img src="images/sample_avatar.png" alt="">
+              <img src="/images/sample_avatar.png" alt="">
             </a>
           </p>
           <p class="text">
-            <a class="default-link" v-bind:href="'@' + status.user.screen_name">{{ status.user.name }}</a>さんが『{{ statusJp[status.state - 1] }}』に登録しました
+            <a class="default-link" v-bind:href="'/@' + status.user.screen_name">{{ status.user.name }}</a>さんが『{{ statusJp[status.state - 1] }}』に登録しました
           </p>
         </div>
         <div class="status-body">
@@ -21,14 +21,14 @@
             <tr>
               <td class="media-cell">
                 <div class="cover-image">
-                  <img v-bind:src="status.song.image_url" onerror="this.src='images/no-cover-image.png'" alt>
+                  <img v-bind:src="status.song.image_url" onerror="this.src='/images/no-cover-image.png'" alt>
                   <div class="mediPlayer" v-if="status.song.audio_url">
                     <audio class="listen" preload="none" data-size="40" v-bind:src="status.song.audio_url"></audio>
                   </div>
                 </div>
               </td>
               <td class="text-cell">
-                <p class="title">{{ status.song.title }}</p>
+                <p class="title"><a class="default-link" v-bind:href="'/song/' + status.song.id">{{ status.song.title }}</a></p>
                 <p class="artist">{{ status.song.artist }}</p>
               </td>
               <td class="action-cell">

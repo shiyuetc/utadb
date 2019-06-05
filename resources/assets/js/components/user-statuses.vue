@@ -12,14 +12,14 @@
             <tr>
               <td class="media-cell">
                 <div class="cover-image">
-                  <img v-bind:src="status.song.image_url" onerror="this.src='images/no-cover-image.png'" alt="">
+                  <img v-bind:src="status.song.image_url" onerror="this.src='/images/no-cover-image.png'" alt="">
                   <div class="mediPlayer" v-if="status.song.audio_url">
                     <audio class="listen" preload="none" data-size="40" v-bind:src="status.song.audio_url"></audio>
                   </div>
                 </div>
               </td>
               <td class="text-cell">
-                <p class="title">{{ status.song.title }}</p>
+                <p class="title"><a class="default-link" v-bind:href="'/song/' + status.song.id">{{ status.song.title }}</a></p>
                 <p class="artist">{{ status.song.artist }}</p>
               </td>
               <td class="action-cell">
@@ -29,8 +29,7 @@
                   v-bind:class="[status.song.id , { 'active' : status.user_state != 0 }]"
                   v-model="status.user_state"
                   v-on:change="updateStatus(index, status.song.id)"
-                  v-bind:disabled="isBusy"
-                >
+                  v-bind:disabled="isBusy">
                   <option value="0" selected>記録なし</option>
                   <option value="1">気になる</option>
                   <option value="2">練習中</option>
