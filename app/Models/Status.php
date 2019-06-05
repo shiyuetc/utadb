@@ -103,7 +103,8 @@ class Status extends Model
             return [
                 'id' => $id,
                 'old_state' => $nowState,
-                'new_state' => $state
+                'new_state' => $state,
+                'user' => $user
             ];
         } catch (Exception $e){
             DB::rollBack();

@@ -73,6 +73,14 @@ export default {
           id: song_id,
           state: this.statuses[index].user_state
         }).then(res => {
+          var user = res.data.user;
+          if(this.user_id == user.id) {
+            var statusCountElements = document.getElementsByClassName('status-count');
+            statusCountElements[0].textContent = (user.stacked_state_count + user.training_state_count + user.mastered_state_count) + '曲';
+            statusCountElements[1].textContent = user.mastered_state_count + '曲';
+            statusCountElements[2].textContent = user.training_state_count + '曲';
+            statusCountElements[3].textContent = user.stacked_state_count + '曲';
+          }
           this.isBusy = false;
         }).catch(err => {
           window.location.href = "/login";
