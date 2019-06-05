@@ -125,7 +125,8 @@ class Status extends Model
         return $query
             ->with(['song'])
             ->get()
-            ->sortBy('song.artist');
+            ->sortBy('song.artist')
+            ->values();
     }
 
     public static function getTimeline($id = null)
