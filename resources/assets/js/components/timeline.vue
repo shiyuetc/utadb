@@ -96,17 +96,17 @@ export default {
       if (this.isBusy) return;
       this.isBusy = true;
       var state = this.statuses[index].user_state;
+      var selects = $("." + song_id);
+      for (var i = 0; i < selects.length; i++) {
+        if (selects[i].id == index) continue;
+        this.statuses[selects[i].id].user_state = state;
+      }
       axios.post("/api/update_status", {
           id: song_id,
           state: state
         }).then(res => {
-          var selects = $("." + song_id);
-          for (var i = 0; i < selects.length; i++) {
-            if (selects[i].id == index) continue;
-            this.statuses[selects[i].id].user_state = state;
-          }
           var user = res.data.user;
-          if(this.user_id == user.id) {
+          if(this.user_id == null || this.user_id == user.id) {
             var statusCountElements = document.getElementsByClassName('status-count');
             statusCountElements[0].textContent = (user.stacked_state_count + user.training_state_count + user.mastered_state_count) + '曲';
             statusCountElements[1].textContent = user.mastered_state_count + '曲';
