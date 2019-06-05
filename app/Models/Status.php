@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Exceptions\HttpResponseException;
 use App\Models\Song;
 use App\Libraries\SongPuller\Puller;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Carbon\Carbon;
 use DB;
 use Exception;
@@ -57,8 +57,7 @@ class Status extends Model
             if($nowState == 0) { 
                 // ステータスの追加
                 if(!Song::where('id', $id)->exists()) {
-                    $puller = new Puller();
-                    $song = $puller->lookSong($id);
+                    $song = Puller::lookSong($id);
                     if(is_null($song)) {
                         throw new Exception('曲情報の取得に失敗しました');
                     }
