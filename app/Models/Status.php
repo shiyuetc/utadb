@@ -112,7 +112,7 @@ class Status extends Model
         }
     }
 
-    public static function userStatuses($id, $state = 0)
+    public static function userStatuses($id, $state = 0, $page = 1)
     {
         $query =  Status::select('user_statuses.song_id', DB::raw('IFNULL(s1.state, 0) as user_state'))
         ->leftjoin('user_statuses as s1', function($join) {
@@ -124,6 +124,8 @@ class Status extends Model
         if($state != 0) $query = $query->where('user_statuses.state', $state);
 
         return $query
+            ->skip(($page - 1) * 50)
+            ->take(50)
             ->with(['song'])
             ->get()
             ->sortBy('song.artist')

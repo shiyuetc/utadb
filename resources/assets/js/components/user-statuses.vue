@@ -40,9 +40,11 @@
             </tr>
           </table>
       </div>
-      <div v-if="statuses.length == 0" class="not-exist">
-        <p></p>
-      </div>
+    </div>
+    <div class="pagination">
+      <button class="button button-danger auto" @click="paging(-1)" v-bind:disabled="this.page == 1">前のページ</button>
+      <a href="#">{{ page }}&nbsp;ページ</a>
+      <button class="button button-danger auto" @click="paging(1)" v-bind:disabled="this.page == 9999 || statuses.length == 0">次のページ</button>
     </div>
   </div>
 </template>
@@ -50,22 +52,37 @@
 <script>
 export default {
   props: {
+    user_id: {
+      type: String
+    },
     state: {
       type: Number,
       default: 0
     },
-    user_id: {
-      type: String
+    page: {
+      type: Number,
+      default: 1
     }
   },
   data() {
     return {
       statuses: [],
+      setPlayer: null,
       isMounted: false,
       isBusy: false
     };
   },
   methods: {
+    paging: function(direction) {
+      //this.isMounted = false;
+      this.page += direction;
+      if(this.setPlayer != null) clearTimeout(this.setPlayer);
+      axios.get("/api/user_statuses?id=" + this.user_id + "&state=" + this.state + "&page=" + this.page).then(res => {
+        this.statuses = res.data;
+        //this.isMounted = true;
+        this.setPlayer = setTimeout("initializePlayer()", 1000);
+      }).catch(err => {});
+    },
     updateStatus: function(index, song_id) {
       if (this.isBusy) return;
       this.isBusy = true;
@@ -88,10 +105,10 @@ export default {
     }
   },
   mounted() {
-    axios.get("/api/user_statuses?id=" + this.user_id + "&state=" + this.state).then(res => {
+    axios.get("/api/user_statuses?id=" + this.user_id + "&state=" + this.state + "&page=" + this.page).then(res => {
         this.statuses = res.data;
         this.isMounted = true;
-        setTimeout("initializePlayer()", 1000);
+        this.setPlayer = setTimeout("initializePlayer()", 1000);
     }).catch(err => {});
   }
 }

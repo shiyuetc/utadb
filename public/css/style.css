@@ -470,6 +470,15 @@ button.button {
 button.auto {
   width: auto !important;
 }
+button.button:disabled {
+	background: #ccc;
+	color: #fafafa;
+	cursor: default;
+}
+button.button:disabled:hover { 
+  background: #ccc;
+  color: #fafafa;
+}
 button.button-info {
 	background: #3598db;
 	color: #fafafa;
@@ -761,7 +770,7 @@ select.status-select option {
 
 /* #endregion */
 
-/* #region timeline */
+/* #region statuses */
 div.statuses > div.status {
   padding: 6px 12px;
   border-bottom: 1px solid #eaeaea;
@@ -804,4 +813,18 @@ div.status p.date {
   margin: 4px 0 0 4px;
   font-size: 12px;
 }
+
+
+div.pagination {
+  margin: 12px 0 12px 0;
+  text-align: center;
+}
+div.pagination a {
+  margin: 0 12px;
+  font-size: 14px;
+}
+div.pagination button.button {
+  font-size: 12px;
+}
+
 /* #endregion */

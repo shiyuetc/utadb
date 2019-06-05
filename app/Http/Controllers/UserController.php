@@ -22,17 +22,18 @@ class UserController extends Controller
         return view('pages.user', ['user' => $this->user]);
     }
 
-    public function status($id, $state)
+    public function status(Request $request, $id, $state)
     {
         if(is_null($this->user)) {
             return view('errors.404');
         }
+        $page = (isset($request->page) && $request->page >= 1 && $request->page <= 9999) ? $request->page : 1;
         $stateArray = [
             'all' => ['index' => 0, 'jp' => '登録済みの曲', 'en' => 'all'], 
             'stacked' => ['index' => 1, 'jp' => '気になる曲', 'en' => 'stacked'], 
             'training' => ['index' => 2, 'jp' => '練習中の曲', 'en' => 'training'], 
             'mastered' => ['index' => 3, 'jp' => '習得済みの曲', 'en' => 'mastered'], 
         ];
-        return view('pages.user-status', ['user' => $this->user, 'state' => $stateArray[$state]]);
+        return view('pages.user-status', ['user' => $this->user, 'state' => $stateArray[$state], 'page' => $page]);
     }
 }

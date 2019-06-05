@@ -17,7 +17,7 @@ class ApiController extends Controller
 
     public function userStatuses(Request $request)
     {
-        $statuses = Status::userStatuses($request->id, $request->state);
+        $statuses = Status::userStatuses($request->id, $request->state, $request->page);
         return response()->json($statuses);
     }
 
