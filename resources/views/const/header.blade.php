@@ -11,6 +11,9 @@
           <li class="nav-item{{ Request::is('/') ? ' active' : '' }}">
             <a href="{{ route('home') }}"><i class="fas fa-home"></i><span class="hidden-md-below">&nbsp;ホーム</span></a>
           </li>
+          <li class="nav-item{{ Request::is('search/song') ? ' active' : '' }}">
+            <a href="{{ route('search.song') }}"><i class="fas fa-search"></i><span class="hidden-md-below">&nbsp;曲を探す</span></a>
+          </li>
           @endauth
         </ul>
       </div>
@@ -26,6 +29,11 @@
                 class="hidden-sm-below">&nbsp;ログイン</span></a>
           </li>
           @else
+          <li class="nav-input hidden-md-below">
+            <form method="GET" action="{{ route('search.song') }}">
+              <input type="text" class="text" name="q" placeholder="検索" maxlength="20" autocomplete="off" required>
+            </form>
+          </li>
           <li class="nav-button">
             <button id="avatar-button"><img src="{{ asset('images/sample_avatar.png') }}" alt="avatar"></button>
           </li>

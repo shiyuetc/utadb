@@ -163,6 +163,10 @@ ul.navbar-nav li.nav-item.active a {
 ul.navbar-nav li.nav-brand a {
   font-size: 22px;
 }
+ul.navbar-nav li.nav-input {
+  line-height: 56px;
+  padding: 0 16px;
+}
 ul.navbar-nav li.nav-button {
   transition: background-color 0.2s;
 	-moz-transition: background-color 0.2s;
