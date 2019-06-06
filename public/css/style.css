@@ -811,12 +811,6 @@ table.music-table {
 table.music-table td.media-cell {
 	width: 48px;
 }
-table.music-table td.media-cell img {
-  width: 48px;
-  height: 48px;
-  vertical-align: bottom;
-  background-image: url('../images/icons/no-cover-48x.png');
-}
 table.music-table td.text-cell {
 	padding-left: 6px;
 }

@@ -21,6 +21,8 @@ div.cover-image img {
 	width: 48px;
 	height: 48px;
 	box-shadow: 0px 0px 0px 1px #eaeaea;
+	background-image: url('../images/icons/no-cover-48x.png');
+	vertical-align: bottom;
 }
 
 div.cover-image-big {
@@ -30,10 +32,12 @@ div.cover-image-big {
 	margin: 0 auto 12px auto;
 }
 div.cover-image-big img {
-    box-shadow: 0px 5px 12px -5px rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 5px 12px -5px rgba(0, 0, 0, 0.8);
 	display: block;
 	width: 128px;
 	height: 128px;
+	background-image: url('../images/icons/no-cover-100x.png');
+	vertical-align: bottom;
 }
 
 div.cover-image .mediPlayer {
