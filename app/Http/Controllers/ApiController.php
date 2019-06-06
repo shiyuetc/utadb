@@ -17,7 +17,7 @@ class ApiController extends Controller
 
     public function updateStatus(StatusRequest $request)
     {
-        $update = Status::updateStatus($request->id, $request->state);
+        $update = Status::updateStatus($request->song_id, $request->state);
         return response()->json($update);
     }
 

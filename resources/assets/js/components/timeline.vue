@@ -103,7 +103,7 @@ export default {
         this.statuses[selects[i].id].user_state = state;
       }
       axios.post("/api/update_status", {
-          id: song_id,
+          song_id: song_id,
           state: state
         }).then(res => {
           var user = res.data.user;

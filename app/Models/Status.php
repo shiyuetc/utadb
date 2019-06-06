@@ -44,7 +44,7 @@ class Status extends Model
         return $state != null ? $state : ['user_state' => 0];
     }
 
-    public static function updateStatus($id, $state) 
+    public static function updateStatus($song_id, $state) 
     {
         $statusArray = [
             'stacked', 'training', 'mastered'
@@ -56,7 +56,7 @@ class Status extends Model
             // 現在のステータスを取得
             $status = Status::select('id', 'state')
                 ->where('user_id', $user->id)
-                ->where('song_id', $id)
+                ->where('song_id', $song_id)
                 ->first();
             $statusId = isset($status) ? $status->id : null;
             $nowState = isset($status) ? $status->state : 0;
@@ -66,8 +66,8 @@ class Status extends Model
             
             if($nowState == 0) { 
                 // ステータスの追加
-                if(!Song::where('id', $id)->exists()) {
-                    $song = Puller::lookSong($id);
+                if(!Song::where('id', $song_id)->exists()) {
+                    $song = Puller::lookSong($song_id);
                     if(is_null($song)) {
                         throw new Exception('曲情報の取得に失敗しました');
                     }
@@ -87,7 +87,7 @@ class Status extends Model
 
                 Status::insert([
                     'user_id' => $user->id,
-                    'song_id' => $id,
+                    'song_id' => $song_id,
                     'state' => $state
                 ]);
                 $user[$statusArray[$state - 1] . '_state_count'] += 1;
@@ -110,7 +110,7 @@ class Status extends Model
             $user->save();
             DB::commit();
             return [
-                'id' => $id,
+                'id' => $song_id,
                 'old_state' => $nowState,
                 'new_state' => $state,
                 'user' => $user

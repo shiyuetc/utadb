@@ -61,7 +61,7 @@ export default {
       if (this.isBusy) return;
       this.isBusy = true;
       axios.post("/api/update_status", {
-          id: song_id,
+          song_id: song_id,
           state: this.song.user_state
         }).then(res => {
           updateUserStatuses(res.data.user);
