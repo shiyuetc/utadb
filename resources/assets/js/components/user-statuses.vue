@@ -6,6 +6,9 @@
       <span v-if="state == 2"><i class="fas fa-graduation-cap"></i>&nbsp;練習中の曲</span>
       <span v-if="state == 1"><i class="far fa-sticky-note"></i>&nbsp;気になる曲</span>
     </h1>
+    <div v-if="!isMounted" class="loading">
+      <p><img src="/images/loading.gif" alt="読み込み中..."></p>
+    </div>
     <div v-if="isMounted" class="statuses animated fadeIn">
       <div class="status" v-for="(status, index) in statuses" :key='index'>
         <table class="music-table">
@@ -23,9 +26,7 @@
                 <p class="artist">{{ status.song.artist }}</p>
               </td>
               <td class="action-cell">
-                <select
-                  v-bind:id="index"
-                  class="status-select"
+                <select v-bind:id="index" class="status-select"
                   v-bind:class="[status.song.id , { 'active' : status.user_state != 0 }]"
                   v-model="status.user_state"
                   v-on:change="updateStatus(index, status.song.id)"
@@ -73,12 +74,12 @@ export default {
   },
   methods: {
     paging: function(direction) {
-      //this.isMounted = false;
+      this.isMounted = false;
       this.page += direction;
       if(this.setPlayer != null) clearTimeout(this.setPlayer);
       axios.get("/api/user_statuses?id=" + this.user_id + "&state=" + this.state + "&page=" + this.page).then(res => {
         this.statuses = res.data;
-        //this.isMounted = true;
+        this.isMounted = true;
         this.setPlayer = setTimeout("initializePlayer()", 1000);
       }).catch(err => {});
     },

@@ -1,10 +1,13 @@
 <template>
-  <div v-if="isMounted" class="section">
+  <div class="section">
     <h1 class="title">
       <span v-if="this.user_id == null"><i class="fab fa-react"></i>&nbsp;ローカルタイムライン</span>
       <span v-else><i class="fab fa-react"></i>&nbsp;ユーザータイムライン</span>
     </h1>
-    <div class="statuses">
+    <div v-if="!isMounted" class="loading">
+      <p><img src="/images/loading.gif" alt="読み込み中..."></p>
+    </div>
+    <div v-if="isMounted" class="statuses animated fadeIn">
       <div class="status" v-for="(status, index) in statuses" :key="status.id">
         <div class="status-header">
           <p class="avatar">
@@ -32,9 +35,7 @@
                 <p class="artist">{{ status.song.artist }}</p>
               </td>
               <td class="action-cell">
-                <select
-                  v-bind:id="index"
-                  class="status-select"
+                <select v-bind:id="index" class="status-select"
                   v-bind:class="[status.song.id , { 'active' : status.user_state != 0 }]"
                   v-model="status.user_state"
                   @change="updateStatus(index, status.song.id)"

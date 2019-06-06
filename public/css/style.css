@@ -518,6 +518,33 @@ div.checkbox span {
   font-size: 14px;
 }
 
+/* select */
+select.status-select {
+  padding: 6px 12px;
+  border-radius: 2px;
+  font-size: 12px;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+	-moz-transition: background-color 0.2s, border-color 0.2s;
+	-webkit-transition: background-color 0.2s, border-color 0.2s;
+	-o-transition: background-color 0.2s, border-color 0.2s;
+  -ms-transition: background-color 0.2s, border-color 0.2s;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+select.status-select.active {
+	background: #db3333;
+	border: 1px solid #db3333;
+	color: #fafafa;
+}
+select.status-select option {
+	background: #ffffff;
+	color: #333333;
+	cursor: pointer;
+}
+
 /* #endregion */
 
 /* #region error */
@@ -713,6 +740,39 @@ ul.user-statuses span.status-count:after {
 
 /* #endregion */
 
+/* #region table */
+div.loading {
+  display: table;
+  width: 100%;
+  height: 64px;
+  text-align: center;
+}
+div.loading p {
+  display: table-cell;
+  font-size: 12px;
+  line-height: 64px;
+  vertical-align: middle;
+}
+div.loading p img {
+  display: block;
+	margin: 0 auto;
+	padding: 0;
+}
+
+div.pagination {
+  padding: 12px 0 12px 0;
+  text-align: center;
+}
+div.pagination a {
+  margin: 0 12px;
+  font-size: 14px;
+}
+div.pagination button.button {
+  font-size: 12px;
+}
+
+/* #endregion */
+
 /* #region music-table */
 table.music-table {
   width: 100%;
@@ -724,7 +784,7 @@ table.music-table td.media-cell img {
   width: 48px;
   height: 48px;
   vertical-align: bottom;
-  background-image: url('../images//no-cover-image.png');
+  background-image: url('../images/no-cover-image.png');
 }
 table.music-table td.text-cell {
 	padding-left: 6px;
@@ -741,31 +801,6 @@ table.music-table td.text-cell p.artist {
 }
 table.music-table td.action-cell {
   width: 72px;
-}
-select.status-select {
-  padding: 6px 12px;
-  border-radius: 2px;
-  font-size: 12px;
-  outline: none;
-  cursor: pointer;
-  transition: background-color 0.2s, border-color 0.2s;
-	-moz-transition: background-color 0.2s, border-color 0.2s;
-	-webkit-transition: background-color 0.2s, border-color 0.2s;
-	-o-transition: background-color 0.2s, border-color 0.2s;
-  -ms-transition: background-color 0.2s, border-color 0.2s;
-  appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-}
-select.status-select.active {
-	background: #db3333;
-	border: 1px solid #db3333;
-	color: #fafafa;
-}
-select.status-select option {
-	background: #ffffff;
-	color: #333333;
-	cursor: pointer;
 }
 
 /* #endregion */
@@ -807,23 +842,10 @@ div.status p.text {
 }
 div.status div.status-body {
   padding: 6px 4px;
-  border: 1px solid #eeeeee;
+  border: 1px solid #eee;
 }
 div.status p.date {
   margin: 4px 0 0 4px;
-  font-size: 12px;
-}
-
-
-div.pagination {
-  margin: 12px 0 12px 0;
-  text-align: center;
-}
-div.pagination a {
-  margin: 0 12px;
-  font-size: 14px;
-}
-div.pagination button.button {
   font-size: 12px;
 }
 
