@@ -19,6 +19,7 @@ Route::prefix('@{id}')->group(function() {
     ->where('state', 'all|mastered|training|stacked');
 });
 
+Route::get('search/song', 'SongController@search')->name('search.song');
 Route::get('/song/{id}', 'SongController@index')->name('song')
   ->where('id', '\d{5,18}');
 
