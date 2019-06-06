@@ -22,7 +22,7 @@ class SongController extends Controller
             return view('errors.404');
         }
         $this->song = Song::CreateSong($this->song["id"], $this->song["title"], $this->song["artist"], $this->song["image_url"], $this->song["audio_url"]);
-        $this->song->user_state = Status::showStatus($this->song["id"])->user_state;
+        $this->song->user_state = Status::showStatus($this->song["id"])["user_state"];
         return view('pages.song', ['song' => $this->song]);
     }
 }
