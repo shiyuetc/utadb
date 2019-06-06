@@ -1250,7 +1250,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(14);
-module.exports = __webpack_require__(48);
+module.exports = __webpack_require__(49);
 
 
 /***/ }),
@@ -1284,6 +1284,7 @@ window.Vue = __webpack_require__(3);
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('user-statuses-component', __webpack_require__(40));
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('timeline-component', __webpack_require__(43));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('song-infomation-component', __webpack_require__(46));
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
   el: '#app'
@@ -44784,65 +44785,72 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    type: {
-      type: String,
-      default: 'all'
-    },
     user_id: {
       type: String
+    },
+    state: {
+      type: Number,
+      default: 0
+    },
+    page: {
+      type: Number,
+      default: 1
     }
   },
   data: function data() {
     return {
+      pageValue: this.page,
       statuses: [],
+      setPlayer: null,
       isMounted: false,
       isBusy: false
     };
   },
 
   methods: {
-    updateStatus: function updateStatus(index, song_id) {
+    paging: function paging(direction) {
       var _this = this;
+
+      this.isMounted = false;
+      this.pageValue += direction;
+      if (this.setPlayer != null) clearTimeout(this.setPlayer);
+      axios.get("/api/user_statuses?id=" + this.user_id + "&state=" + this.state + "&page=" + this.pageValue).then(function (res) {
+        _this.statuses = res.data;
+        _this.isMounted = true;
+        _this.setPlayer = setTimeout("initializePlayer()", 1000);
+      }).catch(function (err) {});
+    },
+    updateStatus: function updateStatus(index, song_id) {
+      var _this2 = this;
 
       if (this.isBusy) return;
       this.isBusy = true;
-      var state = this.statuses[index].user_state;
       axios.post("/api/update_status", {
         id: song_id,
-        state: state
+        state: this.statuses[index].user_state
       }).then(function (res) {
-        var selects = $("." + song_id);
-        for (var i = 0; i < selects.length; i++) {
-          if (selects[i].id == index) continue;
-          _this.statuses[selects[i].id].user_state = state;
+        var user = res.data.user;
+        if (_this2.user_id == user.id) {
+          updateUserStatuses(user);
         }
-        _this.isBusy = false;
+        _this2.isBusy = false;
       }).catch(function (err) {
         window.location.href = "/login";
       });
     }
   },
   mounted: function mounted() {
-    var _this2 = this;
+    var _this3 = this;
 
-    var state = 0;
-    switch (this.type) {
-      case 'mastered':
-        state = 3;break;
-      case 'training':
-        state = 2;break;
-      case 'stacked':
-        state = 1;break;
-    }
-    var data = "?id=" + this.user_id + "&state=" + state;
-    axios.get("/api/user_statuses" + data).then(function (res) {
-      _this2.statuses = res.data;
-      _this2.isMounted = true;
-      setTimeout("initializePlayer()", 1000);
+    axios.get("/api/user_statuses?id=" + this.user_id + "&state=" + this.state + "&page=" + this.pageValue).then(function (res) {
+      _this3.statuses = res.data;
+      _this3.isMounted = true;
+      _this3.setPlayer = setTimeout("initializePlayer()", 1000);
     }).catch(function (err) {});
   }
 });
@@ -44857,28 +44865,28 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "section" }, [
     _c("h1", { staticClass: "title" }, [
-      _vm.type == "all"
+      _vm.state == 0
         ? _c("span", [
             _c("i", { staticClass: "fa fa-check" }),
             _vm._v(" 登録済みの曲")
           ])
         : _vm._e(),
       _vm._v(" "),
-      _vm.type == "mastered"
+      _vm.state == 3
         ? _c("span", [
             _c("i", { staticClass: "fa fa-check" }),
             _vm._v(" 習得済みの曲")
           ])
         : _vm._e(),
       _vm._v(" "),
-      _vm.type == "training"
+      _vm.state == 2
         ? _c("span", [
             _c("i", { staticClass: "fas fa-graduation-cap" }),
             _vm._v(" 練習中の曲")
           ])
         : _vm._e(),
       _vm._v(" "),
-      _vm.type == "stacked"
+      _vm.state == 1
         ? _c("span", [
             _c("i", { staticClass: "far fa-sticky-note" }),
             _vm._v(" 気になる曲")
@@ -44886,129 +44894,173 @@ var render = function() {
         : _vm._e()
     ]),
     _vm._v(" "),
+    !_vm.isMounted
+      ? _c("div", { staticClass: "loading" }, [_vm._m(0)])
+      : _vm._e(),
+    _vm._v(" "),
     _vm.isMounted
       ? _c(
           "div",
           { staticClass: "statuses animated fadeIn" },
-          [
-            _vm._l(_vm.statuses, function(status, index) {
-              return _c("div", { key: index, staticClass: "status" }, [
-                _c("table", { staticClass: "music-table" }, [
-                  _c("tr", [
-                    _c("td", { staticClass: "media-cell" }, [
-                      _c("div", { staticClass: "cover-image" }, [
-                        _c("img", {
-                          attrs: {
-                            src: status.song.image_url,
-                            onerror: "this.src='images/no-cover-image.png'",
-                            alt: ""
-                          }
-                        }),
-                        _vm._v(" "),
-                        status.song.audio_url
-                          ? _c("div", { staticClass: "mediPlayer" }, [
-                              _c("audio", {
-                                staticClass: "listen",
-                                attrs: {
-                                  preload: "none",
-                                  "data-size": "40",
-                                  src: status.song.audio_url
-                                }
-                              })
-                            ])
-                          : _vm._e()
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "text-cell" }, [
-                      _c("p", { staticClass: "title" }, [
-                        _vm._v(_vm._s(status.song.title))
-                      ]),
+          _vm._l(_vm.statuses, function(status, index) {
+            return _c("div", { key: index, staticClass: "status" }, [
+              _c("table", { staticClass: "music-table" }, [
+                _c("tr", [
+                  _c("td", { staticClass: "media-cell" }, [
+                    _c("div", { staticClass: "cover-image" }, [
+                      _c("img", {
+                        attrs: { src: status.song.image_url, alt: "" }
+                      }),
                       _vm._v(" "),
-                      _c("p", { staticClass: "artist" }, [
-                        _vm._v(_vm._s(status.song.artist))
-                      ])
+                      status.song.audio_url
+                        ? _c("div", { staticClass: "mediPlayer" }, [
+                            _c("audio", {
+                              staticClass: "listen",
+                              attrs: {
+                                preload: "none",
+                                "data-size": "40",
+                                src: status.song.audio_url
+                              }
+                            })
+                          ])
+                        : _vm._e()
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "text-cell" }, [
+                    _c("p", { staticClass: "title" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "default-link",
+                          attrs: { href: "/song/" + status.song.id }
+                        },
+                        [_vm._v(_vm._s(status.song.title))]
+                      )
                     ]),
                     _vm._v(" "),
-                    _c("td", { staticClass: "action-cell" }, [
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: status.user_state,
-                              expression: "status.user_state"
-                            }
-                          ],
-                          staticClass: "status-select",
-                          class: [
-                            status.song.id,
-                            { active: status.user_state != 0 }
-                          ],
-                          attrs: { id: index, disabled: _vm.isBusy },
-                          on: {
-                            change: [
-                              function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  status,
-                                  "user_state",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              },
-                              function($event) {
-                                return _vm.updateStatus(index, status.song.id)
-                              }
-                            ]
-                          }
-                        },
-                        [
-                          _c(
-                            "option",
-                            { attrs: { value: "0", selected: "" } },
-                            [_vm._v("記録なし")]
-                          ),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "1" } }, [
-                            _vm._v("気になる")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "2" } }, [
-                            _vm._v("練習中")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "3" } }, [
-                            _vm._v("習得済み")
-                          ])
-                        ]
-                      )
+                    _c("p", { staticClass: "artist" }, [
+                      _vm._v(_vm._s(status.song.artist))
                     ])
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticClass: "action-cell" }, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: status.user_state,
+                            expression: "status.user_state"
+                          }
+                        ],
+                        staticClass: "status-select",
+                        class: [
+                          status.song.id,
+                          { active: status.user_state != 0 }
+                        ],
+                        attrs: { id: index, disabled: _vm.isBusy },
+                        on: {
+                          change: [
+                            function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                status,
+                                "user_state",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            },
+                            function($event) {
+                              return _vm.updateStatus(index, status.song.id)
+                            }
+                          ]
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "0", selected: "" } }, [
+                          _vm._v("記録なし")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "1" } }, [
+                          _vm._v("気になる")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "2" } }, [
+                          _vm._v("練習中")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "3" } }, [
+                          _vm._v("習得済み")
+                        ])
+                      ]
+                    )
                   ])
                 ])
               ])
-            }),
-            _vm._v(" "),
-            _vm.statuses.length == 0
-              ? _c("div", { staticClass: "not-exist" }, [_c("p")])
-              : _vm._e()
-          ],
-          2
+            ])
+          }),
+          0
         )
-      : _vm._e()
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "pagination" }, [
+      _c(
+        "button",
+        {
+          staticClass: "button button-danger auto",
+          attrs: { disabled: this.pageValue == 1 },
+          on: {
+            click: function($event) {
+              return _vm.paging(-1)
+            }
+          }
+        },
+        [_vm._v("前のページ")]
+      ),
+      _vm._v(" "),
+      _c("a", { attrs: { href: "#" } }, [
+        _vm._v(_vm._s(_vm.pageValue) + " ページ")
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "button button-danger auto",
+          attrs: {
+            disabled: this.pageValue == 9999 || _vm.statuses.length == 0
+          },
+          on: {
+            click: function($event) {
+              return _vm.paging(1)
+            }
+          }
+        },
+        [_vm._v("次のページ")]
+      )
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c("img", { attrs: { src: "/images/loading.gif", alt: "読み込み中..." } })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -45027,7 +45079,7 @@ var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(44)
 /* template */
-var __vue_template__ = __webpack_require__(47)
+var __vue_template__ = __webpack_require__(45)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -45071,8 +45123,6 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__methods_api_vue__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__methods_api_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__methods_api_vue__);
 //
 //
 //
@@ -45135,15 +45185,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    type: {
-      type: String,
-      default: 'public'
-    },
     user_id: {
       type: String
     }
@@ -45179,14 +45223,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       if (this.isBusy) return;
       this.isBusy = true;
       var state = this.statuses[index].user_state;
+      var selects = $("." + song_id);
+      for (var i = 0; i < selects.length; i++) {
+        if (selects[i].id == index) continue;
+        this.statuses[selects[i].id].user_state = state;
+      }
       axios.post("/api/update_status", {
         id: song_id,
         state: state
       }).then(function (res) {
-        var selects = $("." + song_id);
-        for (var i = 0; i < selects.length; i++) {
-          if (selects[i].id == index) continue;
-          _this.statuses[selects[i].id].user_state = state;
+        var user = res.data.user;
+        if (_this.user_id == null || _this.user_id == user.id) {
+          updateUserStatuses(user);
         }
         _this.isBusy = false;
       }).catch(function (err) {
@@ -45197,8 +45245,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   mounted: function mounted() {
     var _this2 = this;
 
-    var data = this.user_id != null ? "?id=" + this.user_id : "";
-    axios.get("/api/" + this.type + "_timeline" + data).then(function (res) {
+    var timeline = this.user_id == null ? "public_timeline" : "user_timeline?id=" + this.user_id;
+    axios.get("/api/" + timeline).then(function (res) {
       _this2.statuses = res.data;
       _this2.isMounted = true;
       setTimeout("initializePlayer()", 1000);
@@ -45210,94 +45258,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
-var normalizeComponent = __webpack_require__(2)
-/* script */
-var __vue_script__ = __webpack_require__(46)
-/* template */
-var __vue_template__ = null
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/methods/api.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-957d470a", Component.options)
-  } else {
-    hotAPI.reload("data-v-957d470a", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 46 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    test: {
-      type: String,
-      default: 'all'
-    }
-  },
-  methods: {
-    test: function test() {
-      alert("A");
-    }
-  }
-});
-
-/***/ }),
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
-
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "section" }, [
     _c("h1", { staticClass: "title" }, [
-      _vm.type == "public"
+      this.user_id == null
         ? _c("span", [
             _c("i", { staticClass: "fab fa-react" }),
             _vm._v(" ローカルタイムライン")
           ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.type == "user"
-        ? _c("span", [
+        : _c("span", [
             _c("i", { staticClass: "fab fa-react" }),
             _vm._v(" ユーザータイムライン")
           ])
-        : _vm._e()
     ]),
+    _vm._v(" "),
+    !_vm.isMounted
+      ? _c("div", { staticClass: "loading" }, [_vm._m(0)])
+      : _vm._e(),
     _vm._v(" "),
     _vm.isMounted
       ? _c(
@@ -45313,7 +45293,7 @@ var render = function() {
                       { attrs: { href: "@" + status.user.screen_name } },
                       [
                         _c("img", {
-                          attrs: { src: "images/sample_avatar.png", alt: "" }
+                          attrs: { src: "/images/sample_avatar.png", alt: "" }
                         })
                       ]
                     )
@@ -45324,7 +45304,7 @@ var render = function() {
                       "a",
                       {
                         staticClass: "default-link",
-                        attrs: { href: "@" + status.user.screen_name }
+                        attrs: { href: "/@" + status.user.screen_name }
                       },
                       [_vm._v(_vm._s(status.user.name))]
                     ),
@@ -45342,11 +45322,7 @@ var render = function() {
                       _c("td", { staticClass: "media-cell" }, [
                         _c("div", { staticClass: "cover-image" }, [
                           _c("img", {
-                            attrs: {
-                              src: status.song.image_url,
-                              onerror: "this.src='images/no-cover-image.png'",
-                              alt: ""
-                            }
+                            attrs: { src: status.song.image_url, alt: "" }
                           }),
                           _vm._v(" "),
                           status.song.audio_url
@@ -45366,7 +45342,14 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", { staticClass: "text-cell" }, [
                         _c("p", { staticClass: "title" }, [
-                          _vm._v(_vm._s(status.song.title))
+                          _c(
+                            "a",
+                            {
+                              staticClass: "default-link",
+                              attrs: { href: "/song/" + status.song.id }
+                            },
+                            [_vm._v(_vm._s(status.song.title))]
+                          )
                         ]),
                         _vm._v(" "),
                         _c("p", { staticClass: "artist" }, [
@@ -45460,7 +45443,16 @@ var render = function() {
       : _vm._e()
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c("img", { attrs: { src: "/images/loading.gif", alt: "読み込み中..." } })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -45471,7 +45463,266 @@ if (false) {
 }
 
 /***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(47)
+/* template */
+var __vue_template__ = __webpack_require__(48)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/song-infomation.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-73c15672", Component.options)
+  } else {
+    hotAPI.reload("data-v-73c15672", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 47 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    song: {
+      type: Object,
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      isBusy: false
+    };
+  },
+
+  methods: {
+    updateStatus: function updateStatus(song_id) {
+      var _this = this;
+
+      if (this.isBusy) return;
+      this.isBusy = true;
+      axios.post("/api/update_status", {
+        id: song_id,
+        state: this.song.user_state
+      }).then(function (res) {
+        updateUserStatuses(res.data.user);
+        _this.isBusy = false;
+      }).catch(function (err) {
+        window.location.href = "/login";
+      });
+    }
+  },
+  mounted: function mounted() {
+    setTimeout("initializePlayer()", 1000);
+  }
+});
+
+/***/ }),
 /* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "section" }, [
+    _c("h1", { staticClass: "title" }, [
+      _c("i", { staticClass: "fas fa-music" }),
+      _vm._v(
+        " " + _vm._s(_vm.song.artist) + " / " + _vm._s(_vm.song.title) + "\n  "
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "song-infomation" }, [
+      _c("div", { staticClass: "cover-image-big" }, [
+        _c("img", { attrs: { src: _vm.song.image_url, alt: "" } }),
+        _vm._v(" "),
+        _vm.song.audio_url
+          ? _c("div", { staticClass: "mediPlayer" }, [
+              _c("audio", {
+                staticClass: "listen",
+                attrs: {
+                  preload: "none",
+                  "data-size": "120",
+                  src: _vm.song.audio_url
+                }
+              })
+            ])
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c("div", { staticStyle: { "text-align": "center" } }, [
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.song.user_state,
+                expression: "song.user_state"
+              }
+            ],
+            staticClass: "status-select",
+            class: [_vm.song.id, { active: _vm.song.user_state != 0 }],
+            attrs: { disabled: _vm.isBusy },
+            on: {
+              change: [
+                function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.$set(
+                    _vm.song,
+                    "user_state",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
+                },
+                function($event) {
+                  return _vm.updateStatus(_vm.song.id)
+                }
+              ]
+            }
+          },
+          [
+            _c("option", { attrs: { value: "0", selected: "" } }, [
+              _vm._v("記録なし")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "1" } }, [_vm._v("気になる")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "2" } }, [_vm._v("練習中")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "3" } }, [_vm._v("習得済み")])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("table", { staticClass: "infomation-table" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("tbody", [
+          _c("tr", [
+            _c("td", [_vm._v("タイトル")]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(_vm.song.title))])
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("td", [_vm._v("アーティスト")]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(_vm.song.artist))])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [_c("th", { attrs: { colspan: "2" } }, [_vm._v("曲情報")])])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-73c15672", module.exports)
+  }
+}
+
+/***/ }),
+/* 49 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

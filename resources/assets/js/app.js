@@ -21,6 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('user-statuses-component', require('./components/user-statuses.vue'));
 Vue.component('timeline-component', require('./components/timeline.vue'));
+Vue.component('song-infomation-component', require('./components/song-infomation.vue'));
 
 const app = new Vue({
     el: '#app'
