@@ -21,6 +21,12 @@ class ApiController extends Controller
         return response()->json($update);
     }
 
+    public function searchSong(Request $request)
+    {
+        $response = Status::searchSong($request->source, $request->q, $request->page);
+        return response()->json($response);
+    }
+
     public function userStatuses(Request $request)
     {
         $statuses = Status::userStatuses($request->id, $request->state, $request->page);

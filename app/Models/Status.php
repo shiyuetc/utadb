@@ -121,6 +121,33 @@ class Status extends Model
         }
     }
 
+    public static function searchSong($source, $q, $page = 1)
+    {
+        $songs = Puller::searchSong($source, $q, $page);
+        if(count($songs) > 0) {
+            $song_ids = array();
+            foreach($songs as $song) {
+                $song_ids[] = $song["id"];
+            }
+            
+            $states = Status::select('song_id', DB::raw('state as user_state'))
+                ->where('user_id', auth()->id())
+                ->whereIn('song_id', $song_ids)
+                ->get();
+            $temp_user_state = [];
+            
+            foreach($states as $state)
+            {
+                $temp_user_state[$state->song_id] = $state->user_state;
+            }
+            for($i = 0; $i < count($songs); $i++)
+            {
+                $songs[$i]['user_state'] = isset($temp_user_state[$songs[$i]['id']]) ? $temp_user_state[$songs[$i]['id']] : 0;
+            }
+        }
+        return $songs;
+    }
+
     public static function userStatuses($id, $state = 0, $page = 1)
     {
         $query =  Status::select('user_statuses.song_id', DB::raw('IFNULL(s1.state, 0) as user_state'))
