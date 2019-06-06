@@ -9,20 +9,19 @@ use Illuminate\Http\Request;
 
 class SongController extends Controller
 {
-    private $song = null;
-
-    public function __construct(Request $request)
-    {
-        $this->song = Puller::lookSong($request->id);
-    }
-    
     public function index($id)
     {
-        if(is_null($this->song)) {
+        $song = Puller::lookSong($id);
+        if(is_null($song)) {
             return view('errors.404');
         }
-        $this->song = Song::CreateSong($this->song["id"], $this->song["title"], $this->song["artist"], $this->song["image_url"], $this->song["audio_url"]);
-        $this->song->user_state = Status::showStatus($this->song["id"])["user_state"];
-        return view('pages.song', ['song' => $this->song]);
+        $song = Song::CreateSong($song["id"], $song["title"], $song["artist"], $song["image_url"], $song["audio_url"]);
+        $song->user_state = Status::showStatus($song["id"])["user_state"];
+        return view('pages.song', ['song' => $song]);
+    }
+
+    public function search(Request $request)
+    {
+        return view('pages.search-song', []);
     }
 }
