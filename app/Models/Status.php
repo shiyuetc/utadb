@@ -34,6 +34,16 @@ class Status extends Model
         return $this->belongsTo('App\Models\Song');
     }
     
+    public static function showStatus($id)
+    {
+        $state = Status::select(DB::raw('IFNULL(state, 0) as user_state'))
+            ->where('user_id', auth()->id())
+            ->where('song_id', $id)
+            ->first();
+        
+        return $state != null ? $state : ['user_state' => 0];
+    }
+
     public static function updateStatus($id, $state) 
     {
         $statusArray = [

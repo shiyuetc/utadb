@@ -9,6 +9,12 @@ use App\Models\Status;
 
 class ApiController extends Controller
 {   
+    public function showStatus(Request $request)
+    {
+        $status = Status::showStatus($request->id);
+        return response()->json($status);
+    }
+
     public function updateStatus(StatusRequest $request)
     {
         $update = Status::updateStatus($request->id, $request->state);
