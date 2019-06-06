@@ -11,7 +11,7 @@ class ApiController extends Controller
 {   
     public function showStatus(Request $request)
     {
-        $status = Status::showStatus($request->id);
+        $status = Status::showStatus($request->song_id);
         return response()->json($status);
     }
 
