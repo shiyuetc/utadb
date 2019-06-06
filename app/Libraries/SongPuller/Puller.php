@@ -19,7 +19,7 @@ class Puller
 
     public static function lookSong($song_id)
     {
-        if(count(self::$useRequest) <= $song_id[0]) return [];
+        if(count(self::$useRequest) <= $song_id[0]) return null;
         $class = self::getUsingClass($song_id[0]);
         return $class->lookSong(ltrim($song_id, $song_id[0]));
     }
