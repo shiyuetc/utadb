@@ -24,7 +24,7 @@
             <tr>
               <td class="media-cell">
                 <div class="cover-image">
-                  <img v-bind:src="status.song.image_url" onerror="this.src='/images/no-cover-image.png'" alt>
+                  <img v-bind:src="status.song.image_url" alt="">
                   <div class="mediPlayer" v-if="status.song.audio_url">
                     <audio class="listen" preload="none" data-size="40" v-bind:src="status.song.audio_url"></audio>
                   </div>

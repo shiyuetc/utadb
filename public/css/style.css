@@ -740,11 +740,19 @@ ul.user-statuses span.status-count:after {
 
 /* #endregion */
 
+/* #region song-infomation */
+div.song-infomation {
+  margin: 18px 0;
+}
+
+/* #endregion */
+
 /* #region table */
 div.loading {
   display: table;
   width: 100%;
   height: 64px;
+  border-bottom: 1px solid #eaeaea;
   text-align: center;
 }
 div.loading p {
@@ -784,7 +792,7 @@ table.music-table td.media-cell img {
   width: 48px;
   height: 48px;
   vertical-align: bottom;
-  background-image: url('../images/no-cover-image.png');
+  background-image: url('../images/icons/no-cover-48x.png');
 }
 table.music-table td.text-cell {
 	padding-left: 6px;
