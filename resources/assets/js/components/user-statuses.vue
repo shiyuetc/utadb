@@ -42,9 +42,9 @@
       </div>
     </div>
     <div class="pagination">
-      <button class="button button-danger auto" @click="paging(-1)" v-bind:disabled="this.page == 1">前のページ</button>
-      <a href="#">{{ page }}&nbsp;ページ</a>
-      <button class="button button-danger auto" @click="paging(1)" v-bind:disabled="this.page == 9999 || statuses.length == 0">次のページ</button>
+      <button class="button button-danger auto" @click="paging(-1)" v-bind:disabled="this.pageValue == 1">前のページ</button>
+      <a href="#">{{ pageValue }}&nbsp;ページ</a>
+      <button class="button button-danger auto" @click="paging(1)" v-bind:disabled="this.pageValue == 9999 || statuses.length == 0">次のページ</button>
     </div>
   </div>
 </template>
@@ -66,6 +66,7 @@ export default {
   },
   data() {
     return {
+      pageValue: this.page,
       statuses: [],
       setPlayer: null,
       isMounted: false,
@@ -75,9 +76,9 @@ export default {
   methods: {
     paging: function(direction) {
       this.isMounted = false;
-      this.page += direction;
+      this.pageValue += direction;
       if(this.setPlayer != null) clearTimeout(this.setPlayer);
-      axios.get("/api/user_statuses?id=" + this.user_id + "&state=" + this.state + "&page=" + this.page).then(res => {
+      axios.get("/api/user_statuses?id=" + this.user_id + "&state=" + this.state + "&page=" + this.pageValue).then(res => {
         this.statuses = res.data;
         this.isMounted = true;
         this.setPlayer = setTimeout("initializePlayer()", 1000);
@@ -101,7 +102,7 @@ export default {
     }
   },
   mounted() {
-    axios.get("/api/user_statuses?id=" + this.user_id + "&state=" + this.state + "&page=" + this.page).then(res => {
+    axios.get("/api/user_statuses?id=" + this.user_id + "&state=" + this.state + "&page=" + this.pageValue).then(res => {
         this.statuses = res.data;
         this.isMounted = true;
         this.setPlayer = setTimeout("initializePlayer()", 1000);
