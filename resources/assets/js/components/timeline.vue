@@ -24,7 +24,7 @@
                 </div>
               </td>
               <td class="text-cell">
-                <p class="title"><a class="default-link" v-bind:href="'/song/' + status.song.id">{{ status.song.title }}</a></p>
+                <p class="title"><a class="default-link" v-bind:href="'/songs/' + status.song.id">{{ status.song.title }}</a></p>
                 <p class="artist">{{ status.song.artist }}</p>
               </td>
               <td class="action-cell">
