@@ -15,3 +15,16 @@ export default {
   }
 }
 </script>
+<style scoped>
+div.pagination {
+  padding: 12px 0 12px 0;
+  text-align: center;
+}
+div.pagination a {
+  margin: 0 12px;
+  font-size: 14px;
+}
+div.pagination button.button {
+  font-size: 12px;
+}
+</style>

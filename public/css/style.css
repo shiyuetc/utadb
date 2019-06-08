@@ -842,16 +842,4 @@ table.music-table td.action-cell {
   width: 72px;
 }
 
-div.pagination {
-  padding: 12px 0 12px 0;
-  text-align: center;
-}
-div.pagination a {
-  margin: 0 12px;
-  font-size: 14px;
-}
-div.pagination button.button {
-  font-size: 12px;
-}
-
 /* #endregion */
