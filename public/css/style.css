@@ -842,25 +842,6 @@ table.music-table td.action-cell {
   width: 72px;
 }
 
-
-div.load {
-  display: table;
-  width: 100%;
-  height: 67px;
-  text-align: center;
-}
-div.load p {
-  display: table-cell;
-  font-size: 12px;
-  line-height: 67px;
-  vertical-align: middle;
-}
-div.load p img {
-  display: block;
-	margin: 0 auto;
-	padding: 0;
-}
-
 div.pagination {
   padding: 12px 0 12px 0;
   text-align: center;
