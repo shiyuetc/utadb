@@ -6,5 +6,8 @@
 @endsection
 
 @section('content')
-<user-statuses-component :user_id="'{{ $user->id }}'" :state="{{ $state['index'] }}" :page="{{ $page }}"/>
+<div class="section">
+  <h1 class="title"><i class="{{ $state['icon-class'] }}"></i>&nbsp;{{ $state['jp'] }}</h1>
+  <user-statuses-component :user_id="'{{ $user->id }}'" :state="{{ $state['index'] }}" :page="{{ $page }}"/>
+</div>
 @endsection

@@ -7,9 +7,7 @@
 
 @section('content')
 <div class="section">
-  <h1 class="title">
-    <i class="fab fa-react"></i>&nbsp;ローカルタイムライン
-  </h1>
+  <h1 class="title"><i class="fab fa-react"></i>&nbsp;ローカルタイムライン</h1>
   <timeline-component/>
 </div>
 @endsection
