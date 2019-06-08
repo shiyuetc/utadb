@@ -29,10 +29,10 @@ class UserController extends Controller
         }
         $page = (isset($request->page) && $request->page >= 1 && $request->page <= 9999) ? $request->page : 1;
         $stateArray = [
-            'all' => ['index' => 0, 'jp' => '登録済みの曲', 'en' => 'all'], 
-            'stacked' => ['index' => 1, 'jp' => '気になる曲', 'en' => 'stacked'], 
-            'training' => ['index' => 2, 'jp' => '練習中の曲', 'en' => 'training'], 
-            'mastered' => ['index' => 3, 'jp' => '習得済みの曲', 'en' => 'mastered'], 
+            'all' => ['index' => 0, 'jp' => '登録済みの曲', 'en' => 'all', 'icon-class' => 'fa fa-check'], 
+            'stacked' => ['index' => 1, 'jp' => '気になる曲', 'en' => 'stacked', 'icon-class' => 'fa fa-check'], 
+            'training' => ['index' => 2, 'jp' => '練習中の曲', 'en' => 'training', 'icon-class' => 'fas fa-graduation-cap'], 
+            'mastered' => ['index' => 3, 'jp' => '習得済みの曲', 'en' => 'mastered', 'icon-class' => 'far fa-sticky-note'], 
         ];
         return view('pages.user-status', ['user' => $this->user, 'state' => $stateArray[$state], 'page' => $page]);
     }
