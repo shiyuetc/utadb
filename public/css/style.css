@@ -394,6 +394,9 @@ div.form-compact {
 div.form-group {
   padding: 6px 0;
 }
+form.search {
+  margin: 8px 10px;
+}
 
 /* string */
 h2.form-title {
@@ -449,7 +452,9 @@ input.text {
 	-moz-transition: background-color 0.2s;
 	-webkit-transition: background-color 0.2s;
 	-o-transition: background-color 0.2s;
-	-ms-transition: background-color 0.2s;
+  -ms-transition: background-color 0.2s;
+  
+  cursor: text;
 }
 input.text:focus {
   background: #e6e6e6;
@@ -469,10 +474,13 @@ button.button {
 	-moz-transition: background-color 0.2s;
 	-webkit-transition: background-color 0.2s;
 	-o-transition: background-color 0.2s;
-	-ms-transition: background-color 0.2s;
+  -ms-transition: background-color 0.2s;
 }
 button.auto {
   width: auto !important;
+}
+button.const-height {
+  height: 36px;
 }
 button.button:disabled {
 	background: #ccc;
@@ -523,6 +531,24 @@ div.checkbox span {
 }
 
 /* select */
+select.search-select {
+  height: 36px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: inherit;
+  font-size: 12px;
+  outline: none;
+  transition: border-color 0.2s;
+	-moz-transition: border-color 0.2s;
+	-webkit-transition: border-color 0.2s;
+	-o-transition: border-color 0.2s;
+  -ms-transition: border-color 0.2s;
+}
+select.search-select:focus {
+  border-color: #aaa;
+}
+
 select.status-select {
   padding: 6px 12px;
   border-radius: 2px;
