@@ -2,7 +2,7 @@
   <div class="timeline">
     <loadProgress/>
     <div v-if="this.isMounted" class="statuses">
-      <div class="status" v-for="(status, index) in statuses" :key="status.id">
+      <div class="status" v-for="status in statuses" :key="status.id">
         <div class="status-header">
           <p class="avatar"><a v-bind:href="'/@' + status.user.screen_name"><img src="/images/sample_avatar.png" alt=""></a></p>
           <p class="text"><a class="default-link" v-bind:href="'/@' + status.user.screen_name">{{ status.user.name }}</a>さんが『{{ statusJp[status.state - 1] }}』に登録しました</p>
@@ -23,16 +23,7 @@
                 <p class="artist">{{ status.song.artist }}</p>
               </td>
               <td class="action-cell">
-                <select v-bind:id="index" class="status-select"
-                  v-bind:class="[status.song.id , { 'active' : status.user_state != 0 }]"
-                  v-model="status.user_state"
-                  @change="updateStatus(index, status.song.id)"
-                  v-bind:disabled="isBusy">
-                  <option value="0" selected>記録なし</option>
-                  <option value="1">気になる</option>
-                  <option value="2">練習中</option>
-                  <option value="3">習得済み</option>
-                </select>
+                <updateSelect :ref="status.song.id" @updated="updatedStatus" :id="status.song.id" :state="status.user_state"/>
               </td>
             </tr>
           </table>
@@ -46,10 +37,12 @@
 </template>
 <script>
 import loadProgress from './load-progress.vue';
+import updateSelect from './update-select.vue';
 
 export default {
   components: {
-    loadProgress
+    loadProgress,
+    updateSelect
   },
   props: {
     user_id: {
@@ -74,37 +67,33 @@ export default {
       if (timestamp < 86400) return Math.round(timestamp / 3600) + ' 時間前';
       return Math.round(timestamp / 86400) + ' 日前';
     },
-    updateStatus: function(index, song_id) {
-      if (this.isBusy) return;
-      this.isBusy = true;
-      
-      var state = this.statuses[index].user_state;
-      var selects = $("." + song_id);
-      for (var i = 0; i < selects.length; i++) {
-        if (selects[i].id == index) continue;
-        this.statuses[selects[i].id].user_state = state;
-      }
-      axios.post("/api/update_status", {
-          song_id: song_id,
-          state: state
-        }).then(res => {
-          var user = res.data.user;
-          if(this.user_id == null || this.user_id == user.id) {
-            updateUserStatuses(user);
-          }
-          this.isBusy = false;
-        }).catch(err => {
-          window.location.href = "/login";
-      });
-    }
-  },
-  mounted() {
-    var timeline = (this.user_id == null) ? "public_timeline" : "user_timeline?id=" + this.user_id;
-    axios.get("/api/" + timeline).then(res => {
+    statusesRequest: function() {
+      this.isMounted = false;
+      var timeline = (this.user_id == null) ? "public_timeline" : "user_timeline?id=" + this.user_id;
+      axios.get("/api/" + timeline).then(res => {
         this.statuses = res.data;
         this.isMounted = true;
         setTimeout("initializePlayer()", 1000);
-    }).catch(err => {});
+      }).catch(err => {});
+    },
+    updatedStatus: function(response) {
+      if(this.user_id == null) {
+        let selects = this.$refs[response.id];
+        for (var i = 0; i < selects.length; i++) {
+          selects[i].stateValue = response.new_state;
+        }
+      }
+
+      var user = response.user;
+      if(this.user_id == null || this.user_id == user.id) {
+        updateUserStatuses(user);
+      }
+    }
+  },
+  mounted: function() {
+    this.$nextTick(function () {
+      this.statusesRequest();
+    })
   }
 };
 </script>

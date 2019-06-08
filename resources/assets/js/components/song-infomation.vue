@@ -7,16 +7,7 @@
       </div>
     </div>
     <div style="text-align: center;">
-      <select class="status-select"
-        v-bind:class="[status.song.id , { 'active' : status.user_state != 0 }]"
-        v-model="status.user_state"
-        @change="updateStatus(status.song.id)"
-        v-bind:disabled="isBusy">
-        <option value="0" selected>記録なし</option>
-        <option value="1">気になる</option>
-        <option value="2">練習中</option>
-        <option value="3">習得済み</option>
-      </select>
+      <updateSelect @updated="updatedStatus" :id="status.song.id" :state="status.user_state"/>
     </div>
     <table class="infomation-table">
       <thead>
@@ -37,7 +28,12 @@
 </template>
 
 <script>
+import updateSelect from './update-select.vue';
+
 export default {
+  components: {
+    updateSelect
+  },
   props: {
     status: {
       type: Object,
@@ -50,19 +46,8 @@ export default {
     };
   },
   methods: {
-    updateStatus: function(song_id) {
-      if (this.isBusy) return;
-      this.isBusy = true;
-      
-      axios.post("/api/update_status", {
-          song_id: song_id,
-          state: this.status.user_state
-        }).then(res => {
-          updateUserStatuses(res.data.user);
-          this.isBusy = false;
-        }).catch(err => {
-          window.location.href = "/login";
-      });
+    updatedStatus: function(response) {
+      updateUserStatuses(response.user);
     }
   },
   mounted() {

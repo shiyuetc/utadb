@@ -18,16 +18,7 @@
                 <p class="artist">{{ status.song.artist }}</p>
               </td>
               <td class="action-cell">
-                <select v-bind:id="index" class="status-select"
-                  v-bind:class="[status.song.id , { 'active' : status.user_state != 0 }]"
-                  v-model="status.user_state"
-                  v-on:change="updateStatus(index, status.song.id)"
-                  v-bind:disabled="isBusy">
-                  <option value="0" selected>記録なし</option>
-                  <option value="1">気になる</option>
-                  <option value="2">練習中</option>
-                  <option value="3">習得済み</option>
-                </select>
+                <updateSelect @updated="updatedStatus" :id="status.song.id" :state="status.user_state"/>
               </td>
             </tr>
           </table>
@@ -39,11 +30,13 @@
 <script>
 import loadProgress from './load-progress.vue';
 import pagination from './pagination.vue';
+import updateSelect from './update-select.vue';
 
 export default {
   components: {
     loadProgress,
-    pagination
+    pagination,
+    updateSelect
   },
   props: {
     user_id: {
@@ -77,21 +70,11 @@ export default {
         this.setPlayer = setTimeout("initializePlayer()", 1000);
       }).catch(err => {});
     },
-    updateStatus: function(index, song_id) {
-      if (this.isBusy) return;
-      this.isBusy = true;
-      axios.post("/api/update_status", {
-          song_id: song_id,
-          state: this.statuses[index].user_state
-        }).then(res => {
-          var user = res.data.user;
-          if(this.user_id == user.id) {
-            updateUserStatuses(user);
-          }
-          this.isBusy = false;
-        }).catch(err => {
-          window.location.href = "/login";
-      });
+    updatedStatus: function(response) {
+      var user = response.user;
+      if(this.user_id == user.id) {
+        updateUserStatuses(user);
+      }
     }
   },
   mounted: function() {
