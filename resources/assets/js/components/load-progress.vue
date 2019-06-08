@@ -4,7 +4,7 @@
       <p><img src="/images/loading.gif" alt="読み込み中..."></p>
     </div>
     <div v-if="this.$parent.isMounted && this.$parent.statuses.length == 0" id="loaded" class="load">
-      <p>項目が存在しませんでした。</p>
+      <p>項目が存在しませんでした。(&gt; &lt;。)</p>
     </div>
   </div>
 </template>
