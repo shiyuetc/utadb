@@ -1,23 +1,16 @@
 <template>
-  <div class="section">
-    <h1 class="title">
-      <span v-if="this.user_id == null"><i class="fab fa-react"></i>&nbsp;ローカルタイムライン</span>
-      <span v-else><i class="fab fa-react"></i>&nbsp;ユーザータイムライン</span>
-    </h1>
-    <div v-if="!isMounted" class="loading">
+  <div class="timeline">
+    <div v-if="!this.isMounted" id="loading" class="load">
       <p><img src="/images/loading.gif" alt="読み込み中..."></p>
     </div>
-    <div v-if="isMounted" class="statuses animated fadeIn">
+    <div v-if="this.isMounted && this.statuses.length == 0" id="loaded" class="load">
+      <p>項目が存在しませんでした。</p>
+    </div>
+    <div v-if="this.isMounted" class="statuses animated fadeIn">
       <div class="status" v-for="(status, index) in statuses" :key="status.id">
         <div class="status-header">
-          <p class="avatar">
-            <a v-bind:href="'@' + status.user.screen_name">
-              <img src="/images/sample_avatar.png" alt="">
-            </a>
-          </p>
-          <p class="text">
-            <a class="default-link" v-bind:href="'/@' + status.user.screen_name">{{ status.user.name }}</a>さんが『{{ statusJp[status.state - 1] }}』に登録しました
-          </p>
+          <p class="avatar"><a v-bind:href="'/@' + status.user.screen_name"><img src="/images/sample_avatar.png" alt=""></a></p>
+          <p class="text"><a class="default-link" v-bind:href="'/@' + status.user.screen_name">{{ status.user.name }}</a>さんが『{{ statusJp[status.state - 1] }}』に登録しました</p>
         </div>
         <div class="status-body">
           <table class="music-table">
@@ -53,9 +46,6 @@
           <p class="date">{{ subtractDate(status.used_at) }}</p>
         </div>
       </div>
-      <div v-if="statuses.length == 0" class="not-exist">
-        <p></p>
-      </div>
     </div>
   </div>
 </template>
@@ -79,23 +69,16 @@ export default {
     subtractDate: function(date) {
       var now = new Date();
       var target = new Date(date.replace(/-/g, "/"));
-      var timestamp = Math.round(
-        now.getTime() / 1000 - target.getTime() / 1000
-      );
-      if (timestamp < 60) {
-        return timestamp + " 秒前";
-      }
-      if (timestamp < 3600) {
-        return Math.round(timestamp / 60) + " 分前";
-      }
-      if (timestamp < 86400) {
-        return Math.round(timestamp / 3600) + " 時間前";
-      }
-      return Math.round(timestamp / 86400) + " 日前";
+      var timestamp = Math.round(now.getTime() / 1000 - target.getTime() / 1000);
+      if (timestamp < 60) return timestamp + ' 秒前';
+      if (timestamp < 3600) return Math.round(timestamp / 60) + ' 分前';
+      if (timestamp < 86400) return Math.round(timestamp / 3600) + ' 時間前';
+      return Math.round(timestamp / 86400) + ' 日前';
     },
     updateStatus: function(index, song_id) {
       if (this.isBusy) return;
       this.isBusy = true;
+      
       var state = this.statuses[index].user_state;
       var selects = $("." + song_id);
       for (var i = 0; i < selects.length; i++) {
@@ -117,7 +100,7 @@ export default {
     }
   },
   mounted() {
-    var timeline = this.user_id == null ? "public_timeline" : "user_timeline?id=" + this.user_id;
+    var timeline = (this.user_id == null) ? "public_timeline" : "user_timeline?id=" + this.user_id;
     axios.get("/api/" + timeline).then(res => {
         this.statuses = res.data;
         this.isMounted = true;

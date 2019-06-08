@@ -2,9 +2,14 @@
 
 @section('sidebar')
 @include('widgets.user-infomation', ['user' => Auth::user(), 'hide' => true])
-@include('widgets.tweet-notification')
+<!--@include('widgets.tweet-notification')-->
 @endsection
 
 @section('content')
-<timeline-component/>
+<div class="section">
+  <h1 class="title">
+    <i class="fab fa-react"></i>&nbsp;ローカルタイムライン
+  </h1>
+  <timeline-component/>
+</div>
 @endsection

@@ -6,5 +6,10 @@
 
 @endsection
 @section('content')
-<timeline-component :user_id="'{{ $user->id }}'"/>
+<div class="section">
+  <h1 class="title">
+    <i class="fab fa-react"></i>&nbsp;ユーザータイムライン
+  </h1>
+  <timeline-component :user_id="'{{ $user->id }}'"/>
+</div>
 @endsection
