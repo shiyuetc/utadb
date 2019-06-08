@@ -34,14 +34,27 @@ class Status extends Model
         return $this->belongsTo('App\Models\Song');
     }
     
+    public static function CreateUserStatus($state, $id, $title, $artist, $image_url = null, $audio_url = null)
+    {
+        $song = Song::CreateSong($id, $title, $artist, $image_url, $audio_url);
+        $status = new Status();
+        $status->user_state = $state;
+        $status->song = $song;
+        return $status;
+    }
+
     public static function showStatus($song_id)
     {
-        $state = Status::select(DB::raw('state as user_state'))
-            ->where('user_id', auth()->id())
-            ->where('song_id', $song_id)
-            ->first();
-        
-        return $state != null ? $state : ['user_state' => 0];
+        $song = Puller::lookSong($song_id);
+        if(!is_null($song)) {
+            $state = Status::select('state')
+                ->where('user_id', auth()->id())
+                ->where('song_id', $song_id)
+                ->first();
+            $user_state = $state != null ? $state['state'] : 0;
+            $status = Status::CreateUserStatus($user_state, $song["id"], $song["title"], $song["artist"], $song["image_url"], $song["audio_url"]);
+        }
+        return isset($status) ? $status : null;
     }
 
     public static function updateStatus($song_id, $state) 

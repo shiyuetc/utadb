@@ -1,16 +1,16 @@
 <template>
   <div class="song-infomation">
     <div class="cover-image-big">
-      <img v-bind:src="song.image_url" alt="">
-      <div class="mediPlayer" v-if="song.audio_url">
-        <audio class="listen" preload="none" data-size="120" v-bind:src="song.audio_url"></audio>
+      <img v-bind:src="status.song.image_url" alt="">
+      <div class="mediPlayer" v-if="status.song.audio_url">
+        <audio class="listen" preload="none" data-size="120" v-bind:src="status.song.audio_url"></audio>
       </div>
     </div>
     <div style="text-align: center;">
       <select class="status-select"
-        v-bind:class="[song.id , { 'active' : song.user_state != 0 }]"
-        v-model="song.user_state"
-        @change="updateStatus(song.id)"
+        v-bind:class="[status.song.id , { 'active' : status.user_state != 0 }]"
+        v-model="status.user_state"
+        @change="updateStatus(status.song.id)"
         v-bind:disabled="isBusy">
         <option value="0" selected>記録なし</option>
         <option value="1">気になる</option>
@@ -25,11 +25,11 @@
       <tbody>
         <tr>
           <td>タイトル</td>
-          <td>{{ song.title }}</td>
+          <td>{{ status.song.title }}</td>
         </tr>
         <tr>
           <td>アーティスト</td>
-          <td>{{ song.artist }}</td>
+          <td>{{ status.song.artist }}</td>
         </tr>
       </tbody>
     </table>
@@ -39,7 +39,7 @@
 <script>
 export default {
   props: {
-    song: {
+    status: {
       type: Object,
       required: true
     }
@@ -53,9 +53,10 @@ export default {
     updateStatus: function(song_id) {
       if (this.isBusy) return;
       this.isBusy = true;
+      
       axios.post("/api/update_status", {
           song_id: song_id,
-          state: this.song.user_state
+          state: this.status.user_state
         }).then(res => {
           updateUserStatuses(res.data.user);
           this.isBusy = false;

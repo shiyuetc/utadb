@@ -11,13 +11,11 @@ class SongController extends Controller
 {
     public function index($id)
     {
-        $song = Puller::lookSong($id);
-        if(is_null($song)) {
+        $status = Status::showStatus($id);
+        if(is_null($status)) {
             return view('errors.404');
         }
-        $song = Song::CreateSong($song["id"], $song["title"], $song["artist"], $song["image_url"], $song["audio_url"]);
-        $song->user_state = Status::showStatus($song["id"])["user_state"];
-        return view('pages.song', ['song' => $song]);
+        return view('pages.song', ['status' => $status]);
     }
 
     public function search(Request $request)
