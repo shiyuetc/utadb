@@ -1,15 +1,7 @@
 <template>
-  <div class="section">
-    <h1 class="title">
-      <span v-if="state == 0"><i class="fa fa-check"></i>&nbsp;登録済みの曲</span>
-      <span v-if="state == 3"><i class="fa fa-check"></i>&nbsp;習得済みの曲</span>
-      <span v-if="state == 2"><i class="fas fa-graduation-cap"></i>&nbsp;練習中の曲</span>
-      <span v-if="state == 1"><i class="far fa-sticky-note"></i>&nbsp;気になる曲</span>
-    </h1>
-    <div v-if="!isMounted" class="loading">
-      <p><img src="/images/loading.gif" alt="読み込み中..."></p>
-    </div>
-    <div v-if="isMounted" class="statuses animated fadeIn">
+  <div class="user-statuses">
+    <loadProgress/>
+    <div v-if="this.isMounted" class="statuses">
       <div class="status" v-for="(status, index) in statuses" :key='index'>
         <table class="music-table">
             <tr>
@@ -41,16 +33,18 @@
           </table>
       </div>
     </div>
-    <div class="pagination">
-      <button class="button button-danger auto" @click="paging(-1)" v-bind:disabled="this.pageValue == 1">前のページ</button>
-      <a href="#">{{ pageValue }}&nbsp;ページ</a>
-      <button class="button button-danger auto" @click="paging(1)" v-bind:disabled="this.pageValue == 9999 || statuses.length == 0">次のページ</button>
-    </div>
+    <pagination @paging="statusesRequest"/>
   </div>
 </template>
-
 <script>
+import loadProgress from './load-progress.vue';
+import pagination from './pagination.vue';
+
 export default {
+  components: {
+    loadProgress,
+    pagination
+  },
   props: {
     user_id: {
       type: String
@@ -74,9 +68,8 @@ export default {
     };
   },
   methods: {
-    paging: function(direction) {
+    statusesRequest: function() {
       this.isMounted = false;
-      this.pageValue += direction;
       if(this.setPlayer != null) clearTimeout(this.setPlayer);
       axios.get("/api/user_statuses?id=" + this.user_id + "&state=" + this.state + "&page=" + this.pageValue).then(res => {
         this.statuses = res.data;
@@ -101,12 +94,10 @@ export default {
       });
     }
   },
-  mounted() {
-    axios.get("/api/user_statuses?id=" + this.user_id + "&state=" + this.state + "&page=" + this.pageValue).then(res => {
-        this.statuses = res.data;
-        this.isMounted = true;
-        this.setPlayer = setTimeout("initializePlayer()", 1000);
-    }).catch(err => {});
+  mounted: function() {
+    this.$nextTick(function () {
+      this.statusesRequest();
+    })
   }
 }
 </script>

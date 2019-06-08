@@ -1,12 +1,7 @@
 <template>
   <div class="timeline">
-    <div v-if="!this.isMounted" id="loading" class="load">
-      <p><img src="/images/loading.gif" alt="読み込み中..."></p>
-    </div>
-    <div v-if="this.isMounted && this.statuses.length == 0" id="loaded" class="load">
-      <p>項目が存在しませんでした。</p>
-    </div>
-    <div v-if="this.isMounted" class="statuses animated fadeIn">
+    <loadProgress/>
+    <div v-if="this.isMounted" class="statuses">
       <div class="status" v-for="(status, index) in statuses" :key="status.id">
         <div class="status-header">
           <p class="avatar"><a v-bind:href="'/@' + status.user.screen_name"><img src="/images/sample_avatar.png" alt=""></a></p>
@@ -49,9 +44,13 @@
     </div>
   </div>
 </template>
-
 <script>
+import loadProgress from './load-progress.vue';
+
 export default {
+  components: {
+    loadProgress
+  },
   props: {
     user_id: {
       type: String
