@@ -17,14 +17,14 @@ class ApiController extends Controller
 
     public function updateStatus(StatusRequest $request)
     {
-        $update = Status::updateStatus($request->song_id, $request->state);
-        return response()->json($update);
+        $status = Status::updateStatus($request->song_id, $request->state);
+        return response()->json($status);
     }
 
     public function searchSong(Request $request)
     {
-        $response = Status::searchSong($request->source, $request->q, $request->page);
-        return response()->json($response);
+        $statuses = Status::searchSong($request->source, $request->q, $request->page);
+        return response()->json($statuses);
     }
 
     public function userStatuses(Request $request)

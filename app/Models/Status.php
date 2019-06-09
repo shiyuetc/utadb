@@ -136,6 +136,7 @@ class Status extends Model
 
     public static function searchSong($source, $q, $page = 1)
     {
+        $statuses = [];
         $songs = Puller::searchSong($source, $q, $page);
         if(count($songs) > 0) {
             $song_ids = array();
@@ -147,18 +148,21 @@ class Status extends Model
                 ->where('user_id', auth()->id())
                 ->whereIn('song_id', $song_ids)
                 ->get();
+
             $temp_user_state = [];
-            
             foreach($states as $state)
             {
                 $temp_user_state[$state->song_id] = $state->user_state;
             }
             for($i = 0; $i < count($songs); $i++)
             {
-                $songs[$i]['user_state'] = isset($temp_user_state[$songs[$i]['id']]) ? $temp_user_state[$songs[$i]['id']] : 0;
+                $statuses[] = [
+                    'user_state' => isset($temp_user_state[$songs[$i]['id']]) ? $temp_user_state[$songs[$i]['id']] : 0,
+                    'song' => $songs[$i]
+                ];
             }
         }
-        return $songs;
+        return $statuses;
     }
 
     public static function userStatuses($id, $state = 0, $page = 1)
