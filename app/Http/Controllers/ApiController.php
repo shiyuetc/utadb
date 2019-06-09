@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Validator;
+use App\Http\Requests\ApiRequestRules;
+use App\Models\Status;
+use App\Models\Song;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\ApiRequestRules;
-use App\Models\Status;
 
 class ApiController extends Controller
 {   
@@ -37,6 +39,16 @@ class ApiController extends Controller
         ]);
         $status = Status::updateStatus($request->song_id, $request->state);
         return response()->json($status);
+    }
+
+    public function searchUser(Request $request)
+    {
+        $this->QueryValidate($request, [
+            'q' => ApiRequestRules::getQRule(),
+            'page' => ApiRequestRules::getPageRule(),
+        ]);
+        $users = User::search($request->q, $request->page);
+        return response()->json($users);
     }
 
     public function searchSong(Request $request)

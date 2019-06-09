@@ -37,4 +37,13 @@ class User extends Authenticatable
     {
         return $this->stacked_state_count + $this->training_state_count + $this->mastered_state_count;
     }
+
+    public static function search($q, $page = 1)
+    {
+        return User::where('screen_name', 'like', "%{$q}%")
+            ->orWhere('name', 'like', "%{$q}%")
+            ->skip(($page - 1) * 50)
+            ->take(50)
+            ->get();
+    }
 }
