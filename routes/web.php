@@ -18,6 +18,7 @@ Route::prefix('@{id}')->group(function() {
   Route::get('/status/{state}', 'UserController@status')->name('user.status')
     ->where('state', 'all|mastered|training|stacked');
 });
+Route::get('search/user', 'UserController@search')->name('search.user');
 
 Route::get('search/song', 'SongController@search')->name('search.song');
 Route::get('/songs/{id}', 'SongController@index')->name('song')
