@@ -51,14 +51,16 @@ class iTunesRequest extends BasicRequest
         $songs = $this->toJson($this->getRequest($this->directUrl . $this->searchSongPath, $parameter))['results'];
         foreach($songs as $song)
         {
-            $response[] = $this->toSongModel(
-                '0' . $song["trackId"],
-                $song["trackCensoredName"],
-                (string)$song["artistId"],
-                $song["artistName"],
-                $song["artworkUrl60"],
-                isset($song["previewUrl"]) ? $song["previewUrl"] : null
-            );
+            if(isset($song["trackId"])) {
+                $response[] = $this->toSongModel(
+                    '0' . $song["trackId"],
+                    $song["trackCensoredName"],
+                    (string)$song["artistId"],
+                    $song["artistName"],
+                    $song["artworkUrl60"],
+                    isset($song["previewUrl"]) ? $song["previewUrl"] : null
+                );
+            }
         }
         return $response;
     }
