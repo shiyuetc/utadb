@@ -30,7 +30,7 @@
 @if(isset($q) && $q != '')
 <div class="section">
   <h1 class="title"><i class="fa fa-search"></i>&nbsp;検索結果</h1>
-  <search-song-component :source="{{ $source }}" :q="'{{ $q }}'" :page="{{ $page }}"/>
+  <search-song-component :source="{{ $source }}" :q="'{{ urlencode($q) }}'" :page="{{ $page }}"/>
 </div>
 @endif
 @endsection
