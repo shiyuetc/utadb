@@ -63,6 +63,9 @@ class ApiController extends Controller
 
     public function userTimeline(request $request)
     {
+        $this->QueryValidate($request, [
+            'id' => ApiRequestRules::getUserIdRule(),
+        ]);
         $statuses = Status::getTimeline($request->id);
         return response()->json($statuses);
     }
