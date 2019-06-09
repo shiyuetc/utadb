@@ -22,6 +22,7 @@ window.Vue = require('vue');
 Vue.component('user-statuses-component', require('./components/user-statuses.vue'));
 Vue.component('timeline-component', require('./components/timeline.vue'));
 
+Vue.component('search-user-component', require('./components/search-user.vue'));
 Vue.component('search-song-component', require('./components/search-song.vue'));
 
 Vue.component('song-infomation-component', require('./components/song-infomation.vue'));

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 18);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -70,8 +70,8 @@
 "use strict";
 
 
-var bind = __webpack_require__(5);
-var isBuffer = __webpack_require__(25);
+var bind = __webpack_require__(7);
+var isBuffer = __webpack_require__(30);
 
 /*global toString:true*/
 
@@ -408,33 +408,6 @@ module.exports = {
 /* 1 */
 /***/ (function(module, exports) {
 
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
 /* globals __VUE_SSR_CONTEXT__ */
 
 // IMPORTANT: Do NOT use ES2015 features in this file.
@@ -541,18 +514,143 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
 /* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(55)
+/* template */
+var __vue_template__ = __webpack_require__(56)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/update-select.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1c8b4c0e", Component.options)
+  } else {
+    hotAPI.reload("data-v-1c8b4c0e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(47)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = __webpack_require__(50)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-040fe0ad"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/load-progress.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-040fe0ad", Component.options)
+  } else {
+    hotAPI.reload("data-v-040fe0ad", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 if (false) {
   module.exports = require('./vue.common.prod.js')
 } else {
-  module.exports = __webpack_require__(15)
+  module.exports = __webpack_require__(20)
 }
 
 
 /***/ }),
-/* 4 */
+/* 6 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -742,7 +840,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 5 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -760,7 +858,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 6 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -838,7 +936,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 7 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -850,14 +948,14 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(30);
+var normalizeHeaderName = __webpack_require__(35);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -874,10 +972,10 @@ function getDefaultAdapter() {
   // Only Node.JS has a process variable that is of [[Class]] process
   if (typeof process !== 'undefined' && Object.prototype.toString.call(process) === '[object process]') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(9);
+    adapter = __webpack_require__(11);
   } else if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(9);
+    adapter = __webpack_require__(11);
   }
   return adapter;
 }
@@ -953,21 +1051,21 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var settle = __webpack_require__(31);
-var buildURL = __webpack_require__(6);
-var parseHeaders = __webpack_require__(33);
-var isURLSameOrigin = __webpack_require__(34);
-var createError = __webpack_require__(10);
+var settle = __webpack_require__(36);
+var buildURL = __webpack_require__(8);
+var parseHeaders = __webpack_require__(38);
+var isURLSameOrigin = __webpack_require__(39);
+var createError = __webpack_require__(12);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -1059,7 +1157,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(35);
+      var cookies = __webpack_require__(40);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -1137,13 +1235,13 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var enhanceError = __webpack_require__(32);
+var enhanceError = __webpack_require__(37);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -1162,7 +1260,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 11 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1220,7 +1318,7 @@ module.exports = function mergeConfig(config1, config2) {
 
 
 /***/ }),
-/* 12 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1246,20 +1344,381 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 15 */
+/***/ (function(module, exports) {
 
-__webpack_require__(14);
-module.exports = __webpack_require__(49);
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
 
 
 /***/ }),
-/* 14 */
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+  Modified by Evan You @yyx990803
+*/
+
+var hasDocument = typeof document !== 'undefined'
+
+if (typeof DEBUG !== 'undefined' && DEBUG) {
+  if (!hasDocument) {
+    throw new Error(
+    'vue-style-loader cannot be used in a non-browser environment. ' +
+    "Use { target: 'node' } in your Webpack config to indicate a server-rendering environment."
+  ) }
+}
+
+var listToStyles = __webpack_require__(49)
+
+/*
+type StyleObject = {
+  id: number;
+  parts: Array<StyleObjectPart>
+}
+
+type StyleObjectPart = {
+  css: string;
+  media: string;
+  sourceMap: ?string
+}
+*/
+
+var stylesInDom = {/*
+  [id: number]: {
+    id: number,
+    refs: number,
+    parts: Array<(obj?: StyleObjectPart) => void>
+  }
+*/}
+
+var head = hasDocument && (document.head || document.getElementsByTagName('head')[0])
+var singletonElement = null
+var singletonCounter = 0
+var isProduction = false
+var noop = function () {}
+var options = null
+var ssrIdKey = 'data-vue-ssr-id'
+
+// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+// tags it will allow on a page
+var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\b/.test(navigator.userAgent.toLowerCase())
+
+module.exports = function (parentId, list, _isProduction, _options) {
+  isProduction = _isProduction
+
+  options = _options || {}
+
+  var styles = listToStyles(parentId, list)
+  addStylesToDom(styles)
+
+  return function update (newList) {
+    var mayRemove = []
+    for (var i = 0; i < styles.length; i++) {
+      var item = styles[i]
+      var domStyle = stylesInDom[item.id]
+      domStyle.refs--
+      mayRemove.push(domStyle)
+    }
+    if (newList) {
+      styles = listToStyles(parentId, newList)
+      addStylesToDom(styles)
+    } else {
+      styles = []
+    }
+    for (var i = 0; i < mayRemove.length; i++) {
+      var domStyle = mayRemove[i]
+      if (domStyle.refs === 0) {
+        for (var j = 0; j < domStyle.parts.length; j++) {
+          domStyle.parts[j]()
+        }
+        delete stylesInDom[domStyle.id]
+      }
+    }
+  }
+}
+
+function addStylesToDom (styles /* Array<StyleObject> */) {
+  for (var i = 0; i < styles.length; i++) {
+    var item = styles[i]
+    var domStyle = stylesInDom[item.id]
+    if (domStyle) {
+      domStyle.refs++
+      for (var j = 0; j < domStyle.parts.length; j++) {
+        domStyle.parts[j](item.parts[j])
+      }
+      for (; j < item.parts.length; j++) {
+        domStyle.parts.push(addStyle(item.parts[j]))
+      }
+      if (domStyle.parts.length > item.parts.length) {
+        domStyle.parts.length = item.parts.length
+      }
+    } else {
+      var parts = []
+      for (var j = 0; j < item.parts.length; j++) {
+        parts.push(addStyle(item.parts[j]))
+      }
+      stylesInDom[item.id] = { id: item.id, refs: 1, parts: parts }
+    }
+  }
+}
+
+function createStyleElement () {
+  var styleElement = document.createElement('style')
+  styleElement.type = 'text/css'
+  head.appendChild(styleElement)
+  return styleElement
+}
+
+function addStyle (obj /* StyleObjectPart */) {
+  var update, remove
+  var styleElement = document.querySelector('style[' + ssrIdKey + '~="' + obj.id + '"]')
+
+  if (styleElement) {
+    if (isProduction) {
+      // has SSR styles and in production mode.
+      // simply do nothing.
+      return noop
+    } else {
+      // has SSR styles but in dev mode.
+      // for some reason Chrome can't handle source map in server-rendered
+      // style tags - source maps in <style> only works if the style tag is
+      // created and inserted dynamically. So we remove the server rendered
+      // styles and inject new ones.
+      styleElement.parentNode.removeChild(styleElement)
+    }
+  }
+
+  if (isOldIE) {
+    // use singleton mode for IE9.
+    var styleIndex = singletonCounter++
+    styleElement = singletonElement || (singletonElement = createStyleElement())
+    update = applyToSingletonTag.bind(null, styleElement, styleIndex, false)
+    remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true)
+  } else {
+    // use multi-style-tag mode in all other cases
+    styleElement = createStyleElement()
+    update = applyToTag.bind(null, styleElement)
+    remove = function () {
+      styleElement.parentNode.removeChild(styleElement)
+    }
+  }
+
+  update(obj)
+
+  return function updateStyle (newObj /* StyleObjectPart */) {
+    if (newObj) {
+      if (newObj.css === obj.css &&
+          newObj.media === obj.media &&
+          newObj.sourceMap === obj.sourceMap) {
+        return
+      }
+      update(obj = newObj)
+    } else {
+      remove()
+    }
+  }
+}
+
+var replaceText = (function () {
+  var textStore = []
+
+  return function (index, replacement) {
+    textStore[index] = replacement
+    return textStore.filter(Boolean).join('\n')
+  }
+})()
+
+function applyToSingletonTag (styleElement, index, remove, obj) {
+  var css = remove ? '' : obj.css
+
+  if (styleElement.styleSheet) {
+    styleElement.styleSheet.cssText = replaceText(index, css)
+  } else {
+    var cssNode = document.createTextNode(css)
+    var childNodes = styleElement.childNodes
+    if (childNodes[index]) styleElement.removeChild(childNodes[index])
+    if (childNodes.length) {
+      styleElement.insertBefore(cssNode, childNodes[index])
+    } else {
+      styleElement.appendChild(cssNode)
+    }
+  }
+}
+
+function applyToTag (styleElement, obj) {
+  var css = obj.css
+  var media = obj.media
+  var sourceMap = obj.sourceMap
+
+  if (media) {
+    styleElement.setAttribute('media', media)
+  }
+  if (options.ssrId) {
+    styleElement.setAttribute(ssrIdKey, obj.id)
+  }
+
+  if (sourceMap) {
+    // https://developer.chrome.com/devtools/docs/javascript-debugging
+    // this makes source maps inside style tags work properly in Chrome
+    css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */'
+    // http://stackoverflow.com/a/26603875
+    css += '\n/*# sourceMappingURL=data:application/json;base64,' + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + ' */'
+  }
+
+  if (styleElement.styleSheet) {
+    styleElement.styleSheet.cssText = css
+  } else {
+    while (styleElement.firstChild) {
+      styleElement.removeChild(styleElement.firstChild)
+    }
+    styleElement.appendChild(document.createTextNode(css))
+  }
+}
+
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(51)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(53)
+/* template */
+var __vue_template__ = __webpack_require__(54)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-1f6e5bf1"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/pagination.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1f6e5bf1", Component.options)
+  } else {
+    hotAPI.reload("data-v-1f6e5bf1", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(19);
+module.exports = __webpack_require__(67);
+
+
+/***/ }),
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 
 /**
@@ -1270,9 +1729,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-__webpack_require__(18);
+__webpack_require__(23);
 
-window.Vue = __webpack_require__(3);
+window.Vue = __webpack_require__(5);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -1282,16 +1741,19 @@ window.Vue = __webpack_require__(3);
 
 //Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('user-statuses-component', __webpack_require__(40));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('timeline-component', __webpack_require__(43));
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('song-infomation-component', __webpack_require__(46));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('user-statuses-component', __webpack_require__(45));
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('timeline-component', __webpack_require__(58));
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('search-song-component', __webpack_require__(61));
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('song-infomation-component', __webpack_require__(64));
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
   el: '#app'
 });
 
 /***/ }),
-/* 15 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13234,10 +13696,10 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(16).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(21).setImmediate))
 
 /***/ }),
-/* 16 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -13293,7 +13755,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(17);
+__webpack_require__(22);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -13304,10 +13766,10 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
                          (typeof global !== "undefined" && global.clearImmediate) ||
                          (this && this.clearImmediate);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 17 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -13497,14 +13959,14 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(6)))
 
 /***/ }),
-/* 18 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-window._ = __webpack_require__(19);
+window._ = __webpack_require__(24);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -13513,9 +13975,9 @@ window._ = __webpack_require__(19);
  */
 
 try {
-  window.$ = window.jQuery = __webpack_require__(21);
+  window.$ = window.jQuery = __webpack_require__(26);
 
-  __webpack_require__(22);
+  __webpack_require__(27);
 } catch (e) {}
 
 /**
@@ -13524,7 +13986,7 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(23);
+window.axios = __webpack_require__(28);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -13560,7 +14022,7 @@ if (token) {
 // });
 
 /***/ }),
-/* 19 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -30672,10 +31134,10 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(20)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(25)(module)))
 
 /***/ }),
-/* 20 */
+/* 25 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -30703,7 +31165,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 21 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -41308,7 +41770,7 @@ return jQuery;
 
 
 /***/ }),
-/* 22 */
+/* 27 */
 /***/ (function(module, exports) {
 
 /*!
@@ -43894,23 +44356,23 @@ if (typeof jQuery === 'undefined') {
 
 
 /***/ }),
-/* 23 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(24);
+module.exports = __webpack_require__(29);
 
 /***/ }),
-/* 24 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var bind = __webpack_require__(5);
-var Axios = __webpack_require__(26);
-var mergeConfig = __webpack_require__(11);
-var defaults = __webpack_require__(8);
+var bind = __webpack_require__(7);
+var Axios = __webpack_require__(31);
+var mergeConfig = __webpack_require__(13);
+var defaults = __webpack_require__(10);
 
 /**
  * Create an instance of Axios
@@ -43943,15 +44405,15 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(12);
-axios.CancelToken = __webpack_require__(38);
-axios.isCancel = __webpack_require__(7);
+axios.Cancel = __webpack_require__(14);
+axios.CancelToken = __webpack_require__(43);
+axios.isCancel = __webpack_require__(9);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(39);
+axios.spread = __webpack_require__(44);
 
 module.exports = axios;
 
@@ -43960,7 +44422,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 25 */
+/* 30 */
 /***/ (function(module, exports) {
 
 /*!
@@ -43977,17 +44439,17 @@ module.exports = function isBuffer (obj) {
 
 
 /***/ }),
-/* 26 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var buildURL = __webpack_require__(6);
-var InterceptorManager = __webpack_require__(27);
-var dispatchRequest = __webpack_require__(28);
-var mergeConfig = __webpack_require__(11);
+var buildURL = __webpack_require__(8);
+var InterceptorManager = __webpack_require__(32);
+var dispatchRequest = __webpack_require__(33);
+var mergeConfig = __webpack_require__(13);
 
 /**
  * Create a new instance of Axios
@@ -44070,7 +44532,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 27 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44129,18 +44591,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 28 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var transformData = __webpack_require__(29);
-var isCancel = __webpack_require__(7);
-var defaults = __webpack_require__(8);
-var isAbsoluteURL = __webpack_require__(36);
-var combineURLs = __webpack_require__(37);
+var transformData = __webpack_require__(34);
+var isCancel = __webpack_require__(9);
+var defaults = __webpack_require__(10);
+var isAbsoluteURL = __webpack_require__(41);
+var combineURLs = __webpack_require__(42);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -44222,7 +44684,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 29 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44249,7 +44711,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 30 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44268,13 +44730,13 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 31 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var createError = __webpack_require__(10);
+var createError = __webpack_require__(12);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -44300,7 +44762,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 32 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44349,7 +44811,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 33 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44409,7 +44871,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 34 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44484,7 +44946,7 @@ module.exports = (
 
 
 /***/ }),
-/* 35 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44544,7 +45006,7 @@ module.exports = (
 
 
 /***/ }),
-/* 36 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44565,7 +45027,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 37 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44586,13 +45048,13 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 38 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Cancel = __webpack_require__(12);
+var Cancel = __webpack_require__(14);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -44650,7 +45112,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 39 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44684,15 +45146,15 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 40 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(41)
+var __vue_script__ = __webpack_require__(46)
 /* template */
-var __vue_template__ = __webpack_require__(42)
+var __vue_template__ = __webpack_require__(57)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -44731,33 +45193,17 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 41 */
+/* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__load_progress_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__load_progress_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__load_progress_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pagination_vue__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pagination_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__pagination_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__update_select_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__update_select_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__update_select_vue__);
 //
 //
 //
@@ -44788,7 +45234,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    loadProgress: __WEBPACK_IMPORTED_MODULE_0__load_progress_vue___default.a,
+    pagination: __WEBPACK_IMPORTED_MODULE_1__pagination_vue___default.a,
+    updateSelect: __WEBPACK_IMPORTED_MODULE_2__update_select_vue___default.a
+  },
   props: {
     user_id: {
       type: String
@@ -44808,247 +45263,139 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       statuses: [],
       setPlayer: null,
       isMounted: false,
-      isBusy: false
+      isBusy: false,
+      isError: false
     };
   },
 
   methods: {
-    paging: function paging(direction) {
+    statusesRequest: function statusesRequest() {
       var _this = this;
 
       this.isMounted = false;
-      this.pageValue += direction;
       if (this.setPlayer != null) clearTimeout(this.setPlayer);
       axios.get("/api/user_statuses?id=" + this.user_id + "&state=" + this.state + "&page=" + this.pageValue).then(function (res) {
         _this.statuses = res.data;
         _this.isMounted = true;
         _this.setPlayer = setTimeout("initializePlayer()", 1000);
-      }).catch(function (err) {});
-    },
-    updateStatus: function updateStatus(index, song_id) {
-      var _this2 = this;
-
-      if (this.isBusy) return;
-      this.isBusy = true;
-      axios.post("/api/update_status", {
-        id: song_id,
-        state: this.statuses[index].user_state
-      }).then(function (res) {
-        var user = res.data.user;
-        if (_this2.user_id == user.id) {
-          updateUserStatuses(user);
-        }
-        _this2.isBusy = false;
       }).catch(function (err) {
-        window.location.href = "/login";
+        _this.statuses = [];
+        _this.isError = true;
       });
+    },
+    updatedStatus: function updatedStatus(response) {
+      var user = response.user;
+      if (this.user_id == user.id) {
+        updateUserStatuses(user);
+      }
     }
   },
   mounted: function mounted() {
-    var _this3 = this;
-
-    axios.get("/api/user_statuses?id=" + this.user_id + "&state=" + this.state + "&page=" + this.pageValue).then(function (res) {
-      _this3.statuses = res.data;
-      _this3.isMounted = true;
-      _this3.setPlayer = setTimeout("initializePlayer()", 1000);
-    }).catch(function (err) {});
+    this.$nextTick(function () {
+      this.statusesRequest();
+    });
   }
 });
 
 /***/ }),
-/* 42 */
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(48);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(16)("4c5f1f6e", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-040fe0ad\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./load-progress.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-040fe0ad\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./load-progress.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(15)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\ndiv.load[data-v-040fe0ad] {\r\n  display: table;\r\n  width: 100%;\r\n  height: 67px;\r\n  text-align: center;\n}\ndiv.load p[data-v-040fe0ad] {\r\n  display: table-cell;\r\n  font-size: 12px;\r\n  line-height: 67px;\r\n  vertical-align: middle;\n}\ndiv.load p img[data-v-040fe0ad] {\r\n  display: block;\r\n\tmargin: 0 auto;\r\n\tpadding: 0;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports) {
+
+/**
+ * Translates the list format produced by css-loader into something
+ * easier to manipulate.
+ */
+module.exports = function listToStyles (parentId, list) {
+  var styles = []
+  var newStyles = {}
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i]
+    var id = item[0]
+    var css = item[1]
+    var media = item[2]
+    var sourceMap = item[3]
+    var part = {
+      id: parentId + ':' + i,
+      css: css,
+      media: media,
+      sourceMap: sourceMap
+    }
+    if (!newStyles[id]) {
+      styles.push(newStyles[id] = { id: id, parts: [part] })
+    } else {
+      newStyles[id].parts.push(part)
+    }
+  }
+  return styles
+}
+
+
+/***/ }),
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "section" }, [
-    _c("h1", { staticClass: "title" }, [
-      _vm.state == 0
-        ? _c("span", [
-            _c("i", { staticClass: "fa fa-check" }),
-            _vm._v(" 登録済みの曲")
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.state == 3
-        ? _c("span", [
-            _c("i", { staticClass: "fa fa-check" }),
-            _vm._v(" 習得済みの曲")
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.state == 2
-        ? _c("span", [
-            _c("i", { staticClass: "fas fa-graduation-cap" }),
-            _vm._v(" 練習中の曲")
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.state == 1
-        ? _c("span", [
-            _c("i", { staticClass: "far fa-sticky-note" }),
-            _vm._v(" 気になる曲")
-          ])
-        : _vm._e()
-    ]),
-    _vm._v(" "),
-    !_vm.isMounted
-      ? _c("div", { staticClass: "loading" }, [_vm._m(0)])
+  return _c("div", { staticClass: "load-progress" }, [
+    !this.$parent.isMounted && !this.$parent.isError
+      ? _c("div", { staticClass: "load", attrs: { id: "loading" } }, [
+          _vm._m(0)
+        ])
       : _vm._e(),
     _vm._v(" "),
-    _vm.isMounted
-      ? _c(
-          "div",
-          { staticClass: "statuses animated fadeIn" },
-          _vm._l(_vm.statuses, function(status, index) {
-            return _c("div", { key: index, staticClass: "status" }, [
-              _c("table", { staticClass: "music-table" }, [
-                _c("tr", [
-                  _c("td", { staticClass: "media-cell" }, [
-                    _c("div", { staticClass: "cover-image" }, [
-                      _c("img", {
-                        attrs: { src: status.song.image_url, alt: "" }
-                      }),
-                      _vm._v(" "),
-                      status.song.audio_url
-                        ? _c("div", { staticClass: "mediPlayer" }, [
-                            _c("audio", {
-                              staticClass: "listen",
-                              attrs: {
-                                preload: "none",
-                                "data-size": "40",
-                                src: status.song.audio_url
-                              }
-                            })
-                          ])
-                        : _vm._e()
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "text-cell" }, [
-                    _c("p", { staticClass: "title" }, [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "default-link",
-                          attrs: { href: "/song/" + status.song.id }
-                        },
-                        [_vm._v(_vm._s(status.song.title))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "artist" }, [
-                      _vm._v(_vm._s(status.song.artist))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("td", { staticClass: "action-cell" }, [
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: status.user_state,
-                            expression: "status.user_state"
-                          }
-                        ],
-                        staticClass: "status-select",
-                        class: [
-                          status.song.id,
-                          { active: status.user_state != 0 }
-                        ],
-                        attrs: { id: index, disabled: _vm.isBusy },
-                        on: {
-                          change: [
-                            function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.$set(
-                                status,
-                                "user_state",
-                                $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              )
-                            },
-                            function($event) {
-                              return _vm.updateStatus(index, status.song.id)
-                            }
-                          ]
-                        }
-                      },
-                      [
-                        _c("option", { attrs: { value: "0", selected: "" } }, [
-                          _vm._v("記録なし")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "1" } }, [
-                          _vm._v("気になる")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "2" } }, [
-                          _vm._v("練習中")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "3" } }, [
-                          _vm._v("習得済み")
-                        ])
-                      ]
-                    )
-                  ])
-                ])
-              ])
-            ])
-          }),
-          0
-        )
+    this.$parent.isMounted && this.$parent.statuses.length == 0
+      ? _c("div", { staticClass: "load", attrs: { id: "loaded" } }, [
+          _c("p", [_vm._v("項目が存在しませんでした。(> <。)")])
+        ])
       : _vm._e(),
     _vm._v(" "),
-    _c("div", { staticClass: "pagination" }, [
-      _c(
-        "button",
-        {
-          staticClass: "button button-danger auto",
-          attrs: { disabled: this.pageValue == 1 },
-          on: {
-            click: function($event) {
-              return _vm.paging(-1)
-            }
-          }
-        },
-        [_vm._v("前のページ")]
-      ),
-      _vm._v(" "),
-      _c("a", { attrs: { href: "#" } }, [
-        _vm._v(_vm._s(_vm.pageValue) + " ページ")
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "button button-danger auto",
-          attrs: {
-            disabled: this.pageValue == 9999 || _vm.statuses.length == 0
-          },
-          on: {
-            click: function($event) {
-              return _vm.paging(1)
-            }
-          }
-        },
-        [_vm._v("次のページ")]
-      )
-    ])
+    this.$parent.isError
+      ? _c("div", { staticClass: "load", attrs: { id: "error" } }, [
+          _c("p", [_vm._v("エラー吐きましたわ。(> <。)")])
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
@@ -45066,20 +45413,348 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-040fe0ad", module.exports)
+  }
+}
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(52);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(16)("5e442104", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1f6e5bf1\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./pagination.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1f6e5bf1\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./pagination.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(15)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\ndiv.pagination[data-v-1f6e5bf1] {\r\n  padding: 12px 0 12px 0;\r\n  text-align: center;\n}\ndiv.pagination a[data-v-1f6e5bf1] {\r\n  margin: 0 12px;\r\n  font-size: 14px;\n}\ndiv.pagination button.button[data-v-1f6e5bf1] {\r\n  font-size: 12px;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 53 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    paging: function paging(direction) {
+      this.$parent.pageValue += direction;
+      this.$emit('paging');
+    }
+  }
+});
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "pagination" }, [
+    _c(
+      "button",
+      {
+        staticClass: "button button-danger auto",
+        attrs: { disabled: this.$parent.pageValue == 1 },
+        on: {
+          click: function($event) {
+            return _vm.paging(-1)
+          }
+        }
+      },
+      [_vm._v("前のページ")]
+    ),
+    _vm._v(" "),
+    _c("a", [_vm._v(_vm._s(this.$parent.pageValue) + " ページ")]),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        staticClass: "button button-danger auto",
+        attrs: {
+          disabled:
+            this.$parent.pageValue == 9999 || this.$parent.statuses.length == 0
+        },
+        on: {
+          click: function($event) {
+            return _vm.paging(1)
+          }
+        }
+      },
+      [_vm._v("次のページ")]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1f6e5bf1", module.exports)
+  }
+}
+
+/***/ }),
+/* 55 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['id', 'state'],
+  data: function data() {
+    return {
+      stateValue: this.state
+    };
+  },
+
+  methods: {
+    updateStatus: function updateStatus() {
+      var _this = this;
+
+      if (this.$parent.isBusy) return;
+      this.$parent.isBusy = true;
+      axios.post("/api/update_status", {
+        song_id: this.id,
+        state: this.stateValue
+      }).then(function (res) {
+        _this.$emit('updated', res.data);
+        _this.$parent.isBusy = false;
+      }).catch(function (err) {
+        window.location.href = "/login";
+      });
+    }
+  }
+});
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "select",
+      {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.stateValue,
+            expression: "stateValue"
+          }
+        ],
+        staticClass: "status-select",
+        class: [this.id, { active: _vm.stateValue != 0 }],
+        attrs: { disabled: this.$parent.isBusy },
+        on: {
+          change: [
+            function($event) {
+              var $$selectedVal = Array.prototype.filter
+                .call($event.target.options, function(o) {
+                  return o.selected
+                })
+                .map(function(o) {
+                  var val = "_value" in o ? o._value : o.value
+                  return val
+                })
+              _vm.stateValue = $event.target.multiple
+                ? $$selectedVal
+                : $$selectedVal[0]
+            },
+            function($event) {
+              return _vm.updateStatus()
+            }
+          ]
+        }
+      },
+      [
+        _c("option", { attrs: { value: "0", selected: "" } }, [
+          _vm._v("記録なし")
+        ]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "1" } }, [_vm._v("気になる")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "2" } }, [_vm._v("練習中")]),
+        _vm._v(" "),
+        _c("option", { attrs: { value: "3" } }, [_vm._v("習得済み")])
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1c8b4c0e", module.exports)
+  }
+}
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "user-statuses" },
+    [
+      _c("loadProgress"),
+      _vm._v(" "),
+      this.isMounted
+        ? _c(
+            "div",
+            { staticClass: "statuses" },
+            _vm._l(_vm.statuses, function(status, index) {
+              return _c("div", { key: index, staticClass: "status" }, [
+                _c("table", { staticClass: "music-table" }, [
+                  _c("tr", [
+                    _c("td", { staticClass: "media-cell" }, [
+                      _c("div", { staticClass: "cover-image" }, [
+                        _c("img", {
+                          attrs: { src: status.song.image_url, alt: "" }
+                        }),
+                        _vm._v(" "),
+                        status.song.audio_url
+                          ? _c("div", { staticClass: "mediPlayer" }, [
+                              _c("audio", {
+                                staticClass: "listen",
+                                attrs: {
+                                  preload: "none",
+                                  "data-size": "40",
+                                  src: status.song.audio_url
+                                }
+                              })
+                            ])
+                          : _vm._e()
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-cell" }, [
+                      _c("p", { staticClass: "title" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "default-link",
+                            attrs: { href: "/songs/" + status.song.id }
+                          },
+                          [_vm._v(_vm._s(status.song.title))]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "artist" }, [
+                        _vm._v(_vm._s(status.song.artist))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      { staticClass: "action-cell" },
+                      [
+                        _c("updateSelect", {
+                          attrs: {
+                            id: status.song.id,
+                            state: status.user_state
+                          },
+                          on: { updated: _vm.updatedStatus }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              ])
+            }),
+            0
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _c("pagination", { on: { paging: _vm.statusesRequest } })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-daeceb4a", module.exports)
   }
 }
 
 /***/ }),
-/* 43 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(44)
+var __vue_script__ = __webpack_require__(59)
 /* template */
-var __vue_template__ = __webpack_require__(45)
+var __vue_template__ = __webpack_require__(60)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -45118,36 +45793,15 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 44 */
+/* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__load_progress_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__load_progress_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__load_progress_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__update_select_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__update_select_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__update_select_vue__);
 //
 //
 //
@@ -45186,7 +45840,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    loadProgress: __WEBPACK_IMPORTED_MODULE_0__load_progress_vue___default.a,
+    updateSelect: __WEBPACK_IMPORTED_MODULE_1__update_select_vue___default.a
+  },
   props: {
     user_id: {
       type: String
@@ -45197,7 +45858,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       statusJp: ['気になる曲', '練習中の曲', '習得済みの曲'],
       statuses: [],
       isMounted: false,
-      isBusy: false
+      isBusy: false,
+      isError: false
     };
   },
 
@@ -45206,91 +45868,71 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var now = new Date();
       var target = new Date(date.replace(/-/g, "/"));
       var timestamp = Math.round(now.getTime() / 1000 - target.getTime() / 1000);
-      if (timestamp < 60) {
-        return timestamp + " 秒前";
-      }
-      if (timestamp < 3600) {
-        return Math.round(timestamp / 60) + " 分前";
-      }
-      if (timestamp < 86400) {
-        return Math.round(timestamp / 3600) + " 時間前";
-      }
-      return Math.round(timestamp / 86400) + " 日前";
+      if (timestamp < 60) return timestamp + ' 秒前';
+      if (timestamp < 3600) return Math.round(timestamp / 60) + ' 分前';
+      if (timestamp < 86400) return Math.round(timestamp / 3600) + ' 時間前';
+      return Math.round(timestamp / 86400) + ' 日前';
     },
-    updateStatus: function updateStatus(index, song_id) {
+    statusesRequest: function statusesRequest() {
       var _this = this;
 
-      if (this.isBusy) return;
-      this.isBusy = true;
-      var state = this.statuses[index].user_state;
-      var selects = $("." + song_id);
-      for (var i = 0; i < selects.length; i++) {
-        if (selects[i].id == index) continue;
-        this.statuses[selects[i].id].user_state = state;
-      }
-      axios.post("/api/update_status", {
-        id: song_id,
-        state: state
-      }).then(function (res) {
-        var user = res.data.user;
-        if (_this.user_id == null || _this.user_id == user.id) {
-          updateUserStatuses(user);
-        }
-        _this.isBusy = false;
+      this.isMounted = false;
+      var timeline = this.user_id == null ? "public_timeline" : "user_timeline?id=" + this.user_id;
+      axios.get("/api/" + timeline).then(function (res) {
+        _this.statuses = res.data;
+        _this.isMounted = true;
+        setTimeout("initializePlayer()", 1000);
       }).catch(function (err) {
-        window.location.href = "/login";
+        _this.statuses = [];
+        _this.isError = true;
       });
+    },
+    updatedStatus: function updatedStatus(response) {
+      if (this.user_id == null) {
+        var selects = this.$refs[response.id];
+        for (var i = 0; i < selects.length; i++) {
+          selects[i].stateValue = response.new_state;
+        }
+      }
+
+      var user = response.user;
+      if (this.user_id == null || this.user_id == user.id) {
+        updateUserStatuses(user);
+      }
     }
   },
   mounted: function mounted() {
-    var _this2 = this;
-
-    var timeline = this.user_id == null ? "public_timeline" : "user_timeline?id=" + this.user_id;
-    axios.get("/api/" + timeline).then(function (res) {
-      _this2.statuses = res.data;
-      _this2.isMounted = true;
-      setTimeout("initializePlayer()", 1000);
-    }).catch(function (err) {});
+    this.$nextTick(function () {
+      this.statusesRequest();
+    });
   }
 });
 
 /***/ }),
-/* 45 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "section" }, [
-    _c("h1", { staticClass: "title" }, [
-      this.user_id == null
-        ? _c("span", [
-            _c("i", { staticClass: "fab fa-react" }),
-            _vm._v(" ローカルタイムライン")
-          ])
-        : _c("span", [
-            _c("i", { staticClass: "fab fa-react" }),
-            _vm._v(" ユーザータイムライン")
-          ])
-    ]),
-    _vm._v(" "),
-    !_vm.isMounted
-      ? _c("div", { staticClass: "loading" }, [_vm._m(0)])
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.isMounted
-      ? _c(
-          "div",
-          { staticClass: "statuses animated fadeIn" },
-          [
-            _vm._l(_vm.statuses, function(status, index) {
+  return _c(
+    "div",
+    { staticClass: "timeline" },
+    [
+      _c("loadProgress"),
+      _vm._v(" "),
+      this.isMounted
+        ? _c(
+            "div",
+            { staticClass: "statuses" },
+            _vm._l(_vm.statuses, function(status) {
               return _c("div", { key: status.id, staticClass: "status" }, [
                 _c("div", { staticClass: "status-header" }, [
                   _c("p", { staticClass: "avatar" }, [
                     _c(
                       "a",
-                      { attrs: { href: "@" + status.user.screen_name } },
+                      { attrs: { href: "/@" + status.user.screen_name } },
                       [
                         _c("img", {
                           attrs: { src: "/images/sample_avatar.png", alt: "" }
@@ -45311,7 +45953,7 @@ var render = function() {
                     _vm._v(
                       "さんが『" +
                         _vm._s(_vm.statusJp[status.state - 1]) +
-                        "』に登録しました\n        "
+                        "』に登録しました"
                     )
                   ])
                 ]),
@@ -45346,7 +45988,7 @@ var render = function() {
                             "a",
                             {
                               staticClass: "default-link",
-                              attrs: { href: "/song/" + status.song.id }
+                              attrs: { href: "/songs/" + status.song.id }
                             },
                             [_vm._v(_vm._s(status.song.title))]
                           )
@@ -45357,71 +45999,22 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("td", { staticClass: "action-cell" }, [
-                        _c(
-                          "select",
-                          {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: status.user_state,
-                                expression: "status.user_state"
-                              }
-                            ],
-                            staticClass: "status-select",
-                            class: [
-                              status.song.id,
-                              { active: status.user_state != 0 }
-                            ],
-                            attrs: { id: index, disabled: _vm.isBusy },
-                            on: {
-                              change: [
-                                function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.$set(
-                                    status,
-                                    "user_state",
-                                    $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  )
-                                },
-                                function($event) {
-                                  return _vm.updateStatus(index, status.song.id)
-                                }
-                              ]
-                            }
-                          },
-                          [
-                            _c(
-                              "option",
-                              { attrs: { value: "0", selected: "" } },
-                              [_vm._v("記録なし")]
-                            ),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "1" } }, [
-                              _vm._v("気になる")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "2" } }, [
-                              _vm._v("練習中")
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "3" } }, [
-                              _vm._v("習得済み")
-                            ])
-                          ]
-                        )
-                      ])
+                      _c(
+                        "td",
+                        { staticClass: "action-cell" },
+                        [
+                          _c("updateSelect", {
+                            ref: status.song.id,
+                            refInFor: true,
+                            attrs: {
+                              id: status.song.id,
+                              state: status.user_state
+                            },
+                            on: { updated: _vm.updatedStatus }
+                          })
+                        ],
+                        1
+                      )
                     ])
                   ])
                 ]),
@@ -45433,26 +46026,14 @@ var render = function() {
                 ])
               ])
             }),
-            _vm._v(" "),
-            _vm.statuses.length == 0
-              ? _c("div", { staticClass: "not-exist" }, [_c("p")])
-              : _vm._e()
-          ],
-          2
-        )
-      : _vm._e()
-  ])
+            0
+          )
+        : _vm._e()
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [
-      _c("img", { attrs: { src: "/images/loading.gif", alt: "読み込み中..." } })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -45463,15 +46044,263 @@ if (false) {
 }
 
 /***/ }),
-/* 46 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(47)
+var __vue_script__ = __webpack_require__(62)
 /* template */
-var __vue_template__ = __webpack_require__(48)
+var __vue_template__ = __webpack_require__(63)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/search-song.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4c9518d3", Component.options)
+  } else {
+    hotAPI.reload("data-v-4c9518d3", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 62 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__load_progress_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__load_progress_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__load_progress_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pagination_vue__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pagination_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__pagination_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__update_select_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__update_select_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__update_select_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    loadProgress: __WEBPACK_IMPORTED_MODULE_0__load_progress_vue___default.a,
+    pagination: __WEBPACK_IMPORTED_MODULE_1__pagination_vue___default.a,
+    updateSelect: __WEBPACK_IMPORTED_MODULE_2__update_select_vue___default.a
+  },
+  props: {
+    source: {
+      type: Number,
+      default: 0
+    },
+    q: {
+      type: String,
+      required: true
+    },
+    page: {
+      type: Number,
+      default: 1
+    }
+  },
+  data: function data() {
+    return {
+      pageValue: this.page,
+      statuses: [],
+      setPlayer: null,
+      isMounted: false,
+      isBusy: false,
+      isError: false
+    };
+  },
+
+  methods: {
+    statusesRequest: function statusesRequest() {
+      var _this = this;
+
+      this.isMounted = false;
+      if (this.setPlayer != null) clearTimeout(this.setPlayer);
+
+      axios.get("/api/search_song?source=" + this.source + "&q=" + this.q + "&page=" + this.pageValue).then(function (res) {
+        _this.statuses = res.data;
+        _this.isMounted = true;
+        _this.setPlayer = setTimeout("initializePlayer()", 1000);
+      }).catch(function (err) {
+        _this.statuses = [];
+        _this.isError = true;
+      });
+    },
+    updatedStatus: function updatedStatus(response) {
+      updateUserStatuses(response.user);
+    }
+  },
+  mounted: function mounted() {
+    this.$nextTick(function () {
+      this.statusesRequest();
+    });
+  }
+});
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "search-result" },
+    [
+      _c("loadProgress"),
+      _vm._v(" "),
+      this.isMounted
+        ? _c(
+            "div",
+            { staticClass: "statuses" },
+            _vm._l(_vm.statuses, function(status, index) {
+              return _c("div", { key: index, staticClass: "status" }, [
+                _c("table", { staticClass: "music-table" }, [
+                  _c("tr", [
+                    _c("td", { staticClass: "media-cell" }, [
+                      _c("div", { staticClass: "cover-image" }, [
+                        _c("img", {
+                          attrs: { src: status.song.image_url, alt: "" }
+                        }),
+                        _vm._v(" "),
+                        status.song.audio_url
+                          ? _c("div", { staticClass: "mediPlayer" }, [
+                              _c("audio", {
+                                staticClass: "listen",
+                                attrs: {
+                                  preload: "none",
+                                  "data-size": "40",
+                                  src: status.song.audio_url
+                                }
+                              })
+                            ])
+                          : _vm._e()
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "text-cell" }, [
+                      _c("p", { staticClass: "title" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "default-link",
+                            attrs: { href: "/songs/" + status.song.id }
+                          },
+                          [_vm._v(_vm._s(status.song.title))]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "artist" }, [
+                        _vm._v(_vm._s(status.song.artist))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "td",
+                      { staticClass: "action-cell" },
+                      [
+                        _c("updateSelect", {
+                          attrs: {
+                            id: status.song.id,
+                            state: status.user_state
+                          },
+                          on: { updated: _vm.updatedStatus }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              ])
+            }),
+            0
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _c("pagination", { on: { paging: _vm.statusesRequest } })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4c9518d3", module.exports)
+  }
+}
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(65)
+/* template */
+var __vue_template__ = __webpack_require__(66)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -45510,27 +46339,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 47 */
+/* 65 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__update_select_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__update_select_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__update_select_vue__);
 //
 //
 //
@@ -45561,9 +46376,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    updateSelect: __WEBPACK_IMPORTED_MODULE_0__update_select_vue___default.a
+  },
   props: {
-    song: {
+    status: {
       type: Object,
       required: true
     }
@@ -45575,128 +46395,67 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
-    updateStatus: function updateStatus(song_id) {
-      var _this = this;
-
-      if (this.isBusy) return;
-      this.isBusy = true;
-      axios.post("/api/update_status", {
-        id: song_id,
-        state: this.song.user_state
-      }).then(function (res) {
-        updateUserStatuses(res.data.user);
-        _this.isBusy = false;
-      }).catch(function (err) {
-        window.location.href = "/login";
-      });
+    updatedStatus: function updatedStatus(response) {
+      updateUserStatuses(response.user);
     }
   },
   mounted: function mounted() {
-    setTimeout("initializePlayer()", 1000);
+    setTimeout("initializePlayer()", 100);
   }
 });
 
 /***/ }),
-/* 48 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "section" }, [
-    _c("h1", { staticClass: "title" }, [
-      _c("i", { staticClass: "fas fa-music" }),
-      _vm._v(
-        " " + _vm._s(_vm.song.artist) + " / " + _vm._s(_vm.song.title) + "\n  "
-      )
+  return _c("div", { staticClass: "song-infomation" }, [
+    _c("div", { staticClass: "cover-image-big" }, [
+      _c("img", { attrs: { src: _vm.status.song.image_url, alt: "" } }),
+      _vm._v(" "),
+      _vm.status.song.audio_url
+        ? _c("div", { staticClass: "mediPlayer" }, [
+            _c("audio", {
+              staticClass: "listen",
+              attrs: {
+                preload: "none",
+                "data-size": "120",
+                src: _vm.status.song.audio_url
+              }
+            })
+          ])
+        : _vm._e()
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "song-infomation" }, [
-      _c("div", { staticClass: "cover-image-big" }, [
-        _c("img", { attrs: { src: _vm.song.image_url, alt: "" } }),
-        _vm._v(" "),
-        _vm.song.audio_url
-          ? _c("div", { staticClass: "mediPlayer" }, [
-              _c("audio", {
-                staticClass: "listen",
-                attrs: {
-                  preload: "none",
-                  "data-size": "120",
-                  src: _vm.song.audio_url
-                }
-              })
-            ])
-          : _vm._e()
-      ]),
+    _c(
+      "div",
+      { staticStyle: { "text-align": "center" } },
+      [
+        _c("updateSelect", {
+          attrs: { id: _vm.status.song.id, state: _vm.status.user_state },
+          on: { updated: _vm.updatedStatus }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("table", { staticClass: "infomation-table" }, [
+      _vm._m(0),
       _vm._v(" "),
-      _c("div", { staticStyle: { "text-align": "center" } }, [
-        _c(
-          "select",
-          {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.song.user_state,
-                expression: "song.user_state"
-              }
-            ],
-            staticClass: "status-select",
-            class: [_vm.song.id, { active: _vm.song.user_state != 0 }],
-            attrs: { disabled: _vm.isBusy },
-            on: {
-              change: [
-                function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.$set(
-                    _vm.song,
-                    "user_state",
-                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                  )
-                },
-                function($event) {
-                  return _vm.updateStatus(_vm.song.id)
-                }
-              ]
-            }
-          },
-          [
-            _c("option", { attrs: { value: "0", selected: "" } }, [
-              _vm._v("記録なし")
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "1" } }, [_vm._v("気になる")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "2" } }, [_vm._v("練習中")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "3" } }, [_vm._v("習得済み")])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("table", { staticClass: "infomation-table" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("tbody", [
-          _c("tr", [
-            _c("td", [_vm._v("タイトル")]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(_vm.song.title))])
-          ]),
+      _c("tbody", [
+        _c("tr", [
+          _c("td", [_vm._v("タイトル")]),
           _vm._v(" "),
-          _c("tr", [
-            _c("td", [_vm._v("アーティスト")]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(_vm.song.artist))])
-          ])
+          _c("td", [_vm._v(_vm._s(_vm.status.song.title))])
+        ]),
+        _vm._v(" "),
+        _c("tr", [
+          _c("td", [_vm._v("アーティスト")]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(_vm.status.song.artist))])
         ])
       ])
     ])
@@ -45722,7 +46481,7 @@ if (false) {
 }
 
 /***/ }),
-/* 49 */
+/* 67 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
