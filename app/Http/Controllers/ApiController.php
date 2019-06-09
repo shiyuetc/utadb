@@ -52,6 +52,11 @@ class ApiController extends Controller
 
     public function userStatuses(Request $request)
     {
+        $this->QueryValidate($request, [
+            'id' => ApiRequestRules::getUserIdRule(),
+            'state' => ApiRequestRules::getStateRule(),
+            'page' => ApiRequestRules::getPageRule(),
+        ]);
         $statuses = Status::userStatuses($request->id, $request->state, $request->page);
         return response()->json($statuses);
     }
