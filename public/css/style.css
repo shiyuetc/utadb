@@ -815,8 +815,48 @@ div.status p.date {
   font-size: 12px;
 }
 
+table.object-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table.object-table th {
+  padding: 8px 0;
+  background: #eee;
+  font-weight: normal;
+	font-size: 12px;
+}
+table.object-table tbody tr {
+	transition: background-color 0.1s;
+	-moz-transition: background-color 0.1s;
+	-webkit-transition: background-color 0.1s;
+	-o-transition: background-color 0.1s;
+	-ms-transition: background-color 0.1s;
+}
+table.object-table tbody tr:hover {
+  background: #fafafa;
+}
+table.object-table td {
+  padding: 4px 8px;
+	font-size: 14px;
+	border-bottom: 1px solid #eaeaea;
+}
+table.table-padding td {
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+table.table-padding td:first-child {
+  padding-left: 12px !important;
+}
+table.table-padding td:last-child {
+  padding-right: 12px !important;
+}
+
 table.music-table {
   width: 100%;
+}
+table.music-table th.title-column {
+  padding: 0 8px;
+	text-align: left;
 }
 table.music-table td.media-cell {
 	width: 48px;
