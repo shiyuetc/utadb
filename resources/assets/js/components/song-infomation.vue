@@ -26,7 +26,6 @@
     </table>
   </div>
 </template>
-
 <script>
 import updateSelect from './update-select.vue';
 
@@ -55,3 +54,31 @@ export default {
   }
 };
 </script>
+<style scoped>
+div.song-infomation {
+  margin: 18px 12px;
+}
+table.infomation-table {
+  width: 100%;
+  margin-top: 12px;
+  border-collapse: collapse;
+}
+table.infomation-table th {
+  padding: 6px 0;
+  border: 1px solid #ccc;
+  background: #eee;
+  font-weight: normal;
+	font-size: 12px;
+	text-align: center;
+}
+table.infomation-table td {
+  padding: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+table.infomation-table td:nth-child(2n+1) {
+  width: 120px;
+  background: #eee;
+	text-align: right;
+}
+</style>
