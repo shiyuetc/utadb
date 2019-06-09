@@ -31,6 +31,10 @@ class ApiController extends Controller
 
     public function updateStatus(Request $request)
     {
+        $this->QueryValidate($request, [
+            'song_id' => ApiRequestRules::getSongIdRule(),
+            'state' => ApiRequestRules::getStateRule(),
+        ]);
         $status = Status::updateStatus($request->song_id, $request->state);
         return response()->json($status);
     }
