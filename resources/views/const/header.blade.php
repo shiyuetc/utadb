@@ -46,6 +46,9 @@
             <li class="dialog-item success-dialog-item">
               <a href="{{ route('user', ['id' => Auth::user()->screen_name]) }}"><i class="fa fa-user"></i>&nbsp;マイページ</a>
             </li>
+            <li class="dialog-item success-dialog-item">
+              <a href="{{ route('search.user') }}"><i class="fa fa-users"></i>&nbsp;ユーザーを探す</a>
+            </li>
           </ul>
           <ul class="dialog-group">
             <li class="dialog-item danger-dialog-item">
