@@ -54,7 +54,8 @@ export default {
       statusJp: ['気になる曲', '練習中の曲', '習得済みの曲'],
       statuses: [],
       isMounted: false,
-      isBusy: false
+      isBusy: false,
+      isError: false
     };
   },
   methods: {
@@ -74,7 +75,10 @@ export default {
         this.statuses = res.data;
         this.isMounted = true;
         setTimeout("initializePlayer()", 1000);
-      }).catch(err => {});
+      }).catch(err => {
+        this.statuses = [];
+        this.isError = true;
+      });
     },
     updatedStatus: function(response) {
       if(this.user_id == null) {

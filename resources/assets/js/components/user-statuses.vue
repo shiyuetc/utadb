@@ -57,7 +57,8 @@ export default {
       statuses: [],
       setPlayer: null,
       isMounted: false,
-      isBusy: false
+      isBusy: false,
+      isError: false
     };
   },
   methods: {
@@ -68,7 +69,10 @@ export default {
         this.statuses = res.data;
         this.isMounted = true;
         this.setPlayer = setTimeout("initializePlayer()", 1000);
-      }).catch(err => {});
+      }).catch(err => {
+        this.statuses = [];
+        this.isError = true;
+      });
     },
     updatedStatus: function(response) {
       var user = response.user;

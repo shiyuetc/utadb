@@ -58,18 +58,23 @@ export default {
       statuses: [],
       setPlayer: null,
       isMounted: false,
-      isBusy: false
+      isBusy: false,
+      isError: false
     };
   },
   methods: {
     statusesRequest: function() {
       this.isMounted = false;
       if(this.setPlayer != null) clearTimeout(this.setPlayer);
+
       axios.get("/api/search_song?source=" + this.source + "&q=" + this.q + "&page=" + this.pageValue).then(res => {
         this.statuses = res.data;
         this.isMounted = true;
         this.setPlayer = setTimeout("initializePlayer()", 1000);
-      }).catch(err => {});
+      }).catch(err => {
+        this.statuses = [];
+        this.isError = true;
+      });
     },
     updatedStatus: function(response) {
       updateUserStatuses(response.user);
