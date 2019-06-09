@@ -41,6 +41,11 @@ class ApiController extends Controller
 
     public function searchSong(Request $request)
     {
+        $this->QueryValidate($request, [
+            'source' => ApiRequestRules::getSourceRule(),
+            'q' => ApiRequestRules::getQRule(),
+            'page' => ApiRequestRules::getPageRule(),
+        ]);
         $statuses = Status::searchSong($request->source, $request->q, $request->page);
         return response()->json($statuses);
     }
