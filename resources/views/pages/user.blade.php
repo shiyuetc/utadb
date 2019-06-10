@@ -3,8 +3,8 @@
 
 @section('sidebar')
 @include('widgets.user-infomation', ['user' => $user])
-
 @endsection
+
 @section('content')
 <div class="section">
   <h1 class="title"><i class="fab fa-react"></i>&nbsp;ユーザータイムライン</h1>
