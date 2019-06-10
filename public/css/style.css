@@ -37,7 +37,7 @@ div.main:after {
 }
 div.main-inner {
   max-width: 1000px;
-  margin: 14px auto 0 auto;
+  margin: 10px auto 0 auto;
 }
 .margin, .margin-const {
   margin-left: 10px;
@@ -361,7 +361,7 @@ div.copyright {
 /* #region alert */
 div.alert {
   position: relative;
-  margin: 12px 0;
+  margin: 10px 0;
   padding: 8px 36px 8px 12px;
   overflow-wrap: break-word;
   border-radius: 2px;
@@ -730,12 +730,12 @@ div.user-profile {
 }
 div.user-profile div.avatar-box {
   width: 20vw;
-  min-width: 100px;
-  max-width: 120px;
+  min-width: 90px;
+  max-width: 112px;
   height: auto;
-  margin: 12px auto 14px auto;
+  margin: 12px auto;
   overflow: hidden;
-  border: 6px solid #cccccc;
+  border: 4px solid #ccc;
   border-radius: 100%;
 }
 div.user-profile div.avatar-box img#avatar {
@@ -757,14 +757,15 @@ div.user-profile p {
   font-size: 14px;
 }
 div.user-profile p.name {
+  margin-top: 0;
   margin-bottom: 8px;
 }
 div.user-profile p.description {
   margin-top: 8px;
 }
 div.user-profile p.created {
-  margin-top: 32px;
-  margin-bottom: 12px;
+  margin-top: 18px;
+  margin-bottom: 10px;
   color: #777;
   font-size: 12px;
 }
