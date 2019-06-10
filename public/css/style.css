@@ -487,7 +487,7 @@ div.user-profile div.avatar-box {
   overflow: hidden;
   border-radius: 100%;
 }
-div.user-profile div.avatar-box img#avatar {
+div.user-profile div.avatar-box img.avatar {
   display: block;
   width: 100%;
   height: 100%;
@@ -498,7 +498,7 @@ div.user-profile div.avatar-box img#avatar {
 	-o-transition: background-color 0.3s, transform 0.3s;
 	-ms-transition: background-color 0.3s, transform 0.3s;
 }
-div.user-profile div.avatar-box img#avatar:hover {
+div.user-profile div.avatar-box img.avatar:hover {
 	background-color: #f3f3f3;
   transform: scale(1.1) rotate(6deg);
 }
@@ -629,7 +629,6 @@ table.music-table td.action-cell {
 }
 
 /* #endregion */
-
 
 ul.setting-list span.right-icon {
   margin-right: 6px;
