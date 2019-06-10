@@ -14,6 +14,7 @@
 <title>@if(View::hasSection('title'))@yield('title') - @endif{{ config('app.name', 'Utadb') }}</title>
 <link rel="icon" type="image/png" href="{{ asset('favicon.ico') }}">
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('css/template.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/progres-bar.css') }}">
 <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
