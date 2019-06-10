@@ -453,8 +453,8 @@ input.text {
 	-webkit-transition: background-color 0.2s;
 	-o-transition: background-color 0.2s;
   -ms-transition: background-color 0.2s;
-  
   cursor: text;
+  vertical-align: middle;
 }
 input.text:focus {
   background: #e6e6e6;
