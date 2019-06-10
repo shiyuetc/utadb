@@ -42,6 +42,6 @@ class UserController extends Controller
         $q = isset($request->q) ? trim($request->q) : '';
         $page = (isset($request->page) && $request->page >= 1 && $request->page <= 9999) ? $request->page : 1;
 
-        return view('pages.search-user', ['q' => $q, 'page' => $page]);
+        return view('pages.search.user', ['q' => $q, 'page' => $page]);
     }
 }
