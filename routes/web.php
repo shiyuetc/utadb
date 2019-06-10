@@ -24,7 +24,7 @@ Route::get('search/song', 'SongController@search')->name('search.song');
 Route::get('songs/{id}', 'SongController@index')->name('song')
   ->where('id', '\d{5,18}');
 
-Route::get('setting', 'SettingController@index')->name('setting.account');
+Route::get('settings/profile', 'SettingController@showProfileSettingForm')->name('settings.profile');
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');

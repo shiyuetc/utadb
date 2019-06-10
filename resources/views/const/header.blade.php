@@ -52,7 +52,7 @@
           </ul>
           <ul class="dialog-group">
             <li class="dialog-item inverse-dialog-item">
-              <a href="{{ route('setting.account') }}"><i class="fas fa-cog"></i>&nbsp;アカウント設定</a>
+              <a href="{{ route('settings.profile') }}"><i class="fas fa-cog"></i>&nbsp;アカウント設定</a>
             </li>
           </ul>
           <ul class="dialog-group">
