@@ -21,8 +21,10 @@ Route::prefix('@{id}')->group(function() {
 Route::get('search/user', 'UserController@search')->name('search.user');
 
 Route::get('search/song', 'SongController@search')->name('search.song');
-Route::get('/songs/{id}', 'SongController@index')->name('song')
+Route::get('songs/{id}', 'SongController@index')->name('song')
   ->where('id', '\d{5,18}');
+
+Route::get('setting', 'SettingController@index')->name('setting.account');
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
