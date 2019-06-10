@@ -51,6 +51,11 @@
             </li>
           </ul>
           <ul class="dialog-group">
+            <li class="dialog-item inverse-dialog-item">
+              <a href="{{ route('setting.account') }}"><i class="fas fa-cog"></i>&nbsp;アカウント設定</a>
+            </li>
+          </ul>
+          <ul class="dialog-group">
             <li class="dialog-item danger-dialog-item">
               <a href="{{ route('logout') }}"
                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
