@@ -729,8 +729,10 @@ div.user-profile {
   text-align: center;
 }
 div.user-profile div.avatar-box {
-  width: 120px;
-  height: 120px;
+  width: 20vw;
+  min-width: 100px;
+  max-width: 120px;
+  height: auto;
   margin: 12px auto 14px auto;
   overflow: hidden;
   border: 6px solid #cccccc;
