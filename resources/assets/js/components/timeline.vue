@@ -4,7 +4,7 @@
     <div v-if="this.isMounted" class="statuses">
       <div class="status" v-for="status in statuses" :key="status.id">
         <div class="status-header">
-          <p class="avatar"><a v-bind:href="'/@' + status.user.screen_name"><img src="/images/sample_avatar.png" alt=""></a></p>
+          <p class="avatar"><a v-bind:href="'/@' + status.user.screen_name"><img v-bind:src="status.user.profile_image_url + '_small.png'" alt=""></a></p>
           <p class="text"><a class="default-link" v-bind:href="'/@' + status.user.screen_name">{{ status.user.name }}</a>さんが『{{ statusJp[status.state - 1] }}』に登録しました</p>
         </div>
         <div class="status-body">

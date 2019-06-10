@@ -35,7 +35,7 @@
             </form>
           </li>
           <li class="nav-button">
-            <button id="avatar-button"><img src="{{ asset('images/sample_avatar.png') }}" alt="avatar"></button>
+            <button id="avatar-button"><img src="{{ Auth::user()->profile_image_url }}_small.png" alt="avatar"></button>
           </li>
           @endguest
         </ul>
