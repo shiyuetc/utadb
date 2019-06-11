@@ -52,8 +52,8 @@
     </div>
     <div class="form-group">
       <button type="submit" class="button button-danger">新規会員登録</button>
+      <p class="supplement-text">アカウントをお持ちの方は <a href="{{ route('login') }}">ログイン</a></p>
     </div>
-    <p class="supplement-text">アカウントをお持ちの方は <a href="{{ route('login') }}">ログイン</a></p>
   </form>
 </div>
 @endsection
