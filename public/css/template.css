@@ -96,6 +96,10 @@ ul.list li span.right-icon:after {
 /* #endregion */
 
 /* #region UI.Form */
+form.form {
+  margin: 10px;
+}
+
 div.form-compact {
   max-width: 500px;
   padding: 2px 20px;
@@ -104,10 +108,6 @@ div.form-compact {
 div.form-group {
   margin: 10px 0;
 }
-form.search {
-  margin: 8px 10px;
-}
-
 h2.form-title {
   margin: 0;
   padding: 8px 0;

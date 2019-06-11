@@ -8,7 +8,7 @@
 @section('content')
 <div class="section">
   <h1 class="title"><i class="fas fa-users"></i>&nbsp;ユーザーの検索</h1>
-  <form class="search" method="GET" action="{{ route('search.user') }}">
+  <form class="form" method="GET" action="{{ route('search.user') }}">
     <table class="form-table">
       <tr>
         <td width="100%">

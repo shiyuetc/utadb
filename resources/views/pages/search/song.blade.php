@@ -8,7 +8,7 @@
 @section('content')
 <div class="section">
   <h1 class="title"><i class="fas fa-music"></i>&nbsp;曲の検索</h1>
-  <form class="search" method="GET" action="{{ route('search.song') }}">
+  <form class="form" method="GET" action="{{ route('search.song') }}">
     <table class="form-table">
       <tr>
         <td>
