@@ -22,7 +22,7 @@ div#app {
   margin-bottom: -96px;
 }
 div.header-push {
-  height: 58px;
+  height: 56px;
 }
 div.footer-push {
   height: 96px;
@@ -286,13 +286,26 @@ div.copyright {
     display: none;
   }
 
-  .margin {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+  div.main-inner {
+    margin-top: 0 !important;
   }
-  .margin .section, .margin .alert { 
+  .margin {
+    margin: 0 !important;
+  }
+  .margin .section {
+    margin-bottom: 0 !important;
+    box-shadow: none;
+    border-bottom: 1px solid #eaeaea;
     border-radius: 0 !important;
   }
+  .alert { 
+    margin: 0 !important;
+  }
+  nav.navbar {
+    box-shadow: none;
+    border-bottom: 1px solid #eaeaea;
+  }
+  
 }
 /* 680px以下 */
 @media (max-width: 680px) {

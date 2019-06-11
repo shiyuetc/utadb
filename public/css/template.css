@@ -98,7 +98,7 @@ ul.list li span.right-icon:after {
 /* #region UI.Form */
 div.form-compact {
   max-width: 500px;
-  padding: 16px 20px;
+  padding: 12px 20px;
   box-sizing: border-box;
 }
 div.form-group {
@@ -110,7 +110,7 @@ form.search {
 
 h2.form-title {
   margin: 0 0 6px 0;
-  padding-bottom: 12px;
+  padding: 0 0 8px 0;
   border-bottom: 1px dashed #ccc;
   font-size: 14px;
   font-weight: normal;
