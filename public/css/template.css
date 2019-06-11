@@ -248,7 +248,7 @@ div.checkbox span {
 }
 /* #endregion */
 /* #region UI.Select */
-select.search-select {
+select.select {
   height: 36px;
   padding: 6px;
   border: 1px solid #ccc;
@@ -262,7 +262,7 @@ select.search-select {
 	-o-transition: border-color 0.2s;
   -ms-transition: border-color 0.2s;
 }
-select.search-select:focus {
+select.select:focus {
   border-color: #aaa;
 }
 

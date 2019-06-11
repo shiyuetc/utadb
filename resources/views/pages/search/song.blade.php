@@ -12,7 +12,7 @@
     <table class="form-table">
       <tr>
         <td>
-          <select class="search-select" name="source">
+          <select class="select" name="source">
             <option value="0">iTunesから検索</option>
             <option value="1" {{ Request::input('source') == 1 ? ' selected' : '' }}>DAMから検索</option>
           </select>
