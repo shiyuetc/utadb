@@ -9,6 +9,9 @@
 export default {
   methods: {
     paging: function(direction) {
+      $('body,html').animate({
+        scrollTop: 0
+      }, 0);
       this.$parent.pageValue += direction;
       this.$emit('paging');
     }
