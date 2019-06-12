@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Validator;
 use App\Http\Requests\ApiRequestRules;
+use App\Models\Avatar;
 use App\Models\Status;
 use App\Models\Song;
 use App\Models\User;
@@ -39,6 +40,15 @@ class ApiController extends Controller
         ]);
         $status = Status::updateStatus($request->song_id, $request->state);
         return response()->json($status);
+    }
+
+    public function searchAvatar(Request $request)
+    {
+        $this->QueryValidate($request, [
+            'category' => ApiRequestRules::getCategoryRule(),
+        ]);
+        $avatars = Avatar::search($request->category);
+        return response()->json($avatars);
     }
 
     public function searchUser(Request $request)
