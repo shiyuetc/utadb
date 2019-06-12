@@ -1,0 +1,123 @@
+<?php
+
+use Illuminate\Database\Seeder;
+
+class AvatarsTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        DB::table('avatars')->insert([
+            [ 'id' => 'monster_a', 'name' => 'モンスターA', 'category' => 'monster' ],
+            [ 'id' => 'monster_b', 'name' => 'モンスターB', 'category' => 'monster' ],
+            [ 'id' => 'monster_c', 'name' => 'モンスターC', 'category' => 'monster' ],
+            [ 'id' => 'monster_d', 'name' => 'モンスターD', 'category' => 'monster' ],
+            [ 'id' => 'monster_e', 'name' => 'モンスターE', 'category' => 'monster' ],
+            [ 'id' => 'monster_f', 'name' => 'モンスターF', 'category' => 'monster' ],
+            [ 'id' => 'monster_g', 'name' => 'モンスターG', 'category' => 'monster' ],
+            [ 'id' => 'monster_h', 'name' => 'モンスターH', 'category' => 'monster' ],
+            [ 'id' => 'monster_j', 'name' => 'モンスターI', 'category' => 'monster' ],
+            [ 'id' => 'monster_j', 'name' => 'モンスターJ', 'category' => 'monster' ],
+            [ 'id' => 'monster_k', 'name' => 'モンスターK', 'category' => 'monster' ],
+            [ 'id' => 'monster_l', 'name' => 'モンスターL', 'category' => 'monster' ],
+
+            [ 'id' => 'ayu_shioyaki', 'name' => '鮎の塩焼き', 'category' => 'food_jp' ],
+            [ 'id' => 'datemaki', 'name' => '伊達巻', 'category' => 'food_jp' ],
+            [ 'id' => 'hokke', 'name' => 'ホッケ', 'category' => 'food_jp' ],
+            [ 'id' => 'kabocha_nimono', 'name' => '南瓜の煮付け', 'category' => 'food_jp' ],
+            [ 'id' => 'mentaiko', 'name' => '明太子', 'category' => 'food_jp' ],
+            [ 'id' => 'misoshiru', 'name' => '味噌汁', 'category' => 'food_jp' ],
+            [ 'id' => 'nikujaga', 'name' => '肉じゃが', 'category' => 'food_jp' ],
+            [ 'id' => 'rice', 'name' => '白米', 'category' => 'food_jp' ],
+            [ 'id' => 'saba_misoni', 'name' => '鯖の味噌煮', 'category' => 'food_jp' ],
+            [ 'id' => 'sushi', 'name' => '寿司', 'category' => 'food_jp' ],
+            [ 'id' => 'tenpura', 'name' => '天ぷら', 'category' => 'food_jp' ],
+            [ 'id' => 'tofu', 'name' => '豆腐', 'category' => 'food_jp' ],
+            [ 'id' => 'tsukemono', 'name' => '胡瓜の漬け物', 'category' => 'food_jp' ],
+            [ 'id' => 'udon', 'name' => 'ざるうどん', 'category' => 'food_jp' ],
+            [ 'id' => 'yakitori', 'name' => '焼き鳥', 'category' => 'food_jp' ],
+            
+            [ 'id' => 'beefstake', 'name' => 'ステーキ', 'category' => 'food_we' ],
+            [ 'id' => 'chicken_sotee', 'name' => 'チキンソテー', 'category' => 'food_we' ],
+            [ 'id' => 'clam_chowder', 'name' => 'クラムチャウダー', 'category' => 'food_we' ],
+            [ 'id' => 'corn_soup', 'name' => 'コーンスープ', 'category' => 'food_we' ],
+            [ 'id' => 'ebifry', 'name' => 'エビフライ', 'category' => 'food_we' ],
+            [ 'id' => 'francepan', 'name' => 'フランスパン', 'category' => 'food_we' ],
+            [ 'id' => 'guratan', 'name' => 'グラタン', 'category' => 'food_we' ],
+            [ 'id' => 'gyuukatsu', 'name' => '牛カツ', 'category' => 'food_we' ],
+            [ 'id' => 'hamburger', 'name' => 'ハンバーガー', 'category' => 'food_we' ],
+            [ 'id' => 'kani_cream_korokke', 'name' => 'カニクリームコロッケ', 'category' => 'food_we' ],
+            [ 'id' => 'omelet', 'name' => 'オムレツ', 'category' => 'food_we' ],
+            [ 'id' => 'pizza', 'name' => 'ピザ', 'category' => 'food_we' ],
+            [ 'id' => 'roast_beef', 'name' => 'ローストビーフ', 'category' => 'food_we' ],
+            [ 'id' => 'tonkatsu', 'name' => '豚カツ', 'category' => 'food_we' ],
+            
+            [ 'id' => 'ankake_yakisoba', 'name' => 'あんかけ焼きそば', 'category' => 'food_cn' ],
+            [ 'id' => 'chahan', 'name' => '炒飯', 'category' => 'food_cn' ],
+            [ 'id' => 'chukadon', 'name' => '中華丼', 'category' => 'food_cn' ],
+            [ 'id' => 'chukaman', 'name' => '中華まん', 'category' => 'food_cn' ],
+            [ 'id' => 'ebichiri', 'name' => 'エビチリ', 'category' => 'food_cn' ],
+            [ 'id' => 'fukahire', 'name' => 'フカヒレ', 'category' => 'food_cn' ],
+            [ 'id' => 'gyouza', 'name' => '餃子', 'category' => 'food_cn' ],
+            [ 'id' => 'harumaki', 'name' => '春巻き', 'category' => 'food_cn' ],
+            [ 'id' => 'karaage', 'name' => '唐揚げ', 'category' => 'food_cn' ],
+            [ 'id' => 'mabo', 'name' => '麻婆豆腐', 'category' => 'food_cn' ],
+            [ 'id' => 'ramen', 'name' => 'ラーメン', 'category' => 'food_cn' ],
+            [ 'id' => 'rebanira', 'name' => 'レバニラ炒め', 'category' => 'food_cn' ],
+            [ 'id' => 'syumai', 'name' => '焼売', 'category' => 'food_cn' ],
+            [ 'id' => 'wantan_soup', 'name' => 'ワンタンスープ', 'category' => 'food_cn' ],
+
+            [ 'id' => 'basashi', 'name' => '馬刺し', 'category' => 'food_other' ],
+            [ 'id' => 'curry', 'name' => 'カレー', 'category' => 'food_other' ],
+            [ 'id' => 'curry_blue', 'name' => 'ブルーカレー', 'category' => 'food_other' ],
+            [ 'id' => 'hijouyou', 'name' => '非常用食糧', 'category' => 'food_other' ],
+            [ 'id' => 'hotaruika', 'name' => 'ホタルイカ', 'category' => 'food_other' ],
+            [ 'id' => 'ika_ikidukuri', 'name' => 'イカの活け造り', 'category' => 'food_other' ],
+            [ 'id' => 'maruyaki', 'name' => '豚の丸焼き', 'category' => 'food_other' ],
+            [ 'id' => 'niku_pack', 'name' => '肉パック', 'category' => 'food_other' ],
+            [ 'id' => 'niku_pack_waribiki', 'name' => '肉パック(割引)', 'category' => 'food_other' ],
+            [ 'id' => 'pafe', 'name' => 'パフェ', 'category' => 'food_other' ],
+            [ 'id' => 'purin', 'name' => 'プリン', 'category' => 'food_other' ],
+            [ 'id' => 'syokupan', 'name' => '食パン', 'category' => 'food_other' ],
+            [ 'id' => 'yakiimo', 'name' => '焼き芋', 'category' => 'food_other' ],
+
+            [ 'id' => 'bee', 'name' => '蜂', 'category' => 'insect' ],
+            [ 'id' => 'butterfly_a', 'name' => '蝶A', 'category' => 'insect' ],
+            [ 'id' => 'butterfly_b', 'name' => '蝶B', 'category' => 'insect' ],
+            [ 'id' => 'butterfly_c', 'name' => '蝶C', 'category' => 'insect' ],
+            [ 'id' => 'ladybug', 'name' => 'テントウムシ', 'category' => 'insect' ],
+            [ 'id' => 'larva', 'name' => '幼虫', 'category' => 'insect' ],
+            [ 'id' => 'locust', 'name' => 'バッタ', 'category' => 'insect' ],
+            [ 'id' => 'mantis', 'name' => 'カマキリ', 'category' => 'insect' ],
+            [ 'id' => 'ougon_oni_kuwagata', 'name' => 'オウゴンオニクワガタ', 'category' => 'insect' ],
+            [ 'id' => 'pill_bug', 'name' => 'ダンゴムシ', 'category' => 'insect' ],
+            [ 'id' => 'pill_bug_bulue', 'name' => '青いダンゴムシ', 'category' => 'insect' ],
+            [ 'id' => 'planaria', 'name' => 'プラナリア', 'category' => 'insect' ],
+            [ 'id' => 'semi_nukegara', 'name' => '蝉の抜け殻', 'category' => 'insect' ],
+            [ 'id' => 'spider', 'name' => '蜘蛛', 'category' => 'insect' ],
+            [ 'id' => 'splendens', 'name' => 'コガネムシ', 'category' => 'insect' ],
+            [ 'id' => 'worms', 'name' => 'ゴカイ', 'category' => 'insect' ],
+
+            [ 'id' => 'aloe', 'name' => 'アロエ', 'category' => 'plant' ],
+            [ 'id' => 'amaryllis', 'name' => 'アマリリス', 'category' => 'plant' ],
+            [ 'id' => 'cactus', 'name' => 'サボテン', 'category' => 'plant' ],
+            [ 'id' => 'cannabis', 'name' => '大麻', 'category' => 'plant' ],
+            [ 'id' => 'clover', 'name' => '四つ葉', 'category' => 'plant' ],
+            [ 'id' => 'ichou', 'name' => 'イチョウ', 'category' => 'plant' ],
+            [ 'id' => 'kikyou', 'name' => 'キキョウ', 'category' => 'plant' ],
+            [ 'id' => 'kokedama', 'name' => '苔玉', 'category' => 'plant' ],
+            [ 'id' => 'marimo', 'name' => 'マリモ', 'category' => 'plant' ],
+            [ 'id' => 'maruta', 'name' => '丸太', 'category' => 'plant' ],
+            [ 'id' => 'momiji', 'name' => '紅葉', 'category' => 'plant' ],
+            [ 'id' => 'momo', 'name' => '桃', 'category' => 'plant' ],
+            [ 'id' => 'mushroom', 'name' => 'キノコ', 'category' => 'plant' ],
+            [ 'id' => 'succulent', 'name' => '多肉', 'category' => 'plant' ],
+            [ 'id' => 'watage', 'name' => '綿毛', 'category' => 'plant' ],
+            [ 'id' => 'wheat', 'name' => '麦', 'category' => 'plant' ],
+        ]);
+    }
+}
