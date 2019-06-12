@@ -2,7 +2,7 @@
   <div>
     <select class="status-select" v-bind:class="[this.id , { 'active' : stateValue != 0 }]"
       v-model="stateValue"
-      v-on:change="updateStatus()"
+      @change="updateStatus"
       v-bind:disabled="this.$parent.isBusy">
       <option value="0" selected>記録なし</option>
       <option value="1">気になる</option>
@@ -13,7 +13,16 @@
 </template>
 <script>
 export default {
-  props: ['id', 'state'],
+  props: {
+    id: {
+      type: String,
+      required: true
+    },
+    state: {
+      type: Number,
+      required: true
+    }
+  },
   data() {
     return {
       stateValue: this.state,
