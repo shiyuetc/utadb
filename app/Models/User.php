@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use App\Notifications\CustomResetPassword;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Notifications\CustomResetPassword;
 
 class User extends Authenticatable
 {
@@ -36,6 +36,20 @@ class User extends Authenticatable
     public function allStateCount() 
     {
         return $this->stacked_count + $this->training_count + $this->mastered_count;
+    }
+
+    public static function updateProfile($name = null, $description = null, $avatar_id = null) {
+        $user = auth()->user();
+        if(isset($name)) $user->name = $name;
+        if(isset($description)) $user->description = $description;
+        if(isset($avatar_id)) {
+            $avatar = Avatar::find($avatar_id);
+            if(isset($avatar)) {
+                $user->profile_image_url = env('APP_URL') . "/images/profile_image/{$avatar->category}/{$avatar->id}";
+            }
+        }
+        $user->save();
+        return true;
     }
 
     public static function search($q, $page = 1)

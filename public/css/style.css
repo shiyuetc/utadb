@@ -306,6 +306,12 @@ div.copyright {
     border-bottom: 1px solid #eaeaea;
   }
   
+
+/* 681px以上 */}
+@media (min-width: 681px) {
+  .hidden-md-above {
+    display: none;
+  }
 }
 /* 680px以下 */
 @media (max-width: 680px) {
@@ -361,6 +367,10 @@ div.copyright {
   ul.user-statuses span.status-count::before {
     white-space: pre;
     content: "\A";
+  }
+
+  table.setting-table tr td:first-child {
+    display: none;
   }
 }
 /* 960px以下 */
@@ -643,6 +653,7 @@ table.music-table td.action-cell {
 
 /* #endregion */
 
+/* #region settings */
 ul.setting-list span.right-icon {
   margin-right: 6px;
   transition: margin-right 0.2s;
@@ -657,3 +668,20 @@ ul.setting-list li a:hover span.right-icon {
 ul.setting-list li.active a span.right-icon {
   margin-right: 0;
 }
+
+table.setting-table {
+  width: 100%;
+}
+table.setting-table td {
+  padding-bottom: 6px;
+  white-space: nowrap;
+}
+table.setting-table tr td:first-child {
+  padding: 4px 12px 0 0;
+  text-align: right;
+  vertical-align: top;
+}
+table.setting-table tr td:last-child {
+  width: 80%;
+}
+/* #endregion */
