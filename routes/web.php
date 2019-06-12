@@ -15,7 +15,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::prefix('@{id}')->group(function() {
   Route::get('/', 'UserController@index')->name('user');
-  Route::get('/status/{state}', 'UserController@status')->name('user.status')
+  Route::get('status/{state}', 'UserController@status')->name('user.status')
     ->where('state', 'all|mastered|training|stacked');
 });
 Route::get('search/user', 'UserController@search')->name('search.user');
@@ -24,7 +24,10 @@ Route::get('search/song', 'SongController@search')->name('search.song');
 Route::get('songs/{id}', 'SongController@index')->name('song')
   ->where('id', '\d{5,18}');
 
-Route::get('settings/profile', 'SettingController@showProfileSettingForm')->name('settings.profile');
+Route::prefix('settings')->group(function() {
+  Route::get('profile', 'SettingController@showProfileSettingForm')->name('settings.profile');
+  Route::post('profile', 'SettingController@updateProfile');
+});
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
