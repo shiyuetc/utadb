@@ -1,6 +1,6 @@
 <template>
   <div class="user-statuses">
-    <loadProgress/>
+    <loadProgress v-model="this.statuses.length"/>
     <table v-if="this.isMounted" class="object-table music-table table-padding">
       <thead v-if="this.statuses.length != 0">
         <tr>
@@ -10,7 +10,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(status, index) in statuses" :key='index'>
+        <tr v-for="(status, index) in this.statuses" :key='index'>
           <td class="media-cell">
             <div class="cover-image">
               <img v-bind:src="status.song.image_url" alt="">
@@ -29,41 +29,44 @@
         </tr>
       </tbody>
     </table>
-    <pagination @paging="statusesRequest"/>
+    <pagination @paging="statusesRequest" v-model="this.statuses.length"/>
   </div>
 </template>
 <script>
-import loadProgress from './load-progress.vue';
-import pagination from './pagination.vue';
-import updateSelect from './update-select.vue';
+import LoadProgress from './load-progress.vue';
+import Pagination from './pagination.vue';
+import UpdateSelect from './ui/update-select.vue';
 
 export default {
   components: {
-    loadProgress,
-    pagination,
-    updateSelect
+    LoadProgress,
+    Pagination,
+    UpdateSelect
   },
   props: {
     user_id: {
-      type: String
+      type: String,
+      required: true
     },
     state: {
       type: Number,
+      required: false,
       default: 0
     },
     page: {
       type: Number,
+      required: false,
       default: 1
     }
   },
   data() {
     return {
-      pageValue: this.page,
-      statuses: [],
-      setPlayer: null,
       isMounted: false,
       isBusy: false,
-      isError: false
+      isError: false,
+      pageValue: this.page,
+      setPlayer: null,
+      statuses: [],
     };
   },
   methods: {

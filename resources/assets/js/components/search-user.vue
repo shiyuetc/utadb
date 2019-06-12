@@ -1,8 +1,8 @@
 <template>
   <div class="search-result">
-    <loadProgress/>
+    <loadProgress v-model="users.length"/>
     <table v-if="this.isMounted" class="object-table user-table">
-      <thead v-if="this.statuses.length != 0">
+      <thead v-if="this.users.length != 0">
         <tr>
           <th class="avatar-column"></th>
           <th class="name-column">ユーザー名</th>
@@ -13,27 +13,27 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(user, index) in statuses" :key='index'>
+        <tr v-for="(user, index) in users" :key='index'>
           <td><a v-bind:href="'/@' + user.screen_name"><img class="avatar" v-bind:src="user.profile_image_url + '_small.png'" alt=""></a></td>
           <td><a v-bind:href="'/@' + user.screen_name" class="default-link">{{ user.name }}(@{{ user.screen_name }})</a></td>
-          <td class="state-count-cell">{{ user.mastered_state_count }}</td>
-          <td class="state-count-cell">{{ user.training_state_count }}</td>
-          <td class="state-count-cell">{{ user.stacked_state_count }}</td>
-          <td class="state-count-cell hidden-lg-below">{{ user.mastered_state_count + user.training_state_count + user.stacked_state_count }}</td>
+          <td class="state-count-cell">{{ user.mastered_count }}</td>
+          <td class="state-count-cell">{{ user.training_count }}</td>
+          <td class="state-count-cell">{{ user.stacked_count }}</td>
+          <td class="state-count-cell hidden-lg-below">{{ user.mastered_count + user.training_count + user.stacked_count }}</td>
         </tr>
       </tbody>
     </table>
-    <pagination @paging="statusesRequest"/>
+    <pagination @paging="statusesRequest" v-model="users.length"/>
   </div>
 </template>
 <script>
-import loadProgress from './load-progress.vue';
-import pagination from './pagination.vue';
+import LoadProgress from './load-progress.vue';
+import Pagination from './pagination.vue';
 
 export default {
   components: {
-    loadProgress,
-    pagination,
+    LoadProgress,
+    Pagination,
   },
   props: {
     q: {
@@ -48,7 +48,7 @@ export default {
   data() {
     return {
       pageValue: this.page,
-      statuses: [],
+      users: [],
       isMounted: false,
       isError: false
     };
@@ -58,10 +58,10 @@ export default {
       this.isMounted = false;
 
       axios.get("/api/search_user?q=" + this.q + "&page=" + this.pageValue).then(res => {
-        this.statuses = res.data;
+        this.users = res.data;
         this.isMounted = true;
       }).catch(err => {
-        this.statuses = [];
+        this.users = [];
         this.isError = true;
       });
     }

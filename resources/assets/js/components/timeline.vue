@@ -1,8 +1,8 @@
 <template>
   <div class="timeline">
-    <loadProgress/>
+    <loadProgress v-model="this.statuses.length"/>
     <div v-if="this.isMounted" class="statuses">
-      <div class="status" v-for="status in statuses" :key="status.id">
+      <div class="status" v-for="status in this.statuses" :key="status.id">
         <div class="status-header">
           <p class="avatar"><a v-bind:href="'/@' + status.user.screen_name"><img v-bind:src="status.user.profile_image_url + '_small.png'" alt=""></a></p>
           <p class="text"><a class="default-link" v-bind:href="'/@' + status.user.screen_name">{{ status.user.name }}</a>さんが『{{ statusJp[status.state - 1] }}』に登録しました</p>
@@ -36,26 +36,28 @@
   </div>
 </template>
 <script>
-import loadProgress from './load-progress.vue';
-import updateSelect from './update-select.vue';
+import LoadProgress from './load-progress.vue';
+import UpdateSelect from './ui/update-select.vue';
 
 export default {
   components: {
-    loadProgress,
-    updateSelect
+    LoadProgress,
+    UpdateSelect
   },
   props: {
     user_id: {
-      type: String
+      type: String,
+      required: false,
+      default: null
     }
   },
   data() {
     return {
-      statusJp: ['気になる曲', '練習中の曲', '習得済みの曲'],
-      statuses: [],
       isMounted: false,
       isBusy: false,
-      isError: false
+      isError: false,
+      statusJp: ['気になる曲', '練習中の曲', '習得済みの曲'],
+      statuses: [],
     };
   },
   methods: {
@@ -70,14 +72,14 @@ export default {
     },
     statusesRequest: function() {
       this.isMounted = false;
-      var timeline = (this.user_id == null) ? "public_timeline" : "user_timeline?id=" + this.user_id;
+      var timeline = this.user_id == null ? "public_timeline" : "user_timeline?id=" + this.user_id;
       axios.get("/api/" + timeline).then(res => {
         this.statuses = res.data;
         this.isMounted = true;
         setTimeout("initializePlayer()", 1000);
       }).catch(err => {
-        this.statuses = [];
         this.isError = true;
+        this.statuses = [];
       });
     },
     updatedStatus: function(response) {
@@ -87,14 +89,13 @@ export default {
           selects[i].stateValue = response.new_state;
         }
       }
-
       var user = response.user;
       if(this.user_id == null || this.user_id == user.id) {
         updateUserStatuses(user);
       }
     }
   },
-  mounted: function() {
+  mounted() {
     this.$nextTick(function () {
       this.statusesRequest();
     })

@@ -1,6 +1,6 @@
 <template>
   <div class="search-result">
-    <loadProgress/>
+    <loadProgress v-model="statuses.length"/>
     <table v-if="this.isMounted" class="object-table music-table table-padding">
       <thead v-if="this.statuses.length != 0">
         <tr>
@@ -29,19 +29,19 @@
         </tr>
       </tbody>
     </table>
-    <pagination @paging="statusesRequest"/>
+    <pagination @paging="statusesRequest" v-model="statuses.length"/>
   </div>
 </template>
 <script>
-import loadProgress from './load-progress.vue';
-import pagination from './pagination.vue';
-import updateSelect from './update-select.vue';
+import LoadProgress from './load-progress.vue';
+import Pagination from './pagination.vue';
+import UpdateSelect from './ui/update-select.vue';
 
 export default {
   components: {
-    loadProgress,
-    pagination,
-    updateSelect
+    LoadProgress,
+    Pagination,
+    UpdateSelect
   },
   props: {
     source: {

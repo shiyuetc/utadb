@@ -27,11 +27,11 @@
   </div>
 </template>
 <script>
-import updateSelect from './update-select.vue';
+import UpdateSelect from './ui/update-select.vue';
 
 export default {
   components: {
-    updateSelect
+    UpdateSelect
   },
   props: {
     status: {
