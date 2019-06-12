@@ -6,6 +6,11 @@ use Illuminate\Contracts\Validation\Validator;
 
 class ApiRequestRules
 {
+    public static function getCategoryRule()
+    {
+        return 'required|string|between:1,20';
+    }
+
     public static function getPageRule()
     {
         return 'required|numeric|between:1,9999';
