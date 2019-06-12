@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'screen_name', 'name', 'description', 'stacked_state_count', 'training_state_count', 'mastered_state_count', 'profile_image_url', 'email', 'password',
+        'screen_name', 'name', 'description', 'stacked_count', 'training_count', 'mastered_count', 'profile_image_url', 'email', 'password',
     ];
 
     /**
@@ -35,7 +35,7 @@ class User extends Authenticatable
 
     public function allStateCount() 
     {
-        return $this->stacked_state_count + $this->training_state_count + $this->mastered_state_count;
+        return $this->stacked_count + $this->training_count + $this->mastered_count;
     }
 
     public static function search($q, $page = 1)

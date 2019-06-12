@@ -103,7 +103,7 @@ class Status extends Model
                     'song_id' => $song_id,
                     'state' => $state
                 ]);
-                $user[$statusArray[$state - 1] . '_state_count'] += 1;
+                $user[$statusArray[$state - 1] . '_count'] += 1;
 
             } elseif($state != 0) { 
                 // ステータスの更新
@@ -111,13 +111,13 @@ class Status extends Model
                     'state' => $state,
                     'used_at' => Carbon::now()
                 ]);
-                $user["{$statusArray[$state - 1]}_state_count"] += 1;
-                $user["{$statusArray[$nowState - 1]}_state_count"] -= 1;
+                $user["{$statusArray[$state - 1]}_count"] += 1;
+                $user["{$statusArray[$nowState - 1]}_count"] -= 1;
 
             } else { 
                 // ステータスの削除
                 Status::find($statusId)->delete();
-                $user["{$statusArray[$nowState - 1]}_state_count"] -= 1;
+                $user["{$statusArray[$nowState - 1]}_count"] -= 1;
                 
             }
             $user->save();
