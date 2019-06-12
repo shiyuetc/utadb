@@ -95,7 +95,7 @@ class AvatarsTableSeeder extends Seeder
             [ 'id' => 'mantis', 'name' => 'カマキリ', 'category' => 'insect' ],
             [ 'id' => 'ougon_oni_kuwagata', 'name' => 'オウゴンオニクワガタ', 'category' => 'insect' ],
             [ 'id' => 'pill_bug', 'name' => 'ダンゴムシ', 'category' => 'insect' ],
-            [ 'id' => 'pill_bug_bulue', 'name' => '青いダンゴムシ', 'category' => 'insect' ],
+            [ 'id' => 'pill_bug_blue', 'name' => '青いダンゴムシ', 'category' => 'insect' ],
             [ 'id' => 'planaria', 'name' => 'プラナリア', 'category' => 'insect' ],
             [ 'id' => 'semi_nukegara', 'name' => '蝉の抜け殻', 'category' => 'insect' ],
             [ 'id' => 'spider', 'name' => '蜘蛛', 'category' => 'insect' ],
