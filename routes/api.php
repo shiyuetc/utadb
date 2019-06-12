@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 Route::group(['middleware' => ['api']], function(){
     Route::get('/show_status', 'ApiController@showStatus');
     
+    Route::get('/search_avatar', 'ApiController@searchAvatar');
     Route::get('/search_user', 'ApiController@searchUser');
     Route::get('/search_song', 'ApiController@searchSong');
 
