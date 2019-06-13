@@ -75,8 +75,11 @@ a.default-link {
   text-decoration: none;
 }
 a.default-link:hover {
-  color: #c32222;
+  color: #c32222 !important;
   text-decoration: underline;
+}
+a.default-link.on-color {
+  color: #db3333;
 }
 
 /* #endregion */
@@ -561,7 +564,6 @@ div.status-header p {
 div.status p.avatar img {
   width: 32px;
   height: 32px;
-  /* border-radius: 100%; */
   transition: opacity 0.2s;
 	-moz-transition: opacity 0.2s;
 	-webkit-transition: opacity 0.2s;
