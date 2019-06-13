@@ -44,6 +44,12 @@ div.alert.alert-danger .alert-close line {
 }
 /* #endregion */
 
+/* #region border */
+.border {
+  border-top: 1px solid #eaeaea;
+}
+/* #endregion */
+
 /* #region height */
 .height-small {
   height: 50px;
