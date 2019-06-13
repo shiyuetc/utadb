@@ -49,9 +49,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'agreement' => 'required',
             'screen_name' => 'required|string|max:15|regex:/^[a-zA-Z0-9_]+$/|unique:users',
             'name' => 'required|string|max:20',
-            'description' => 'string|max:255',
             'email' => 'sometimes|nullable|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -70,6 +70,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'profile_image_url' => env('APP_URL') . '/images/profile_image/monster/monster_a',
         ]);
     }
 

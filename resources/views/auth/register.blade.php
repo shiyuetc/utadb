@@ -51,8 +51,13 @@
     </div>
     <div class="form-group">
       <div class="checkbox">
-        <label><input type="checkbox" name="agree"><span>&nbsp;<a class="default-link on-color" href="{{ route('terms') }}" target="_blank">利用条約</a>&nbsp;に同意する</span></label>
+        <label><input type="checkbox" name="agreement"><span>&nbsp;<a class="default-link on-color" href="{{ route('terms') }}" target="_blank">利用規約</a>&nbsp;に同意する</span></label>
       </div>
+      @if ($errors->has('agreement'))
+      <span class="help-block">
+        <p>{{ $errors->first('agreement') }}</p>
+      </span>
+      @endif
     </div>
     <div class="form-group">
       <button type="submit" class="button button-danger">新規会員登録</button>

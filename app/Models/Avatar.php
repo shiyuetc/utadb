@@ -12,7 +12,6 @@ class Avatar extends Model
 
     public static function search($category)
     {
-        return Avatar::where('category', $category)
-            ->get();
+        return Avatar::where('category', $category)->get();
     }
 }
