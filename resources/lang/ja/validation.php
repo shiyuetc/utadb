@@ -109,8 +109,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'agreement' => [
+            'required' => '利用規約に同意してください',
         ],
     ],
 
