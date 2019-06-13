@@ -178,6 +178,14 @@ button.button:disabled:hover {
   background: #ccc;
   color: #fafafa;
 }
+button.button-default {
+  box-shadow: 0px 0px 0px 1px #bbb inset;
+  background: #fff;
+  color: #666;
+}
+button.button-default:hover {
+  background: #eee;
+}
 button.button-info {
 	background: #3598db;
 	color: #fafafa;
