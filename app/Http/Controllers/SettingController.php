@@ -37,16 +37,11 @@ class SettingController extends Controller
 
     public function updatePassword(UpdatePasswordRequest $request)
     {
-        $password = User::select('password')->find(auth()->user()->id);
-        if(!password_verify($request->password_old, $password["password"])) {
-            $alert = ['type' => 'danger', 'text' => '現在のパスワードが一致しませんでした'];
+        $result = User::updatePassword($request->password);
+        if($result) {
+            $alert = ['type' => 'success', 'text' => 'パスワードの変更を保存しました。'];
         } else {
-            $result = User::updatePassword($request->password);
-            if($result) {
-                $alert = ['type' => 'success', 'text' => 'パスワードの変更を保存しました。'];
-            } else {
-                $alert = ['type' => 'danger', 'text' => 'パスワードの変更に失敗しました。'];
-            }
+            $alert = ['type' => 'danger', 'text' => 'パスワードの変更に失敗しました。'];
         }
         
         return view('pages.settings.password', ['alert' => $alert]);

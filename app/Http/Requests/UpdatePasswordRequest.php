@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdatePasswordRequest extends FormRequest
@@ -24,7 +25,15 @@ class UpdatePasswordRequest extends FormRequest
     public function rules()
     {
         return [
-            'password_old' => 'required',
+            'password_old' => [
+                'required',
+                function ($attribute, $value, $fail) {
+                    $password = User::select('password')->find(auth()->user()->id);
+                    if(!password_verify($value, $password["password"])) {
+                        return $fail('現在のパスワードが一致しませんでした');
+                    }
+                }
+            ],
             'password' => 'required|confirmed|min:6',
         ];
     }
