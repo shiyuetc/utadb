@@ -25,6 +25,8 @@ Route::group(['middleware' => ['api', 'auth']], function(){
     Route::get('/search_avatar', 'ApiController@searchAvatar');
     Route::get('/search_user', 'ApiController@searchUser');
     Route::get('/search_song', 'ApiController@searchSong');
+    
+    Route::get('/user_common', 'ApiController@userCommon');
 
     Route::post('/update_status', 'ApiController@updateStatus');
 });
