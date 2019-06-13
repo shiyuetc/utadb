@@ -17,6 +17,7 @@ Route::prefix('@{id}')->group(function() {
   Route::get('/', 'UserController@index')->name('user');
   Route::get('status/{state}', 'UserController@status')->name('user.status')
     ->where('state', 'all|mastered|training|stacked');
+  Route::get('random', 'UserController@random')->name('user.random');
 });
 
 Route::get('songs/{id}', 'SongController@index')->name('song')
