@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'パスワードの変更')
 
 @section('sidebar')
 @include('widgets.user-infomation', ['user' => Auth::user(), 'hide' => true])
