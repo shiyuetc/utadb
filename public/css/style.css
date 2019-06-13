@@ -359,6 +359,9 @@ div.copyright {
     padding-left: 4px;
   }
   
+  ul.option-list li a {
+    height: 41px;
+  }
   ul.user-statuses li a {
     height: 62px;
   }

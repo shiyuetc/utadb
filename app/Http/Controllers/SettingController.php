@@ -44,4 +44,33 @@ class SettingController extends Controller
         
         return view('pages.settings.password', ['alert' => $alert]);
     }
+
+    public function showDeactivateSettingForm()
+    {
+        $isApplied = Deactivate::isApplied(auth()->user()->id);
+        return view('pages.settings.deactivate', ['isApplied' => $isApplied]);
+    }
+
+    public function updateDeactivate(UpdateDeactiveRequest $request)
+    {
+        $isApplied = false;
+        if(isset($request->appli)) {
+            $result = Deactivate::appli(auth()->user()->id);
+            if($result) {
+                $alert = ['type' => 'success', 'text' => 'アカウントの削除申請を受け付けました'];
+                $isApplied = true;
+            } else {
+                $alert = ['type' => 'danger', 'text' => 'アカウントの削除申請に失敗しました'];
+            }
+        } else {
+            $result = Deactivate::cancel(auth()->user()->id);
+            if($result) {
+                $alert = ['type' => 'success', 'text' => 'アカウントの削除申請を解除しました'];
+                $isApplied = false;
+            } else {
+                $alert = ['type' => 'danger', 'text' => 'アカウントの削除申請の解除に失敗しました'];
+            }
+        }
+        return view('pages.settings.deactivate', ['alert' => $alert, 'isApplied' => $isApplied]);
+    }
 }

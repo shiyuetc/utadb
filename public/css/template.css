@@ -194,6 +194,9 @@ p.supplement-text {
   font-size: 12px;
   text-align: right;
 }
+p.note {
+  font-size: 14px;
+}
 /* #endregion */
 /* #region UI.Button */
 button.button {
