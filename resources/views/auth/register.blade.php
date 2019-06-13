@@ -47,8 +47,7 @@
     </div>
     <div class="form-group">
       <label for="password-confirm" class="label"><i class="fas fa-lock"></i>&nbsp;パスワード再確認</label>
-      <input id="password-confirm" type="password" class="text" name="password_confirmation" required
-        autocomplete="off">
+      <input id="password-confirm" type="password" class="text" name="password_confirmation" required autocomplete="off">
     </div>
     <div class="form-group">
       <button type="submit" class="button button-danger">新規会員登録</button>

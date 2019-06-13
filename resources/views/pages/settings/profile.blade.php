@@ -34,7 +34,7 @@
       </tr>
       <tr>
         <td></td>
-        <td><button class="button button-info">編集を保存</button></td>
+        <td><button class="button button-info" type="submit">編集を保存</button></td>
       </tr>
     </table>
   </form>
