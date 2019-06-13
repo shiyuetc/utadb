@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Http\Requests\UpdateProfileRequest;
 use App\Http\Requests\UpdatePasswordRequest;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,7 @@ class SettingController extends Controller
         return view('pages.settings.profile');
     }
 
-    public function updateProfile(Request $request)
+    public function updateProfile(UpdateProfileRequest $request)
     {
         $result = User::updateProfile($request->name, $request->description, $request->avatar);
         if($result) {

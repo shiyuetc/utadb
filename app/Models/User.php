@@ -38,10 +38,10 @@ class User extends Authenticatable
         return $this->stacked_count + $this->training_count + $this->mastered_count;
     }
 
-    public static function updateProfile($name = null, $description = null, $avatar_id = null) {
+    public static function updateProfile($name, $description, $avatar_id = null) {
         $user = auth()->user();
-        if(isset($name)) $user->name = $name;
-        if(isset($description)) $user->description = $description;
+        $user->name = $name;
+        $user->description = $description;
         if(isset($avatar_id)) {
             $avatar = Avatar::find($avatar_id);
             if(isset($avatar)) {
