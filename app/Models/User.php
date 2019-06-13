@@ -52,6 +52,13 @@ class User extends Authenticatable
         return true;
     }
 
+    public static function updatePassword($password) {
+        $user = auth()->user();
+        $user->password = bcrypt($password);
+        $user->save();
+        return true;
+    }
+
     public static function search($q, $page = 1)
     {
         return User::where('screen_name', 'like', "%{$q}%")
