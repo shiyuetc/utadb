@@ -50,8 +50,13 @@
       <input id="password-confirm" type="password" class="text" name="password_confirmation" required autocomplete="off">
     </div>
     <div class="form-group">
+      <div class="checkbox">
+        <label><input type="checkbox" name="agree"><span>&nbsp;<a class="default-link on-color" href="{{ route('terms') }}" target="_blank">利用条約</a>&nbsp;に同意する</span></label>
+      </div>
+    </div>
+    <div class="form-group">
       <button type="submit" class="button button-danger">新規会員登録</button>
-      <p class="supplement-text">アカウントをお持ちの方は <a href="{{ route('login') }}">ログイン</a></p>
+      <p class="supplement-text">アカウントをお持ちの方は <a class="default-link on-color" href="{{ route('login') }}">ログイン</a></p>
     </div>
   </form>
 </div>

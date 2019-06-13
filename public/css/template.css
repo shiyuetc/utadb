@@ -138,13 +138,6 @@ p.supplement-text {
   font-size: 12px;
   text-align: right;
 }
-p.supplement-text a {
-  color: #db3333;
-}
-p.supplement-text a:hover {
-  color: #c32222;
-  text-decoration: underline;
-}
 /* #endregion */
 /* #region UI.Button */
 button.button {

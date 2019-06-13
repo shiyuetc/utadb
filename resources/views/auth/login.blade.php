@@ -34,7 +34,7 @@
     </div>
     <div class="form-group">
       <button type="submit" class="button button-danger">ログイン</button>
-      <p class="supplement-text">アカウントを持っていない方は <a href="{{ route('register') }}">新規登録</a></p>
+      <p class="supplement-text">アカウントを持っていない方は <a class="default-link on-color" href="{{ route('register') }}">新規登録</a></p>
     </div>
   </form>
 </div>
