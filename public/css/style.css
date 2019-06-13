@@ -91,10 +91,6 @@ a.default-link.on-color {
   color: #db3333;
 }
 
-ol.items li {
-  margin: 12px 0;
-}
-
 /* #endregion */
 
 /* #region fixity */
@@ -407,6 +403,19 @@ div.error p.fallback a {
   font-size: 13px;
 }
 
+/* #endregion */
+
+/* #region doc */
+ol.items {
+  padding-right: 12px;
+}
+ol.items li {
+  margin: 12px 0;
+}
+p.thats-all {
+  margin: 24px 18px;
+  text-align: right;
+}
 /* #endregion */
 
 /* #region page-top */
