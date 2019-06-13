@@ -35,6 +35,8 @@ Route::group(['prefix' => 'settings', 'middleware' => 'auth'], function() {
   Route::post('profile', 'SettingController@updateProfile');
   Route::get('password', 'SettingController@showPasswordSettingForm')->name('settings.password');
   Route::post('password', 'SettingController@updatePassword');
+  Route::get('deactivate', 'SettingController@showDeactivateSettingForm')->name('settings.deactivate');
+  Route::post('deactivate', 'SettingController@updateDeactivate');
 });
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
