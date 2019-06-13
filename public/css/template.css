@@ -93,6 +93,56 @@ ul.list li span.right-icon:after {
 	clear: both;
 	content: "";
 }
+
+@media (max-width: 680px) {
+  ul.list.list-flex {
+    display: flex;
+  }
+  ul.list.list-flex li {
+    border: none;
+    text-align: center;
+  }
+  ul.list.list-flex li:first-child:nth-last-child(1) ~ li,
+  ul.list.list-flex li:first-child:nth-last-child(1) {
+    width: 100%;
+  }
+  ul.list.list-flex li:first-child:nth-last-child(2) ~ li,
+  ul.list.list-flex li:first-child:nth-last-child(2) {
+    width: 50%;
+  }
+  ul.list.list-flex li:first-child:nth-last-child(3) ~ li,
+  ul.list.list-flex li:first-child:nth-last-child(3) {
+    width: 33.3333%;
+  }
+  ul.list.list-flex li:first-child:nth-last-child(4) ~ li,
+  ul.list.list-flex li:first-child:nth-last-child(4) {
+    width: 25%;
+  }
+  ul.list.list-flex li a {
+    padding: 10px 2px;
+    border-bottom: 0 solid transparent;
+    transition: background-color 0.2s, border-color 0.2s;
+    -moz-transition: background-color 0.2s, border-color 0.2s;
+    -webkit-transition: background-color 0.2s, border-color 0.2s;
+    -o-transition: background-color 0.2s, border-color 0.2s;
+    -ms-transition: background-color 0.2s, border-color 0.2s;
+  }
+  ul.list.list-flex li a:hover {
+    border-left: none;
+    border-bottom: 2px solid #999;
+  }
+  ul.list.list-flex li.active a {
+    border-left: none;
+    border-bottom: 2px solid #666;
+  }
+  ul.list.list-flex li span.right-icon {
+    float: none;
+  }
+  ul.list.list-flex li span.right-icon::before {
+    white-space: pre;
+    content: "\A";
+  }
+}
 /* #endregion */
 
 /* #region UI.Form */

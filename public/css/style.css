@@ -347,38 +347,20 @@ div.copyright {
     width: 100% !important;
   }
 
-  ul.user-statuses {
-    display: flex;
+  div.event-buttons div {
+    display: inline-block;
+    width: 50%;
+    box-sizing: border-box;
   }
-  ul.user-statuses li {
-    width: 25%;
-    border: none !important;
-    text-align: center;
+  div.event-buttons div:nth-child(odd){
+    padding-right: 4px;
   }
+  div.event-buttons div:nth-child(even){
+    padding-left: 4px;
+  }
+  
   ul.user-statuses li a {
     height: 62px;
-    padding: 10px 2px !important;
-    border-bottom: 0px solid transparent;
-    transition: background-color 0.2s, border-color 0.2s !important;
-    -moz-transition: background-color 0.2s, border-color 0.2s !important;
-    -webkit-transition: background-color 0.2s, border-color 0.2s !important;
-    -o-transition: background-color 0.2s, border-color 0.2s !important;
-    -ms-transition: background-color 0.2s, border-color 0.2s !important;
-  }
-  ul.user-statuses li a:hover {
-    border-left: none !important;
-    border-bottom: 2px solid #999;
-  }
-  ul.user-statuses li.active a {
-    border-left: none !important;
-    border-bottom: 2px solid #666;
-  }
-  ul.user-statuses span.status-count {
-    float: none !important;;
-  }
-  ul.user-statuses span.status-count::before {
-    white-space: pre;
-    content: "\A";
   }
 
   table.setting-table tr td:first-child {
