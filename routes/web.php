@@ -18,11 +18,14 @@ Route::prefix('@{id}')->group(function() {
   Route::get('status/{state}', 'UserController@status')->name('user.status')
     ->where('state', 'all|mastered|training|stacked');
 });
-Route::get('search/user', 'UserController@search')->name('search.user');
 
-Route::get('search/song', 'SongController@search')->name('search.song');
 Route::get('songs/{id}', 'SongController@index')->name('song')
   ->where('id', '\d{5,18}');
+
+Route::prefix('search')->group(function() {
+  Route::get('user', 'SearchController@searchUser')->name('search.user');
+  Route::get('song', 'SearchController@searchSong')->name('search.song');
+});
 
 Route::prefix('settings')->group(function() {
   Route::get('profile', 'SettingController@showProfileSettingForm')->name('settings.profile');
