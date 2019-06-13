@@ -59,7 +59,7 @@ div.content {
   margin: 0 auto 10px auto;
   overflow: hidden;
   border-radius: 4px;
-  box-shadow: 0px 0px 4px 2px #eeeeee;
+  box-shadow: 0px 0px 4px 2px #eee;
   background: #fff;
   word-wrap: break-word;
 }
@@ -68,6 +68,15 @@ div.content {
   padding: 8px 12px;
   border-bottom: 1px solid #eaeaea;
   font-size: 15px;
+}
+.section h2.sub-title {
+  margin: 16px 16px 8px 16px;
+  padding-left: 12px;
+  border-left: 6px solid #ccc;
+  font-size: 20px;
+}
+.section p.text {
+  margin: 12px 18px;
 }
 
 a.default-link {
@@ -80,6 +89,10 @@ a.default-link:hover {
 }
 a.default-link.on-color {
   color: #db3333;
+}
+
+ol.items li {
+  margin: 12px 0;
 }
 
 /* #endregion */
