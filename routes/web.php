@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('terms', function () {return view('pages.terms');})->name('terms');
 
 Route::prefix('@{id}')->group(function() {
   Route::get('/', 'UserController@index')->name('user');
