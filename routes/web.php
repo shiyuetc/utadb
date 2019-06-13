@@ -27,6 +27,8 @@ Route::get('songs/{id}', 'SongController@index')->name('song')
 Route::prefix('settings')->group(function() {
   Route::get('profile', 'SettingController@showProfileSettingForm')->name('settings.profile');
   Route::post('profile', 'SettingController@updateProfile');
+  Route::get('password', 'SettingController@showPasswordSettingForm')->name('settings.password');
+  Route::post('password', 'SettingController@updatePassword');
 });
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
