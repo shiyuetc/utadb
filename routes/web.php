@@ -25,12 +25,12 @@ Route::prefix('@{id}')->group(function() {
 Route::get('songs/{id}', 'SongController@index')->name('song')
   ->where('id', '\d{5,18}');
 
-Route::prefix('search')->group(function() {
+Route::group(['prefix' => 'search', 'middleware' => 'auth'], function() {
   Route::get('user', 'SearchController@searchUser')->name('search.user');
   Route::get('song', 'SearchController@searchSong')->name('search.song');
 });
 
-Route::prefix('settings')->group(function() {
+Route::group(['prefix' => 'settings', 'middleware' => 'auth'], function() {
   Route::get('profile', 'SettingController@showProfileSettingForm')->name('settings.profile');
   Route::post('profile', 'SettingController@updateProfile');
   Route::get('password', 'SettingController@showPasswordSettingForm')->name('settings.password');
