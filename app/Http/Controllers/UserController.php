@@ -43,12 +43,4 @@ class UserController extends Controller
             return view('pages.user', ['user' => $request->user, 'alert' => $alert]);
         }
     }
-
-    public function search(Request $request)
-    {
-        $q = isset($request->q) ? trim($request->q) : '';
-        $page = (isset($request->page) && $request->page >= 1 && $request->page <= 9999) ? $request->page : 1;
-
-        return view('pages.search.user', ['q' => $q, 'page' => $page]);
-    }
 }
