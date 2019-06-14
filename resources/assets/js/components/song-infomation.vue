@@ -33,7 +33,7 @@
           <td>習得済み</td>
           <td>
             <div>
-              <a v-for="(user, index) in this.statuses[1]" :key='index' v-bind:href="'/@' + user.screen_name">
+              <a v-for="(user, index) in this.statuses[3]" :key='index' v-bind:href="'/@' + user.screen_name">
                 <img class="avatar" v-bind:src="user.profile_image_url + '_small.png'" alt="" v-tooltip.top-center="user.name + ' (@' + user.screen_name + ')'">
               </a>
             </div>
@@ -50,7 +50,7 @@
         <tr>
           <td>気になる</td>
           <td>
-            <a v-for="(user, index) in this.statuses[3]" :key='index' v-bind:href="'/@' + user.screen_name">
+            <a v-for="(user, index) in this.statuses[1]" :key='index' v-bind:href="'/@' + user.screen_name">
               <img class="avatar" v-bind:src="user.profile_image_url + '_small.png'" alt="" v-tooltip.top-center="user.name + ' (@' + user.screen_name + ')'">
             </a>
           </td>
