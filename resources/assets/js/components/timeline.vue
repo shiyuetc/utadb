@@ -64,11 +64,11 @@ export default {
     subtractDate: function(date) {
       var now = new Date();
       var target = new Date(date.replace(/-/g, "/"));
-      var timestamp = Math.round(now.getTime() / 1000 - target.getTime() / 1000);
+      var timestamp = Math.floor(now.getTime() / 1000 - target.getTime() / 1000);
       if (timestamp < 60) return timestamp + ' 秒前';
-      if (timestamp < 3600) return Math.round(timestamp / 60) + ' 分前';
-      if (timestamp < 86400) return Math.round(timestamp / 3600) + ' 時間前';
-      return Math.round(timestamp / 86400) + ' 日前';
+      if (timestamp < 3600) return Math.floor(timestamp / 60) + ' 分前 ';
+      if (timestamp < 86400) return Math.floor(timestamp / 3600) + ' 時間前';
+      return Math.floor(timestamp / 86400) + ' 日前';
     },
     statusesRequest: function() {
       this.isMounted = false;
