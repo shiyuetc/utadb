@@ -165,6 +165,26 @@ class Status extends Model
         return $statuses;
     }
 
+    public static function userCommon($id, $page = 1)
+    {
+        $query =  Status::select('user_statuses.song_id', DB::raw('s1.state as user_state'))
+        ->join('user_statuses as s1', function($join) {
+            $join->where('s1.user_id', auth()->id())
+            ->where('s1.state', 3)
+            ->on('user_statuses.song_id', '=', 's1.song_id');
+        })
+        ->where('user_statuses.user_id', $id)
+        ->where('user_statuses.state', 3);
+
+        return $query
+            ->skip(($page - 1) * 50)
+            ->take(50)
+            ->with(['song'])
+            ->get()
+            ->sortBy('song.artist')
+            ->values();
+    }
+
     public static function userStatuses($id, $state = 0, $page = 1)
     {
         $query =  Status::select('user_statuses.song_id', DB::raw('IFNULL(s1.state, 0) as user_state'))
