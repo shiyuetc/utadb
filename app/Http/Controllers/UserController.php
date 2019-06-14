@@ -29,6 +29,16 @@ class UserController extends Controller
         return view('pages.user-status', ['user' => $request->user, 'state' => $stateArray[$request->state], 'page' => $page]);
     }
 
+    public function common(Request $request)
+    {
+        if(auth()->id() == $request->user->id) {
+            return redirect()->route('user', ['id' => auth()->user()->screen_name]);
+        }
+
+        $page = (isset($request->page) && $request->page >= 1 && $request->page <= 9999) ? $request->page : 1;
+        return view('pages.user-common', ['user' => $request->user, 'page' => $page]);
+    }
+
     public function random(Request $request)
     {
         $status = Status::select('song_id')
