@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['middleware' => 'api'], function(){
+    Route::get('status/lookup', 'Api\StatusesController@statusLookup');
+
     Route::get('user_statuses', 'Api\StatusesController@userStatuses');
     Route::get('user_timeline', 'Api\StatusesController@userTimeline');
     Route::get('public_timeline', 'Api\StatusesController@publicTimeline');
