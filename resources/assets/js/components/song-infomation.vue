@@ -24,9 +24,43 @@
         </tr>
       </tbody>
     </table>
+    <table class="infomation-table">
+      <thead>
+        <tr><th colspan="2">登録しているユーザー</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>習得済み</td>
+          <td>
+            <div>
+              <a v-for="(user, index) in this.statuses[1]" :key='index' v-bind:href="'/@' + user.screen_name">
+                <img class="avatar" v-bind:src="user.profile_image_url + '_small.png'" alt="" v-tooltip.top-center="user.name + '(@' + user.screen_name + ')'">
+              </a>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>練習中</td>
+          <td>
+            <a v-for="(user, index) in this.statuses[2]" :key='index' v-bind:href="'/@' + user.screen_name">
+              <img class="avatar" v-bind:src="user.profile_image_url + '_small.png'" alt="" v-tooltip.top-center="user.name + '(@' + user.screen_name + ')'">
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>気になる</td>
+          <td>
+            <a v-for="(user, index) in this.statuses[3]" :key='index' v-bind:href="'/@' + user.screen_name">
+              <img class="avatar" v-bind:src="user.profile_image_url + '_small.png'" alt="" v-tooltip.top-center="user.name + '(@' + user.screen_name + ')'">
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 <script>
+import VTooltip  from 'v-tooltip';
 import UpdateSelect from './ui/update-select.vue';
 
 export default {
@@ -42,6 +76,7 @@ export default {
   data() {
     return {
       isBusy: false,
+      statuses: [],
     };
   },
   methods: {
@@ -51,6 +86,9 @@ export default {
   },
   mounted() {
     setTimeout("initializePlayer()", 100);
+    axios.get("/api/status/lookup?song_id=" + this.status.song.id).then(res => {
+      this.statuses = res.data;
+    }).catch(err => { });
   }
 };
 </script>
@@ -80,5 +118,9 @@ table.infomation-table td:nth-child(2n+1) {
   width: 120px;
   background: #eee;
 	text-align: right;
+}
+table.infomation-table img.avatar {
+  width: 32px;
+  height: 32px;
 }
 </style>
