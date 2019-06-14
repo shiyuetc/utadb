@@ -42,6 +42,26 @@
 </div>
 
 <div class="section">
+  <h1 class="title"><i class="fas fa-key"></i>&nbsp;メールアドレスの変更</h1>
+  <form class="form" method="POST" action="{{ route('settings.account.email') }}">
+    {{ csrf_field() }}
+    <table class="setting-table">
+      <tr>
+        <td><label for="email" class="label"><i class="fa fa-envelope"></i>&nbsp;メールアドレス</label></td>
+        <td>
+          <span class="hidden-md-above"><label for="email" class="label hidden-md-above"><i class="fa fa-envelope"></i>&nbsp;メールアドレス</label></span>
+          <input id="email" type="email" class="text" name="email" value="{{ Auth::user()->email }}" autocomplete="off">
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><button class="button button-info" type="submit">変更を保存</button></td>
+      </tr>
+    </table>
+  </form>
+</div>
+
+<div class="section">
   <h1 class="title"><i class="fas fa-key"></i>&nbsp;パスワードの変更</h1>
   <form class="form" method="POST" action="{{ route('settings.account.password') }}">
     {{ csrf_field() }}
@@ -69,7 +89,7 @@
       </tr>
       <tr>
         <td></td>
-        <td><button class="button button-info" type="submit">編集を保存</button></td>
+        <td><button class="button button-info" type="submit">変更を保存</button></td>
       </tr>
     </table>
   </form>

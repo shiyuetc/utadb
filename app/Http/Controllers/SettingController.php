@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Deactivate;
 use App\Models\User;
 use App\Http\Requests\UpdateProfileRequest;
+use App\Http\Requests\UpdateEmailRequest;
 use App\Http\Requests\UpdatePasswordRequest;
 use App\Http\Requests\UpdateDeactiveRequest;
 use Illuminate\Http\Request;
@@ -22,6 +23,14 @@ class SettingController extends Controller
         return redirect()->route('settings.account')
             ->with($result ? 'status' : 'error', 
                 __($result ? "プロフィールの変更を保存しました" : 'プロフィールの変更に失敗しました'));
+    }
+
+    public function updateEmail(UpdateEmailRequest $request)
+    {
+        $result = User::updateEmail($request->email);
+        return redirect()->route('settings.account')
+            ->with($result ? 'status' : 'error', 
+                __($result ? "メールアドレスの変更を保存しました" : 'メールアドレスの変更に失敗しました'));
     }
 
     public function updatePassword(UpdatePasswordRequest $request)

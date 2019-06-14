@@ -52,6 +52,13 @@ class User extends Authenticatable
         return true;
     }
 
+    public static function updateEmail($email = null) {
+        $user = auth()->user();
+        $user->email = isset($email) ? $email : null;
+        $user->save();
+        return true;
+    }
+
     public static function updatePassword($password) {
         $user = auth()->user();
         $user->password = bcrypt($password);
