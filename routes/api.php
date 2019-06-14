@@ -14,11 +14,11 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['middleware' => 'api'], function(){
-    Route::get('show_status', 'Api\ApiController@showStatus');
+    Route::get('show_status', 'Api\StatusesController@showStatus');
 
-    Route::get('user_statuses', 'Api\ApiController@userStatuses');
-    Route::get('user_timeline', 'Api\ApiController@userTimeline');
-    Route::get('public_timeline', 'Api\ApiController@publicTimeline');
+    Route::get('user_statuses', 'Api\StatusesController@userStatuses');
+    Route::get('user_timeline', 'Api\StatusesController@userTimeline');
+    Route::get('public_timeline', 'Api\StatusesController@publicTimeline');
 });
 
 Route::group(['middleware' => ['api', 'auth']], function(){
@@ -26,7 +26,7 @@ Route::group(['middleware' => ['api', 'auth']], function(){
     Route::get('search_user', 'Api\SearchController@searchUser');
     Route::get('search_song', 'Api\SearchController@searchSong');
     
-    Route::get('user_common', 'Api\ApiController@userCommon');
+    Route::get('user_common', 'Api\StatusesController@userCommon');
 
-    Route::post('update_status', 'Api\ApiController@updateStatus');
+    Route::post('update_status', 'Api\StatusesController@updateStatus');
 });
