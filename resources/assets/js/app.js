@@ -17,6 +17,7 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('user-common-component', require('./components/user-common.vue'));
 Vue.component('user-statuses-component', require('./components/user-statuses.vue'));
 Vue.component('timeline-component', require('./components/timeline.vue'));
 Vue.component('search-user-component', require('./components/search-user.vue'));

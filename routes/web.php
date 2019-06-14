@@ -19,6 +19,7 @@ Route::prefix('@{id}')->group(function() {
   Route::get('/', 'UserController@index')->name('user');
   Route::get('status/{state}', 'UserController@status')->name('user.status')
     ->where('state', 'all|mastered|training|stacked');
+  Route::get('common', 'UserController@common')->name('user.common')->middleware('auth');
   Route::get('random', 'UserController@random')->name('user.random');
 });
 
