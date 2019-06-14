@@ -62,6 +62,7 @@ class Status extends Model
         $response = [1 => [], 2 => [], 3 => []];
         $statuses = Status::select('user_id', 'state')
             ->where('song_id', $song_id)
+            ->orderBy('used_at', 'desc')
             ->with('user')
             ->get();
         foreach($statuses as $status) {
