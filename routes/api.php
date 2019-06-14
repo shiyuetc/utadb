@@ -13,20 +13,20 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['middleware' => ['api']], function(){
-    Route::get('/show_status', 'ApiController@showStatus');
+Route::group(['middleware' => 'api'], function(){
+    Route::get('show_status', 'Api\ApiController@showStatus');
 
-    Route::get('/user_statuses', 'ApiController@userStatuses');
-    Route::get('/user_timeline', 'ApiController@userTimeline');
-    Route::get('/public_timeline', 'ApiController@publicTimeline');
+    Route::get('user_statuses', 'Api\ApiController@userStatuses');
+    Route::get('user_timeline', 'Api\ApiController@userTimeline');
+    Route::get('public_timeline', 'Api\ApiController@publicTimeline');
 });
 
 Route::group(['middleware' => ['api', 'auth']], function(){
-    Route::get('/search_avatar', 'ApiController@searchAvatar');
-    Route::get('/search_user', 'ApiController@searchUser');
-    Route::get('/search_song', 'ApiController@searchSong');
+    Route::get('search_avatar', 'Api\ApiController@searchAvatar');
+    Route::get('search_user', 'Api\ApiController@searchUser');
+    Route::get('search_song', 'Api\ApiController@searchSong');
     
-    Route::get('/user_common', 'ApiController@userCommon');
+    Route::get('user_common', 'Api\ApiController@userCommon');
 
-    Route::post('/update_status', 'ApiController@updateStatus');
+    Route::post('update_status', 'Api\ApiController@updateStatus');
 });
