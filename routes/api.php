@@ -22,9 +22,9 @@ Route::group(['middleware' => 'api'], function(){
 });
 
 Route::group(['middleware' => ['api', 'auth']], function(){
-    Route::get('search_avatar', 'Api\ApiController@searchAvatar');
-    Route::get('search_user', 'Api\ApiController@searchUser');
-    Route::get('search_song', 'Api\ApiController@searchSong');
+    Route::get('search_avatar', 'Api\SearchController@searchAvatar');
+    Route::get('search_user', 'Api\SearchController@searchUser');
+    Route::get('search_song', 'Api\SearchController@searchSong');
     
     Route::get('user_common', 'Api\ApiController@userCommon');
 

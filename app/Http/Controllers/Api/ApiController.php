@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use Validator;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ApiRequestRules;
 use App\Models\Avatar;
 use App\Models\Status;
 use App\Models\Song;
@@ -15,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ApiController extends Controller
 {   
-    private function QueryValidate($request, $validate = null)
+    public function QueryValidate($request, $validate = null)
     {
         $validator = Validator::make($request->all(), $validate);
         if($validator->fails()) {
