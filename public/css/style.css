@@ -305,8 +305,6 @@ div.copyright {
     margin: 0 !important;
   }
   .margin .section {
-    margin-bottom: 0 !important;
-    box-shadow: none;
     border-bottom: 1px solid #eaeaea;
     border-radius: 0 !important;
   }
