@@ -31,12 +31,13 @@ Route::group(['prefix' => 'search', 'middleware' => 'auth'], function() {
 });
 
 Route::group(['prefix' => 'settings', 'middleware' => 'auth'], function() {
-  Route::get('profile', 'SettingController@showProfileSettingForm')->name('settings.profile');
-  Route::post('profile', 'SettingController@updateProfile');
-  Route::get('password', 'SettingController@showPasswordSettingForm')->name('settings.password');
-  Route::post('password', 'SettingController@updatePassword');
-  Route::get('deactivate', 'SettingController@showDeactivateSettingForm')->name('settings.deactivate');
-  Route::post('deactivate', 'SettingController@updateDeactivate');
+  Route::prefix('account')->group(function() {
+    Route::get('/', 'SettingController@showAccountSettingForm')->name('settings.account');
+    Route::post('profile', 'SettingController@updateProfile')->name('settings.account.profile');
+    Route::post('password', 'SettingController@updatePassword')->name('settings.account.password');
+    Route::post('deactivate', 'SettingController@updateDeactivate')->name('settings.account.deactivate');
+    Route::post('undeactivate', 'SettingController@updateUndeactivate')->name('settings.account.undeactivate');
+  });
 });
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
