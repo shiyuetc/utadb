@@ -230,6 +230,7 @@ class Status extends Model
         if(!is_null($id)) $query = $query->where('user_statuses.user_id', $id);
 
         return $query
+            ->take(50)
             ->with(['user', 'song'])
             ->orderBy('used_at', 'desc')
             ->get();
