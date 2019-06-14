@@ -32,7 +32,7 @@ export default {
     updateStatus: function() {
       if (this.$parent.isBusy) return;
       this.$parent.isBusy = true;
-      axios.post("/api/update_status", {
+      axios.post("/api/status/update", {
           song_id: this.id,
           state: this.stateValue
         }).then(res => {
