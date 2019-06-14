@@ -9,6 +9,15 @@ use Illuminate\Http\Request;
 
 class StatusesController extends ApiController
 {   
+    public function statusLookup(Request $request)
+    {
+        $this->QueryValidate($request, [
+            'song_id' => ApiRequestRules::getSongIdRule(),
+        ]);
+        $response = Status::statusLookup($request->song_id);
+        return response()->json($response);
+    }
+
     public function statusUpdate(Request $request)
     {
         $this->QueryValidate($request, [

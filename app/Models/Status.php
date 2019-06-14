@@ -57,6 +57,19 @@ class Status extends Model
         return isset($status) ? $status : null;
     }
 
+    public static function statusLookup($song_id)
+    {
+        $response = [1 => [], 2 => [], 3 => []];
+        $statuses = Status::select('user_id', 'state')
+            ->where('song_id', $song_id)
+            ->with('user')
+            ->get();
+        foreach($statuses as $status) {
+            $response[(int)$status['state']][] = $status['user'];
+        }
+        return $response;
+    }
+
     public static function statusUpdate($song_id, $state) 
     {
         $statusArray = [
