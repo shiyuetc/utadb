@@ -57,7 +57,7 @@ class Status extends Model
         return isset($status) ? $status : null;
     }
 
-    public static function updateStatus($song_id, $state) 
+    public static function statusUpdate($song_id, $state) 
     {
         $statusArray = [
             'stacked', 'training', 'mastered'

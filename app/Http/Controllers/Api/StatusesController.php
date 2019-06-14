@@ -9,22 +9,13 @@ use Illuminate\Http\Request;
 
 class StatusesController extends ApiController
 {   
-    public function showStatus(Request $request)
-    {
-        $this->QueryValidate($request, [
-            'song_id' => ApiRequestRules::getSongIdRule(),
-        ]);
-        $status = Status::showStatus($request->song_id);
-        return response()->json($status);
-    }
-
-    public function updateStatus(Request $request)
+    public function statusUpdate(Request $request)
     {
         $this->QueryValidate($request, [
             'song_id' => ApiRequestRules::getSongIdRule(),
             'state' => ApiRequestRules::getStateRule(),
         ]);
-        $status = Status::updateStatus($request->song_id, $request->state);
+        $status = Status::statusUpdate($request->song_id, $request->state);
         return response()->json($status);
     }
 
