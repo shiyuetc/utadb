@@ -7,6 +7,8 @@ if ($errors->any()) {
   }
 } elseif (session('status')) {
   $alert = ['type' => 'success', 'text' => session('status')];
+} elseif (session('error')) {
+  $alert = ['type' => 'danger', 'text' => session('error')];
 }
 @endphp
 <div class="main main-inner">
