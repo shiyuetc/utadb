@@ -22,11 +22,12 @@ Route::group(['middleware' => 'api'], function(){
 });
 
 Route::group(['middleware' => ['api', 'auth']], function(){
-    Route::get('search_avatar', 'Api\SearchController@searchAvatar');
-    Route::get('search_user', 'Api\SearchController@searchUser');
-    Route::get('search_song', 'Api\SearchController@searchSong');
+    Route::prefix('search')->group(function() {
+        Route::get('avatar', 'Api\SearchController@searchAvatar');
+        Route::get('user', 'Api\SearchController@searchUser');
+        Route::get('song', 'Api\SearchController@searchSong');
+    });
     
     Route::get('user_common', 'Api\StatusesController@userCommon');
-
     Route::post('status/update', 'Api\StatusesController@updateStatus');
 });

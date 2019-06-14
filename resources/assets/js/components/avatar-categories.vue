@@ -36,7 +36,7 @@ export default {
   methods: {
     updateAvatarList: function() {
       this.isMounted = false;
-      axios.get("/api/search_avatar?category=" + this.category).then(res => {
+      axios.get("/api/search/avatar?category=" + this.category).then(res => {
         this.avatars = res.data;
         this.isMounted = true;
       }).catch(err => { });
