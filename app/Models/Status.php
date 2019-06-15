@@ -191,12 +191,12 @@ class Status extends Model
         ->where('user_statuses.state', 3);
 
         return $query
+            ->with('song')
+            ->join('songs', 'user_statuses.song_id', '=', 'songs.id')
+            ->orderBy('artist')
             ->skip(($page - 1) * 50)
             ->take(50)
-            ->with(['song'])
-            ->get()
-            ->sortBy('song.artist')
-            ->values();
+            ->get();
     }
 
     public static function userStatuses($id, $state = 0, $page = 1)
@@ -211,12 +211,12 @@ class Status extends Model
         if($state != 0) $query = $query->where('user_statuses.state', $state);
 
         return $query
+            ->with('song')
+            ->join('songs', 'user_statuses.song_id', '=', 'songs.id')
+            ->orderBy('artist')
             ->skip(($page - 1) * 50)
             ->take(50)
-            ->with(['song'])
-            ->get()
-            ->sortBy('song.artist')
-            ->values();
+            ->get();
     }
 
     public static function getTimeline($id = null)
