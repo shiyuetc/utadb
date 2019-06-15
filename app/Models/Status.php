@@ -53,6 +53,15 @@ class Status extends Model
                 ->first();
             $user_state = $state != null ? $state['state'] : 0;
             $status = Status::CreateUserStatus($user_state, $song["id"], $song["title"], $song["artist"], $song["image_url"], $song["audio_url"]);
+        } else {
+            $status = Status::select('user_statuses.song_id', DB::raw('IFNULL(s1.state, 0) as user_state'))
+                ->leftjoin('user_statuses as s1', function($join) {
+                    $join->where('s1.user_id', auth()->id())
+                    ->on('user_statuses.song_id', '=', 's1.song_id');
+                })
+                ->where('user_statuses.song_id', $song_id)
+                ->with('song')
+                ->first();
         }
         return isset($status) ? $status : null;
     }
