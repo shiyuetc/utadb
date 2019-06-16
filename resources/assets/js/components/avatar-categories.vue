@@ -19,7 +19,7 @@
   </div>
 </template>
 <script>
-import LoadProgress from './load-progress.vue';
+import LoadProgress from './widgets/load-progress.vue';
 import VTooltip  from 'v-tooltip';
 
 export default {

@@ -6,8 +6,8 @@
   </div>
 </template>
 <script>
-import LoadProgress from './load-progress.vue';
-import Pagination from './pagination.vue';
+import LoadProgress from './widgets/load-progress.vue';
+import Pagination from './widgets/pagination.vue';
 import Users from './common/users.vue';
 
 export default {

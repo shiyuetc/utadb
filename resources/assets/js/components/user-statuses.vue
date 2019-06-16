@@ -33,8 +33,8 @@
   </div>
 </template>
 <script>
-import LoadProgress from './load-progress.vue';
-import Pagination from './pagination.vue';
+import LoadProgress from './widgets/load-progress.vue';
+import Pagination from './widgets/pagination.vue';
 import UpdateSelect from './ui/update-select.vue';
 
 export default {

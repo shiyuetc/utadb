@@ -36,7 +36,7 @@
   </div>
 </template>
 <script>
-import LoadProgress from './load-progress.vue';
+import LoadProgress from './widgets/load-progress.vue';
 import UpdateSelect from './ui/update-select.vue';
 
 export default {
@@ -58,6 +58,7 @@ export default {
       isError: false,
       statusJp: ['気になる曲', '練習中の曲', '習得済みの曲'],
       statuses: [],
+      next: null,
     };
   },
   methods: {
@@ -79,7 +80,6 @@ export default {
         setTimeout("initializePlayer()", 1000);
       }).catch(err => {
         this.isError = true;
-        this.statuses = [];
       });
     },
     updatedStatus: function(response) {
