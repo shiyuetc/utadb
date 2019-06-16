@@ -58,9 +58,9 @@ class StatusesController extends ApiController
         return response()->json($statuses);
     }
 
-    public function publicTimeline()
+    public function publicTimeline(request $request)
     {
-        $statuses = Status::getTimeline();
+        $statuses = Status::getTimeline(null);
         return response()->json($statuses);
     }
 }

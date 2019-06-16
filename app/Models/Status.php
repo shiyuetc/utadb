@@ -241,7 +241,7 @@ class Status extends Model
         return $query
             ->take(50)
             ->with(['user', 'song'])
-            ->orderBy('used_at', 'desc')
+            ->latest('used_at')
             ->get();
     }
 }
