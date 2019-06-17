@@ -445,7 +445,7 @@ p.thats-all {
 
 /* #region welcome */
 div.banner {
-  padding: 40px 0 0 0;
+  padding: 48px 0 0 0;
   background-image: url('../images/banner-karaoke.jpeg');
   background-position: center;
   background-size: cover;
@@ -457,12 +457,12 @@ div.banner img {
   border-radius: 100%;
 }
 div.banner h1.title {
-  margin: 18px 0;
+  margin: 16px 0;
   font-weight: normal;
   text-shadow: 1px 1px 1px #666;
 }
 div.banner p.text {
-  padding: 0 10px;
+  padding: 8px 10px 12px 10px;
   color: #eee;
   text-shadow: 1px 1px 1px #666;
 }
