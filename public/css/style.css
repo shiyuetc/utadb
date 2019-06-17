@@ -313,7 +313,7 @@ div.copyright {
   .alert { 
     margin: 0 !important;
   }
-  
+
   nav.navbar {
     box-shadow: none;
     border-bottom: 1px solid #eaeaea;
@@ -323,7 +323,7 @@ div.copyright {
     line-height: normal;
   }
   ul.navbar-nav li.nav-item i {
-    padding-top: 10px;
+    padding-top: 11px;
     font-size: 16px;
   }
   .nav-indention {
