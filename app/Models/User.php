@@ -72,6 +72,7 @@ class User extends Authenticatable
             ->orWhere('name', 'like', "%{$q}%")
             ->skip(($page - 1) * 50)
             ->take(50)
+            ->orderBy('mastered_count', 'desc')
             ->get();
     }
 }

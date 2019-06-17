@@ -22,6 +22,9 @@ Route::group(['middleware' => 'api'], function(){
 });
 
 Route::group(['middleware' => ['api', 'auth']], function(){
+    Route::prefix('list')->group(function() {
+        Route::get('user', 'Api\SearchController@userList');
+    });
     Route::prefix('search')->group(function() {
         Route::get('avatar', 'Api\SearchController@searchAvatar');
         Route::get('user', 'Api\SearchController@searchUser');

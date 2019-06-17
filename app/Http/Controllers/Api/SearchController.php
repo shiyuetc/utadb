@@ -20,6 +20,15 @@ class SearchController extends ApiController
         return response()->json($avatars);
     }
 
+    public function userList(Request $request)
+    {
+        $this->QueryValidate($request, [
+            'page' => ApiRequestRules::getPageRule(),
+        ]);
+        $users = User::search('', $request->page);
+        return response()->json($users);
+    }
+
     public function searchUser(Request $request)
     {
         $this->QueryValidate($request, [

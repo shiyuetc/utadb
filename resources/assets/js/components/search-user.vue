@@ -19,7 +19,8 @@ export default {
   props: {
     q: {
       type: String,
-      required: true
+      required: false,
+      default: ''
     },
     page: {
       type: Number,
@@ -37,7 +38,10 @@ export default {
   methods: {
     statusesRequest: function() {
       this.isMounted = false;
-      axios.get("/api/search/user?q=" + this.q + "&page=" + this.pageValue).then(res => {
+      var api = this.q == '' ?
+        "/api/list/user?page=" + this.pageValue :
+        "/api/search/user?q=" + this.q + "&page=" + this.pageValue;
+      axios.get(api).then(res => {
         this.users = res.data;
         this.isMounted = true;
       }).catch(err => {

@@ -12,7 +12,7 @@
     <table class="form-table">
       <tr>
         <td width="100%">
-          <input class="text" value="{{ Request::input('q') }}" name="q" placeholder="検索キーワード" maxlength="20" autocomplete="off" required>
+          <input class="text" value="{{ Request::input('q') }}" name="q" placeholder="検索キーワード" maxlength="20" autocomplete="off">
         </td>
         <td nowrap>
           <button class="button button-info const-height"><i class="fa fa-search"></i><span class="hidden-md-below">&nbsp;検索</span></button>
@@ -25,6 +25,11 @@
 <div class="section">
   <h1 class="title"><i class="fa fa-search"></i>&nbsp;検索結果</h1>
   <search-user-component :q="'{{ urlencode($q) }}'" :page="{{ $page }}"/>
+</div>
+@else
+<div class="section">
+  <h1 class="title"><i class="fa fa-users"></i>&nbsp;ユーザー一覧</h1>
+  <search-user-component :page="{{ $page }}"/>
 </div>
 @endif
 @endsection
