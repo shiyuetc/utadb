@@ -9,10 +9,10 @@
           </li>
           @auth
           <li class="nav-item{{ Request::is('/') ? ' active' : '' }}">
-            <a href="{{ route('home') }}"><i class="fas fa-home"></i><span class="hidden-md-below">&nbsp;ホーム</span></a>
+            <a href="{{ route('home') }}"><i class="fas fa-home"></i><span class="nav-indention">&nbsp;ホーム</span></a>
           </li>
           <li class="nav-item{{ Request::is('search/song') ? ' active' : '' }}">
-            <a href="{{ route('search.song') }}"><i class="fas fa-search"></i><span class="hidden-md-below">&nbsp;曲を探す</span></a>
+            <a href="{{ route('search.song') }}"><i class="fas fa-search"></i><span class="nav-indention">&nbsp;曲を探す</span></a>
           </li>
           @endauth
         </ul>
@@ -22,11 +22,11 @@
           @guest
           <li class="nav-item{{ Request::is('register') ? ' active' : '' }}">
             <a href="{{ route('register') }}"><i class="fas fa-user"></i><span
-                class="hidden-sm-below">&nbsp;新規登録</span></a>
+                class="nav-indention">&nbsp;新規登録</span></a>
           </li>
           <li class="nav-item{{ Request::is('login') ? ' active' : '' }}">
             <a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i><span
-                class="hidden-sm-below">&nbsp;ログイン</span></a>
+                class="nav-indention">&nbsp;ログイン</span></a>
           </li>
           @else
           <li class="nav-input hidden-md-below">

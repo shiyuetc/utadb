@@ -313,13 +313,28 @@ div.copyright {
   .alert { 
     margin: 0 !important;
   }
+  
   nav.navbar {
     box-shadow: none;
     border-bottom: 1px solid #eaeaea;
   }
-  
-
-/* 681px以上 */}
+  ul.navbar-nav li.nav-item > a {
+    padding: 0 12px;
+    line-height: normal;
+  }
+  ul.navbar-nav li.nav-item i {
+    padding-top: 10px;
+    font-size: 16px;
+  }
+  .nav-indention {
+    font-size: 12px;
+  }
+  .nav-indention::before {
+    white-space: pre;
+    content: "\A";
+  }
+}
+/* 681px以上 */
 @media (min-width: 681px) {
   .hidden-md-above {
     display: none;
