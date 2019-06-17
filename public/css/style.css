@@ -22,7 +22,7 @@ div#app {
   margin-bottom: -96px;
 }
 div.header-push {
-  height: 56px;
+  height: 55px;
 }
 div.footer-push {
   height: 96px;
@@ -151,7 +151,8 @@ ul.navbar-nav li > a {
   text-decoration: none;
 }
 ul.navbar-nav li.nav-item a {
-  min-width: 32px;
+  min-width: 40px;
+  height: 54px;
   padding: 0 14px;
   border-bottom: 0 solid transparent;
   font-size: 14px;
@@ -335,7 +336,7 @@ div.copyright {
     display: none;
   }
 
-  ul.navbar-nav li.nav-item > a {
+  ul.navbar-nav li.nav-item a {
     padding: 0 12px;
     line-height: normal;
   }

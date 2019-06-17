@@ -3,13 +3,16 @@
     <div class="navbar-container">
       <div class="navbar-left">
         <ul class="navbar-nav">
-          <li class="nav-brand">
+          <li class="nav-brand{{ Auth::check() ? ' hidden-sm-below' : '' }}">
             <img src="{{ asset('images/icons/icon-32x.png') }}" alt="logo" onclick="location='{{ route('home') }}'">
-            <a href="{{ route('home') }}"><span class="hidden-sm-below">&nbsp;Utadb&nbsp;</span></a>
+            <a href="{{ route('home') }}"><span class="hidden-md-below">&nbsp;Utadb&nbsp;</span></a>
           </li>
           @auth
           <li class="nav-item{{ Request::is('/') ? ' active' : '' }}">
             <a href="{{ route('home') }}"><i class="fas fa-home"></i><span class="nav-indention">&nbsp;ホーム</span></a>
+          </li>
+          <li class="nav-item{{ Request::is('notification') ? ' active' : '' }}">
+            <a href="{{ route('notification') }}"><i class="fas fa-bell"></i><span class="nav-indention">&nbsp;通知</span></a>
           </li>
           <li class="nav-item{{ Request::is('search/song') ? ' active' : '' }}">
             <a href="{{ route('search.song') }}"><i class="fas fa-search"></i><span class="nav-indention">&nbsp;曲を探す</span></a>
