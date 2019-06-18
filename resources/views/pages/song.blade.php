@@ -2,7 +2,11 @@
 @section('title', "{$status->song->artist} / {$status->song->title}")
 
 @section('sidebar')
-@include('widgets.user-infomation', ['user' => Auth::user(), 'hide' => true])
+@if(Auth::check())
+  @include('widgets.user-infomation', ['user' => Auth::user(), 'hide' => true])
+@else
+  @include('widgets.auth-route') 
+@endif
 @endsection
 
 @section('content')
