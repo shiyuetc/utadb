@@ -400,6 +400,16 @@ div.copyright {
 
 /* #endregion */
 
+/* #region auth-route */
+.auth-route {
+  padding: 10px 12px;
+}
+.auth-route p {
+  font-size: 12px;
+  text-align: center;
+}
+/* #endregion */
+
 /* #region error */
 div.error {
   text-align: center;
