@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\ApiRequestRules;
 use App\Models\Avatar;
 use App\Models\Status;
