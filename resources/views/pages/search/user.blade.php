@@ -2,7 +2,7 @@
 @section('title', "ユーザーの検索")
 
 @section('sidebar')
-@include('widgets.user-infomation', ['user' => Auth::user(), 'hide' => true])
+@include('widgets.user-infomation', ['user' => Auth::user(), 'hidden' => true])
 @endsection
 
 @section('content')

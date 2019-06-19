@@ -3,7 +3,7 @@
 
 @section('sidebar')
 @if(Auth::check())
-  @include('widgets.user-infomation', ['user' => Auth::user(), 'hide' => true])
+  @include('widgets.user-infomation', ['user' => Auth::user(), 'hidden' => true])
 @else
   @include('widgets.auth-route') 
 @endif

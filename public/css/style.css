@@ -43,10 +43,6 @@ div.main-inner {
   margin-left: 10px;
   margin-right: 10px;
 }
-.padding-const {
-  padding-left: 10px;
-  padding-right: 10px;
-}
 div.sidebar {
   float: left;
   width: 240px;
@@ -55,14 +51,6 @@ div.content {
   margin-left: 250px;
 }
 
-.section {
-  margin: 0 auto 10px auto;
-  overflow: hidden;
-  border-radius: 4px;
-  box-shadow: 0px 0px 4px 2px #eee;
-  background: #fff;
-  word-wrap: break-word;
-}
 .section > h1.title {
   margin: 0;
   padding: 8px 12px;
@@ -77,30 +65,6 @@ div.content {
 }
 .section p.text {
   margin: 12px 18px;
-}
-
-a.default-link {
-  color: inherit;
-  text-decoration: none;
-}
-a.default-link:hover {
-  color: #c32222 !important;
-  text-decoration: underline;
-}
-a.default-link.on-color {
-  color: #db3333;
-}
-
-/* #endregion */
-
-/* #region fixity */
-a {
-  color: inherit;
-  text-decoration: none;
-}
-i {
-  text-align: center;
-  min-width: 18px;
 }
 /* #endregion */
 
@@ -295,23 +259,10 @@ div.copyright {
 /* #region media-queries */
 /* 460px以下 */
 @media (max-width: 460px) {
-  .hidden-sm-below {
-    display: none !important;
-  }
-
   div.main-inner {
     margin-top: 0 !important;
   }
   .margin {
-    margin: 0 !important;
-  }
-  .margin .section {
-    margin-bottom: 0;
-    box-shadow: none;
-    border-bottom: 1px solid #eaeaea;
-    border-radius: 0 !important;
-  }
-  .alert { 
     margin: 0 !important;
   }
 
@@ -324,18 +275,8 @@ div.copyright {
     margin-top: 0 !important;
   }
 }
-/* 699px以上 */
-@media (min-width: 699px) {
-  .hidden-md-above {
-    display: none;
-  }
-}
 /* 698px以下 */
 @media (max-width: 698px) {
-  .hidden-md-below {
-    display: none;
-  }
-
   ul.navbar-nav li.nav-item a {
     padding: 0 12px;
     line-height: normal;
@@ -358,9 +299,6 @@ div.copyright {
   }
   div.content {
     margin-left: 0;
-  }
-  .section-hide {
-    display: none;
   }
 
   div.introduct > div {
@@ -390,23 +328,6 @@ div.copyright {
   table.setting-table tr td:first-child {
     display: none;
   }
-}
-/* 960px以下 */
-@media (max-width: 960px) {
-  .hidden-lg-below {
-    display: none;
-  }
-}
-
-/* #endregion */
-
-/* #region auth-route */
-.auth-route {
-  padding: 10px 12px;
-}
-.auth-route p {
-  font-size: 12px;
-  text-align: center;
 }
 /* #endregion */
 
@@ -456,7 +377,7 @@ p.thats-all {
 
 /* #region welcome */
 div.banner {
-  padding: 48px 0 0 0;
+  padding-top: 48px;
   background-image: url('../images/banner-karaoke.jpeg');
   background-position: center;
   background-size: cover;
