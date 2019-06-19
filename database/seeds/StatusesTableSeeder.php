@@ -12,9 +12,9 @@ class StatusesTableSeeder extends Seeder
     public function run()
     {
         DB::table('user_statuses')->insert([
-            [ 'user_id' => '1', 'song_id' => '00001', 'state' => '1' ],
-            [ 'user_id' => '1', 'song_id' => '00002', 'state' => '2' ],
-            [ 'user_id' => '2', 'song_id' => '00003', 'state' => '3' ],
+            [ 'id' => str_replace('.', '', microtime(true)) + 0, 'user_id' => '1', 'song_id' => '00001', 'state' => '1' ],
+            [ 'id' => str_replace('.', '', microtime(true) + 1),'user_id' => '1', 'song_id' => '00002', 'state' => '2' ],
+            [ 'id' => str_replace('.', '', microtime(true) + 2),'user_id' => '2', 'song_id' => '00003', 'state' => '3' ],
         ]);
     }
 }
