@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['middleware' => 'api'], function(){
+    Route::get('application/resource', 'Api\ApplicationController@resourceCount');
+    
     Route::get('status/lookup', 'Api\StatusesController@statusLookup');
 
     Route::get('user_statuses', 'Api\StatusesController@userStatuses');
