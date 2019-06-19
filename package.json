@@ -1,4 +1,21 @@
 {
+    "name": "utadb",
+    "description": "build with Laravel 5.5",
+    "version": "1.0.0",
+    "main": "webpack.mix.js",
+    "directories": {
+        "test": "tests"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/shiyuetc/utadb.git"
+    },
+    "author": "shiyu",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/shiyuetc/utadb/issues"
+    },
+    "homepage": "https://utadb.xvs.jp",
     "private": true,
     "scripts": {
         "dev": "npm run development",
