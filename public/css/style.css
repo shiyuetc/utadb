@@ -389,18 +389,18 @@ div.banner img {
   border-radius: 100%;
 }
 div.banner h1.title {
-  margin: 16px 0;
+  margin: 16px 0 24px 0;
   font-weight: normal;
   text-shadow: 1px 1px 1px #666;
 }
 div.banner p.text {
-  padding: 8px 10px 12px 10px;
+  margin: 16px 10px;
   color: #eee;
   text-shadow: 1px 1px 1px #666;
 }
 
 div.prompt {
-  margin-top: 36px;
+  margin-top: 30px;
   padding: 24px;
   background: rgba(0, 0, 0, 0.7);
   text-align: center;
