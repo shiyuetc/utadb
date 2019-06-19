@@ -16,12 +16,8 @@ class Status extends Model
 
     public $timestamps = false;
 
-    public $incrementing = false;
-    
-    protected $keyType = 'string';
-
     protected $fillable = [
-        'id', 'state', 'used_at'
+        'state', 'used_at'
     ];
 
     protected $hidden = [
@@ -38,11 +34,6 @@ class Status extends Model
         return $this->belongsTo('App\Models\Song');
     }
     
-    public static function CreateId()
-    {
-        return str_replace('.', '', microtime(true));
-    }
-
     public static function CreateUserStatus($state, $id, $title, $artist, $image_url = null, $audio_url = null)
     {
         $song = Song::CreateSong($id, $title, $artist, $image_url, $audio_url);
@@ -131,7 +122,6 @@ class Status extends Model
                 }
 
                 Status::insert([
-                    'id' => Status::CreateId(),
                     'user_id' => $user->id,
                     'song_id' => $song_id,
                     'state' => $state
@@ -141,9 +131,8 @@ class Status extends Model
             } elseif($state != 0) { 
                 // ステータスの更新
                 Status::find($statusId)->update([
-                    'id' => Status::CreateId(),
                     'state' => $state,
-                    'used_at' => Carbon::now()
+                    'used_at' => Carbon::now()->format('Y-m-d H:i:s.u')
                 ]);
                 $user["{$statusArray[$state - 1]}_count"] += 1;
                 $user["{$statusArray[$nowState - 1]}_count"] -= 1;
