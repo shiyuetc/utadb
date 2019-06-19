@@ -2,7 +2,7 @@
 @section('title', 'アカウントの設定')
 
 @section('sidebar')
-@include('widgets.user-infomation', ['user' => Auth::user(), 'hide' => true])
+@include('widgets.user-infomation', ['user' => Auth::user(), 'hidden' => true])
 @include('widgets.setting-list')
 @endsection
 
