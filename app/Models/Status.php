@@ -16,8 +16,12 @@ class Status extends Model
 
     public $timestamps = false;
 
+    public $incrementing = false;
+    
+    protected $keyType = 'string';
+
     protected $fillable = [
-        'state', 'used_at'
+        'id', 'state', 'used_at'
     ];
 
     protected $hidden = [
@@ -34,6 +38,11 @@ class Status extends Model
         return $this->belongsTo('App\Models\Song');
     }
     
+    public static function CreateId()
+    {
+        return str_pad(str_replace('.', '', microtime(true)), 14, '0', STR_PAD_RIGHT);
+    }
+
     public static function CreateUserStatus($state, $id, $title, $artist, $image_url = null, $audio_url = null)
     {
         $song = Song::CreateSong($id, $title, $artist, $image_url, $audio_url);
@@ -122,6 +131,7 @@ class Status extends Model
                 }
 
                 Status::insert([
+                    'id' => Status::CreateId(),
                     'user_id' => $user->id,
                     'song_id' => $song_id,
                     'state' => $state
@@ -131,8 +141,9 @@ class Status extends Model
             } elseif($state != 0) { 
                 // ステータスの更新
                 Status::find($statusId)->update([
+                    'id' => Status::CreateId(),
                     'state' => $state,
-                    'used_at' => Carbon::now()->format('Y-m-d H:i:s.u')
+                    'used_at' => Carbon::now()
                 ]);
                 $user["{$statusArray[$state - 1]}_count"] += 1;
                 $user["{$statusArray[$nowState - 1]}_count"] -= 1;
@@ -228,7 +239,7 @@ class Status extends Model
             ->get();
     }
 
-    public static function getTimeline($id = null, $max_id = null)
+    public static function getTimeline($id = null, $next = null)
     {
         $query = Status::select('user_statuses.id', 'user_statuses.user_id', 'user_statuses.song_id', 'user_statuses.state', DB::raw('IFNULL(s1.state, 0) as user_state'), 'user_statuses.used_at')
         ->leftjoin('user_statuses as s1', function($join) {
@@ -238,11 +249,9 @@ class Status extends Model
 
         if(!is_null($id)) $query = $query->where('user_statuses.user_id', $id);
 
-        /*
         if(!is_null($next)) {
-            $query = $query->where('user_statuses.used_at', '<', $next);
+            //$query = $query->where('user_statuses.used_at', '<', $next);
         } 
-        */
 
         return $query
             ->take(50)
