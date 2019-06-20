@@ -7,8 +7,11 @@
 @endsection
 
 @section('content')
-<div class="section">
-  <h1 class="title"><i class="fas fa-user"></i>&nbsp;プロフィールの編集</h1>
+@component('components.section')
+@slot('title')
+  <i class="fas fa-user"></i>&nbsp;プロフィールの編集
+@endslot
+@slot('contents')
   <form class="form" method="POST" action="{{ route('settings.account.profile') }}">
     {{ csrf_field() }}
     <table class="setting-table">
@@ -39,10 +42,14 @@
       </tr>
     </table>
   </form>
-</div>
+@endslot
+@endcomponent
 
-<div class="section">
-  <h1 class="title"><i class="fas fa-key"></i>&nbsp;メールアドレスの変更</h1>
+@component('components.section')
+@slot('title')
+  <i class="fas fa-key"></i>&nbsp;メールアドレスの変更
+@endslot
+@slot('contents')
   <form class="form" method="POST" action="{{ route('settings.account.email') }}">
     {{ csrf_field() }}
     <table class="setting-table">
@@ -59,10 +66,14 @@
       </tr>
     </table>
   </form>
-</div>
+@endslot
+@endcomponent
 
-<div class="section">
-  <h1 class="title"><i class="fas fa-key"></i>&nbsp;パスワードの変更</h1>
+@component('components.section')
+@slot('title')
+  <i class="fas fa-key"></i>&nbsp;パスワードの変更
+@endslot
+@slot('contents')
   <form class="form" method="POST" action="{{ route('settings.account.password') }}">
     {{ csrf_field() }}
     <table class="setting-table">
@@ -93,10 +104,15 @@
       </tr>
     </table>
   </form>
-</div>
+@endslot
+@endcomponent
 
-<div class="section">
-  <h1 class="title"><i class="fas fa-key"></i>&nbsp;アカウントの削除</h1>
+
+@component('components.section')
+@slot('title')
+  <i class="fas fa-key"></i>&nbsp;アカウントの削除
+@endslot
+@slot('contents')
   <form class="form" method="POST" action="{{ !$isApplied ? route('settings.account.deactivate') : route('settings.account.undeactivate') }}">
     {{ csrf_field() }}
     <p class="note">※アカウント削除申請から7日後に対象のアカウントが削除され使用できなくなり、元の状態に戻すことはできませんが、それまでに申請を解除することで削除申請を無効化できます。</p>
@@ -120,5 +136,6 @@
       </tr>
     </table>
   </form>
-</div>
+@endslot
+@endcomponent
 @endsection
