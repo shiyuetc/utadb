@@ -6,8 +6,12 @@
 @endsection
 
 @section('content')
-<div class="section">
-  <h1 class="title"><i class="{{ $state['icon-class'] }}"></i>&nbsp;{{ $state['jp'] }}</h1>
+@component('components.section')
+@slot('title')
+  <i class="{{ $state['icon-class'] }}"></i>&nbsp;{{ $state['jp'] }}
+@endslot
+@slot('contents')
   <user-statuses-component :user_id="'{{ $user->id }}'" :state="{{ $state['index'] }}" :page="{{ $page }}"/>
-</div>
+@endslot
+@endcomponent
 @endsection
