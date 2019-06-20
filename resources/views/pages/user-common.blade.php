@@ -6,8 +6,12 @@
 @endsection
 
 @section('content')
-<div class="section">
-  <h1 class="title"><i class="fas fa-link"></i>&nbsp;共通の曲</h1>
+@component('components.section')
+@slot('title')
+  <i class="fas fa-link"></i>&nbsp;共通の曲
+@endslot
+@slot('contents')
   <user-common-component :user_id="'{{ $user->id }}'" :page="{{ $page }}"/>
-</div>
+@endslot
+@endcomponent
 @endsection
