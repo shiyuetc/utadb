@@ -10,8 +10,12 @@
 @endsection
 
 @section('content')
-<div class="section">
-  <h1 class="title"><i class="fas fa-music"></i>&nbsp;{{ $status->song->artist }} / {{ $status->song->title }}</h1>
+@component('components.section')
+@slot('title')
+  <i class="fas fa-music"></i>&nbsp;{{ $status->song->artist }} / {{ $status->song->title }}
+@endslot
+@slot('contents')
   <song-infomation-component :status="{{ $status }}"/>
-</div>
+@endslot
+@endcomponent
 @endsection
