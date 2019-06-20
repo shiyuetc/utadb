@@ -6,8 +6,11 @@
 @endsection
 
 @section('content')
-<div class="section">
-  <h1 class="title"><i class="fas fa-users"></i>&nbsp;ユーザーの検索</h1>
+@component('components.section')
+@slot('title')
+  <i class="fas fa-users"></i>&nbsp;ユーザーの検索
+@endslot
+@slot('contents')
   <form class="form" method="GET" action="{{ route('search.user') }}">
     <table class="form-table">
       <tr>
@@ -20,16 +23,26 @@
       </tr>
     </table>
   </form>
-</div>
+@endslot
+@endcomponent
+
 @if(isset($q) && $q != '')
-<div class="section">
-  <h1 class="title"><i class="fa fa-search"></i>&nbsp;検索結果</h1>
-  <search-user-component :q="'{{ urlencode($q) }}'" :page="{{ $page }}"/>
-</div>
+  @component('components.section')
+  @slot('title')
+    <i class="fa fa-search"></i>&nbsp;検索結果
+  @endslot
+  @slot('contents')
+    <search-user-component :q="'{{ urlencode($q) }}'" :page="{{ $page }}" />
+  @endslot
+  @endcomponent
 @else
-<div class="section">
-  <h1 class="title"><i class="fa fa-users"></i>&nbsp;ユーザー一覧</h1>
-  <search-user-component :page="{{ $page }}"/>
-</div>
+  @component('components.section')
+  @slot('title')
+    <i class="fa fa-users"></i>&nbsp;ユーザー一覧
+  @endslot
+  @slot('contents')
+    <search-user-component :page="{{ $page }}" />
+  @endslot
+  @endcomponent
 @endif
 @endsection
