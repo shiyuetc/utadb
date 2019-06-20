@@ -5,8 +5,11 @@
 @endsection
 
 @section('content')
-<div class="section">
-  <h1 class="title"><i class="fas fa-bell"></i>&nbsp;通知</h1>
+@component('components.section')
+@slot('title')
+  <i class="fas fa-bell"></i>&nbsp;通知
+@endslot
+@slot('contents')
   <p class="center">coming soon</p>
-</div>
-@endsection
+@endslot
+@endcomponent
