@@ -1,4 +1,4 @@
-<div class="section{{ isset($hidden) ? ' section-hidden' : '' }}{{ isset($padding) ? ' section-padding' : '' }}">
+<div class="section{{ isset($hidden) && $hidden ? ' section-hidden' : '' }}{{ isset($padding) && $padding ? ' section-padding' : '' }}">
   @isset($title)
     <div class="header">
       <h1 class="title">{{ $title }}</h1>
