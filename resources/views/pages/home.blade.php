@@ -6,8 +6,12 @@
 @endsection
 
 @section('content')
-<div class="section">
-  <h1 class="title"><i class="fab fa-react"></i>&nbsp;ローカルタイムライン</h1>
+@component('components.section')
+@slot('title')
+  <i class="fab fa-react"></i>&nbsp;ローカルタイムライン
+@endslot
+@slot('contents')
   <timeline-component/>
-</div>
+@endslot
+@endcomponent
 @endsection
