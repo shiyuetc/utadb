@@ -51,12 +51,6 @@ div.content {
   margin-left: 250px;
 }
 
-.section > h1.title {
-  margin: 0;
-  padding: 8px 12px;
-  border-bottom: 1px solid #eaeaea;
-  font-size: 15px;
-}
 .section h2.sub-title {
   margin: 16px 16px 8px 16px;
   padding-left: 12px;

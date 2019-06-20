@@ -39,7 +39,7 @@ a.default-link.on-color {
 /* #endregion */
 
 /* #region section */
-.section {
+div.section {
   margin: 0 auto 10px auto;
   overflow: hidden;
   border-radius: 4px;
@@ -47,8 +47,19 @@ a.default-link.on-color {
   background: #fff;
   word-wrap: break-word;
 }
-.section.section-padding {
+div.section.section-padding {
   padding: 10px 12px;
+}
+div.section > div.header {
+  border-bottom: 1px solid #eaeaea;
+  padding: 8px 12px;
+}
+div.section > div.header h1.title {
+  margin: 0;
+  font-size: 15px;
+}
+div.section > div.contents {
+
 }
 /* #endregion */
 
