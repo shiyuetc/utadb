@@ -13,3 +13,4 @@
   <p class="center">coming soon</p>
 @endslot
 @endcomponent
+@endsection
