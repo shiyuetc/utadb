@@ -1,3 +1,11 @@
+:root {
+  --danger-color: #db3333;
+  --danger-disabled-color: #c32222;
+  --success-color: #5cbb2d;
+  --success-disabled-color: #51a428;
+  --info-color: #3598db;
+  --info-disabled-color: #2283c3;
+}
 
 /* #region fixity */
 a {
@@ -30,11 +38,11 @@ i {
   height: 150px;
 }
 a.default-link:hover {
-  color: #c32222 !important;
+  color: var(--danger-disabled-color) !important;
   text-decoration: underline;
 }
 a.default-link.on-color {
-  color: #db3333;
+  color: var(--danger-disabled-color);
 }
 /* #endregion */
 
@@ -235,34 +243,34 @@ button.button-default:hover {
   background: #eee;
 }
 button.button-info {
-	background: #3598db;
+	background: var(--info-color);
 	color: #fafafa;
 }
 button.button-info:hover {
-	background: #2283c3;
+	background: var(--info-disabled-color);
 }
 button.button-info-disabled {
-	background: #2283c3 !important;
+	background: var(--info-disabled-color) !important;
 }
 button.button-success {
-	background: #5cbb2d;
+	background: var(--success-color);
 	color: #fafafa;
 }
 button.button-success:hover {
-	background: #51a428;
+	background: var(--success-disabled-color);
 }
 button.button-success-disabled {
-	background: #51a428 !important;
+	background: var(--success-disabled-color) !important;
 }
 button.button-danger {
-	background: #db3333;
+	background: var(--danger-color);
 	color: #fafafa;
 }
 button.button-danger:hover {
-	background: #c32222;
+	background: var(--danger-disabled-color);
 }
 button.button-danger-disabled {
-	background: #c32222 !important;
+	background: var(--danger-disabled-color) !important;
 }
 /* #endregion */
 /* #region ui.text */
@@ -338,8 +346,8 @@ select.status-select {
   -webkit-appearance: none;
 }
 select.status-select.active {
-	background: #db3333;
-	border: 1px solid #db3333;
+	background: var(--danger-color);
+	border: 1px solid var(--danger-color);
 	color: #fafafa;
 }
 select.status-select option {
