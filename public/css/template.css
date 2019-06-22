@@ -1,4 +1,6 @@
 :root {
+  --break-border: 1px solid #eaeaea;
+  --transparent-border: 0px solid transparent;
   --danger-color: #db3333;
   --danger-disabled-color: #c32222;
   --success-color: #5cbb2d;
@@ -26,7 +28,7 @@ i {
   text-align: center;
 }
 .border {
-  border-top: 1px solid #eaeaea;
+  border-top: var(--break-border);
 }
 .height-small {
   height: 50px;
@@ -59,7 +61,7 @@ div.section.section-padding {
   padding: 10px 12px;
 }
 div.section > div.header {
-  border-bottom: 1px solid #eaeaea;
+  border-bottom: var(--break-border);
   padding: 8px 12px;
 }
 div.section > div.header h1.title {
@@ -123,12 +125,12 @@ ul.list {
 	padding-left: 0;
 }
 ul.list li:nth-child(n + 2) {
-  border-top: 1px solid #eaeaea;
+  border-top: var(--break-border);
 }
 ul.list li a {
   display: block;
   padding: 10px 12px;
-  border-left: 0px solid transparent;
+  border-left: var(--transparent-border);
   box-sizing: border-box;
   font-size: 14px;
   transition: background-color 0.2s, border 0.2s;
@@ -464,7 +466,7 @@ select.status-select option {
   .section {
     margin-bottom: 0;
     box-shadow: none;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: var(--break-border);
     border-radius: 0;
   }
 
@@ -510,7 +512,7 @@ select.status-select option {
   }
   ul.list.list-flex li a {
     padding: 10px 2px;
-    border-bottom: 0 solid transparent;
+    border-bottom: var(--transparent-border);
     transition: background-color 0.2s, border-color 0.2s;
     -moz-transition: background-color 0.2s, border-color 0.2s;
     -webkit-transition: background-color 0.2s, border-color 0.2s;
