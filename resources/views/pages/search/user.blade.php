@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-@component('components.section')
+@component('components.section', ['toggle' => true])
 @slot('title')
   <i class="fas fa-users"></i>&nbsp;ユーザーの検索
 @endslot

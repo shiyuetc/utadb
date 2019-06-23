@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-@component('components.section')
+@component('components.section', ['toggle' => true])
 @slot('title')
   <i class="fas fa-music"></i>&nbsp;曲の検索
 @endslot
