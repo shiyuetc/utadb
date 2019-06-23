@@ -13,14 +13,16 @@ if ($errors->any()) {
 @endphp
 <div class="main main-inner">
   <div class="margin">
-    @if(isset($alert))
+    @isset($alert)
       @include('components.alert', ['type' => $alert['type'], 'text' => $alert['text']])
-    @endif
-    <div class="sidebar">
-      @yield('sidebar')
-    </div>
-    <div class="content">
-      @yield('content')
+    @endisset
+    <div class="layout">
+      <div class="sidebar">
+        @yield('sidebar')
+      </div>
+      <div class="content">
+        @yield('content')
+      </div>
     </div>
   </div>
 </div>
