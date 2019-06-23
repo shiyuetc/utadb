@@ -75,7 +75,6 @@ div.section > div.header span.section-toggle {
   top: 4px;
   right: 4px;
   padding: 4px 6px;
-  border: var(--break-border);
   border-radius: 2px;
   cursor: pointer;
   transition: background-color 0.2s;
@@ -83,9 +82,6 @@ div.section > div.header span.section-toggle {
 	-webkit-transition: background-color 0.2s;
 	-o-transition: background-color 0.2s;
   -ms-transition: background-color 0.2s;
-}
-div.section > div.header span.section-toggle:hover {
-  background: #fafafa;
 }
 div.section > div.header span.section-toggle i {
   transition: 0.2s;
