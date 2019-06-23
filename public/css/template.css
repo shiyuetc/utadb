@@ -50,6 +50,7 @@ a.default-link.on-color {
 
 /* #region section */
 div.section {
+  position: relative;
   margin: 0 auto 10px auto;
   overflow: hidden;
   border-radius: 4px;
@@ -61,6 +62,7 @@ div.section.section-padding {
   padding: 10px 12px;
 }
 div.section > div.header {
+  position: relative;
   border-bottom: var(--break-border);
   padding: 8px 12px;
 }
@@ -68,8 +70,28 @@ div.section > div.header h1.title {
   margin: 0;
   font-size: 15px;
 }
-div.section > div.contents {
-
+div.section > div.header span.section-toggle {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  padding: 4px 6px;
+  border: var(--break-border);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+	-moz-transition: background-color 0.2s;
+	-webkit-transition: background-color 0.2s;
+	-o-transition: background-color 0.2s;
+  -ms-transition: background-color 0.2s;
+}
+div.section > div.header span.section-toggle:hover {
+  background: #fafafa;
+}
+div.section > div.header span.section-toggle i {
+  transition: 0.2s;
+}
+div.section > div.header span.section-toggle.hidden i {
+  transform: rotate(180deg);
 }
 /* #endregion */
 
@@ -464,10 +486,10 @@ select.status-select option {
 
   /* section */
   .section {
-    margin-bottom: 0;
-    box-shadow: none;
+    margin-bottom: 0 !important;
+    box-shadow: none !important;;
     border-bottom: var(--break-border);
-    border-radius: 0;
+    border-radius: 0 !important;;
   }
 
   /* alert */

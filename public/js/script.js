@@ -6,6 +6,14 @@ function closeAlert() {
 	}
 }
 
+// セクションのトグル用スクリプト
+function toggleSection(location) {
+	var toggle = $(location);
+	var target = toggle.parent().parent().find('.contents');
+	toggle.toggleClass('hidden');
+	target.slideToggle();
+}
+
 function updateUserStatuses(user) {
 	var statusCountElements = document.getElementsByClassName('status-count');
 	statusCountElements[0].textContent = (user.stacked_count + user.training_count + user.mastered_count) + '曲';
