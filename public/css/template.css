@@ -63,7 +63,6 @@ div.section.section-padding {
 }
 div.section > div.header {
   position: relative;
-  border-bottom: var(--break-border);
   padding: 8px 12px;
 }
 div.section > div.header h1.title {
@@ -74,7 +73,7 @@ div.section > div.header span.section-toggle {
   position: absolute;
   top: 4px;
   right: 4px;
-  padding: 4px 6px;
+  padding: 4px 12px;
   border-radius: 2px;
   cursor: pointer;
   transition: background-color 0.2s;
@@ -88,6 +87,9 @@ div.section > div.header span.section-toggle i {
 }
 div.section > div.header span.section-toggle.hidden i {
   transform: rotate(180deg);
+}
+div.section > div.contents {
+  border-top: var(--break-border);
 }
 /* #endregion */
 
