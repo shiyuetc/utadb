@@ -221,7 +221,8 @@ p.supplement-text {
   text-align: right;
 }
 p.note {
-  font-size: 14px;
+  margin: 6px 0;
+  font-size: 12px;
 }
 /* #endregion */
 /* #region ui.button */
