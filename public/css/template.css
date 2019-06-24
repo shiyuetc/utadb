@@ -39,6 +39,9 @@ i {
 .height-large {
   height: 150px;
 }
+a.underline:hover {
+  text-decoration: underline;
+}
 a.default-link:hover {
   color: var(--danger-disabled-color) !important;
   text-decoration: underline;

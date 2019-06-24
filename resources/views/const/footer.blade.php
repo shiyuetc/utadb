@@ -5,6 +5,7 @@
       <a href="https://github.com/shiyuetc/utadb" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
     </div>
     <div class="copyright">
+      <p><a class="underline" href="{{ route('terms') }}" target="_blank">利用規約</a> | <a class="underline" href="{{ route('privacy') }}" target="_blank">プライバシーポリシー</a></p>
       <p>Copyright &copy; 2018/05 ~ 2019 shiyu</p>
     </div>
   </div>

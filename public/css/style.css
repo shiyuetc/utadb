@@ -20,13 +20,13 @@ body {
 }
 div#app {
   min-height: 100%;
-  margin-bottom: -96px;
+  margin-bottom: -114px;
 }
 div.header-push {
   height: 55px;
 }
 div.footer-push {
-  height: 96px;
+  height: 114px;
 }
 div.main:after {
   display: block;
@@ -214,7 +214,7 @@ li.danger-dialog-item a:hover {
 
 /* #region footer */
 div.footer {
-  height: 96px;
+  height: 114px;
   box-shadow: 0 -2px 2px #232323;
   background: #232323;
 }
@@ -245,7 +245,9 @@ div.copyright {
   font-size: 12px;
   text-align: center;
 }
-
+div.copyright p {
+  margin: 6px 0;
+}
 /* #endregion */
 
 /* #region media-queries */
