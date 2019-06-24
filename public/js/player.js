@@ -5,7 +5,11 @@
  */
 function initializePlayer() {
     if($(".mediPlayer").length > 0) {
-        $('.mediPlayer').mediaPlayer();
+        var mediaNode = $(".mediPlayer");
+        mediaNode.each(function(){
+            $(this).children("svg").remove();
+        });
+        mediaNode.mediaPlayer();
     }
 };
 
