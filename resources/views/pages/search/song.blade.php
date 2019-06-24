@@ -28,14 +28,24 @@
         </td>
       </tr>
     </table>
+    <p class="note">※重複した曲の登録を防ぐために検索後、『ローカルからの検索結果』から優先的に利用することをお勧めします。</p>
   </form>
 @endslot
 @endcomponent
 
 @if(isset($q) && $q != '')
+  @component('components.section', ['toggle' => true, 'toggleState' => false])
+  @slot('title')
+    <i class="fa fa-search"></i>&nbsp;ローカルからの検索結果
+  @endslot
+  @slot('contents')
+    <search-song-component :q="'{{ urlencode($q) }}'" />
+  @endslot
+  @endcomponent
+
   @component('components.section')
   @slot('title')
-    <i class="fa fa-search"></i>&nbsp;検索結果
+    <i class="fa fa-search"></i>&nbsp;{{ $source == 0 ? 'iTunes' : 'DAM' }}からの検索結果
   @endslot
   @slot('contents')
     <search-song-component :source="{{ $source }}" :q="'{{ urlencode($q) }}'" :page="{{ $page }}" />
