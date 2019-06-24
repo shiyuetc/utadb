@@ -171,7 +171,16 @@ class Status extends Model
     public static function searchSong($source, $q, $page = 1)
     {
         $statuses = [];
-        $songs = Puller::searchSong($source, $q, $page);
+        if($source == -1) {
+            $songs = Song::where('title', 'like', "%{$q}%")
+                ->orWhere('artist', 'like', "%{$q}%")
+                ->skip(($page - 1) * 10)
+                ->take(10)
+                ->get();
+        } else {
+            $songs = Puller::searchSong($source, $q, $page);
+        }
+        
         if(count($songs) > 0) {
             $song_ids = array();
             foreach($songs as $song) {

@@ -20,7 +20,7 @@ export default {
     source: {
       type: Number,
       required: false,
-      default: 0
+      default: -1
     },
     q: {
       type: String,

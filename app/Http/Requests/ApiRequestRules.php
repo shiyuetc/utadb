@@ -23,7 +23,7 @@ class ApiRequestRules
 
     public static function getSourceRule()
     {
-        return 'required|numeric|between:0,1';
+        return 'required|numeric|between:-1,1';
     }
 
     public static function getSongIdRule()
