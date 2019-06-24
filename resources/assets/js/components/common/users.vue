@@ -1,6 +1,6 @@
 <template>
   <div class="users">
-    <table v-if="this.$parent.isMounted && this.users.length != 0" class="object-table user-table">
+    <table v-if="this.$parent.isMounted && this.users.length != 0" class="object-table user-table animated fadeIn">
       <thead>
         <tr>
           <th class="avatar-column"></th>

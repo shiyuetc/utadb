@@ -1,6 +1,6 @@
 <template>
   <div class="songs">
-    <table v-if="this.$parent.isMounted && this.statuses.length != 0" class="object-table music-table table-padding">
+    <table v-if="this.$parent.isMounted && this.statuses.length != 0" class="object-table music-table table-padding animated fadeIn">
       <thead>
         <tr>
           <th></th>

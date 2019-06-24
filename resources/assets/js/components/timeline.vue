@@ -1,7 +1,7 @@
 <template>
   <div class="timeline">
     <loadProgress v-model="this.statuses.length"/>
-    <div v-if="this.isMounted" class="statuses">
+    <div v-if="this.isMounted" class="statuses animated fadeIn">
       <div class="status" v-for="status in this.statuses" :key="status.id">
         <div class="status-header">
           <p class="avatar"><a v-bind:href="'/@' + status.user.screen_name"><img v-bind:src="status.user.profile_image_url + '_small.png'" alt=""></a></p>
