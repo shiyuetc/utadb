@@ -15,7 +15,9 @@
     @elseif($__env->yieldContent('page_type') == 'outer')
       @include('const.main-outer')
     @endif
-    @include('widgets.page-top')
+    <p id="page-top">
+      <a href="#wrap"><i class="far fa-arrow-alt-circle-up fa-3x"></i></a>
+    </p>
     <div class="height-large"></div>
     <div class="footer-push"></div>
   </div>

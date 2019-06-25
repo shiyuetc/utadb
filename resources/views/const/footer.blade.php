@@ -13,11 +13,10 @@
 <script src="{{ mix('js/app.js') }}"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/page_top.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/player.js') }}"></script>
 @php
   $scripts = [
-    ['page_top'],
-    ['animation_icon'],
     ['avatar_button'],
     ['twitter_widgets', 'https://platform.twitter.com/widgets.js'],
   ]
