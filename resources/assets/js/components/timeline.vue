@@ -1,8 +1,7 @@
 <template>
   <div class="timeline">
-    <loadProgress v-model="this.statuses.length"/>
-    <div v-if="this.isMounted" class="statuses animated fadeIn">
-      <div class="status" v-for="status in this.statuses" :key="status.id">
+    <div class="statuses">
+      <div class="status animated fadeIn" v-for="status in this.statuses" :key="status.id">
         <div class="status-header">
           <p class="avatar"><a v-bind:href="'/@' + status.user.screen_name"><img v-bind:src="status.user.profile_image_url + '_small.png'" alt=""></a></p>
           <p class="text"><a class="default-link" v-bind:href="'/@' + status.user.screen_name">{{ status.user.name }}</a>さんが『{{ statusJp[status.state - 1] }}』に登録しました</p>
@@ -33,6 +32,8 @@
         </div>
       </div>
     </div>
+    <loadProgress v-model="this.statuses.length"/>
+    <button v-show="this.isMounted && this.next != null" class="button button-default" @click="statusesRequest">さらに読み込む...</button>
   </div>
 </template>
 <script>
@@ -73,9 +74,13 @@ export default {
     },
     statusesRequest: function() {
       this.isMounted = false;
-      var timeline = this.user_id == null ? "public_timeline" : "user_timeline?id=" + this.user_id;
+      var timeline = this.user_id == null ? "public_timeline?" : "user_timeline?id=" + this.user_id + "&";
+      if(this.next != null) {
+        timeline += "next=" + this.next;
+      }
       axios.get("/api/" + timeline).then(res => {
-        this.statuses = res.data;
+        Array.prototype.push.apply(this.statuses, res.data);
+        this.next = res.data.length == 50 ? res.data[res.data.length - 1]['id'] : null;
         this.isMounted = true;
         setTimeout("initializePlayer()", 1000);
       }).catch(err => {
