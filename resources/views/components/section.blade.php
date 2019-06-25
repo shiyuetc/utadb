@@ -3,7 +3,7 @@
     <div class="header">
       <h1 class="title">{{ $title }}</h1>
       @if(isset($toggle) && $toggle)
-        <span class="section-toggle{{ isset($toggleState) && $toggleState ? ' hidden' : '' }}" onclick="toggleSection(this)"><i class="fas fa-arrow-down"></i></span>
+        <span class="section-toggle{{ isset($toggleState) && $toggleState ? ' hidden' : '' }}" onclick="toggleSection(this)"><i class="fas fa-chevron-up"></i></span>
       @endif
     </div>
   @endisset
