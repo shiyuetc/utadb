@@ -5,7 +5,9 @@
 <p>build with Laravel 5.5</p>
 
 ## License
-This software is released under the MIT License, see LICENSE.
+
+<p>Copyright 2018/05-2019 shiyu</p>
+<p>This software is released under the MIT License, see LICENSE.</p>
 
 ## Author
 
