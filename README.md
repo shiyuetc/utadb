@@ -1,6 +1,8 @@
 ## About UTADB
-![img](https://raw.githubusercontent.com/shiyuetc/utadb/1798eee009a59e6a85a49493d4dec92ad05970e5/public/images/logo.jpg)
-build with Laravel 5.5
+
+<p><img src="https://raw.githubusercontent.com/shiyuetc/utadb/1798eee009a59e6a85a49493d4dec92ad05970e5/public/images/logo.jpg" alt="logo"></p>
+<p>Song repertoire management web system. <a href="https://utadb.xvs.jp/">https://utadb.xvs.jp/</a></p>
+<p>build with Laravel 5.5</p>
 
 ## License
 This software is released under the MIT License, see LICENSE.
@@ -12,6 +14,6 @@ This software is released under the MIT License, see LICENSE.
     <td><img src="https://avatars3.githubusercontent.com/u/43884147?s=460&v=4" alt="shiyuetc" width="100"></td>
   </tr>
   <tr>
-    <td>shiyuetc</td>
+    <td align="center"><a href="https://github.com/shiyuetc">@shiyuetc</a></td>
   </tr>
 </table>
