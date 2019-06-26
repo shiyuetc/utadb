@@ -6,4 +6,12 @@ build with Laravel 5.5
 This software is released under the MIT License, see LICENSE.
 
 ## Author
-shiyuetc
+
+<table>
+  <tr>
+    <td><img src="https://avatars3.githubusercontent.com/u/43884147?s=460&v=4" alt="shiyuetc" width="100"></td>
+  </tr>
+  <tr>
+    <td>shiyuetc</td>
+  </tr>
+</table>
