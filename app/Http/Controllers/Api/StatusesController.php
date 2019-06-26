@@ -44,7 +44,7 @@ class StatusesController extends ApiController
             'state' => ApiRequestRules::getStateRule(),
             'page' => ApiRequestRules::getPageRule(),
         ]);
-        $statuses = Status::userStatuses($request->id, $request->state, $request->page);
+        $statuses = Status::userStatuses($request->id, $request->state, $request->page, $request->q);
         return response()->json($statuses);
     }
 
@@ -53,13 +53,13 @@ class StatusesController extends ApiController
         $this->QueryValidate($request, [
             'id' => ApiRequestRules::getUserIdRule(),
         ]);
-        $statuses = Status::getTimeline($request->id);
+        $statuses = Status::getTimeline($request->id, $request->next);
         return response()->json($statuses);
     }
 
     public function publicTimeline(request $request)
     {
-        $statuses = Status::getTimeline(null);
+        $statuses = Status::getTimeline(null, $request->next);
         return response()->json($statuses);
     }
 }

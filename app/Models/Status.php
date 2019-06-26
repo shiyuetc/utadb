@@ -229,7 +229,7 @@ class Status extends Model
             ->get();
     }
 
-    public static function userStatuses($id, $state = 0, $page = 1)
+    public static function userStatuses($id, $state = 0, $page = 1, $q = null)
     {
         $query =  Status::select('user_statuses.song_id', DB::raw('IFNULL(s1.state, 0) as user_state'))
         ->leftjoin('user_statuses as s1', function($join) {
@@ -239,6 +239,13 @@ class Status extends Model
         ->where('user_statuses.user_id', $id);
 
         if($state != 0) $query = $query->where('user_statuses.state', $state);
+
+        if(!empty($q)) {
+            $query = $query->where(function($where) use (&$q) {
+                $where->where('songs.title', 'like', "%{$q}%")
+                ->orWhere('songs.artist', 'like', "%{$q}%");
+            });
+        }
 
         return $query
             ->with('song')
