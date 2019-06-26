@@ -1,4 +1,4 @@
-<div class="user-infomation section{{ (isset($hidden) && $hidden) ? ' section-hidden' : '' }}">
+<div class="user-infomation section{{ !empty($hidden) ? ' section-hidden' : '' }}">
   <div class="user-profile">
     <div class="avatar-box">
       <a href="{{ route('user', ['id' => $user->screen_name]) }}"><img class="avatar" src="{{ $user->profile_image_url }}.png" alt="avatar"></a>
