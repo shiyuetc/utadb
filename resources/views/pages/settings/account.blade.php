@@ -107,7 +107,6 @@
 @endslot
 @endcomponent
 
-
 @component('components.section')
 @slot('title')
   <i class="fas fa-key"></i>&nbsp;アカウントの削除
