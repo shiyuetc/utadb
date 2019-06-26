@@ -39,7 +39,7 @@
     <i class="fa fa-search"></i>&nbsp;ローカルからの検索結果
   @endslot
   @slot('contents')
-    <search-song-component :q="'{{ urlencode($q) }}'" />
+    <search-song-component :q="'{{ $q }}'" />
   @endslot
   @endcomponent
 
@@ -48,7 +48,7 @@
     <i class="fa fa-search"></i>&nbsp;{{ $source == 0 ? 'iTunes' : 'DAM' }}からの検索結果
   @endslot
   @slot('contents')
-    <search-song-component :source="{{ $source }}" :q="'{{ urlencode($q) }}'" :page="{{ $page }}" />
+    <search-song-component :source="{{ $source }}" :q="'{{ $q }}'" :page="{{ $page }}" />
   @endslot
   @endcomponent
 @endif

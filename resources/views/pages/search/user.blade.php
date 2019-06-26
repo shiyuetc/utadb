@@ -32,7 +32,7 @@
     <i class="fa fa-search"></i>&nbsp;検索結果
   @endslot
   @slot('contents')
-    <search-user-component :q="'{{ urlencode($q) }}'" :page="{{ $page }}" />
+    <search-user-component :q="'{{ $q }}'" :page="{{ $page }}" />
   @endslot
   @endcomponent
 @else
