@@ -72,13 +72,15 @@ div.section > div.header h1.title {
   margin: 0;
   font-size: 15px;
 }
+div.section > div.header.has-toggle {
+  cursor: pointer;
+}
 div.section > div.header span.section-toggle {
   position: absolute;
   top: 4px;
   right: 4px;
   padding: 4px 12px;
   border-radius: 4px;
-  cursor: pointer;
   transition: background-color 0.2s;
 	-moz-transition: background-color 0.2s;
 	-webkit-transition: background-color 0.2s;

@@ -7,9 +7,10 @@ function closeAlert() {
 }
 
 // セクションのトグル用スクリプト
-function toggleSection(location) {
-	var toggle = $(location);
-	var target = toggle.parent().parent().find('.contents');
+function toggleSection(head) {
+	var head = $(head);
+	var toggle = head.find('.section-toggle')
+	var target = head.parent().find('.contents');
 	toggle.toggleClass('hidden');
 	target.slideToggle();
 }
