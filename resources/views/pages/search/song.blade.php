@@ -33,7 +33,7 @@
 @endslot
 @endcomponent
 
-@if(isset($q) && $q != '')
+@if(!empty($q))
   @component('components.section', ['toggle' => true, 'toggleState' => false])
   @slot('title')
     <i class="fa fa-search"></i>&nbsp;ローカルからの検索結果

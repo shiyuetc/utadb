@@ -26,7 +26,7 @@
 @endslot
 @endcomponent
 
-@if(isset($q) && $q != '')
+@if(!empty($q))
   @component('components.section')
   @slot('title')
     <i class="fa fa-search"></i>&nbsp;検索結果
