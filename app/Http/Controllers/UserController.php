@@ -20,13 +20,14 @@ class UserController extends Controller
     public function status(Request $request)
     {
         $page = (isset($request->page) && $request->page >= 1 && $request->page <= 9999) ? $request->page : 1;
+        $q = isset($request->q) ? trim($request->q) : '';
         $stateArray = [
             'all' => ['index' => 0, 'jp' => '登録済みの曲', 'en' => 'all', 'icon-class' => 'fa fa-check'], 
             'stacked' => ['index' => 1, 'jp' => '気になる曲', 'en' => 'stacked', 'icon-class' => 'fa fa-check'], 
             'training' => ['index' => 2, 'jp' => '練習中の曲', 'en' => 'training', 'icon-class' => 'fas fa-graduation-cap'], 
             'mastered' => ['index' => 3, 'jp' => '習得済みの曲', 'en' => 'mastered', 'icon-class' => 'far fa-sticky-note'], 
         ];
-        return view('pages.user-status', ['user' => $request->user, 'state' => $stateArray[$request->state], 'page' => $page]);
+        return view('pages.user-status', ['user' => $request->user, 'state' => $stateArray[$request->state], 'page' => $page, 'q' => $q]);
     }
 
     public function common(Request $request)

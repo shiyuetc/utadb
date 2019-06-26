@@ -30,6 +30,11 @@ export default {
       type: Number,
       required: false,
       default: 1
+    },
+    q: {
+      type: String,
+      required: false,
+      default: ''
     }
   },
   data() {
@@ -45,7 +50,7 @@ export default {
     statusesRequest: function() {
       this.isMounted = false;
       if(this.setPlayer != null) clearTimeout(this.setPlayer);
-      axios.get("/api/user_statuses?id=" + this.user_id + "&state=" + this.state + "&page=" + this.pageValue).then(res => {
+      axios.get("/api/user_statuses?id=" + this.user_id + "&state=" + this.state + "&page=" + this.pageValue + "&q=" + this.q).then(res => {
         this.statuses = res.data;
         this.isMounted = true;
         this.setPlayer = setTimeout("initializePlayer()", 1000);
