@@ -1,4 +1,4 @@
-## About UTADB
+## About Utadb
 
 <p><img src="https://raw.githubusercontent.com/shiyuetc/utadb/1798eee009a59e6a85a49493d4dec92ad05970e5/public/images/logo.jpg" alt="logo"></p>
 <p>Song repertoire management web system. <a href="https://utadb.xvs.jp/">https://utadb.xvs.jp/</a></p>
