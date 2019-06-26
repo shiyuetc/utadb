@@ -1,7 +1,7 @@
 {
     "name": "utadb",
     "description": "build with Laravel 5.5",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "main": "webpack.mix.js",
     "directories": {
         "test": "tests"
