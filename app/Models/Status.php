@@ -174,6 +174,7 @@ class Status extends Model
         if($source == -1) {
             $songs = Song::where('title', 'like', "%{$q}%")
                 ->orWhere('artist', 'like', "%{$q}%")
+                ->orderBy('title')
                 ->skip(($page - 1) * 10)
                 ->take(10)
                 ->get();
