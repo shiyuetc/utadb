@@ -4,7 +4,7 @@
       <div class="navbar-left">
         <ul class="navbar-nav">
           <li class="nav-brand{{ Auth::check() ? ' hidden-sm-below' : '' }}">
-            <img src="{{ asset('images/icons/icon-32x.png') }}" alt="logo" onclick="location='{{ route('home') }}'">
+            <img src="{{ asset('images/icons/icon-64x.png') }}" alt="logo" onclick="location='{{ route('home') }}'">
             <a href="{{ route('home') }}"><span class="hidden-md-below">&nbsp;Utadb&nbsp;</span></a>
           </li>
           @auth

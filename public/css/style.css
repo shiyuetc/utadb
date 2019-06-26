@@ -101,6 +101,10 @@ ul.navbar-nav li.nav-brand {
   align-items: center;
   cursor: pointer;
 }
+ul.navbar-nav li.nav-brand img {
+  width: 32px;
+  height: 32px;
+}
 ul.navbar-nav li > a {
   display: block;
   line-height: 54px;
