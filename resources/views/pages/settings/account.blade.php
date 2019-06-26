@@ -78,9 +78,9 @@
     {{ csrf_field() }}
     <table class="setting-table">
       <tr>
-        <td><label for="password_old" class="label"><i class="fa fa-lock"></i>&nbsp;現在のパスワード</label></td>
+        <td><label for="password-old" class="label"><i class="fa fa-lock"></i>&nbsp;現在のパスワード</label></td>
         <td>
-          <span class="hidden-md-above"><label for="password_old" class="label hidden-md-above"><i class="fa fa-lock"></i>&nbsp;現在のパスワード</label></span>
+          <span class="hidden-md-above"><label for="password-old" class="label hidden-md-above"><i class="fa fa-lock"></i>&nbsp;現在のパスワード</label></span>
           <input id="password-old" type="password" class="text" name="password_old" pattern=".{6,}" required autocomplete="off">
         </td>
       </tr>
@@ -118,10 +118,10 @@
     <p class="note">※アカウント削除申請から7日後に対象のアカウントが削除され使用できなくなり、元の状態に戻すことはできませんが、それまでに申請を解除することで削除申請を無効化できます。</p>
     <table class="setting-table">
       <tr>
-        <td><label for="password_old" class="label"><i class="fa fa-lock"></i>&nbsp;パスワード</label></td>
+        <td><label for="password-old2" class="label"><i class="fa fa-lock"></i>&nbsp;パスワード</label></td>
         <td>
-          <span class="hidden-md-above"><label for="password_old" class="label hidden-md-above"><i class="fa fa-lock"></i>&nbsp;パスワード</label></span>
-          <input id="password-old" type="password" class="text" name="password_old" pattern=".{6,}" required autocomplete="off">
+          <span class="hidden-md-above"><label for="password-old2" class="label hidden-md-above"><i class="fa fa-lock"></i>&nbsp;パスワード</label></span>
+          <input id="password-old2" type="password" class="text" name="password_old" pattern=".{6,}" required autocomplete="off">
         </td>
       </tr>
       <tr>
