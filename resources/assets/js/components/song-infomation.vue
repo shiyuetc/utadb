@@ -122,5 +122,6 @@ table.infomation-table td:nth-child(2n+1) {
 table.infomation-table img.avatar {
   width: 32px;
   height: 32px;
+  margin: 0 2px;
 }
 </style>
