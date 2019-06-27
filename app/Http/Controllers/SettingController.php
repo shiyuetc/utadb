@@ -12,6 +12,11 @@ use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
+    public function showProfileSettingForm()
+    {
+        return view('pages.settings.profile');
+    }
+
     public function showAccountSettingForm()
     {
         return view('pages.settings.account', ['isApplied' => Deactivate::isApplied(auth()->user()->id)]);
@@ -20,7 +25,7 @@ class SettingController extends Controller
     public function updateProfile(UpdateProfileRequest $request)
     {
         $result = User::updateProfile($request->name, $request->description, $request->avatar);
-        return redirect()->route('settings.account')
+        return redirect()->route('settings.profile')
             ->with($result ? 'status' : 'error', 
                 __($result ? "プロフィールの変更を保存しました" : 'プロフィールの変更に失敗しました'));
     }

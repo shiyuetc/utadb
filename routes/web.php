@@ -33,9 +33,12 @@ Route::group(['prefix' => 'search', 'middleware' => 'auth'], function() {
 });
 
 Route::group(['prefix' => 'settings', 'middleware' => 'auth'], function() {
+  Route::prefix('profile')->group(function() {
+    Route::get('/', 'SettingController@showProfileSettingForm')->name('settings.profile');
+    Route::post('update', 'SettingController@updateProfile')->name('settings.profile.update');
+  });
   Route::prefix('account')->group(function() {
     Route::get('/', 'SettingController@showAccountSettingForm')->name('settings.account');
-    Route::post('profile', 'SettingController@updateProfile')->name('settings.account.profile');
     Route::post('email', 'SettingController@updateEmail')->name('settings.account.email');
     Route::post('password', 'SettingController@updatePassword')->name('settings.account.password');
     Route::post('deactivate', 'SettingController@updateDeactivate')->name('settings.account.deactivate');
