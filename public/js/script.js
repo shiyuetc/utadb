@@ -1,8 +1,9 @@
-function closeAlert() {
-	for (var i = 0; i < $(".alert").length; i++) {
-		$(".alert").fadeOut('fast').queue(function () {
-			$(".alert").remove();
-		});
+// アラートの閉じるスクリプト
+function closeAlert(alert) {
+	var alert = $(alert).parent();
+	if (!alert.hasClass('closing')) {
+		alert.addClass('closing');
+		alert.slideToggle();
 	}
 }
 
