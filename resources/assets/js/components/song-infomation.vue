@@ -57,6 +57,10 @@
         </tr>
       </tbody>
     </table>
+    <ul class="link-items">
+      <li><a v-bind:href="'https://www.google.com/search?q=' + status.song.artist + '+' + status.song.title" target="_blank"><img src="/images/icons/icon-google.png" alt=""></a></li>
+      <li><a v-bind:href="'https://www.youtube.com/results?search_query=' + status.song.artist + '+' + status.song.title" target="_blank"><img src="/images/icons/icon-youtube.png" alt=""></a></li>
+    </ul>
   </div>
 </template>
 <script>
@@ -98,7 +102,7 @@ div.song-infomation {
 }
 table.infomation-table {
   width: 100%;
-  margin-top: 12px;
+  margin: 12px 0;
   border-collapse: collapse;
 }
 table.infomation-table th {
@@ -123,5 +127,20 @@ table.infomation-table img.avatar {
   width: 32px;
   height: 32px;
   margin: 0 2px;
+}
+ul.link-items {
+  display: flex;
+  list-style: none;
+  justify-content: flex-end;
+  margin: 0;
+  padding-left: 0;
+}
+ul.link-items li a {
+  display: block;
+  margin-left: 4px;
+  border: 1px solid #ccc;
+}
+ul.link-items li a img {
+  vertical-align: bottom;
 }
 </style>
