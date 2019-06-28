@@ -16,6 +16,7 @@ function toggleSection(head) {
 	target.slideToggle();
 }
 
+// 状態管理数を最新の状態に更新するスクリプト
 function updateUserStatuses(user) {
 	var statusCountElements = document.getElementsByClassName('status-count');
 	statusCountElements[0].textContent = (user.stacked_count + user.training_count + user.mastered_count) + '曲';
