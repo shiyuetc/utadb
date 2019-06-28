@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="height-medium"></div>
-@component('components.error', ['visible_fallback' => true])
+@component('components.error', ['fallback' => true])
 @slot('title')
   404 ERROR!
 @endslot

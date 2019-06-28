@@ -49,9 +49,7 @@ export default {
         this.isError = true;
       });
     },
-    updatedStatus: function(response) {
-      
-    }
+    updatedStatus: function(response) { }
   },
   mounted: function() {
     this.$nextTick(function () {

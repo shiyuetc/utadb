@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="height-medium"></div>
-@component('components.error', ['visible_fallback' => false])
+@component('components.error')
 @slot('title')
   500 ERROR!
 @endslot
