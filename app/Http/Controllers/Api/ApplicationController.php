@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Status;
+use App\Models\Activity;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -13,7 +13,7 @@ class ApplicationController extends ApiController
     {
         return response()->json([
             'user_count' => User::count(),
-            'status_count' => Status::count()
+            'activity_count' => Activity::count()
         ]);
     }
 }
