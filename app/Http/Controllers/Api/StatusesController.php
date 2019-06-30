@@ -47,19 +47,4 @@ class StatusesController extends ApiController
         $statuses = Status::userStatuses($request->id, $request->state, $request->page, $request->q);
         return response()->json($statuses);
     }
-
-    public function userTimeline(request $request)
-    {
-        $this->QueryValidate($request, [
-            'id' => ApiRequestRules::getUserIdRule(),
-        ]);
-        $statuses = Status::getTimeline($request->id, $request->next);
-        return response()->json($statuses);
-    }
-
-    public function publicTimeline(request $request)
-    {
-        $statuses = Status::getTimeline(null, $request->next);
-        return response()->json($statuses);
-    }
 }
