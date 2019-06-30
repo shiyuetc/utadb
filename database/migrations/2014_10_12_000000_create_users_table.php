@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('screen_name', 15)->unique()->comment('ユーザー識別用ID');
             $table->string('name', 20)->comment('ユーザー名');
             $table->string('description', 255)->nullable()->comment('紹介文');
+            $table->integer('record_count')->default(0)->comment('登録した回数');
             $table->integer('stacked_count')->default(0)->comment('気になる曲の数');
             $table->integer('training_count')->default(0)->comment('練習中の曲の数');
             $table->integer('mastered_count')->default(0)->comment('歌える曲の数');
