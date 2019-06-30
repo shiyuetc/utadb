@@ -6,7 +6,7 @@ use App\Http\Requests\ApiRequestRules;
 use App\Models\Activity;
 use Illuminate\Http\Request;
 
-class ActivitiesController extends ApiController
+class ActivityController extends ApiController
 {
     public function userTimeline(request $request)
     {
