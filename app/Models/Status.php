@@ -12,7 +12,7 @@ use Exception;
 
 class Status extends Model
 {
-    protected $table = 'user_statuses';
+    protected $table = 'statuses';
 
     public $timestamps = false;
 
