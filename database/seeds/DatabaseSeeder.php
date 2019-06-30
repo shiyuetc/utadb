@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             SongsTableSeeder::class,
             StatusesTableSeeder::class,
+            ActivitiesTableSeeder::class,
         ]);
     }
 }
