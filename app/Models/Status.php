@@ -36,7 +36,7 @@ class Status extends Model
     }
 
     // 引数の曲idの曲を登録中のユーザーの配列を返す
-    public static function statusLookup($song_id)
+    public static function lookup($song_id)
     {
         $response = [1 => [], 2 => [], 3 => []];
         $statuses = Status::select('user_id', 'state')
@@ -51,7 +51,7 @@ class Status extends Model
     }
 
     // ステータスを更新する
-    public static function statusUpdate($song_id, $state) 
+    public static function update($song_id, $state) 
     {
         $statusArray = ['stacked', 'training', 'mastered'];
         $user = auth()->user();

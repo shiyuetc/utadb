@@ -13,7 +13,7 @@ class StatusController extends ApiController
         $this->QueryValidate($request, [
             'song_id' => ApiRequestRules::getSongIdRule(),
         ]);
-        $response = Status::statusLookup($request->song_id);
+        $response = Status::lookup($request->song_id);
         return response()->json($response);
     }
 
@@ -23,7 +23,7 @@ class StatusController extends ApiController
             'song_id' => ApiRequestRules::getSongIdRule(),
             'state' => ApiRequestRules::getStateRule(),
         ]);
-        $status = Status::statusUpdate($request->song_id, $request->state);
+        $status = Status::update($request->song_id, $request->state);
         return response()->json($status);
     }
 }
