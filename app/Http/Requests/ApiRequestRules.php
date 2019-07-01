@@ -13,7 +13,7 @@ class ApiRequestRules
 
     public static function getPageRule()
     {
-        return 'required|numeric|between:1,9999';
+        return 'nullable|numeric|between:1,9999';
     }
 
     public static function getQRule()

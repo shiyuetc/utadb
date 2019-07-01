@@ -13,7 +13,7 @@ class UserController extends ApiController
         $this->QueryValidate($request, [
             'page' => ApiRequestRules::getPageRule(),
         ]);
-        $users = User::search('', $request->page);
+        $users = User::search('', $request->query('page', 1));
         return response()->json($users);
     }
 
@@ -23,7 +23,7 @@ class UserController extends ApiController
             'q' => ApiRequestRules::getQRule(),
             'page' => ApiRequestRules::getPageRule(),
         ]);
-        $users = User::search($request->q, $request->page);
+        $users = User::search($request->q, $request->query('page', 1));
         return response()->json($users);
     }
 }

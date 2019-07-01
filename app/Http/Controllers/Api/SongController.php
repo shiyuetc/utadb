@@ -15,7 +15,7 @@ class SongController extends ApiController
             'q' => ApiRequestRules::getQRule(),
             'page' => ApiRequestRules::getPageRule(),
         ]);
-        $statuses = Song::searchSong($request->source, $request->q, $request->page);
+        $statuses = Song::searchSong($request->source, $request->q, $request->query('page', 1));
         return response()->json($statuses);
     }
 
@@ -25,7 +25,7 @@ class SongController extends ApiController
             'id' => ApiRequestRules::getUserIdRule(),
             'page' => ApiRequestRules::getPageRule(),
         ]);
-        $statuses = Song::userCommon($request->id, $request->page);
+        $statuses = Song::userCommon($request->id, $request->query('page', 1));
         return response()->json($statuses);
     }
 
@@ -36,7 +36,7 @@ class SongController extends ApiController
             'state' => ApiRequestRules::getStateRule(),
             'page' => ApiRequestRules::getPageRule(),
         ]);
-        $statuses = Song::userStatuses($request->id, $request->state, $request->page, $request->q);
+        $statuses = Song::userStatuses($request->id, $request->state, $request->query('page', 1), $request->q);
         return response()->json($statuses);
     }
 }
