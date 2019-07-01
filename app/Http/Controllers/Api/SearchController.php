@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\ApiRequestRules;
 use App\Models\Avatar;
-use App\Models\Status;
+use App\Models\Song;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -45,7 +45,7 @@ class SearchController extends ApiController
             'q' => ApiRequestRules::getQRule(),
             'page' => ApiRequestRules::getPageRule(),
         ]);
-        $statuses = Status::searchSong($request->source, $request->q, $request->page);
+        $statuses = Song::searchSong($request->source, $request->q, $request->page);
         return response()->json($statuses);
     }
 }

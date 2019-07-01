@@ -16,11 +16,12 @@ use Illuminate\Http\Request;
 Route::group(['middleware' => 'api'], function(){
     Route::get('application/resource', 'Api\ApplicationController@resourceCount');
     
-    Route::get('status/lookup', 'Api\StatusesController@statusLookup');
+    Route::get('status/lookup', 'Api\StatusController@statusLookup');
 
-    Route::get('user_statuses', 'Api\StatusesController@userStatuses');
-    Route::get('user_timeline', 'Api\StatusesController@userTimeline');
-    Route::get('public_timeline', 'Api\StatusesController@publicTimeline');
+    Route::get('user_statuses', 'Api\SongController@userStatuses');
+    
+    Route::get('user_timeline', 'Api\ActivityController@userTimeline');
+    Route::get('public_timeline', 'Api\ActivityController@publicTimeline');
 });
 
 Route::group(['middleware' => ['api', 'auth']], function(){
@@ -33,7 +34,7 @@ Route::group(['middleware' => ['api', 'auth']], function(){
         Route::get('song', 'Api\SearchController@searchSong');
     });
 
-    Route::post('status/update', 'Api\StatusesController@statusUpdate');
+    Route::post('status/update', 'Api\StatusController@statusUpdate');
     
-    Route::get('user_common', 'Api\StatusesController@userCommon');
+    Route::get('user_common', 'Api\SongController@userCommon');
 });

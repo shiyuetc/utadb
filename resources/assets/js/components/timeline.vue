@@ -4,7 +4,7 @@
       <div class="status animated fadeIn" v-for="status in this.statuses" :key="status.id">
         <div class="status-header">
           <p class="avatar"><a v-bind:href="'/@' + status.user.screen_name"><img v-bind:src="status.user.profile_image_url + '_small.png'" alt=""></a></p>
-          <p class="text"><a class="default-link" v-bind:href="'/@' + status.user.screen_name">{{ status.user.name }}</a>さんが『{{ statusJp[status.state - 1] }}』に登録しました</p>
+          <p class="text"><a class="default-link" v-bind:href="'/@' + status.user.screen_name">{{ status.user.name }}</a>さんが「{{ statusJp[status.state] }}」に登録しました</p>
         </div>
         <div class="status-body">
           <table class="music-table">
@@ -22,13 +22,13 @@
                 <p class="artist">{{ status.song.artist }}</p>
               </td>
               <td class="action-cell">
-                <updateSelect :ref="status.song.id" @updated="updatedStatus" :id="status.song.id" :state="status.user_state"/>
+                <updateSelect :ref="status.song.id" @updated="updatedStatus" :id="status.song.id" :state="status.my_state"/>
               </td>
             </tr>
           </table>
         </div>
         <div class="status-footer">
-          <p class="date">{{ subtractDate(status.used_at) }}</p>
+          <p class="date">{{ subtractDate(status.created_at) }}</p>
         </div>
       </div>
     </div>
@@ -57,7 +57,7 @@ export default {
       isMounted: false,
       isBusy: false,
       isError: false,
-      statusJp: ['気になる曲', '練習中の曲', '習得済みの曲'],
+      statusJp: ['記録なし', '気になる曲', '練習中の曲', '習得済みの曲'],
       statuses: [],
       next: null,
     };

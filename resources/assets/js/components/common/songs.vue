@@ -23,7 +23,7 @@
             <p class="artist">{{ status.song.artist }}</p>
           </td>
           <td class="action-cell">
-            <updateSelect @updated="updatedStatus" :id="status.song.id" :state="status.user_state"/>
+            <updateSelect @updated="updatedStatus" :id="status.song.id" :state="status.my_state"/>
           </td>
         </tr>
       </tbody>
