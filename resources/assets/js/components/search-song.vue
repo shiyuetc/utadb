@@ -46,7 +46,7 @@ export default {
       this.isMounted = false;
       if(this.setPlayer != null) clearTimeout(this.setPlayer);
 
-      axios.get("/api/search/song?source=" + this.source + "&q=" + this.q + "&page=" + this.pageValue).then(res => {
+      axios.get("/api/songs/search?source=" + this.source + "&q=" + this.q + "&page=" + this.pageValue).then(res => {
         this.statuses = res.data;
         this.isMounted = true;
         this.setPlayer = setTimeout("initializePlayer()", 1000);

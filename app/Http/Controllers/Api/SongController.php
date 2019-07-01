@@ -8,6 +8,17 @@ use Illuminate\Http\Request;
 
 class SongController extends ApiController
 {   
+    public function search(Request $request)
+    {
+        $this->QueryValidate($request, [
+            'source' => ApiRequestRules::getSourceRule(),
+            'q' => ApiRequestRules::getQRule(),
+            'page' => ApiRequestRules::getPageRule(),
+        ]);
+        $statuses = Song::searchSong($request->source, $request->q, $request->page);
+        return response()->json($statuses);
+    }
+
     public function userCommon(Request $request)
     {
         $this->QueryValidate($request, [

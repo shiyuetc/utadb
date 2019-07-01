@@ -25,15 +25,15 @@ Route::group(['middleware' => 'api'], function(){
 });
 
 Route::group(['middleware' => ['api', 'auth']], function(){
+    Route::get('avatars/search', 'Api\AvatarController@search');
+    Route::prefix('songs')->group(function() {
+        Route::get('search', 'Api\SongController@search');
+    });
     Route::prefix('users')->group(function() {
         Route::get('list', 'Api\UserController@list');
         Route::get('search', 'Api\UserController@search');
     });
     
-    Route::prefix('search')->group(function() {
-        Route::get('avatar', 'Api\SearchController@searchAvatar');
-        Route::get('song', 'Api\SearchController@searchSong');
-    });
     Route::get('user_common', 'Api\SongController@userCommon');
     Route::post('status/update', 'Api\StatusController@update');
 });
