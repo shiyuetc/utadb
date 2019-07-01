@@ -51,7 +51,7 @@ class Status extends Model
     }
 
     // ステータスを更新する
-    public static function update($song_id, $state) 
+    public static function edit($song_id, $state) 
     {
         $statusArray = ['stacked', 'training', 'mastered'];
         $user = auth()->user();

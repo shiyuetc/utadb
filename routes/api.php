@@ -35,5 +35,5 @@ Route::group(['middleware' => ['api', 'auth.api']], function(){
         Route::get('search', 'Api\UserController@search');
     });
     
-    Route::post('statuses/update', 'Api\StatusController@update');
+    Route::post('statuses/update', 'Api\StatusController@edit');
 });
