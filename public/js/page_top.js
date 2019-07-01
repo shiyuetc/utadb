@@ -1,18 +1,17 @@
 $(function () {
   var showFlag = false;
   var topBtn = $('#page-top');
-  topBtn.css('bottom', '-100px');
   var showFlag = false;
   $(window).scroll(function () {
-    if ($(this).scrollTop() > 500) {
-      if (!showFlag) {
+    if($(this).scrollTop() > 500) {
+      if(!showFlag) {
         showFlag = true;
         topBtn.stop().animate({
-          'bottom': '20px'
+          'bottom': '0px'
         }, 200);
       }
     } else {
-      if (showFlag) {
+      if(showFlag) {
         showFlag = false;
         topBtn.stop().animate({
           'bottom': '-100px'

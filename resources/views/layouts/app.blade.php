@@ -16,7 +16,7 @@
       @include('const.main-outer')
     @endif
     <p id="page-top">
-      <a href="#wrap"><i class="far fa-arrow-alt-circle-up fa-3x"></i></a>
+      <a href="#wrap"><i class="fas fa-sort-up"></i></a>
     </p>
     <div class="height-large"></div>
     <div class="footer-push"></div>

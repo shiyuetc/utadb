@@ -356,20 +356,23 @@ p.thats-all {
 /* #region page-top */
 #page-top {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: -100px;
+  right: 12px;
 }
 #page-top a {
-  color: #e15542;
   display: block;
-  transition: color 0.2s;
-	-moz-transition: color 0.2s;
-	-webkit-transition: color 0.2s;
-	-o-transition: color 0.2s;
-	-ms-transition: color 0.2s;
+  padding: 12px 18px 10px 18px;
+  background: #000;
+  border-radius: 4px;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+	-moz-transition: opacity 0.2s;
+	-webkit-transition: opacity 0.2s;
+	-o-transition: opacity 0.2s;
+	-ms-transition: opacity 0.2s;
 }
 #page-top a:hover {
-  color: #c32222;
+  opacity: 0.7;
 }
 /* #endregion */
 
@@ -548,9 +551,32 @@ div.status div.status-body {
 div.status div.status-body:hover {
   background: #fafafa;
 }
-div.status p.date {
-  margin: 4px 0 0 4px;
+div.status div.status-footer:after {
+  display: block;
+	clear: both;
+	content: "";
+}
+div.status div.status-footer > p{
+  margin: 4px 4px 0 4px;
   font-size: 12px;
+}
+div.status p.date {
+  float: left;
+}
+div.status p.like {
+  float: right;
+  cursor: pointer;
+  transition: color 0.2s;
+	-moz-transition: color 0.2s;
+	-webkit-transition: color 0.2s;
+	-o-transition: color 0.2s;
+	-ms-transition: color 0.2s;
+}
+div.status p.like span:hover {
+  color: #c32222;
+}
+div.status p.like.liked span {
+  color: #c32222;
 }
 
 table.object-table {
