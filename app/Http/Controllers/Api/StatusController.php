@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class StatusController extends ApiController
 {   
-    public function statusLookup(Request $request)
+    public function lookup(Request $request)
     {
         $this->QueryValidate($request, [
             'song_id' => ApiRequestRules::getSongIdRule(),
@@ -17,7 +17,7 @@ class StatusController extends ApiController
         return response()->json($response);
     }
 
-    public function statusUpdate(Request $request)
+    public function update(Request $request)
     {
         $this->QueryValidate($request, [
             'song_id' => ApiRequestRules::getSongIdRule(),

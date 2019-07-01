@@ -39,9 +39,9 @@ export default {
     statusesRequest: function() {
       this.isMounted = false;
       var api = this.q == '' ?
-        "/api/list/user?page=" + this.pageValue :
-        "/api/search/user?q=" + this.q + "&page=" + this.pageValue;
-      axios.get(api).then(res => {
+        "list?page=" + this.pageValue :
+        "search?q=" + this.q + "&page=" + this.pageValue;
+      axios.get('/api/users/' + api).then(res => {
         this.users = res.data;
         this.isMounted = true;
       }).catch(err => {

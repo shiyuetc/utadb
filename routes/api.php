@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 Route::group(['middleware' => 'api'], function(){
     Route::get('application/resource', 'Api\ApplicationController@resourceCount');
     
-    Route::get('status/lookup', 'Api\StatusController@statusLookup');
+    Route::get('status/lookup', 'Api\StatusController@lookup');
 
     Route::get('user_statuses', 'Api\SongController@userStatuses');
     
@@ -25,16 +25,15 @@ Route::group(['middleware' => 'api'], function(){
 });
 
 Route::group(['middleware' => ['api', 'auth']], function(){
-    Route::prefix('list')->group(function() {
-        Route::get('user', 'Api\SearchController@userList');
+    Route::prefix('users')->group(function() {
+        Route::get('list', 'Api\UserController@list');
+        Route::get('search', 'Api\UserController@search');
     });
+    
     Route::prefix('search')->group(function() {
         Route::get('avatar', 'Api\SearchController@searchAvatar');
-        Route::get('user', 'Api\SearchController@searchUser');
         Route::get('song', 'Api\SearchController@searchSong');
     });
-
-    Route::post('status/update', 'Api\StatusController@statusUpdate');
-    
     Route::get('user_common', 'Api\SongController@userCommon');
+    Route::post('status/update', 'Api\StatusController@update');
 });
