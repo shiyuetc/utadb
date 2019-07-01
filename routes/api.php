@@ -16,24 +16,24 @@ use Illuminate\Http\Request;
 Route::group(['middleware' => 'api'], function(){
     Route::get('application/resource', 'Api\ApplicationController@resourceCount');
     
-    Route::get('status/lookup', 'Api\StatusController@lookup');
-
-    Route::get('user_statuses', 'Api\SongController@userStatuses');
-    
     Route::get('user_timeline', 'Api\ActivityController@userTimeline');
     Route::get('public_timeline', 'Api\ActivityController@publicTimeline');
+
+    Route::get('user_statuses', 'Api\SongController@userStatuses');
+
+    Route::get('statuses/lookup', 'Api\StatusController@lookup');
 });
 
 Route::group(['middleware' => ['api', 'auth']], function(){
     Route::get('avatars/search', 'Api\AvatarController@search');
-    Route::prefix('songs')->group(function() {
-        Route::get('search', 'Api\SongController@search');
-    });
+
+    Route::get('songs/search', 'Api\SongController@search');
+    Route::get('user_common', 'Api\SongController@userCommon');
+
     Route::prefix('users')->group(function() {
         Route::get('list', 'Api\UserController@list');
         Route::get('search', 'Api\UserController@search');
     });
     
-    Route::get('user_common', 'Api\SongController@userCommon');
-    Route::post('status/update', 'Api\StatusController@update');
+    Route::post('statuses/update', 'Api\StatusController@update');
 });
