@@ -75,5 +75,6 @@ class Kernel extends HttpKernel
 
         // custom middleware
         'user' => \App\Http\Middleware\CheckUser::class,
+        'auth.api' => \App\Http\Middleware\AuthenticateWithApi::class,
     ];
 }

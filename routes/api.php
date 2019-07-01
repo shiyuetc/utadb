@@ -24,7 +24,7 @@ Route::group(['middleware' => 'api'], function(){
     Route::get('statuses/lookup', 'Api\StatusController@lookup');
 });
 
-Route::group(['middleware' => ['api', 'auth']], function(){
+Route::group(['middleware' => ['api', 'auth.api']], function(){
     Route::get('avatars/search', 'Api\AvatarController@search');
 
     Route::get('songs/search', 'Api\SongController@search');
