@@ -7,7 +7,7 @@ $(function () {
       if(!showFlag) {
         showFlag = true;
         topBtn.stop().animate({
-          'bottom': '0px'
+          'bottom': '12px'
         }, 200);
       }
     } else {
