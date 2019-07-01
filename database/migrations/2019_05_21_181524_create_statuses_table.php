@@ -16,7 +16,7 @@ class CreateStatusesTable extends Migration
         Schema::create('statuses', function (Blueprint $table) {
             $table->increments('id')->comment('主キー');
             $table->integer('user_id')->unsigned();
-            $table->string('song_id');
+            $table->string('song_id', 18);
             $table->integer('state')->comment('状態 [1:stacked, 2:training, 3:mastered]');
             $table->timestamp('used_at')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('作成・更新日時');
             $table->foreign('user_id')->references('id')->on('users');
