@@ -1,6 +1,6 @@
 {
     "name": "utadb",
-    "description": "build with Laravel 5.5",
+    "description": "Song repertoire management web system.",
     "version": "1.3.0",
     "main": "webpack.mix.js",
     "directories": {
