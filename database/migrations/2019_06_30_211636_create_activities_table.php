@@ -19,6 +19,7 @@ class CreateActivitiesTable extends Migration
             $table->string('song_id', 18);
             $table->integer('old_state')->comment('状態 [1:stacked, 2:training, 3:mastered]');
             $table->integer('state')->comment('状態 [1:stacked, 2:training, 3:mastered]');
+            $table->integer('like_count')->default(0)->comment('いいねの数');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->primary('id');
             $table->foreign('user_id')->references('id')->on('users');
