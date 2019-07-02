@@ -373,6 +373,9 @@ select.status-select {
   -moz-appearance: none;
   -webkit-appearance: none;
 }
+select.status-select:disabled {
+  color: #000;
+}
 select.status-select.active {
 	background: var(--danger-color);
 	border: 1px solid var(--danger-color);
