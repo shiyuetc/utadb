@@ -65,9 +65,7 @@ export default {
       isError: false,
       statusJp: ['記録なし', '気になる曲', '練習中の曲', '習得済みの曲'],
       statuses: [],
-      next: null,
-
-      test_key: [{is_liked: 0,like_count: 0}, {is_liked: 0,like_count: 0}]
+      next: null
     };
   },
   methods: {
