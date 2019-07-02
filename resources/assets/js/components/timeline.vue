@@ -29,6 +29,12 @@
         </div>
         <div class="status-footer">
           <p class="date">{{ subtractDate(status.created_at) }}</p>
+          <p class="like" @click="postLike(status)">
+            <span v-bind:class="[ status.is_liked ? 'liked' : 'unlike']">
+              <i v-bind:class="[[ status.is_liked ? 'fas' : 'far'], 'fa-heart']"></i>
+              <a v-show="status.like_count > 0">{{ status.like_count }}</a>
+            </span>
+          </p>
         </div>
       </div>
     </div>
@@ -60,6 +66,8 @@ export default {
       statusJp: ['記録なし', '気になる曲', '練習中の曲', '習得済みの曲'],
       statuses: [],
       next: null,
+
+      test_key: [{is_liked: 0,like_count: 0}, {is_liked: 0,like_count: 0}]
     };
   },
   methods: {
@@ -79,7 +87,13 @@ export default {
         timeline += "next=" + this.next;
       }
       axios.get("/api/" + timeline).then(res => {
-        Array.prototype.push.apply(this.statuses, res.data);
+        if(this.statuses.length == 0) {
+          this.statuses = res.data;
+        } else {
+          res.data.forEach((status) => {
+            this.statuses.push(status);
+          });
+        }
         this.next = res.data.length == 50 ? res.data[res.data.length - 1]['id'] : null;
         this.isMounted = true;
         setTimeout("initializePlayer()", 1000);
@@ -98,7 +112,26 @@ export default {
       if(this.user_id == null || this.user_id == user.id) {
         updateUserStatuses(user);
       }
-    }
+    },
+    postLike: function(status) {
+      if(this.isBusy) return;
+      this.isBusy = true;
+
+      if(!status.is_liked) {
+        var action = 'create';
+        this.$set(status, 'is_liked', 1);
+      } else {
+        var action = 'destroy';
+        this.$set(status, 'is_liked', 0);
+      }
+      
+      axios.post("/api/likes/" + action + "?activity_id=" + status.id).then(res => {
+        this.$set(status, 'like_count', res.data["like_count"]);
+        this.isBusy = false;
+      }).catch(err => {
+        window.location.href = "/login";
+      });
+    },
   },
   mounted() {
     this.$nextTick(function () {

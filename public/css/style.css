@@ -566,16 +566,24 @@ div.status p.date {
 div.status p.like {
   float: right;
   cursor: pointer;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
   transition: color 0.2s;
 	-moz-transition: color 0.2s;
 	-webkit-transition: color 0.2s;
 	-o-transition: color 0.2s;
 	-ms-transition: color 0.2s;
 }
-div.status p.like span:hover {
-  color: #c32222;
+div.status p.like span.unlike:hover {
+  color: #db3333;
 }
-div.status p.like.liked span {
+div.status p.like span.liked {
+  color: #db3333;
+}
+div.status p.like span.liked:hover {
   color: #c32222;
 }
 
