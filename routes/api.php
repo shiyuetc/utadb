@@ -36,4 +36,7 @@ Route::group(['middleware' => ['api', 'auth.api']], function(){
     });
     
     Route::post('statuses/update', 'Api\StatusController@edit');
+
+    Route::post('likes/create', 'Api\ActivityController@likeCreate');
+    Route::post('likes/destroy', 'Api\ActivityController@likeDestroy');
 });
