@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Notification;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 use Exception;
@@ -88,6 +89,7 @@ class Activity extends Model
             ]);
             $activity->like_count += 1;
             $activity->save();
+            Notification::create($activity->user->id ,$activity->id, 'like');
             DB::commit();
             $response['post'] = true;
         } catch (Exception $e){
@@ -112,6 +114,7 @@ class Activity extends Model
             if($like != 1) throw new Exception();
             $activity->like_count -= 1;
             $activity->save();
+            Notification::remove($activity->user->id ,$activity->id);
             DB::commit();
             $response['post'] = true;
         } catch (Exception $e){
