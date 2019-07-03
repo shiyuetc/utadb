@@ -45,7 +45,6 @@ export default {
       this.isMounted = false;
       axios.get('/api/notifications/list').then(res => {
         this.notifications = res.data;
-        console.log(res.data);
         this.isMounted = true;
       }).catch(err => {
         this.isError = true;
