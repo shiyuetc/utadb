@@ -1,12 +1,12 @@
 <template>
   <div class="timeline">
-    <div class="statuses">
-      <div class="status animated fadeIn" v-for="status in this.statuses" :key="status.id">
-        <div class="status-header">
+    <div class="articles statuses">
+      <div class="article status animated fadeIn" v-for="status in this.statuses" :key="status.id">
+        <div class="article-header">
           <p class="avatar"><a v-bind:href="'/@' + status.user.screen_name"><img v-bind:src="status.user.profile_image_url + '_small.png'" alt=""></a></p>
           <p class="text"><a class="default-link" v-bind:href="'/@' + status.user.screen_name">{{ status.user.name }}</a>さんが「{{ statusJp[status.state] }}」に登録しました</p>
         </div>
-        <div class="status-body">
+        <div class="article-body">
           <table class="music-table">
             <tr>
               <td class="media-cell">
@@ -27,7 +27,7 @@
             </tr>
           </table>
         </div>
-        <div class="status-footer">
+        <div class="article-footer">
           <p class="date"><subtract-date :date="status.created_at"></subtract-date></p>
           <p class="like" @click="postLike(status)">
             <span v-bind:class="[ status.is_liked ? 'liked' : 'unlike']">
@@ -43,15 +43,15 @@
   </div>
 </template>
 <script>
-import LoadProgress from './widgets/load-progress.vue';
+import loadProgress from './widgets/load-progress.vue';
 import subtractDate from './ui/subtract-date.vue';
-import UpdateSelect from './ui/update-select.vue';
+import updateSelect from './ui/update-select.vue';
 
 export default {
   components: {
-    LoadProgress,
+    loadProgress,
     subtractDate,
-    UpdateSelect
+    updateSelect
   },
   props: {
     user_id: {
@@ -132,4 +132,3 @@ export default {
   }
 };
 </script>
-
