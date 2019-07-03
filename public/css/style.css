@@ -272,6 +272,10 @@ div.copyright p {
   div.introduct:nth-child(n + 2) {
     margin-top: 0 !important;
   }
+
+  div.event-buttons div button {
+    font-size: 11px !important;
+  }
 }
 /* 698px以下 */
 @media (max-width: 698px) {
@@ -309,11 +313,14 @@ div.copyright p {
     width: 50%;
     box-sizing: border-box;
   }
-  div.event-buttons div:nth-child(odd){
+  div.event-buttons div:nth-child(odd) {
     padding-right: 4px;
   }
-  div.event-buttons div:nth-child(even){
+  div.event-buttons div:nth-child(even) {
     padding-left: 4px;
+  }
+  div.event-buttons div button {
+    font-size: 13px;
   }
   
   ul.option-list li a {
@@ -514,55 +521,6 @@ div.event-buttons {
 /* #endregion */
 
 /* #region statuses */
-div.statuses > div.status {
-  padding: 6px 12px;
-  border-bottom: 1px solid #eaeaea;
-}
-div.status-header p {
-  display: table-cell;
-  margin: 0;
-  vertical-align: middle;
-}
-div.status p.avatar img {
-  width: 32px;
-  height: 32px;
-  transition: opacity 0.2s;
-	-moz-transition: opacity 0.2s;
-	-webkit-transition: opacity 0.2s;
-	-o-transition: opacity 0.2s;
-	-ms-transition: opacity 0.2s;
-}
-div.status p.avatar img:hover {
-  opacity: 0.8;
-}
-div.status p.text {
-  padding-left: 6px;
-  font-size: 14px;
-}
-div.status div.status-body {
-  padding: 6px 4px;
-  border: 1px solid #eee;
-  transition: background-color 0.2;
-	-moz-transition: background-color 0.2s;
-	-webkit-transition: background-color 0.2s;
-	-o-transition: background-color 0.2s;
-  -ms-transition: background-color 0.2s;
-}
-div.status div.status-body:hover {
-  background: #fafafa;
-}
-div.status div.status-footer:after {
-  display: block;
-	clear: both;
-	content: "";
-}
-div.status div.status-footer > p{
-  margin: 4px 4px 0 4px;
-  font-size: 12px;
-}
-div.status p.date {
-  float: left;
-}
 div.status p.like {
   float: right;
   cursor: pointer;
