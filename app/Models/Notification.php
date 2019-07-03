@@ -47,7 +47,7 @@ class Notification extends Model
     }
     
     public static function get() {
-        return Notification::select('notifications.id', 'notifications.sender_id', 'notifications.kind', 'notifications.created_at', DB::raw('activities.id as activity_id'), 'activities.song_id')
+        $notifications = Notification::select('notifications.id', 'notifications.sender_id', 'notifications.kind', 'notifications.created_at', DB::raw('activities.id as activity_id'), 'activities.song_id')
             ->leftjoin('activities', function($join) {
                 $join->where('notifications.kind', '=', 'like')
                     ->on('activities.id', '=', 'notifications.context_id');
@@ -56,5 +56,17 @@ class Notification extends Model
             ->with(['sender', 'activity', 'song'])
             ->orderBy('created_at', 'desc')
             ->get();
+
+        // 既読済みにする
+        Notification::where('receiver_id', auth()->id())
+            ->where('confirm', '=', 0)
+            ->update(['confirm' => 1]);
+        return $notifications;
+    }
+
+    public static function existUnconfirm() {
+        return Notification::where('receiver_id', auth()->id())
+            ->where('confirm', '=', 0)
+            ->exists();
     }
 }

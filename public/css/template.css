@@ -540,7 +540,7 @@ select.status-select option {
     width: 25%;
   }
   ul.list.list-flex li a {
-    padding: 10px 2px;
+    padding: 10px 2px 8px;
     border-bottom: var(--transparent-border);
     transition: background-color 0.2s, border-color 0.2s;
     -moz-transition: background-color 0.2s, border-color 0.2s;

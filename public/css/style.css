@@ -214,6 +214,10 @@ li.danger-dialog-item a:hover {
 	color: #a94442;
 }
 
+span.exist-unconfirm i {
+  color: #db3333;
+}
+
 /* #endregion */
 
 /* #region footer */
@@ -273,6 +277,10 @@ div.copyright p {
     margin-top: 0 !important;
   }
 
+  ul.user-statuses li a {
+    height: 54px !important;
+    font-size: 12px !important;
+  }
   div.event-buttons div button {
     font-size: 11px !important;
   }
@@ -327,7 +335,7 @@ div.copyright p {
     height: 41px;
   }
   ul.user-statuses li a {
-    height: 62px;
+    height: 58px;
   }
 
   table.setting-table tr td:first-child {

@@ -12,7 +12,7 @@
             <a href="{{ route('home') }}"><i class="fas fa-home"></i><span class="nav-indention">&nbsp;ホーム</span></a>
           </li>
           <li class="nav-item{{ Request::is('notification') ? ' active' : '' }}">
-            <a href="{{ route('notification') }}"><i class="fas fa-bell"></i><span class="nav-indention">&nbsp;通知</span></a>
+            <a href="{{ route('notification') }}"><span class="unconfirm{{ !empty($exist_unconfirm_notification) ? ' exist-unconfirm' : '' }}"><i class="fas fa-bell"></i></span><span class="nav-indention">&nbsp;通知</span></a>
           </li>
           <li class="nav-item{{ Request::is('search/song') ? ' active' : '' }}">
             <a href="{{ route('search.song') }}"><i class="fas fa-search"></i><span class="nav-indention">&nbsp;曲を探す</span></a>
