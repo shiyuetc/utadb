@@ -28,7 +28,7 @@
           </table>
         </div>
         <div class="status-footer">
-          <p class="date">{{ subtractDate(status.created_at) }}</p>
+          <p class="date"><subtract-date :date="status.created_at"></subtract-date></p>
           <p class="like" @click="postLike(status)">
             <span v-bind:class="[ status.is_liked ? 'liked' : 'unlike']">
               <i v-bind:class="[[ status.is_liked ? 'fas' : 'far'], 'fa-heart']"></i>
@@ -44,11 +44,13 @@
 </template>
 <script>
 import LoadProgress from './widgets/load-progress.vue';
+import subtractDate from './ui/subtract-date.vue';
 import UpdateSelect from './ui/update-select.vue';
 
 export default {
   components: {
     LoadProgress,
+    subtractDate,
     UpdateSelect
   },
   props: {
@@ -69,15 +71,6 @@ export default {
     };
   },
   methods: {
-    subtractDate: function(date) {
-      var now = new Date();
-      var target = new Date(date.replace(/-/g, "/"));
-      var timestamp = Math.floor(now.getTime() / 1000 - target.getTime() / 1000);
-      if (timestamp < 60) return timestamp + ' 秒前';
-      if (timestamp < 3600) return Math.floor(timestamp / 60) + ' 分前 ';
-      if (timestamp < 86400) return Math.floor(timestamp / 3600) + ' 時間前';
-      return Math.floor(timestamp / 86400) + ' 日前';
-    },
     statusesRequest: function() {
       this.isMounted = false;
       var timeline = this.user_id == null ? "public_timeline?" : "user_timeline?id=" + this.user_id + "&";
@@ -118,13 +111,14 @@ export default {
       if(!status.is_liked) {
         var action = 'create';
         this.$set(status, 'is_liked', 1);
+        this.$set(status, 'like_count', status.like_count + 1);
       } else {
         var action = 'destroy';
         this.$set(status, 'is_liked', 0);
+        this.$set(status, 'like_count', status.like_count - 1);
       }
       
       axios.post("/api/likes/" + action + "?activity_id=" + status.id).then(res => {
-        this.$set(status, 'like_count', res.data["like_count"]);
         this.isBusy = false;
       }).catch(err => {
         window.location.href = "/login";
