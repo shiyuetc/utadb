@@ -11,7 +11,7 @@
   <i class="fas fa-bell"></i>&nbsp;通知
 @endslot
 @slot('contents')
-  <p class="center">coming soon</p>
+  <notification-component></notification-component>
 @endslot
 @endcomponent
 @endsection
