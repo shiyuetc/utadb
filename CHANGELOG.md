@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 1.4.0 - (2019-07-03)
+### ✨Added
+- ユーザーの投稿に対していいねできるように
+- ユーザーからの通知を確認できるように
+
 ## 1.3.0 - (2019-07-01)
 ### ✨Added
 - ステータス更新時にタイムラインの内容が毎度新規登録されるように
