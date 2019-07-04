@@ -1,6 +1,8 @@
 :root {
   --break-border: 1px solid #eaeaea;
-  --transparent-border: 0px solid transparent;
+  --transparent-border: 2px solid transparent;
+  --hover-border: 2px solid #999;
+  --active-border: 2px solid #666;
   --danger-color: #db3333;
   --danger-disabled-color: #c32222;
   --success-color: #5cbb2d;
@@ -158,18 +160,18 @@ ul.list li a {
   border-left: var(--transparent-border);
   box-sizing: border-box;
   font-size: 14px;
-  transition: background-color 0.2s, border 0.2s;
-	-moz-transition: background-color 0.2s, border 0.2s;
-	-webkit-transition: background-color 0.2s, border 0.2s;
-	-o-transition: background-color 0.2s, border 0.2s;
-  -ms-transition: background-color 0.2s, border 0.2s;
+  transition: background-color 0.2s;
+	-moz-transition: background-color 0.2s;
+	-webkit-transition: background-color 0.2s;
+	-o-transition: background-color 0.2s;
+  -ms-transition: background-color 0.2s;
 }
 ul.list li a:hover {
-  border-left: 2px solid #999;
+  border-left: var(--hover-border);
   background: #fafafa;
 }
 ul.list li.active a {
-  border-left: 2px solid #666;
+  border-left: var(--active-border);
   background: #fafafa;
 }
 ul.list li span.right-icon {
@@ -540,21 +542,15 @@ select.status-select option {
     width: 25%;
   }
   ul.list.list-flex li a {
-    padding: 10px 2px 8px;
+    padding: 8px 2px 6px;
+    border-left: none;
     border-bottom: var(--transparent-border);
-    transition: background-color 0.2s, border-color 0.2s;
-    -moz-transition: background-color 0.2s, border-color 0.2s;
-    -webkit-transition: background-color 0.2s, border-color 0.2s;
-    -o-transition: background-color 0.2s, border-color 0.2s;
-    -ms-transition: background-color 0.2s, border-color 0.2s;
   }
   ul.list.list-flex li a:hover {
-    border-left: none;
-    border-bottom: 2px solid #999;
+    border-bottom: var(--hover-border);
   }
   ul.list.list-flex li.active a {
-    border-left: none;
-    border-bottom: 2px solid #666;
+    border-bottom: var(--active-border);
   }
   ul.list.list-flex li span.right-icon {
     float: none;
