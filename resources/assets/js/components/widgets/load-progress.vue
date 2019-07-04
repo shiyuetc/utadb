@@ -4,7 +4,7 @@
       <p><img src="/images/loading.svg" width="48px" alt="読み込み中..."></p>
     </div>
     <div id="loaded" v-show="this.$parent.isMounted && this.responseCount == 0">
-      <p>項目が見つかりませんでしたわ。(&gt; &lt;。)</p>
+      <p>{{ this.itemName }}が見つかりませんでしたわ。(&gt; &lt;。)</p>
     </div>
     <div id="error" v-show="this.$parent.isError">
       <p>エラー吐きましたわ。(&gt; &lt;。)</p>
@@ -21,6 +21,11 @@ export default {
       type: Number,
       required: false,
       default: -1
+    },
+    itemName: {
+      type: String,
+      required: false,
+      default: '項目'
     }
   }
 }
