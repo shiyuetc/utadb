@@ -11,7 +11,7 @@
         </div>
       </div>
     </div>
-    <loadProgress v-model="this.notifications.length"/>
+    <loadProgress v-model="this.notifications.length" :itemName="'通知'"/>
   </div>
 </template>
 <script>
