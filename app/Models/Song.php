@@ -18,7 +18,7 @@ class Song extends Model
     protected $fillable = [];
     
     protected $hidden = [
-        'artist_id', 'created_at'
+        'created_at'
     ];
 
     // 指定した曲idの曲情報と状態を返す
