@@ -277,10 +277,6 @@ div.copyright p {
     margin-top: 0 !important;
   }
 
-  ul.user-statuses li a {
-    height: 54px !important;
-    font-size: 12px !important;
-  }
   div.event-buttons div button {
     font-size: 11px !important;
   }
@@ -329,13 +325,6 @@ div.copyright p {
   }
   div.event-buttons div button {
     font-size: 13px;
-  }
-  
-  ul.option-list li a {
-    height: 41px;
-  }
-  ul.user-statuses li a {
-    height: 58px;
   }
 
   table.setting-table tr td:first-child {
@@ -537,11 +526,6 @@ div.status p.like {
   -khtml-user-select: none;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
-  transition: color 0.2s;
-	-moz-transition: color 0.2s;
-	-webkit-transition: color 0.2s;
-	-o-transition: color 0.2s;
-	-ms-transition: color 0.2s;
 }
 div.status p.like span.unlike:hover {
   color: #db3333;
@@ -562,13 +546,6 @@ table.object-table th {
   background: #eee;
   font-weight: normal;
 	font-size: 12px;
-}
-table.object-table tbody tr {
-	transition: background-color 0.1s;
-	-moz-transition: background-color 0.1s;
-	-webkit-transition: background-color 0.1s;
-	-o-transition: background-color 0.1s;
-	-ms-transition: background-color 0.1s;
 }
 table.object-table tbody tr:hover {
   background: #fafafa;
