@@ -37,30 +37,3 @@ export default {
   }
 }
 </script>
-<style scoped>
-table.user-table th.avatar-column {
-	width: 52px;
-}
-table.user-table th.name-column {
-  padding: 0 12px;
-  text-align: left;
-}
-table.user-table td img.avatar {
-  width: 42px;
-  height: auto;
-  border-radius: 100%;
-  vertical-align: bottom;
-  transition: opacity 0.3s;
-  -moz-transition: opacity 0.3s;
-  -webkit-transition: opacity 0.3s;
-  -o-transition: opacity 0.3s;
-  -ms-transition: opacity 0.3s;
-}
-table.user-table td img.avatar:hover {
-	opacity: 0.8;
-}
-table.user-table td.state-count-cell {
-  border-left: 1px solid #eaeaea;
-	text-align: center;
-}
-</style>
