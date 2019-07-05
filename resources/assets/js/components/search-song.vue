@@ -2,7 +2,7 @@
   <div class="search-result">
     <loadProgress v-model="statuses.length" :itemName="'曲'"/>
     <songs @updated="updatedStatus" v-model="this.statuses"/>
-    <pagination @paging="statusesRequest" v-model="statuses.length"/>
+    <pagination @paging="statusesRequest" v-model="statuses.length" :responseMaxCount="20"/>
   </div>
 </template>
 <script>
