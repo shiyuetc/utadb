@@ -38,11 +38,13 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    // ログインに使用するカラムを変更
     public function username()
     {
         return 'screen_name';
     }
 
+    // ログイン成功時にアラートを表示
     protected function authenticated(Request $request, $user)
     {
         return redirect('/')->with('status', __("@{$user->screen_name}でログインに成功しました"));

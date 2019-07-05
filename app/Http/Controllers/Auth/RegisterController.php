@@ -65,15 +65,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $array = 'abcdefghijkl';
+        $rand_alpha = $array[rand(0, strlen($array) - 1)];
+
         return User::create([
             'screen_name' => $data['screen_name'],
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'profile_image_url' => env('APP_URL') . '/images/profile_image/monster/monster_a',
+            'profile_image_url' => env('APP_URL') . '/images/profile_image/monster/monster_' . $rand_alpha,
         ]);
     }
 
+    // アカウント登録成功時にアラートを表示
     protected function registered(Request $request, $user)
     {
         return redirect('/')->with('status', __("@{$user->screen_name}でアカウントの登録に成功しました"));
