@@ -112,16 +112,16 @@ ul.navbar-nav li > a {
 }
 ul.navbar-nav li.nav-item a {
   min-width: 40px;
-  height: 54px;
+  height: 52px;
   padding: 0 14px;
-  border-bottom: 0 solid transparent;
+  border-bottom: 2px solid transparent;
   font-size: 14px;
   text-align: center;
-  transition: border-color 0.2s, background-color 0.2s;
-	-moz-transition: border-color 0.2s, background-color 0.2s;
-	-webkit-transition: border-color 0.2s, background-color 0.2s;
-	-o-transition: border-color 0.2s, background-color 0.2s;
-  -ms-transition: border-color 0.2s, background-color 0.2s;
+  transition: background-color 0.2s;
+	-moz-transition: background-color 0.2s;
+	-webkit-transition: background-color 0.2s;
+	-o-transition: background-color 0.2s;
+  -ms-transition: background-color 0.2s;
 }
 ul.navbar-nav li.nav-item a:hover {
   height: 52px;
@@ -536,36 +536,9 @@ div.status p.like span.liked {
 div.status p.like span.liked:hover {
   color: #c32222;
 }
+/* #endregion */
 
-table.object-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-table.object-table th {
-  padding: 8px 0;
-  background: #eee;
-  font-weight: normal;
-	font-size: 12px;
-}
-table.object-table tbody tr:hover {
-  background: #fafafa;
-}
-table.object-table td {
-  padding: 4px 8px;
-	font-size: 14px;
-	border-bottom: 1px solid #eaeaea;
-}
-table.table-padding td {
-  padding-top: 8px !important;
-  padding-bottom: 8px !important;
-}
-table.table-padding td:first-child {
-  padding-left: 12px !important;
-}
-table.table-padding td:last-child {
-  padding-right: 12px !important;
-}
-
+/* #region music-table */
 table.music-table {
   width: 100%;
 }
@@ -592,7 +565,34 @@ table.music-table td.text-cell p.artist {
 table.music-table td.action-cell {
   width: 72px;
 }
+/* #endregion */
 
+/* #region user-table */
+table.user-table th.avatar-column {
+	width: 52px;
+}
+table.user-table th.name-column {
+  padding: 0 12px;
+  text-align: left;
+}
+table.user-table td img.avatar {
+  width: 42px;
+  height: auto;
+  border-radius: 100%;
+  vertical-align: bottom;
+  transition: opacity 0.3s;
+  -moz-transition: opacity 0.3s;
+  -webkit-transition: opacity 0.3s;
+  -o-transition: opacity 0.3s;
+  -ms-transition: opacity 0.3s;
+}
+table.user-table td img.avatar:hover {
+	opacity: 0.8;
+}
+table.user-table td.state-count-cell {
+  border-left: 1px solid #eaeaea;
+	text-align: center;
+}
 /* #endregion */
 
 /* #region settings */
