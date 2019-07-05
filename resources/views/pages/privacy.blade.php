@@ -3,7 +3,7 @@
 @section('page_type', 'inner')
 
 @section('content')
-<div class="section">
+<div class="section document">
   <h1 class="title"><i class="far fa-handshake"></i>&nbsp;プライバシーポリシー</h1>
   <p class="text">運営者（以下「運営」といいます。）は、本ウェブサイト上で提供するサービス（以下「本サービス」といいます。）における、ユーザーの個人情報の取扱いについて，以下のとおりプライバシーポリシー（以下「本ポリシー」といいます。）を定めます。</p>
 
