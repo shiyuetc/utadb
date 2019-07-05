@@ -2,7 +2,7 @@
   <div class="pagination">
     <button class="button button-danger auto" @click="paging(-1)" v-bind:disabled="!this.$parent.isMounted || this.$parent.pageValue == 1">前のページ</button>
     <a>{{ this.$parent.pageValue }}&nbsp;ページ</a>
-    <button class="button button-danger auto" @click="paging(1)" v-bind:disabled="!this.$parent.isMounted || this.$parent.pageValue == 9999 || this.responseCount == 0">次のページ</button>
+    <button class="button button-danger auto" @click="paging(1)" v-bind:disabled="!this.$parent.isMounted || this.$parent.pageValue == 9999 || this.responseCount < 20">次のページ</button>
   </div>
 </template>
 <script>
