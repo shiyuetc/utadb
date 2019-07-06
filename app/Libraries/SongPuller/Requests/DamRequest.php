@@ -67,14 +67,14 @@ class DamRequest extends BasicRequest
             'artistCode' => $artist_id,
             'pageNo' => $page
         ];
-        $doc = \phpQuery::newDocument($this->postRequest($this->directUrl . $this->searchSongFromArtistPath, $parameter));
+        $doc = \phpQuery::newDocument($this->getRequest($this->directUrl . $this->searchSongFromArtistPath, $parameter));
         $artist_name = $doc["p.artist"]->text();
         foreach($doc["table.list:eq(0) tr:not(:first)"] as $row) {
 			preg_match("/[0-9]+/", pq($row)->find("td:eq(0) a")->attr("href"), $songId);
             $response[] = $this->toSongModel(
                 $this->requestIndex,
                 $songId[0],
-                pq($row)->find("td:eq(0)")->text(),
+                trim(pq($row)->find("td:eq(0)")->text()),
                 $artist_id,
                 $artist_name
             );

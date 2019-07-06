@@ -21,7 +21,7 @@ class Puller
     {
         if(count(self::$useRequest) <= $song_id[0]) return null;
         $class = self::getUsingClass($song_id[0]);
-        return $class->lookSong(ltrim($song_id, $song_id[0]));
+        return $class->lookSong(substr($song_id, 1, strlen($song_id)-1));
     }
 
     public static function searchSong($source_id, $q, $page = 1)
@@ -35,7 +35,7 @@ class Puller
     {
         if(count(self::$useRequest) <= $artist_id[0]) return null;
         $class = self::getUsingClass($artist_id[0]);
-        return $class->searchSongFromArtist(ltrim($artist_id, $artist_id[0]), $page);
+        return $class->searchSongFromArtist(substr($artist_id, 1, strlen($artist_id)-1), $page);
     }
 
     public static function searchArtist($source_id, $q, $page = 1)
