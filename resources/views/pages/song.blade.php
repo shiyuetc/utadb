@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', "{$status->song->artist} / {$status->song->title}")
+@section('title', "{$song->artist} / {$song->title}")
 
 @section('sidebar')
 @auth
@@ -12,10 +12,10 @@
 @section('content')
 @component('components.section')
 @slot('title')
-  <i class="fas fa-music"></i>&nbsp;{{ $status->song->artist }} / {{ $status->song->title }}
+  <i class="fas fa-music"></i>&nbsp;{{ $song->artist }} / {{ $song->title }}
 @endslot
 @slot('contents')
-  <song-infomation-component :status="{{ $status }}"/>
+  <song-infomation-component :song="{{ $song }}"/>
 @endslot
 @endcomponent
 @endsection
