@@ -19,7 +19,7 @@
               </td>
               <td class="text-cell">
                 <p class="title"><a class="default-link" v-bind:href="'/songs/' + status.song.id">{{ status.song.title }}</a></p>
-                <p class="artist">{{ status.song.artist }}</p>
+                <p class="artist"><a class="default-link" v-bind:href="'/artists/' + status.song.artist_id">{{ status.song.artist }}</a></p>
               </td>
               <td class="action-cell">
                 <updateSelect :ref="status.song.id" @updated="updatedStatus" :id="status.song.id" :state="status.my_state"/>
