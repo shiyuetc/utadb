@@ -17,10 +17,20 @@ class Activity extends Model
     
     protected $keyType = 'string';
     
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'id', 'kind', 'created_at'
     ];
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
     protected $hidden = [
         'user_id', 'song_id'
     ];
