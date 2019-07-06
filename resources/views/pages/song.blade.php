@@ -15,7 +15,7 @@
   <i class="fas fa-music"></i>&nbsp;{{ $song->artist }} / {{ $song->title }}
 @endslot
 @slot('contents')
-  <song-infomation-component :song="{{ $song }}"/>
+  <song-infomation-component :song="{{ $song }}" :my_state="{{ $my_state }}"/>
 @endslot
 @endcomponent
 @endsection
