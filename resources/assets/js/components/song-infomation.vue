@@ -127,6 +127,7 @@ table.infomation-table img.avatar {
   width: 32px;
   height: 32px;
   margin: 0 2px;
+  border-radius: 100%;
 }
 ul.link-items {
   display: flex;
@@ -139,6 +140,14 @@ ul.link-items li a {
   display: block;
   margin-left: 4px;
   border: 1px solid #ccc;
+  transition: background-color 0.2s;
+	-moz-transition: background-color 0.2s;
+	-webkit-transition: background-color 0.2s;
+	-o-transition: background-color 0.2s;
+  -ms-transition: background-color 0.2s;
+}
+ul.link-items li a:hover {
+  background: #eaeaea;
 }
 ul.link-items li a img {
   vertical-align: bottom;
