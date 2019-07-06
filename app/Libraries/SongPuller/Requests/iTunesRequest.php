@@ -10,6 +10,8 @@ class iTunesRequest extends BasicRequest
 
     public $lookSongPath = 'lookup';
 
+    public $lookArtistPath = 'lookup';
+
     public $searchSongPath = 'search';
 
     public $searchSongFromArtistPath = 'lookup';
@@ -36,6 +38,28 @@ class iTunesRequest extends BasicRequest
                 $song["artistName"],
                 $song["artworkUrl60"],
                 isset($song["previewUrl"]) ? $song["previewUrl"] : null
+            );
+        }
+        return null;
+    }
+
+    public function lookArtist($id)
+    {
+        $parameter = [
+			'country' => 'JP',
+			'lang' => 'ja_jp',
+			'media' => 'music',
+            'entity' => 'song',
+            "id" => $id,
+			'limit' => '1'
+        ];
+        $songs = $this->toJson($this->getRequest($this->directUrl . $this->lookArtistPath, $parameter))['results'];
+        foreach($songs as $song)
+        {
+            return $this->toArtistModel(
+                $this->requestIndex,
+                $id,
+                $song["artistName"]
             );
         }
         return null;
@@ -71,7 +95,7 @@ class iTunesRequest extends BasicRequest
         return $response;
     }
 
-    public function searchSongFromArtist($artist_id, $page)
+    public function searchSongFromArtist($id, $page)
     {
         $response = [];
         $parameter = [
@@ -79,7 +103,7 @@ class iTunesRequest extends BasicRequest
 			'lang' => 'ja_jp',
 			'media' => 'music',
             'entity' => 'song',
-            "id" => $artist_id,
+            "id" => $id,
 			'limit' => '20',
 			'offset' => ($page - 1) * 20
         ];

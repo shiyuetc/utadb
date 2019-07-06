@@ -10,6 +10,8 @@ class DamRequest extends BasicRequest
 
     public $lookSongPath = 'leaf/songKaraokeLeaf.html';
 
+    public $lookArtistPath = 'leaf/artistKaraokeLeaf.html';
+
     public $searchSongPath = 'search/searchKeywordKaraoke.html';
 
     public $searchSongFromArtistPath = 'leaf/artistKaraokeLeaf.html';
@@ -32,6 +34,23 @@ class DamRequest extends BasicRequest
                 pq($info)->find("p.artist")->text(),
                 $artistId[0],
                 pq($info)->find("td.singer")->text()
+            );
+        }
+        return null;
+    }
+
+    public function lookArtist($id)
+    {
+        $parameter = [
+            'artistCode' => $id
+        ];
+        $doc = \phpQuery::newDocument($this->getRequest($this->directUrl . $this->lookArtistPath, $parameter));
+        $artist_name = $doc["p.artist"]->text();
+        if(isset($artist_name)) {
+            return $this->toArtistModel(
+                $this->requestIndex,
+                $id,
+                $artist_name
             );
         }
         return null;
@@ -60,11 +79,11 @@ class DamRequest extends BasicRequest
         return $response;
     }
 
-    public function searchSongFromArtist($artist_id, $page)
+    public function searchSongFromArtist($id, $page)
     {
         $response = [];
         $parameter = [
-            'artistCode' => $artist_id,
+            'artistCode' => $id,
             'pageNo' => $page
         ];
         $doc = \phpQuery::newDocument($this->getRequest($this->directUrl . $this->searchSongFromArtistPath, $parameter));
@@ -75,7 +94,7 @@ class DamRequest extends BasicRequest
                 $this->requestIndex,
                 $songId[0],
                 trim(pq($row)->find("td:eq(0)")->text()),
-                $artist_id,
+                $id,
                 $artist_name
             );
 		}

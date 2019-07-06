@@ -12,6 +12,8 @@ class BasicRequest
 
     public $lookSongPath = '';
 
+    public $lookArtistPath = '';
+
     public $searchSongPath = '';
 
     public $searchSongFromArtistPath = '';
