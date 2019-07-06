@@ -1,13 +1,13 @@
 <template>
   <div class="song-infomation">
     <div class="cover-image-big">
-      <img v-bind:src="status.song.image_url" alt="">
-      <div class="mediPlayer" v-if="status.song.audio_url">
-        <audio class="listen" preload="none" data-size="120" v-bind:src="status.song.audio_url"></audio>
+      <img v-bind:src="song.image_url" alt="">
+      <div class="mediPlayer" v-if="song.audio_url">
+        <audio class="listen" preload="none" data-size="120" v-bind:src="song.audio_url"></audio>
       </div>
     </div>
     <div style="text-align: center;">
-      <updateSelect @updated="updatedStatus" :id="status.song.id" :state="status.my_state"/>
+      <updateSelect @updated="updatedStatus" :id="song.id" :state="song.my_state"/>
     </div>
     <table class="infomation-table">
       <thead>
@@ -16,11 +16,11 @@
       <tbody>
         <tr>
           <td>タイトル</td>
-          <td>{{ status.song.title }}</td>
+          <td>{{ song.title }}</td>
         </tr>
         <tr>
           <td>アーティスト</td>
-          <td>{{ status.song.artist }}</td>
+          <td>{{ song.artist }}</td>
         </tr>
       </tbody>
     </table>
@@ -58,8 +58,8 @@
       </tbody>
     </table>
     <ul class="link-items">
-      <li><a v-bind:href="'https://www.google.com/search?q=' + status.song.artist + '+' + status.song.title" target="_blank"><img src="/images/icons/icon-google.png" alt=""></a></li>
-      <li><a v-bind:href="'https://www.youtube.com/results?search_query=' + status.song.artist + '+' + status.song.title" target="_blank"><img src="/images/icons/icon-youtube.png" alt=""></a></li>
+      <li><a v-bind:href="'https://www.google.com/search?q=' + song.artist + '+' + song.title" target="_blank"><img src="/images/icons/icon-google.png" alt=""></a></li>
+      <li><a v-bind:href="'https://www.youtube.com/results?search_query=' + song.artist + '+' + song.title" target="_blank"><img src="/images/icons/icon-youtube.png" alt=""></a></li>
     </ul>
   </div>
 </template>
@@ -72,7 +72,7 @@ export default {
     UpdateSelect
   },
   props: {
-    status: {
+    song: {
       type: Object,
       required: true
     }
@@ -90,7 +90,7 @@ export default {
   },
   mounted() {
     setTimeout("initializePlayer()", 100);
-    axios.get("/api/statuses/lookup?song_id=" + this.status.song.id).then(res => {
+    axios.get("/api/statuses/lookup?song_id=" + this.song.id).then(res => {
       this.statuses = res.data;
     }).catch(err => { });
   }

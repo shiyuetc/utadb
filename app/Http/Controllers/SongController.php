@@ -9,10 +9,10 @@ class SongController extends Controller
 {
     public function index($id)
     {
-        $status = Song::infomation($id);
-        if(is_null($status)) {
+        $song = Song::infomation($id);
+        if(is_null($song)) {
             return view('errors.404');
         }
-        return view('pages.song', ['status' => $status]);
+        return view('pages.song', ['song' => $song]);
     }
 }

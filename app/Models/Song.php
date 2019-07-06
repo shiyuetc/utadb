@@ -34,13 +34,12 @@ class Song extends Model
     // 指定した曲idの曲情報と状態を返す
     public static function infomation($song_id)
     {
-        $look = Status::select('statuses.song_id', DB::raw('IFNULL(s1.state, 0) as my_state'))
+        $look = Song::select('songs.id', 'title', 'artist_id', 'artist', 'image_url', 'audio_url', DB::raw('IFNULL(s1.state, 0) as my_state'))
             ->leftjoin('statuses as s1', function($join) {
                 $join->where('s1.user_id', auth()->id())
-                ->on('statuses.song_id', '=', 's1.song_id');
+                ->on('songs.id', '=', 's1.song_id');
             })
-            ->where('statuses.song_id', $song_id)
-            ->with('song')
+            ->where('songs.id', $song_id)
             ->first();
 
         if(is_null($look)) {
