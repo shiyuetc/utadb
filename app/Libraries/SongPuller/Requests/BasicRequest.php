@@ -6,11 +6,15 @@ use Exception;
 
 class BasicRequest 
 {
+    public $requestIndex = '-1';
+
     public $directUrl = '';
 
     public $lookSongPath = '';
 
     public $searchSongPath = '';
+
+    public $searchSongFromArtistPath = '';
 
     public $searchArtistPath = '';
 
@@ -49,22 +53,22 @@ class BasicRequest
 		return json_decode(mb_convert_encoding($html, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN'), true);
     }
     
-    public function toSongModel($id, $title, $artistId, $artist, $imageUrl = null, $audioUrl = null)
+    public function toSongModel($requestIndex, $id, $title, $artistId, $artist, $imageUrl = null, $audioUrl = null)
     {
         return [
-            'id' => $id,
+            'id' => $requestIndex . $id,
             'title' => $title,
-            'artist_id' => $artistId,
+            'artist_id' => $requestIndex . $artistId,
             'artist' => $artist,
             'image_url' => $imageUrl,
             'audio_url' => $audioUrl,
         ];
     }
 
-    public function toArtistModel($artistId, $artist)
+    public function toArtistModel($requestIndex, $artistId, $artist)
     {
         return [
-            'artist_id' => $artistId,
+            'artist_id' => $requestIndex . $artistId,
             'artist' => $artist,
         ];
     }

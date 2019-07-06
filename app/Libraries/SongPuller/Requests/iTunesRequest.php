@@ -4,11 +4,15 @@ namespace App\Libraries\SongPuller\Requests;
 
 class iTunesRequest extends BasicRequest 
 {
+    public $requestIndex = '0';
+
     public $directUrl = 'https://itunes.apple.com/';
 
     public $lookSongPath = 'lookup';
 
     public $searchSongPath = 'search';
+
+    public $searchSongFromArtistPath = 'lookup';
 
     public $searchArtistPath = 'search';
 
@@ -25,7 +29,8 @@ class iTunesRequest extends BasicRequest
         if(count($song) == 1) {
             $song = $song[0];
             return $this->toSongModel(
-                '0' . $song["trackId"],
+                $this->requestIndex,
+                $song["trackId"],
                 $song["trackCensoredName"],
                 (string)$song["artistId"],
                 $song["artistName"],
@@ -53,7 +58,38 @@ class iTunesRequest extends BasicRequest
         {
             if(isset($song["trackId"])) {
                 $response[] = $this->toSongModel(
-                    '0' . $song["trackId"],
+                    $this->requestIndex,
+                    $song["trackId"],
+                    $song["trackCensoredName"],
+                    (string)$song["artistId"],
+                    $song["artistName"],
+                    $song["artworkUrl60"],
+                    isset($song["previewUrl"]) ? $song["previewUrl"] : null
+                );
+            }
+        }
+        return $response;
+    }
+
+    public function searchSongFromArtist($artist_id, $page)
+    {
+        $response = [];
+        $parameter = [
+			'country' => 'JP',
+			'lang' => 'ja_jp',
+			'media' => 'music',
+            'entity' => 'song',
+            "id" => $artist_id,
+			'limit' => '20',
+			'offset' => ($page - 1) * 20
+        ];
+        $songs = $this->toJson($this->getRequest($this->directUrl . $this->searchSongFromArtistPath, $parameter))['results'];
+        foreach($songs as $song)
+        {
+            if(isset($song["trackId"])) {
+                $response[] = $this->toSongModel(
+                    $this->requestIndex,
+                    $song["trackId"],
                     $song["trackCensoredName"],
                     (string)$song["artistId"],
                     $song["artistName"],
@@ -81,6 +117,7 @@ class iTunesRequest extends BasicRequest
         foreach($artists as $artist)
         {
             $response[] = $this->toArtistModel(
+                $this->requestIndex,
                 (string)$artist["artistId"],
                 $artist["artistName"]
             );

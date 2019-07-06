@@ -4,11 +4,15 @@ namespace App\Libraries\SongPuller\Requests;
 
 class DamRequest extends BasicRequest 
 {
+    public $requestIndex = '1';
+
     public $directUrl = 'https://www.clubdam.com/app/';
 
     public $lookSongPath = 'leaf/songKaraokeLeaf.html';
 
     public $searchSongPath = 'search/searchKeywordKaraoke.html';
+
+    public $searchSongFromArtistPath = 'leaf/artistKaraokeLeaf.html';
 
     public $searchArtistPath = 'search/searchKaraokeKeywordArtist.html';
 
@@ -23,7 +27,8 @@ class DamRequest extends BasicRequest
             $info = $info[0];
             preg_match("/[0-9]+/", pq($info)->find("td.singer a")->attr("href"), $artistId);
             return $this->toSongModel(
-                '1' . $id,
+                $this->requestIndex,
+                $id,
                 pq($info)->find("p.artist")->text(),
                 $artistId[0],
                 pq($info)->find("td.singer")->text()
@@ -45,10 +50,33 @@ class DamRequest extends BasicRequest
 			preg_match("/[0-9]+/", pq($row)->find("td:eq(0) a")->attr("href"), $songId);
             preg_match("/[0-9]+/", pq($row)->find("td:eq(1) a")->attr("href"), $artistId);
             $response[] = $this->toSongModel(
-                '1' . $songId[0],
+                $this->requestIndex,
+                $songId[0],
                 pq($row)->find("td:eq(0)")->text(),
                 $artistId[0],
                 pq($row)->find("td:eq(1)")->text()
+            );
+		}
+        return $response;
+    }
+
+    public function searchSongFromArtist($artist_id, $page)
+    {
+        $response = [];
+        $parameter = [
+            'artistCode' => $artist_id,
+            'pageNo' => $page
+        ];
+        $doc = \phpQuery::newDocument($this->postRequest($this->directUrl . $this->searchSongFromArtistPath, $parameter));
+        $artist_name = $doc["p.artist"]->text();
+        foreach($doc["table.list:eq(0) tr:not(:first)"] as $row) {
+			preg_match("/[0-9]+/", pq($row)->find("td:eq(0) a")->attr("href"), $songId);
+            $response[] = $this->toSongModel(
+                $this->requestIndex,
+                $songId[0],
+                pq($row)->find("td:eq(0)")->text(),
+                $artist_id,
+                $artist_name
             );
 		}
         return $response;
@@ -66,6 +94,7 @@ class DamRequest extends BasicRequest
         foreach($doc["table.list:eq(0) tr:not(:first)"] as $row) {
             preg_match("/[0-9]+/", pq($row)->find("td:eq(0) a")->attr("href"), $artistId);
             $response[] = $this->toArtistModel(
+                $this->requestIndex,
                 $artistId[0],
                 pq($row)->find("td:eq(0)")->text()
             );
