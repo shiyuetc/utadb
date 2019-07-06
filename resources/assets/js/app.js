@@ -24,6 +24,7 @@ Vue.component('user-statuses-component', require('./components/user-statuses.vue
 Vue.component('notification-component', require('./components/notification.vue'));
 Vue.component('search-user-component', require('./components/search-user.vue'));
 Vue.component('search-song-component', require('./components/search-song.vue'));
+Vue.component('search-song-from-artist-component', require('./components/search-song-from-artist.vue'));
 Vue.component('song-infomation-component', require('./components/song-infomation.vue'));
 Vue.component('avatar-categories-component', require('./components/avatar-categories.vue'));
 
