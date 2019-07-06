@@ -26,6 +26,8 @@ Route::prefix('@{id}')->group(function() {
 
 Route::get('songs/{id}', 'SongController@index')->name('song')
   ->where('id', '\d{5,18}');
+Route::get('artists/{id}', 'ArtistController@index')->name('artist')
+  ->where('id', '\d{5,18}');
 
 Route::group(['prefix' => 'search', 'middleware' => 'auth'], function() {
   Route::get('user', 'SearchController@searchUser')->name('search.user');
