@@ -80,6 +80,6 @@ class RegisterController extends Controller
     // アカウント登録成功時にアラートを表示
     protected function registered(Request $request, $user)
     {
-        return redirect('/')->with('status', __("@{$user->screen_name}でアカウントの登録に成功しました"));
+        return redirect('/')->with('status', __('messages.nav_regstered', ['screen_name' => $user->screen_name]));
     }
 }

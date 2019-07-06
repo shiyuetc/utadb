@@ -47,6 +47,6 @@ class LoginController extends Controller
     // ログイン成功時にアラートを表示
     protected function authenticated(Request $request, $user)
     {
-        return redirect('/')->with('status', __("@{$user->screen_name}でログインに成功しました"));
+        return redirect('/')->with('status', __('messages.nav_logined', ['screen_name' => $user->screen_name]));
     }
 }
