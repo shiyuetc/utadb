@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Avatar;
 use App\Models\Deactivate;
 use App\Models\User;
 use App\Http\Requests\UpdateProfileRequest;
@@ -19,12 +20,22 @@ class SettingController extends Controller
 
     public function showAccountSettingForm()
     {
-        return view('pages.settings.account', ['isApplied' => Deactivate::isApplied(auth()->user()->id)]);
+        $response['isApplied'] = Deactivate::where('user_id', auth()->user()->id)->exists();
+        return view('pages.settings.account', $response);
     }
 
     public function updateProfile(UpdateProfileRequest $request)
     {
-        $result = User::updateProfile($request->name, $request->description, $request->avatar);
+        $user = auth()->user();
+        $user->name = $request->name;
+        $user->description = $request->description;
+        if(isset($request->avatar)) {
+            $avatar = Avatar::find($request->avatar);
+            if(isset($avatar)) {
+                $user->profile_image_url = env('APP_URL') . "/images/profile_image/{$avatar->category}/{$avatar->id}";
+            }
+        }
+        $result = $user->save();
         return redirect()->route('settings.profile')
             ->with($result ? 'status' : 'error', 
                 __($result ? "プロフィールの変更を保存しました" : 'プロフィールの変更に失敗しました'));
@@ -32,7 +43,9 @@ class SettingController extends Controller
 
     public function updateEmail(UpdateEmailRequest $request)
     {
-        $result = User::updateEmail($request->email);
+        $user = auth()->user();
+        $user->email = $request->email;
+        $result = $user->save();
         return redirect()->route('settings.account')
             ->with($result ? 'status' : 'error', 
                 __($result ? "メールアドレスの変更を保存しました" : 'メールアドレスの変更に失敗しました'));
@@ -40,7 +53,9 @@ class SettingController extends Controller
 
     public function updatePassword(UpdatePasswordRequest $request)
     {
-        $result = User::updatePassword($request->password);
+        $user = auth()->user();
+        $user->password = bcrypt($request->password);
+        $result = $user->save();
         return redirect()->route('settings.account')
             ->with($result ? 'status' : 'error', 
                 __($result ? "パスワードの変更を保存しました" : 'パスワードの変更に失敗しました'));
@@ -48,7 +63,7 @@ class SettingController extends Controller
 
     public function updateDeactivate(UpdateDeactiveRequest $request)
     {
-        $result = Deactivate::appli(auth()->user()->id);
+        $result = Deactivate::insert(['user_id' => auth()->user()->id]);
         return redirect()->route('settings.account')
             ->with($result ? 'status' : 'error', 
                 __($result ? "アカウントの削除申請を受け付けました" : 'アカウントの削除申請に失敗しました'));
@@ -56,7 +71,7 @@ class SettingController extends Controller
 
     public function updateUndeactivate(UpdateDeactiveRequest $request)
     {
-        $result = Deactivate::cancel(auth()->user()->id);
+        $result = Deactivate::where('user_id', auth()->user()->id)->delete();
         return redirect()->route('settings.account')
             ->with($result ? 'status' : 'error', 
                 __($result ? "アカウントの削除申請を解除しました" : 'アカウントの削除申請の解除に失敗しました'));
