@@ -95,7 +95,7 @@ div.section > div.header span.section-toggle i {
 div.section > div.header span.section-toggle.hidden i {
   transform: rotate(180deg);
 }
-div.section > div.contents {
+div.section > div.contents.partition-border {
   border-top: var(--break-border);
 }
 /* #endregion */
