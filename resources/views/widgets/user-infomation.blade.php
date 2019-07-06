@@ -15,7 +15,7 @@
   </div>
   @if(Auth::check() && $user->id != auth()->id())
   <ul class="option-list list list-flex">
-    <li class="{{ Request::is('@*/common') ? ' active' : '' }}"><a href="{{ route('user.common', ['id' => $user->screen_name]) }}"><i class="fas fa-link"></i>&nbsp;共通の曲</a></li>
+    <li class="{{ Request::is('@*/common') ? ' active' : '' }}"><a href="{{ route('user.common', ['id' => $user->screen_name]) }}"><span class="hidden-sm-below"><i class="fas fa-link"></i>&nbsp;</span>共通の曲<span class="right-icon status-count">{{ $user->common_count }}曲</span></a></li>
   </ul>
   <div class="border"></div>
   @endif
