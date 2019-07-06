@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', "")
+@section('title', "{$artist->name}")
 
 @section('sidebar')
 @if(Auth::check())
@@ -10,5 +10,20 @@
 @endsection
 
 @section('content')
-
+@component('components.section', ['toggle' => true])
+@slot('title')
+  <i class="fas fa-music"></i>&nbsp;ローカルの{{ $artist->name }}の曲
+@endslot
+@slot('contents')
+  <search-song-from-artist-component :id="'{{ $artist->id }}'"></search-song-from-artist-component>
+@endslot
+@endcomponent
+@component('components.section')
+@slot('title')
+  <i class="fas fa-music"></i>&nbsp;{{ $artist->id[0] == 0 ? 'iTunes' : 'DAM' }}の{{ $artist->name }}の曲
+@endslot
+@slot('contents')
+  <search-song-from-artist-component :source="{{ $artist->id[0] }}" :id="'{{ $artist->id }}'"></search-song-from-artist-component>
+@endslot
+@endcomponent
 @endsection
