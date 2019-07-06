@@ -30,6 +30,7 @@ Route::group(['middleware' => ['api', 'auth.api']], function(){
     Route::get('avatars/search', 'Api\AvatarController@search');
 
     Route::get('songs/search', 'Api\SongController@search');
+    Route::get('songs/search_from_artist', 'Api\SongController@searchFromArtist');
     Route::get('user_common', 'Api\SongController@userCommon');
 
     Route::prefix('users')->group(function() {
