@@ -1,6 +1,6 @@
 <template>
   <div class="user-statuses">
-    <loadProgress v-model="this.statuses.length"/>
+    <loadProgress v-model="this.statuses.length" :itemName="'曲'"/>
     <songs @updated="updatedStatus" v-model="this.statuses"/>
     <pagination @paging="statusesRequest" v-model="this.statuses.length"/>
   </div>
