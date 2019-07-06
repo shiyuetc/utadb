@@ -13,7 +13,9 @@ class UserController extends ApiController
         $this->QueryValidate($request, [
             'page' => ApiRequestRules::getPageRule(),
         ]);
-        $users = User::search('', $request->query('page', 1));
+        $users = User::take(50)
+            ->orderBy('mastered_count', 'desc')
+            ->get();
         return response()->json($users);
     }
 
@@ -23,7 +25,12 @@ class UserController extends ApiController
             'q' => ApiRequestRules::getQRule(),
             'page' => ApiRequestRules::getPageRule(),
         ]);
-        $users = User::search($request->q, $request->query('page', 1));
+        $users = User::where('screen_name', 'like', "%{$request->q}%")
+            ->orWhere('name', 'like', "%{$request->q}%")
+            ->skip(($request->query('page', 1) - 1) * 50)
+            ->take(50)
+            ->orderBy('mastered_count', 'desc')
+            ->get();
         return response()->json($users);
     }
 }

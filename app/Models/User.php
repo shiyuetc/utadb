@@ -28,23 +28,24 @@ class User extends Authenticatable
         'email', 'password', 'remember_token', 'updated_at'
     ];
 
+    /**
+     * The function for send custom email.
+     *
+     * @param string $token
+     * @return void
+     */
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new CustomResetPassword($token));
     }
 
+    /**
+     * Return song count of registration.
+     *
+     * @return int
+     */
     public function allStateCount() 
     {
         return $this->stacked_count + $this->training_count + $this->mastered_count;
-    }
-
-    public static function search($q, $page = 1)
-    {
-        return User::where('screen_name', 'like', "%{$q}%")
-            ->orWhere('name', 'like', "%{$q}%")
-            ->skip(($page - 1) * 50)
-            ->take(50)
-            ->orderBy('mastered_count', 'desc')
-            ->get();
     }
 }
