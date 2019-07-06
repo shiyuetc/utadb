@@ -19,6 +19,15 @@ class SongController extends ApiController
         return response()->json($statuses);
     }
     
+    public function searchFromArtist(Request $request)
+    {
+        $this->QueryValidate($request, [
+            'page' => ApiRequestRules::getPageRule(),
+        ]);
+        $statuses = Song::searchFromArtist($request->source, $request->artist_id, $request->page);
+        return response()->json($statuses);
+    }
+    
     public function userCommon(Request $request)
     {
         $this->QueryValidate($request, [

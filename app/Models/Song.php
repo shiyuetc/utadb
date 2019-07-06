@@ -75,6 +75,46 @@ class Song extends Model
         } else {
             $songs = Puller::searchSong($source, $q, $page);
         }
+
+        if(count($songs) > 0) {
+            $song_ids = array();
+            foreach($songs as $song) {
+                $song_ids[] = $song["id"];
+            }
+            
+            $states = Status::select('song_id', DB::raw('state as my_state'))
+                ->where('user_id', auth()->id())
+                ->whereIn('song_id', $song_ids)
+                ->get();
+
+            $temp_my_state = [];
+            foreach($states as $state)
+            {
+                $temp_my_state[$state->song_id] = $state->my_state;
+            }
+            for($i = 0; $i < count($songs); $i++)
+            {
+                $statuses[] = [
+                    'my_state' => isset($temp_my_state[$songs[$i]['id']]) ? $temp_my_state[$songs[$i]['id']] : 0,
+                    'song' => $songs[$i]
+                ];
+            }
+        }
+        return $statuses;
+    }
+
+    public static function searchFromArtist($source, $artist_id, $page = 1)
+    {
+        $statuses = [];
+        if($source == -1) {
+            $songs = Song::Where('artist_id', $artist_id)
+                ->orderBy('title')
+                ->skip(($page - 1) * 10)
+                ->take(10)
+                ->get();
+        } else {
+            $songs = Puller::searchSongFromArtist($artist_id, $page);
+        }
         
         if(count($songs) > 0) {
             $song_ids = array();
