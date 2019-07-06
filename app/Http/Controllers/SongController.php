@@ -13,6 +13,6 @@ class SongController extends Controller
         if(is_null($song)) {
             return view('errors.404');
         }
-        return view('pages.song', ['song' => $song]);
+        return view('pages.song', ['song' => $song, 'my_state' => $song->my_state]);
     }
 }

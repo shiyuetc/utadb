@@ -7,7 +7,7 @@
       </div>
     </div>
     <div style="text-align: center;">
-      <updateSelect @updated="updatedStatus" :id="song.id" :state="song.my_state"/>
+      <updateSelect @updated="updatedStatus" :id="song.id" :state="my_state_value"/>
     </div>
     <table class="infomation-table">
       <thead>
@@ -33,7 +33,7 @@
           <td>習得済み</td>
           <td>
             <div>
-              <a v-for="(user, index) in this.statuses[3]" :key='index' v-bind:href="'/@' + user.screen_name">
+              <a v-for="(user, index) in this.users[3]" :key='index' v-bind:href="'/@' + user.screen_name">
                 <img class="avatar" v-bind:src="user.profile_image_url + '_small.png'" alt="" v-tooltip.top-center="user.name + ' (@' + user.screen_name + ')'">
               </a>
             </div>
@@ -42,7 +42,7 @@
         <tr>
           <td>練習中</td>
           <td>
-            <a v-for="(user, index) in this.statuses[2]" :key='index' v-bind:href="'/@' + user.screen_name">
+            <a v-for="(user, index) in this.users[2]" :key='index' v-bind:href="'/@' + user.screen_name">
               <img class="avatar" v-bind:src="user.profile_image_url + '_small.png'" alt="" v-tooltip.top-center="user.name + ' (@' + user.screen_name + ')'">
             </a>
           </td>
@@ -50,7 +50,7 @@
         <tr>
           <td>気になる</td>
           <td>
-            <a v-for="(user, index) in this.statuses[1]" :key='index' v-bind:href="'/@' + user.screen_name">
+            <a v-for="(user, index) in this.users[1]" :key='index' v-bind:href="'/@' + user.screen_name">
               <img class="avatar" v-bind:src="user.profile_image_url + '_small.png'" alt="" v-tooltip.top-center="user.name + ' (@' + user.screen_name + ')'">
             </a>
           </td>
@@ -75,12 +75,17 @@ export default {
     song: {
       type: Object,
       required: true
+    },
+    my_state: {
+      type: Number,
+      required: true
     }
   },
   data() {
     return {
       isBusy: false,
-      statuses: [],
+      my_state_value: this.my_state,
+      users: [],
     };
   },
   methods: {
@@ -91,7 +96,7 @@ export default {
   mounted() {
     setTimeout("initializePlayer()", 100);
     axios.get("/api/statuses/lookup?song_id=" + this.song.id).then(res => {
-      this.statuses = res.data;
+      this.users = res.data;
     }).catch(err => { });
   }
 };
