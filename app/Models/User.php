@@ -44,7 +44,7 @@ class User extends Authenticatable
      *
      * @return int
      */
-    public function allStateCount() 
+    public function stateCount() 
     {
         return $this->stacked_count + $this->training_count + $this->mastered_count;
     }

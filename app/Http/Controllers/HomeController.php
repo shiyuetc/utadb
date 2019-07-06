@@ -12,8 +12,8 @@ class HomeController extends Controller
     {
         if (Auth::check()) {
             $response = [];
-            if(Auth::user()->allStateCount() == 0) {
-                $response['alert'] = ['type' => 'default', 'text' => 'まずは曲の検索からあなたの持ち歌を探しましょう'];
+            if(Auth::user()->stateCount() == 0) {
+                $response['alert'] = ['type' => 'default', 'text' => __('messages.nav_unused')];
             }
             $response['exist_unconfirm_notification'] = Notification::existUnconfirm();
             return view('pages.home', $response);
