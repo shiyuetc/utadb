@@ -15,10 +15,10 @@ class SongController extends ApiController
             'q' => ApiRequestRules::getQRule(),
             'page' => ApiRequestRules::getPageRule(),
         ]);
-        $statuses = Song::searchSong($request->source, $request->q, $request->query('page', 1));
+        $statuses = Song::search($request->source, $request->q, $request->query('page', 1));
         return response()->json($statuses);
     }
-
+    
     public function userCommon(Request $request)
     {
         $this->QueryValidate($request, [

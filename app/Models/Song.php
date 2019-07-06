@@ -32,7 +32,7 @@ class Song extends Model
     ];
 
     // 指定した曲idの曲情報と状態を返す
-    public static function lookSong($song_id)
+    public static function infomation($song_id)
     {
         $look = Status::select('statuses.song_id', DB::raw('IFNULL(s1.state, 0) as my_state'))
             ->leftjoin('statuses as s1', function($join) {
@@ -63,7 +63,7 @@ class Song extends Model
     }
 
     // 曲の検索
-    public static function searchSong($source, $q, $page = 1)
+    public static function search($source, $q, $page = 1)
     {
         $statuses = [];
         if($source == -1) {
