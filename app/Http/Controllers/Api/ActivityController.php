@@ -22,16 +22,4 @@ class ActivityController extends ApiController
         $activities = Activity::getTimeline(null, $request->next);
         return response()->json($activities);
     }
-
-    public function likeCreate(Request $request)
-    {
-        $result = Activity::likeCreate($request->activity_id);
-        return response()->json($result);
-    }
-
-    public function likeDestroy(Request $request)
-    {
-        $result = Activity::likeDestroy($request->activity_id);
-        return response()->json($result);
-    }
 }
