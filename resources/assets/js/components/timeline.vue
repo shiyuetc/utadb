@@ -118,7 +118,7 @@ export default {
         this.$set(status, 'like_count', status.like_count - 1);
       }
       
-      axios.post("/api/likes/" + action + "?activity_id=" + status.id).then(res => {
+      axios.post("/api/likes/" + action + "?id=" + status.id).then(res => {
         this.isBusy = false;
       }).catch(err => {
         window.location.href = "/login";
