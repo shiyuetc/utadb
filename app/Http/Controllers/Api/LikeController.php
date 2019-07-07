@@ -36,7 +36,7 @@ class LikeController extends ApiController
 
     public function destroy(Request $request)
     {
-        $activity = Activity::find($request->activity_id);
+        $activity = Activity::find($request->id);
         if(is_null($activity)) return response()->json()->setStatusCode(404);
         
         DB::beginTransaction();
@@ -45,13 +45,13 @@ class LikeController extends ApiController
                 ->where('user_id', auth()->id())
                 ->delete();
             if($deleteCount != 1) throw new Exception();
-            $activity->like_count -= 1;
+            $activity->like_count--;
             $activity->save();
             Notification::remove($activity->user->id ,$activity->id);
 
             DB::commit();
             return response()->json()->setStatusCode(200);
-        } catch (Exception $e){
+        } catch (\Exception $e){
             DB::rollBack();
             return response()->json()->setStatusCode(400);
         }
