@@ -21,9 +21,18 @@ class StatusController extends ApiController
     public function lookup(Request $request)
     {
         $this->QueryValidate($request, [
-            'song_id' => ApiRequestRules::getSongIdRule(),
+            'id' => ApiRequestRules::getSongIdRule(),
         ]);
-        $response = Status::lookup($request->song_id);
-        return response()->json($response);
+        
+        $response = [1 => [], 2 => [], 3 => []];
+        $rows = Status::select('user_id', 'state')
+            ->where('song_id', $request->id)
+            ->orderBy('used_at', 'desc')
+            ->with('user')
+            ->get();
+        foreach($rows as $row) {
+            $response[(int)$row['state']][] = $row['user'];
+        }
+        return response()->json($response)->setStatusCode(200);
     }
 }

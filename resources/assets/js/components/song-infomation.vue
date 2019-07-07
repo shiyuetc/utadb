@@ -95,7 +95,7 @@ export default {
   },
   mounted() {
     setTimeout("initializePlayer()", 100);
-    axios.get("/api/statuses/lookup?song_id=" + this.song.id).then(res => {
+    axios.get("/api/statuses/lookup?id=" + this.song.id).then(res => {
       this.users = res.data;
     }).catch(err => { });
   }

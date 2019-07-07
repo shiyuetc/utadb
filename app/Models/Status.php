@@ -45,21 +45,6 @@ class Status extends Model
         return $this->belongsTo('App\Models\Song');
     }
 
-    // 引数の曲idの曲を登録中のユーザーの配列を返す
-    public static function lookup($song_id)
-    {
-        $response = [1 => [], 2 => [], 3 => []];
-        $statuses = Status::select('user_id', 'state')
-            ->where('song_id', $song_id)
-            ->orderBy('used_at', 'desc')
-            ->with('user')
-            ->get();
-        foreach($statuses as $status) {
-            $response[(int)$status['state']][] = $status['user'];
-        }
-        return $response;
-    }
-
     // ステータスを更新する
     public static function edit($song_id, $state) 
     {
