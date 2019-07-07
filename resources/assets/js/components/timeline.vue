@@ -38,7 +38,7 @@
         </div>
       </div>
     </div>
-    <loadProgress v-model="this.statuses.length"/>
+    <loadProgress v-model="this.statuses.length" :itemName="'投稿'"/>
     <button v-show="this.isMounted && this.next != null" class="button button-default" @click="statusesRequest">さらに読み込む...</button>
   </div>
 </template>
