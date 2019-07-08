@@ -13,7 +13,7 @@ class AvatarController extends ApiController
         $this->QueryValidate($request, [
             'category' => ApiRequestRules::getCategoryRule(),
         ]);
-        $avatars = Avatar::search($request->category);
-        return response()->json($avatars);
+        $response = Avatar::where('category', $request->category)->get();
+        return response()->json($response)->setStatusCode(200);
     }
 }

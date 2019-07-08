@@ -6,12 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Avatar extends Model
 {
+    protected $table = 'avatars';
+
     public $timestamps = false;
 
     protected $keyType = 'string';
 
-    public static function search($category)
-    {
-        return Avatar::where('category', $category)->get();
-    }
 }
