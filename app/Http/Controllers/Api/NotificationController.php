@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Requests\ApiRequestRules;
 use App\Models\Notification;
 use Illuminate\Http\Request;
+use DB;
 
 class NotificationController extends ApiController
 {   
@@ -24,7 +25,7 @@ class NotificationController extends ApiController
         Notification::where('receiver_id', auth()->id())
             ->where('confirm', '=', 0)
             ->update(['confirm' => 1]);
-            
+
         return response()->json($notifications);
     }
 }
