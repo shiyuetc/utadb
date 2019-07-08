@@ -33,36 +33,6 @@ class Song extends Model
         'created_at'
     ];
 
-    // 指定した曲idの曲情報と状態を返す
-    public static function infomation($song_id)
-    {
-        $look = Song::select('songs.id', 'title', 'artist_id', 'artist', 'image_url', 'audio_url', DB::raw('IFNULL(s1.state, 0) as my_state'))
-            ->leftjoin('statuses as s1', function($join) {
-                $join->where('s1.user_id', auth()->id())
-                ->on('songs.id', '=', 's1.song_id');
-            })
-            ->where('songs.id', $song_id)
-            ->first();
-
-        if(is_null($look)) {
-            $song = Puller::lookSong($song_id);
-            if(!is_null($song)) {
-                $state = Status::select('state')
-                    ->where('user_id', auth()->id())
-                    ->where('song_id', $song_id)
-                    ->first();
-                $look = new Song();
-                $look->id = $song["id"];
-                $look->title = $song["title"];
-                $look->artist = $song["artist"];
-                $look->image_url = $song["image_url"];
-                $look->audio_url = $song["audio_url"];
-                $look->my_state = $state != null ? $state['state'] : 0;
-            }
-        }
-        return isset($look) ? $look : null;
-    }
-
     // 曲の検索
     public static function search($source, $q, $page = 1)
     {
