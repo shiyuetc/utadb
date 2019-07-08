@@ -8,11 +8,11 @@ class Song extends Model
 {
     protected $table = 'songs';
 
-    public $timestamps = false;
-    
-    public $incrementing = false;
-    
     protected $keyType = 'string';
+
+    public $incrementing = false;
+
+    public $timestamps = false;
     
     /**
      * The attributes that are mass assignable.
@@ -29,4 +29,5 @@ class Song extends Model
     protected $hidden = [
         'created_at'
     ];
+    
 }

@@ -10,6 +10,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $table = 'users';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -48,4 +50,5 @@ class User extends Authenticatable
     {
         return $this->stacked_count + $this->training_count + $this->mastered_count;
     }
+    
 }

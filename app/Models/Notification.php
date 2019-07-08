@@ -10,6 +10,11 @@ class Notification extends Model
 
     public $timestamps = false;
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
     protected $hidden = [
         'receiver_id', 'sender_id', 'activity_id', 'song_id'
     ];
@@ -46,4 +51,5 @@ class Notification extends Model
             ->where('context_id', $context_id)
             ->delete();
     }
+    
 }

@@ -9,11 +9,11 @@ class Activity extends Model
 {
     protected $table = 'activities';
 
-    public $timestamps = false;
+    protected $keyType = 'string';
 
     public $incrementing = false;
-    
-    protected $keyType = 'string';
+
+    public $timestamps = false;
     
     /**
      * The attributes that are mass assignable.

@@ -8,8 +8,10 @@ class Avatar extends Model
 {
     protected $table = 'avatars';
 
-    public $timestamps = false;
-
     protected $keyType = 'string';
 
+    public $incrementing = false;
+
+    public $timestamps = false;
+    
 }

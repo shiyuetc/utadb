@@ -51,4 +51,5 @@ class Status extends Model
         ->where('statuses.state', 3)
         ->count();
     }
+    
 }
