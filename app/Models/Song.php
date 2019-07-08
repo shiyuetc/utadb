@@ -9,6 +9,8 @@ use DB;
 
 class Song extends Model
 {
+    protected $table = 'songs';
+
     public $timestamps = false;
     
     public $incrementing = false;
