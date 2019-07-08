@@ -2,10 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\Notification;
 use Illuminate\Database\Eloquent\Model;
 use DB;
-use Exception;
 
 class Activity extends Model
 {
@@ -43,22 +41,6 @@ class Activity extends Model
     public function song()
     {
         return $this->belongsTo('App\Models\Song');
-    }
-    
-    public static function createPrimaryKey()
-    {
-        return str_pad(str_replace('.', '', microtime(true)), 14, '0', STR_PAD_RIGHT);
-    }
-
-    public static function createActivity($user_id, $song_id, $old_state, $state)
-    {
-        Activity::insert([
-            'id' => Activity::createPrimaryKey(),
-            'user_id' => $user_id,
-            'song_id' => $song_id,
-            'old_state' => $old_state,
-            'state' => $state
-        ]);
     }
 
     public static function getTimeline($user_id = null, $next_id = null)
