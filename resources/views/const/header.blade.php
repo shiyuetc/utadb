@@ -45,28 +45,30 @@
         @auth
         @section('js_avatar_button', true)
         <div id="nav-dialog" class="nav-dialog">
-          <ul class="dialog-group">
-            <li class="dialog-item success-dialog-item">
-              <a href="{{ route('user', ['id' => Auth::user()->screen_name]) }}"><i class="fa fa-user"></i>&nbsp;マイページ</a>
-            </li>
-            <li class="dialog-item success-dialog-item">
-              <a href="{{ route('search.user') }}"><i class="fa fa-users"></i>&nbsp;ユーザーを探す</a>
-            </li>
-          </ul>
-          <ul class="dialog-group">
-            <li class="dialog-item inverse-dialog-item">
-              <a href="{{ route('settings.profile') }}"><i class="fas fa-cog"></i>&nbsp;設定</a>
-            </li>
-          </ul>
-          <ul class="dialog-group">
-            <li class="dialog-item danger-dialog-item">
-              <a href="{{ route('logout') }}"
-                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
-                  class="fas fa-power-off"></i>&nbsp;ログアウト</a>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                {{ csrf_field() }}</form>
-            </li>
-          </ul>
+          <div class="dialog-panel">
+              <ul class="dialog-group">
+                  <li class="dialog-item success-dialog-item">
+                    <a href="{{ route('user', ['id' => Auth::user()->screen_name]) }}"><i class="fa fa-user"></i><span class="indent">マイページ</span></a>
+                  </li>
+                  <li class="dialog-item success-dialog-item">
+                    <a href="{{ route('search.user') }}"><i class="fa fa-users"></i><span class="indent">ユーザーを探す</span></a>
+                  </li>
+                </ul>
+                <ul class="dialog-group">
+                  <li class="dialog-item inverse-dialog-item">
+                    <a href="{{ route('settings.profile') }}"><i class="fas fa-cog"></i><span class="indent">設定</span></a>
+                  </li>
+                </ul>
+                <ul class="dialog-group">
+                  <li class="dialog-item danger-dialog-item">
+                    <a href="{{ route('logout') }}"
+                      onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+                        class="fas fa-power-off"></i><span class="indent">ログアウト</span></a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      {{ csrf_field() }}</form>
+                  </li>
+                </ul>
+          </div>
         </div>
         @endauth
       </div>
