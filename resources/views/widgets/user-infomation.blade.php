@@ -3,7 +3,7 @@
     <div class="avatar-box">
       <a href="{{ route('user', ['id' => $user->screen_name]) }}"><img class="avatar" src="{{ $user->profile_image_url }}.png" alt="avatar"></a>
     </div>
-    <p class="name"><a class="default-link" href="{{ route('user', ['id' => $user->screen_name]) }}">{{ $user->name }}&nbsp;(&#64;{{ $user->screen_name }})</a></p>
+    <p class="name"><a class="underline" href="{{ route('user', ['id' => $user->screen_name]) }}">{{ $user->name }}&nbsp;(&#64;{{ $user->screen_name }})</a></p>
     <p class="description">{{ $user->description }}</p>
     <p class="created"><i class="fa fa-calendar-alt"></i>&nbsp;{{ date('Y年m月d日',  strtotime($user->created_at)) }}に登録&nbsp;({{ (strtotime(date('Y-m-d')) - strtotime(date_format(date_create($user->created_at), 'Y-m-d'))) / 86400 }}日経過)</p>
     <div class="event-buttons">
