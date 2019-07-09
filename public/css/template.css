@@ -44,12 +44,15 @@ i {
 a.underline:hover {
   text-decoration: underline;
 }
+a.default-link {
+  color: #0366d6 !important;
+}
 a.default-link:hover {
-  color: var(--danger-disabled-color) !important;
+  color: #0353b0 !important;
   text-decoration: underline;
 }
 a.default-link.on-color {
-  color: var(--danger-disabled-color);
+  color: #0353b0;
 }
 /* #endregion */
 

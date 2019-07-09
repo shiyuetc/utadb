@@ -539,6 +539,7 @@ div.user-profile p {
 div.user-profile p.name {
   margin-top: 12px;
   font-size: 14px;
+  font-weight: bold;
 }
 div.user-profile p.description {
   color: #777;
@@ -596,7 +597,6 @@ table.music-table td.text-cell p {
 }
 table.music-table td.text-cell p.title {
   margin: 0;
-  font-weight: bold;
 }
 table.music-table td.text-cell p.artist {
   margin: 2px 0;
