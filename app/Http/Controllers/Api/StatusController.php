@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\ApiRequestRules;
-use App\Models\Activity;
+use App\Models\Post;
 use App\Models\Song;
 use App\Models\Status;
 use App\Libraries\SongPuller\Puller;
@@ -83,7 +83,7 @@ class StatusController extends ApiController
                 $user["{$statusArray[$nowState - 1]}_count"] -= 1;
             }
             
-            Activity::insert([
+            Post::insert([
                 'id' => str_pad(str_replace('.', '', microtime(true)), 14, '0', STR_PAD_RIGHT),
                 'user_id' => $user->id,
                 'song_id' => $request->id,

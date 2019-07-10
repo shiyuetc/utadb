@@ -15,11 +15,11 @@ class CreateLikesTable extends Migration
     {
         Schema::create('likes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('activity_id', 14);
+            $table->string('post_id', 14);
             $table->integer('user_id')->unsigned();
-            $table->foreign('activity_id')->references('id')->on('activities');
+            $table->foreign('post_id')->references('id')->on('posts');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unique(['activity_id', 'user_id']);
+            $table->unique(['post_id', 'user_id']);
         });
     }
 

@@ -16,7 +16,7 @@ class Notification extends Model
      * @var array
      */
     protected $hidden = [
-        'receiver_id', 'sender_id', 'activity_id', 'song_id'
+        'receiver_id', 'sender_id', 'post_id', 'song_id'
     ];
 
     public function sender()
@@ -24,9 +24,9 @@ class Notification extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-    public function activity()
+    public function post()
     {
-        return $this->belongsTo('App\Models\Activity');
+        return $this->belongsTo('App\Models\Post');
     }
 
     public function song()

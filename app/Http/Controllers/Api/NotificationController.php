@@ -11,13 +11,13 @@ class NotificationController extends ApiController
 {   
     public function list(Request $request)
     {
-        $notifications = Notification::select('notifications.id', 'notifications.sender_id', 'notifications.kind', 'notifications.created_at', DB::raw('activities.id as activity_id'), 'activities.song_id')
-            ->leftjoin('activities', function($join) {
+        $notifications = Notification::select('notifications.id', 'notifications.sender_id', 'notifications.kind', 'notifications.created_at', DB::raw('posts.id as post_id'), 'posts.song_id')
+            ->leftjoin('posts', function($join) {
                 $join->where('notifications.kind', '=', 'like')
-                    ->on('activities.id', '=', 'notifications.context_id');
+                    ->on('posts.id', '=', 'notifications.context_id');
             })
             ->where('receiver_id', auth()->id())
-            ->with(['sender', 'activity', 'song'])
+            ->with(['sender', 'post', 'song'])
             ->orderBy('created_at', 'desc')
             ->get();
 
