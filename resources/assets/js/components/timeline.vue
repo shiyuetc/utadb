@@ -62,10 +62,10 @@ export default {
   },
   data() {
     return {
+      statusJp: ['記録なし', '気になる曲', '練習中の曲', '習得済みの曲'],
       isMounted: false,
       isBusy: false,
       isError: false,
-      statusJp: ['記録なし', '気になる曲', '練習中の曲', '習得済みの曲'],
       statuses: [],
       next: null
     };
