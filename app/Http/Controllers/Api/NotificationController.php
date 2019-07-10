@@ -9,7 +9,7 @@ use DB;
 
 class NotificationController extends ApiController
 {   
-    public function list(Request $request)
+    public function index(Request $request)
     {
         $notifications = Notification::select('notifications.id', 'notifications.sender_id', 'notifications.kind', 'notifications.created_at', DB::raw('posts.id as post_id'), 'posts.song_id')
             ->leftjoin('posts', function($join) {
