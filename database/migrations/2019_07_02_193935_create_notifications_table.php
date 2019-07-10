@@ -19,7 +19,7 @@ class CreateNotificationsTable extends Migration
             $table->integer('sender_id')->unsigned();
             $table->string('context_id', 20);
             $table->string('kind', 20)->comment('like');
-            $table->integer('confirm')->default(0)->comment('既読フラグ');
+            $table->boolean('confirm')->default(0)->comment('既読フラグ');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->foreign('receiver_id')->references('id')->on('users');
             $table->foreign('sender_id')->references('id')->on('users');
