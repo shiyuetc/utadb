@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'screen_name', 'name', 'description', 'stacked_count', 'training_count', 'mastered_count', 'profile_image_url', 'email', 'password',
+        'screen_name', 'name', 'description', 'record_count', 'stacked_count', 'training_count', 'mastered_count', 'profile_image_url', 'password',
     ];
 
     /**
@@ -50,5 +50,4 @@ class User extends Authenticatable
     {
         return $this->stacked_count + $this->training_count + $this->mastered_count;
     }
-    
 }
