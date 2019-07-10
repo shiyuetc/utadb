@@ -14,12 +14,12 @@ class PostController extends ApiController
             'id' => ApiRequestRules::getUserIdRule(),
         ]);
         $posts = Post::getTimeline($request->id, $request->next);
-        return response()->json($posts);
+        return response()->json($posts)->setStatusCode(200);
     }
 
     public function publicTimeline(request $request)
     {
         $posts = Post::getTimeline(null, $request->next);
-        return response()->json($posts);
+        return response()->json($posts)->setStatusCode(200);
     }
 }

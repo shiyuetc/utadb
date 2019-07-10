@@ -26,6 +26,6 @@ class NotificationController extends ApiController
             ->where('confirm', '=', 0)
             ->update(['confirm' => 1]);
 
-        return response()->json($notifications);
+        return response()->json($notifications)->setStatusCode(200);
     }
 }

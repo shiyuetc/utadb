@@ -14,6 +14,6 @@ class ApplicationController extends ApiController
         return response()->json([
             'user_count' => User::count(),
             'post_count' => Post::count()
-        ]);
+        ])->setStatusCode(200);
     }
 }

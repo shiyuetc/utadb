@@ -16,7 +16,7 @@ class UserController extends ApiController
         $users = User::take(50)
             ->orderBy('mastered_count', 'desc')
             ->get();
-        return response()->json($users);
+        return response()->json($users)->setStatusCode(200);
     }
 
     public function search(Request $request)
@@ -31,6 +31,6 @@ class UserController extends ApiController
             ->take(50)
             ->orderBy('mastered_count', 'desc')
             ->get();
-        return response()->json($users);
+        return response()->json($users)->setStatusCode(200);
     }
 }
