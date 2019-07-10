@@ -4,7 +4,7 @@
       <div class="article status animated fadeIn" v-for="status in this.statuses" :key="status.id">
         <div class="article-header">
           <p class="avatar"><a v-bind:href="'/@' + status.user.screen_name"><img v-bind:src="status.user.profile_image_url + '_small.png'" alt=""></a></p>
-          <p class="text"><a class="default-link" v-bind:href="'/@' + status.user.screen_name">{{ status.user.name }}</a>さんが「{{ statusJp[status.state] }}」に登録しました</p>
+          <p class="text"><a class="bold underline" v-bind:href="'/@' + status.user.screen_name">{{ status.user.name }}</a>さんが「{{ statusJp[status.state] }}」に登録しました</p>
         </div>
         <div class="article-body">
           <table class="music-table">

@@ -26,6 +26,9 @@ i {
 .f12 {
   font-size: 12px;
 }
+.bold {
+  font-weight: bold;
+}
 .center {
   text-align: center;
 }
@@ -140,8 +143,8 @@ div.article p.date {
 }
 
 div.article p.avatar img {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   transition: opacity 0.2s;
 	-moz-transition: opacity 0.2s;
 	-webkit-transition: opacity 0.2s;

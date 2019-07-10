@@ -539,7 +539,6 @@ div.user-profile p {
 div.user-profile p.name {
   margin-top: 12px;
   font-size: 14px;
-  font-weight: bold;
 }
 div.user-profile p.description {
   color: #777;
