@@ -17,16 +17,19 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('resource-counter-component', require('./components/resource-counter.vue'));
-Vue.component('timeline-component', require('./components/timeline.vue'));
-Vue.component('user-common-component', require('./components/user-common.vue'));
-Vue.component('user-statuses-component', require('./components/user-statuses.vue'));
-Vue.component('notification-component', require('./components/notification.vue'));
-Vue.component('search-user-component', require('./components/search-user.vue'));
-Vue.component('search-song-component', require('./components/search-song.vue'));
-Vue.component('search-song-from-artist-component', require('./components/search-song-from-artist.vue'));
-Vue.component('song-infomation-component', require('./components/song-infomation.vue'));
 Vue.component('avatar-categories-component', require('./components/avatar-categories.vue'));
+Vue.component('notification-component', require('./components/notification.vue'));
+Vue.component('resource-counter-component', require('./components/resource-counter.vue'));
+
+Vue.component('timeline-component', require('./components/timeline.vue'));
+
+Vue.component('song-search-component', require('./components/song-search.vue'));
+Vue.component('song-from-artist-component', require('./components/song-from-artist.vue'));
+Vue.component('song-user-component', require('./components/song-user.vue'));
+Vue.component('song-common-component', require('./components/song-common.vue'));
+Vue.component('song-infomation-component', require('./components/song-infomation.vue'));
+
+Vue.component('user-search-component', require('./components/user-search.vue'));
 
 const app = new Vue({
     el: '#app'
