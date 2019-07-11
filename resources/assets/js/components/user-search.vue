@@ -1,23 +1,23 @@
 <template>
-  <div class="search-result">
+  <div>
     <loadProgress v-model="users.length" :itemName="'ユーザー'"/>
     <users v-model="this.users"/>
     <pagination @paging="statusesRequest" v-model="users.length"/>
   </div>
 </template>
 <script>
-import LoadProgress from './widgets/load-progress.vue';
-import Pagination from './widgets/pagination.vue';
-import Users from './common/users.vue';
+import loadProgress from './widgets/load-progress.vue';
+import pagination from './widgets/pagination.vue';
+import users from './common/users.vue';
 
 export default {
   components: {
-    LoadProgress,
-    Pagination,
-    Users,
+    loadProgress,
+    pagination,
+    users,
   },
   props: {
-    q: {
+    keyword: {
       type: String,
       required: false,
       default: ''
@@ -38,9 +38,9 @@ export default {
   methods: {
     statusesRequest: function() {
       this.isMounted = false;
-      var api = this.q == '' ?
+      var api = this.keyword == '' ?
         "list?page=" + this.pageValue :
-        "search?q=" + this.q + "&page=" + this.pageValue;
+        "search?q=" + this.keyword + "&page=" + this.pageValue;
       axios.get('/api/users/' + api).then(res => {
         this.users = res.data;
         this.isMounted = true;
