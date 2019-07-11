@@ -26,23 +26,16 @@
 @endslot
 @endcomponent
 
-@if(!empty($q))
-  @component('components.section')
+@component('components.section')
   @slot('title')
-    <i class="fa fa-search"></i>&nbsp;検索結果
+    @if(empty($q))
+      <i class="fa fa-users"></i>&nbsp;ユーザー一覧
+    @else
+      <i class="fa fa-search"></i>&nbsp;検索結果
+    @endif
   @endslot
   @slot('contents')
-    <user-search-component :keyword="'{{ $q }}'" :page="{{ $page }}" />
+    <user-search-component @if(!empty($q)):keyword="'{{ $q }}'"@endif :page="{{ $page }}" />
   @endslot
-  @endcomponent
-@else
-  @component('components.section')
-  @slot('title')
-    <i class="fa fa-users"></i>&nbsp;ユーザー一覧
-  @endslot
-  @slot('contents')
-    <user-search-component :page="{{ $page }}" />
-  @endslot
-  @endcomponent
-@endif
+@endcomponent
 @endsection

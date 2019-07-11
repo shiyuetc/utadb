@@ -20,7 +20,7 @@ export default {
     keyword: {
       type: String,
       required: false,
-      default: ''
+      default: null
     },
     page: {
       type: Number,
@@ -38,10 +38,12 @@ export default {
   methods: {
     statusesRequest: function() {
       this.isMounted = false;
-      var api = this.keyword == '' ?
-        "list?page=" + this.pageValue :
-        "search?q=" + this.keyword + "&page=" + this.pageValue;
-      axios.get('/api/users/' + api).then(res => {
+
+      var query = '?';
+      query += this.keyword != undefined ? 'keyword=' + this.keyword + '&' : '';
+      query += 'page=' + this.pageValue;
+
+      axios.get('/api/users' + query).then(res => {
         this.users = res.data;
         this.isMounted = true;
       }).catch(err => {
