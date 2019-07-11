@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class AvatarController extends ApiController
 {   
-    public function search(Request $request)
+    public function index(Request $request)
     {
         $this->QueryValidate($request, [
             'category' => ApiRequestRules::getCategoryRule(),

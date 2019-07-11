@@ -30,9 +30,8 @@ Route::group(['middleware' => 'api'], function(){
 });
 
 Route::group(['middleware' => ['api', 'auth.api']], function(){
+    Route::get('avatars', 'Api\AvatarController@index');
     Route::get('notifications', 'Api\NotificationController@index');
-
-    Route::get('avatars/search', 'Api\AvatarController@search');
 
     Route::prefix('users')->group(function() {
         Route::get('list', 'Api\UserController@list');
