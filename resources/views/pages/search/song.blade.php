@@ -34,12 +34,12 @@
 @endcomponent
 
 @if(!empty($q))
-  @component('components.section', ['toggle' => true, 'toggleState' => false])
+  @component('components.section', ['toggle' => true])
   @slot('title')
     <i class="fa fa-search"></i>&nbsp;ローカルからの検索結果
   @endslot
   @slot('contents')
-    <search-song-component :q="'{{ $q }}'" />
+    <song-search-component :keyword="'{{ $q }}'" :perPage="10" />
   @endslot
   @endcomponent
 
@@ -48,7 +48,7 @@
     <i class="fa fa-search"></i>&nbsp;{{ $source == 0 ? 'iTunes' : 'DAM' }}からの検索結果
   @endslot
   @slot('contents')
-    <search-song-component :source="{{ $source }}" :q="'{{ $q }}'" :page="{{ $page }}" />
+    <song-search-component :source="{{ $source }}" :keyword="'{{ $q }}'" :page="{{ $page }}" />
   @endslot
   @endcomponent
 @endif

@@ -32,7 +32,7 @@
     <i class="fa fa-search"></i>&nbsp;検索結果
   @endslot
   @slot('contents')
-    <search-user-component :q="'{{ $q }}'" :page="{{ $page }}" />
+    <user-search-component :keyword="'{{ $q }}'" :page="{{ $page }}" />
   @endslot
   @endcomponent
 @else
@@ -41,7 +41,7 @@
     <i class="fa fa-users"></i>&nbsp;ユーザー一覧
   @endslot
   @slot('contents')
-    <search-user-component :page="{{ $page }}" />
+    <user-search-component :page="{{ $page }}" />
   @endslot
   @endcomponent
 @endif

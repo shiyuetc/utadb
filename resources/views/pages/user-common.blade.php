@@ -11,7 +11,7 @@
   <i class="fas fa-link"></i>&nbsp;共通の曲
 @endslot
 @slot('contents')
-  <user-common-component :user_id="'{{ $user->id }}'" :page="{{ $page }}"/>
+  <song-common-component :user_id="'{{ $user->id }}'" :page="{{ $page }}"/>
 @endslot
 @endcomponent
 @endsection

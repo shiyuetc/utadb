@@ -34,7 +34,7 @@
   <i class="{{ $state['icon-class'] }}"></i>&nbsp;{{ $state['jp'] }}
 @endslot
 @slot('contents')
-  <user-statuses-component :user_id="'{{ $user->id }}'" :state="{{ $state['index'] }}" :page="{{ $page }}" :q="'{{ $q }}'"/>
+  <song-user-component :user_id="'{{ $user->id }}'" :state="{{ $state['index'] }}" :page="{{ $page }}" :keyword="'{{ $q }}'"/>
 @endslot
 @endcomponent
 @endsection
