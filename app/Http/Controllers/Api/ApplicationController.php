@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class ApplicationController extends ApiController
 {   
+    /**
+     * Return all user count and all post count.
+     * 
+     * @return array $response
+     */
     public function resourceCount()
     {
         return response()->json([
@@ -16,4 +21,5 @@ class ApplicationController extends ApiController
             'post_count' => Post::count()
         ])->setStatusCode(200);
     }
+    
 }
