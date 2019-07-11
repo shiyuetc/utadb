@@ -14,8 +14,14 @@ class ApiController extends Controller
     {
         $validator = Validator::make($request->all(), $validate);
         if($validator->fails()) {
-            $response['errors']  = current(array_slice($validator->errors()->toArray(), 0, 1, true))[0];
+            $response['errors'] = current(array_slice($validator->errors()->toArray(), 0, 1, true))[0];
             throw new HttpResponseException(response()->json($response, 422));
         }
+    }
+
+    public function CallException($text, $statusCode)
+    {
+        $response['errors'] = $text;
+        throw new HttpResponseException(response()->json($response, $statusCode));
     }
 }
