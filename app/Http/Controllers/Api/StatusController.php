@@ -41,13 +41,8 @@ class StatusController extends ApiController
                 ->where('user_id', $user->id)
                 ->where('song_id', $request->id)
                 ->first();
-            if(isset($status)) {
-                $statusId =  $status->id;
-                $nowState = $status->state;
-            } else {
-                $statusId = null;
-                $nowState = 0;
-            }
+            $statusId =  $status->id ?? null;
+            $nowState = $status->state ?? 0;
             $response['old_state'] = $nowState;
             if($nowState == $request->state) {
                 return response()->json($response)->setStatusCode(200);
@@ -126,10 +121,9 @@ class StatusController extends ApiController
         {
             $temp_my_state[$state->song_id] = $state->my_state;
         }
-
-        for($i = 0; $i < count($song_ids); $i++)
+        foreach($song_ids as $song_id)
         {
-            $response[$song_ids[$i]] = isset($temp_my_state[$song_ids[$i]]) ? $temp_my_state[$song_ids[$i]] : 0;
+            $response[$song_id] = $temp_my_state[$song_id] ?? 0;
         }
 
         return response()->json($response)->setStatusCode(200);
