@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\ApiRequestRules;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends ApiController
 {   
+    /**
+     * Return user array.
+     * 
+     * @param Request $request
+     * @return array $response
+     */
     public function index(Request $request)
     {
         $this->QueryValidate($request, [
