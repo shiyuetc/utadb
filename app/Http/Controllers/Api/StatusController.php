@@ -3,17 +3,22 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\ApiRequestRules;
+use App\Libraries\SongPuller\Puller;
 use App\Models\Post;
 use App\Models\Song;
 use App\Models\Status;
-use App\Libraries\SongPuller\Puller;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DB;
 
 class StatusController extends ApiController
 {   
-    public function edit(Request $request)
+    /**
+     * Update state of logined user corresponded to song id.
+     * 
+     * @param Request $request
+     */
+    public function update(Request $request)
     {
         $this->QueryValidate($request, [
             'id' => ApiRequestRules::getSongIdRule(),
@@ -22,10 +27,9 @@ class StatusController extends ApiController
         
         $statusArray = ['stacked', 'training', 'mastered'];
         $user = auth()->user();
-        $response = [];
         $response = [
             'id' => $request->id,
-            'old_state' => '-1',
+            'old_state' => -1,
             'new_state' => $request->state,
             'user' => $user
         ];
@@ -100,8 +104,38 @@ class StatusController extends ApiController
         }
         return response()->json($response)->setStatusCode(200);
     }
-    
+
+    /**
+     * Return the state array of logined user corresponded to song id array.
+     * 
+     * @param Request $request
+     * @return array $response
+     */
     public function lookup(Request $request)
+    {
+        $response = [];
+        $song_ids = $request->query('ids', []);
+
+        $states = Status::select('song_id', DB::raw('state as my_state'))
+            ->where('user_id', auth()->id())
+            ->whereIn('song_id', $song_ids)
+            ->get();
+
+        $temp_my_state = [];
+        foreach($states as $state)
+        {
+            $temp_my_state[$state->song_id] = $state->my_state;
+        }
+
+        for($i = 0; $i < count($song_ids); $i++)
+        {
+            $response[$song_ids[$i]] = isset($temp_my_state[$song_ids[$i]]) ? $temp_my_state[$song_ids[$i]] : 0;
+        }
+
+        return response()->json($response)->setStatusCode(200);
+    }
+    
+    public function registereUser(Request $request)
     {
         $this->QueryValidate($request, [
             'id' => ApiRequestRules::getSongIdRule(),
@@ -116,6 +150,7 @@ class StatusController extends ApiController
         foreach($rows as $row) {
             $response[(int)$row['state']][] = $row['user'];
         }
+
         return response()->json($response)->setStatusCode(200);
     }
 }
