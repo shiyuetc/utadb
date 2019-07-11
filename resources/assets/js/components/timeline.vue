@@ -73,11 +73,13 @@ export default {
   methods: {
     statusesRequest: function() {
       this.isMounted = false;
-      var timeline = this.user_id == null ? "public_timeline?" : "user_timeline?id=" + this.user_id + "&";
+
+      var query = this.user_id == null ? "?" : "?id=" + this.user_id + "&";
       if(this.next != null) {
-        timeline += "next=" + this.next;
+        query += "next=" + this.next;
       }
-      axios.get("/api/" + timeline).then(res => {
+      
+      axios.get("/api/timeline" + query).then(res => {
         if(this.statuses.length == 0) {
           this.statuses = res.data;
         } else {
