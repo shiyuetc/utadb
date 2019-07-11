@@ -8,29 +8,30 @@ use Illuminate\Http\Request;
 
 class UserController extends ApiController
 {   
-    public function list(Request $request)
+    public function index(Request $request)
     {
         $this->QueryValidate($request, [
-            'page' => ApiRequestRules::getPageRule(),
+            'keyword' => 'sometimes|string|between:1,20',
+            'page' => 'nullable|numeric|between:1,9999',
+            'per_page' => 'nullable|numeric|between:1,50',
         ]);
-        $users = User::take(50)
-            ->orderBy('mastered_count', 'desc')
+
+        $keyword = $request->query('keyword', null);
+        $page = $request->query('page', 1);
+        $per_page = $request->query('per_page', 50);
+
+        $query = User::skip(($page - 1) * $per_page)
+            ->take($per_page);
+
+        if(!is_null($keyword)) {
+            $query = $query->where('screen_name', 'like', "%{$keyword}%")
+                ->orWhere('name', 'like', "%{$keyword}%");
+        }
+
+        $response = $query->orderBy('mastered_count', 'desc')
             ->get();
-        return response()->json($users)->setStatusCode(200);
+
+        return response()->json($response)->setStatusCode(200);
     }
 
-    public function search(Request $request)
-    {
-        $this->QueryValidate($request, [
-            'q' => ApiRequestRules::getQRule(),
-            'page' => ApiRequestRules::getPageRule(),
-        ]);
-        $users = User::where('screen_name', 'like', "%{$request->q}%")
-            ->orWhere('name', 'like', "%{$request->q}%")
-            ->skip(($request->query('page', 1) - 1) * 50)
-            ->take(50)
-            ->orderBy('mastered_count', 'desc')
-            ->get();
-        return response()->json($users)->setStatusCode(200);
-    }
 }

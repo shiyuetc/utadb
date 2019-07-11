@@ -26,16 +26,13 @@ Route::group(['middleware' => 'api'], function(){
         Route::get('{id}', 'Api\SongController@user');
         Route::get('{id}/common', 'Api\SongController@common');
     });
+
+    Route::get('users', 'Api\UserController@index');
 });
 
 Route::group(['middleware' => ['api', 'auth.api']], function(){
     Route::get('avatars', 'Api\AvatarController@index');
     Route::get('notifications', 'Api\NotificationController@index');
-
-    Route::prefix('users')->group(function() {
-        Route::get('list', 'Api\UserController@list');
-        Route::get('search', 'Api\UserController@search');
-    });
     
     Route::post('statuses/update', 'Api\StatusController@update');
 
