@@ -11,8 +11,18 @@ use DB;
 
 class LikeController extends ApiController
 {   
+    /**
+     * Create post a like.
+     * 
+     * @param Request $request
+     * @return bool
+     */
     public function create(Request $request)
     {
+        $this->QueryValidate($request, [
+            'id' => 'required|string|between:10,14',
+        ]);
+
         $post = Post::find($request->id);
         if(is_null($post)) return response()->json()->setStatusCode(404);
 
@@ -34,8 +44,18 @@ class LikeController extends ApiController
         }
     }
 
+    /**
+     * Destroy post a like.
+     * 
+     * @param Request $request
+     * @return bool
+     */
     public function destroy(Request $request)
     {
+        $this->QueryValidate($request, [
+            'id' => 'required|string|between:10,14',
+        ]);
+        
         $post = Post::find($request->id);
         if(is_null($post)) return response()->json()->setStatusCode(404);
         
@@ -56,4 +76,5 @@ class LikeController extends ApiController
             return response()->json()->setStatusCode(400);
         }
     }
+
 }
