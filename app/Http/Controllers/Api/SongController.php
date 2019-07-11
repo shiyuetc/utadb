@@ -18,7 +18,6 @@ class SongController extends ApiController
      */
     public function index(Request $request)
     {
-        // Use validation.
         $this->QueryValidate($request, [
             'type' => 'sometimes|string|in:title,artist',
             'source' => 'nullable|numeric|between:-1,1',
@@ -27,7 +26,6 @@ class SongController extends ApiController
             'per_page' => 'nullable|numeric|between:1,20',
         ]);
 
-        // Declare variable.
         $response = [];
         $type = $request->query('type', 'title');
         $source = $request->query('source', -1);
@@ -69,7 +67,6 @@ class SongController extends ApiController
      */
     public function user(Request $request, $id)
     {
-        // Use validation.
         $this->QueryValidate($request, [
             'state' => 'nullable|numeric|between:0,3',
             'keyword' => 'sometimes|string|between:1,20',
@@ -77,12 +74,10 @@ class SongController extends ApiController
             'per_page' => 'nullable|numeric|between:1,50',
         ]);
 
-        // Checking if user exist.
         if(!DB::table('users')->where('id', $id)->exists()) {
             $this->CallException(__('passwords.user'), 404);
         }
 
-        // Declare variable.
         $response = [];
         $state = $request->query('state', 0);
         $keyword = $request->query('keyword', null);
@@ -103,7 +98,6 @@ class SongController extends ApiController
             });
         }
 
-        // Send query.
         $temp_response = $query
             ->with('song')
             ->join('songs', 'statuses.song_id', 'songs.id')
@@ -112,7 +106,6 @@ class SongController extends ApiController
             ->take($per_page)
             ->get();
 
-        // Take out the contents.
         foreach($temp_response as $temp) {
             $response[] = $temp->song;
         }
@@ -128,23 +121,19 @@ class SongController extends ApiController
      */
     public function common(Request $request, $id)
     {
-        // Use validation.
         $this->QueryValidate($request, [
             'page' => 'nullable|numeric|between:1,9999',
             'per_page' => 'nullable|numeric|between:1,50',
         ]);
 
-        // Checking if user exist.
         if(!DB::table('users')->where('id', $id)->exists()) {
             $this->CallException(__('passwords.user'), 404);
         }
 
-        // Declare variable.
         $response = [];
         $page = $request->query('page', 1);
         $per_page = $request->query('per_page', 50);
 
-        // Send query.
         $temp_response = Status::select('statuses.song_id')
             ->join('statuses as s1', function($join) {
                 $join->where('s1.user_id', auth()->id())
@@ -160,7 +149,6 @@ class SongController extends ApiController
             ->take($per_page)
             ->get();
 
-        // Take out the contents.
         foreach($temp_response as $temp) {
             $response[] = $temp->song;
         }
