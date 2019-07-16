@@ -17,6 +17,7 @@ class StatusController extends ApiController
      * Update state of logined user corresponded to song id.
      * 
      * @param Request $request
+     * @return array $response
      */
     public function update(Request $request)
     {
