@@ -24,6 +24,7 @@ class SongController extends ApiController
             'keyword' => 'required|string|between:1,20',
             'page' => 'nullable|numeric|between:1,9999',
             'per_page' => 'nullable|numeric|between:1,20',
+            'with_state' => 'sometimes|boolean'
         ]);
 
         $response = [];
@@ -32,6 +33,7 @@ class SongController extends ApiController
         $keyword = $request->keyword;
         $page = $request->query('page', 1);
         $per_page = $request->query('per_page', 20);
+        $with_state = $request->query('with_state', false);
 
         if($type == 'title') { // Searching from song title or artist name.
             if($source == -1) { // From local database.
@@ -56,6 +58,31 @@ class SongController extends ApiController
             }
         }
 
+        if($with_state && count($response) > 0) {
+            $song_ids = [];
+            foreach($response as $song) {
+                $song_ids[] = $song["id"];
+            }
+
+            $states = Status::select('song_id', DB::raw('IFNULL(state, 0) as my_state'))
+                ->where('user_id', auth()->id())
+                ->whereIn('song_id', $song_ids)
+                ->get();
+            $temp_my_state = [];
+            foreach($states as $state)
+            {
+                $temp_my_state[$state->song_id] = $state->my_state;
+            }
+
+            $temp_response = $response;
+            $response = [];
+            foreach($temp_response as $temp)
+            {
+                $temp->my_state =  $temp_my_state[$temp->id];
+                $response[] = $temp;
+            }
+        }
+
         return response()->json($response)->setStatusCode(200);
     }
 
@@ -72,6 +99,7 @@ class SongController extends ApiController
             'keyword' => 'sometimes|string|between:1,20',
             'page' => 'nullable|numeric|between:1,9999',
             'per_page' => 'nullable|numeric|between:1,50',
+            'with_state' => 'sometimes|boolean'
         ]);
 
         if(!DB::table('users')->where('id', $id)->exists()) {
@@ -83,8 +111,13 @@ class SongController extends ApiController
         $keyword = $request->query('keyword', null);
         $page = $request->query('page', 1);
         $per_page = $request->query('per_page', 50);
+        $with_state = $request->query('with_state', false);
 
-        $query = Status::select('statuses.song_id')
+        $selectColumn = [];
+        $selectColumn[] = 'statuses.song_id';
+        if($with_state) $selectColumn[] = DB::raw('IFNULL(s1.state, 0) as my_state');
+
+        $query = Status::select($selectColumn)
             ->where('statuses.user_id', $id);
 
         // Filter by select state.
@@ -98,6 +131,13 @@ class SongController extends ApiController
             });
         }
 
+        if($with_state) {
+            $query = $query->leftjoin('statuses as s1', function($join) {
+                $join->where('s1.user_id', auth()->id())
+                ->on('statuses.song_id', '=', 's1.song_id');
+            });
+        }
+
         $temp_response = $query
             ->with('song')
             ->join('songs', 'statuses.song_id', 'songs.id')
@@ -107,6 +147,7 @@ class SongController extends ApiController
             ->get();
 
         foreach($temp_response as $temp) {
+            if($with_state) $temp->song->my_state = $temp->my_state;
             $response[] = $temp->song;
         }
             
@@ -124,6 +165,7 @@ class SongController extends ApiController
         $this->QueryValidate($request, [
             'page' => 'nullable|numeric|between:1,9999',
             'per_page' => 'nullable|numeric|between:1,50',
+            'with_state' => 'sometimes|boolean'
         ]);
 
         if(!DB::table('users')->where('id', $id)->exists()) {
@@ -133,6 +175,7 @@ class SongController extends ApiController
         $response = [];
         $page = $request->query('page', 1);
         $per_page = $request->query('per_page', 50);
+        $with_state = $request->query('with_state', false);
 
         $temp_response = Status::select('statuses.song_id')
             ->join('statuses as s1', function($join) {
@@ -150,10 +193,11 @@ class SongController extends ApiController
             ->get();
 
         foreach($temp_response as $temp) {
+            if($with_state) $temp->song->my_state = 3;
             $response[] = $temp->song;
         }
 
         return response()->json($response)->setStatusCode(200);
     }
-    
+
 }
