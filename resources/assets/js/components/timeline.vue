@@ -3,23 +3,23 @@
     <div class="articles statuses">
       <div class="article status animated fadeIn" v-for="status in this.statuses" :key="status.id">
         <div class="article-header">
-          <p class="avatar"><a v-bind:href="'/@' + status.user.screen_name"><img v-bind:src="status.user.profile_image_url + '_small.png'" alt=""></a></p>
-          <p class="text"><a class="bold underline" v-bind:href="'/@' + status.user.screen_name">{{ status.user.name }}</a>さんが「{{ statusJp[status.state] }}」に登録しました</p>
+          <p class="avatar"><a :href="'/@' + status.user.screen_name"><img :src="status.user.profile_image_url + '_small.png'" alt=""></a></p>
+          <p class="text"><a class="bold underline" :href="'/@' + status.user.screen_name">{{ status.user.name }}</a>さんが「{{ statusJp[status.state] }}」に登録しました</p>
         </div>
         <div class="article-body">
           <table class="music-table">
             <tr>
               <td class="media-cell">
                 <div class="cover-image">
-                  <img v-bind:src="status.song.image_url" alt="">
+                  <img :src="status.song.image_url" alt="">
                   <div class="mediPlayer" v-if="status.song.audio_url">
-                    <audio class="listen" preload="none" data-size="40" v-bind:src="status.song.audio_url"></audio>
+                    <audio class="listen" preload="none" data-size="40" :src="status.song.audio_url"></audio>
                   </div>
                 </div>
               </td>
               <td class="text-cell">
-                <p class="title"><a class="default-link" v-bind:href="'/songs/' + status.song.id">{{ status.song.title }}</a></p>
-                <p class="artist"><a class="default-link" v-bind:href="'/artists/' + status.song.artist_id">{{ status.song.artist }}</a></p>
+                <p class="title"><a class="default-link" :href="'/songs/' + status.song.id">{{ status.song.title }}</a></p>
+                <p class="artist"><a class="default-link" :href="'/artists/' + status.song.artist_id">{{ status.song.artist }}</a></p>
               </td>
               <td class="action-cell">
                 <updateSelect :ref="status.song.id" @updated="updatedStatus" :id="status.song.id" :state="status.my_state"/>
@@ -30,8 +30,8 @@
         <div class="article-footer">
           <p class="date"><subtract-date :date="status.created_at"></subtract-date></p>
           <p class="like" @click="postLike(status)">
-            <span v-bind:class="[ status.is_liked ? 'liked' : 'unlike']">
-              <i v-bind:class="[[ status.is_liked ? 'fas' : 'far'], 'fa-heart']"></i>
+            <span :class="[ status.is_liked ? 'liked' : 'unlike']">
+              <i :class="[[ status.is_liked ? 'fas' : 'far'], 'fa-heart']"></i>
               <a v-show="status.like_count > 0">{{ status.like_count }}</a>
             </span>
           </p>

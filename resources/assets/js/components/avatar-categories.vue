@@ -12,8 +12,8 @@
     <load-progress/>
     <div v-if="isMounted" class="avatars">
       <label class="avatar" v-for="(avatar, index) in avatars" :key='index' v-tooltip.top-center="avatar.name">
-        <img v-bind:src="'/images/profile_image/' + avatar.category + '/' + avatar.id + '_small.png'" alt="">
-        <p><input type="radio" name="avatar" v-bind:value="avatar.id"></p>
+        <img :src="'/images/profile_image/' + avatar.category + '/' + avatar.id + '_small.png'" alt="">
+        <p><input type="radio" name="avatar" :value="avatar.id"></p>
       </label>
     </div>
   </div>

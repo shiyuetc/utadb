@@ -1,9 +1,9 @@
 <template>
   <div class="song-infomation">
     <div class="cover-image-big">
-      <img v-bind:src="song.image_url" alt="">
+      <img :src="song.image_url" alt="">
       <div class="mediPlayer" v-if="song.audio_url">
-        <audio class="listen" preload="none" data-size="120" v-bind:src="song.audio_url"></audio>
+        <audio class="listen" preload="none" data-size="120" :src="song.audio_url"></audio>
       </div>
     </div>
     <div style="text-align: center;">
@@ -33,8 +33,8 @@
           <td>習得済み</td>
           <td>
             <div>
-              <a v-for="(user, index) in this.users[3]" :key='index' v-bind:href="'/@' + user.screen_name">
-                <img class="avatar" v-bind:src="user.profile_image_url + '_small.png'" alt="" v-tooltip.top-center="user.name + ' (@' + user.screen_name + ')'">
+              <a v-for="(user, index) in this.users[3]" :key='index' :href="'/@' + user.screen_name">
+                <img class="avatar" :src="user.profile_image_url + '_small.png'" alt="" v-tooltip.top-center="user.name + ' (@' + user.screen_name + ')'">
               </a>
             </div>
           </td>
@@ -42,24 +42,24 @@
         <tr>
           <td>練習中</td>
           <td>
-            <a v-for="(user, index) in this.users[2]" :key='index' v-bind:href="'/@' + user.screen_name">
-              <img class="avatar" v-bind:src="user.profile_image_url + '_small.png'" alt="" v-tooltip.top-center="user.name + ' (@' + user.screen_name + ')'">
+            <a v-for="(user, index) in this.users[2]" :key='index' :href="'/@' + user.screen_name">
+              <img class="avatar" :src="user.profile_image_url + '_small.png'" alt="" v-tooltip.top-center="user.name + ' (@' + user.screen_name + ')'">
             </a>
           </td>
         </tr>
         <tr>
           <td>気になる</td>
           <td>
-            <a v-for="(user, index) in this.users[1]" :key='index' v-bind:href="'/@' + user.screen_name">
-              <img class="avatar" v-bind:src="user.profile_image_url + '_small.png'" alt="" v-tooltip.top-center="user.name + ' (@' + user.screen_name + ')'">
+            <a v-for="(user, index) in this.users[1]" :key='index' :href="'/@' + user.screen_name">
+              <img class="avatar" :src="user.profile_image_url + '_small.png'" alt="" v-tooltip.top-center="user.name + ' (@' + user.screen_name + ')'">
             </a>
           </td>
         </tr>
       </tbody>
     </table>
     <ul class="link-items">
-      <li><a v-bind:href="'https://www.google.com/search?q=' + song.artist + '+' + song.title" target="_blank"><img src="/images/icons/icon-google.png" alt=""></a></li>
-      <li><a v-bind:href="'https://www.youtube.com/results?search_query=' + song.artist + '+' + song.title" target="_blank"><img src="/images/icons/icon-youtube.png" alt=""></a></li>
+      <li><a :href="'https://www.google.com/search?q=' + song.artist + '+' + song.title" target="_blank"><img src="/images/icons/icon-google.png" alt=""></a></li>
+      <li><a :href="'https://www.youtube.com/results?search_query=' + song.artist + '+' + song.title" target="_blank"><img src="/images/icons/icon-youtube.png" alt=""></a></li>
     </ul>
   </div>
 </template>

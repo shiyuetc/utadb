@@ -3,9 +3,9 @@
     <div class="articles">
       <div class="article animated fadeIn" v-for="notification in this.notifications" :key="notification.id">
         <div class="article-header">
-          <p class="avatar"><a v-bind:href="'/@' + notification.sender.screen_name"><img v-bind:src="notification.sender.profile_image_url + '_small.png'" alt=""></a></p>
+          <p class="avatar"><a :href="'/@' + notification.sender.screen_name"><img :src="notification.sender.profile_image_url + '_small.png'" alt=""></a></p>
           <p class="text" v-show="notification.kind == 'like'">
-            <a class="default-link" v-bind:href="'/@' + notification.sender.screen_name">{{ notification.sender.name }}</a>さんに【<a class="default-link" v-bind:href="'/artists/' + notification.song.artist_id">{{ notification.song.artist }}</a> / <a class="default-link" v-bind:href="'/songs/' + notification.song.id">{{ notification.song.title }}</a>】を「{{ statusJp[notification.post.state] }}」に登録した投稿がいいねされました
+            <a class="default-link" :href="'/@' + notification.sender.screen_name">{{ notification.sender.name }}</a>さんに【<a class="default-link" :href="'/artists/' + notification.song.artist_id">{{ notification.song.artist }}</a> / <a class="default-link" :href="'/songs/' + notification.song.id">{{ notification.song.title }}</a>】を「{{ statusJp[notification.post.state] }}」に登録した投稿がいいねされました
           </p>
         </div>
         <div class="article-footer">
