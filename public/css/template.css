@@ -119,6 +119,7 @@ div.article-header p {
 }
 div.article-body {
   padding: 6px 4px;
+  background: #fafafa;
   border: 1px solid #eee;
   transition: background-color 0.2;
   -moz-transition: background-color 0.2s;
@@ -417,11 +418,11 @@ select.status-select {
   font-size: 12px;
   outline: none;
   cursor: pointer;
-  transition: background-color 0.2s, border-color 0.2s;
-	-moz-transition: background-color 0.2s, border-color 0.2s;
-	-webkit-transition: background-color 0.2s, border-color 0.2s;
-	-o-transition: background-color 0.2s, border-color 0.2s;
-  -ms-transition: background-color 0.2s, border-color 0.2s;
+  transition: background-color 0.1s, border-color 0.1s;
+	-moz-transition: background-color 0.1s, border-color 0.1s;
+	-webkit-transition: background-color 0.1s, border-color 0.1s;
+	-o-transition: background-color 0.1s, border-color 0.1s;
+  -ms-transition: background-color 0.1s, border-color 0.1s;
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
