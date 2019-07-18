@@ -32,5 +32,14 @@ Vue.component('song-infomation-component', require('./components/song-infomation
 Vue.component('user-search-component', require('./components/user-search.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    methods: {
+        buildQuery: function(data) {
+            var query = '?';
+            Object.keys(data).forEach(function(key) {
+                query += key + '=' + this[key] + '&'
+            }, data);
+            return query;
+        }
+    }
 });
