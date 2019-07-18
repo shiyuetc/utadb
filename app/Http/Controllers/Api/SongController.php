@@ -21,40 +21,42 @@ class SongController extends ApiController
         $this->QueryValidate($request, [
             'type' => 'sometimes|string|in:title,artist',
             'source' => 'nullable|numeric|between:-1,1',
-            'keyword' => 'required|string|between:1,20',
+            'id' => 'required_if:type,artist|string|between:1,20',
+            'keyword' => 'required_unless:type,artist|string|between:1,20',
             'page' => 'nullable|numeric|between:1,9999',
             'per_page' => 'nullable|numeric|between:1,20',
             'with_state' => 'sometimes|boolean'
         ]);
-
+            
         $response = [];
         $type = $request->query('type', 'title');
         $source = $request->query('source', -1);
-        $keyword = $request->keyword;
+        $id = $request->query('id', null);
+        $keyword = $request->query('keyword', null);
         $page = $request->query('page', 1);
         $per_page = $request->query('per_page', 20);
         $with_state = $request->query('with_state', false);
 
         if($type == 'title') { // Searching from song title or artist name.
-            if($source == -1) { // From local database.
+            if($source == -1) {
                 $response = Song::where('title', 'like', "%{$keyword}%")
                     ->orWhere('artist', 'like', "%{$keyword}%")
                     ->orderBy('title')
                     ->skip(($page - 1) * $per_page)
                     ->take($per_page)
                     ->get();
-            } else { // From global database.
+            } else {
                 $response = Puller::searchSong($source, $keyword, $page);
             }
         } elseif($type == 'artist') { // Searching from artist id.
-            if($source == -1) { // From local database.
-                $response = Song::Where('artist_id', $keyword)
+            if($source == -1) {
+                $response = Song::Where('artist_id', $id)
                     ->orderBy('title')
                     ->skip(($page - 1) * $per_page)
                     ->take($per_page)
                     ->get();
-            } else { // From gloval database.
-                $response = Puller::searchSongFromArtist($keyword, $page);
+            } else {
+                $response = Puller::searchSongFromArtist($id, $page);
             }
         }
 
@@ -63,7 +65,7 @@ class SongController extends ApiController
             foreach($response as $song) {
                 $song_ids[] = $song["id"];
             }
-
+        
             $states = Status::select('song_id', DB::raw('IFNULL(state, 0) as my_state'))
                 ->where('user_id', auth()->id())
                 ->whereIn('song_id', $song_ids)
@@ -78,7 +80,7 @@ class SongController extends ApiController
             $response = [];
             foreach($temp_response as $temp)
             {
-                $temp->my_state =  $temp_my_state[$temp->id];
+                $temp['my_state'] = $temp_my_state[$temp['id']] ?? 0;
                 $response[] = $temp;
             }
         }
@@ -120,10 +122,10 @@ class SongController extends ApiController
         $query = Status::select($selectColumn)
             ->where('statuses.user_id', $id);
 
-        // Filter by select state.
+        // ステータスの絞り込み
         if($state != 0) $query = $query->where('statuses.state', $state);
 
-        // Filter by keyword.
+        // キーワード検索
         if(!is_null($keyword)) {
             $query = $query->where(function($where) use (&$keyword) {
                 $where->where('songs.title', 'like', "%{$keyword}%")
