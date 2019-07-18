@@ -41,7 +41,15 @@ export default {
       this.isMounted = false;
       if(this.setPlayer != null) clearTimeout(this.setPlayer);
 
-      axios.get("/api/songs/search_from_artist?source=" + this.source + "&artist_id=" + this.id + "&page=" + this.pageValue).then(res => {
+      var data = {};
+      data['type'] = 'artist';
+      data['source'] = this.source;
+      data['id'] = this.id;
+      data['page'] = this.pageValue;
+      data['with_state'] = '1';
+      var query = this.$root.buildQuery(data);
+
+      axios.get('/api/songs' + query).then(res => {
         this.statuses = res.data;
         this.isMounted = true;
         this.setPlayer = setTimeout("initializePlayer()", 1000);

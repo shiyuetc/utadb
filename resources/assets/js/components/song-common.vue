@@ -46,9 +46,10 @@ export default {
       this.isMounted = false;
       if(this.setPlayer != null) clearTimeout(this.setPlayer);
 
-      var query = '?';
-      query += 'page=' + this.pageValue + '&';
-      query += 'per_page=' + this.perPage + '&';
+      var data = {};
+      data['page'] = this.pageValue;
+      data['per_page'] = this.perPage;
+      var query = this.$root.buildQuery(data);
 
       axios.get('/api/songs/' + this.user_id + '/common' + query).then(res => {
         this.songs = res.data;

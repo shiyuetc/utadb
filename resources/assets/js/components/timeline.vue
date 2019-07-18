@@ -74,10 +74,10 @@ export default {
     statusesRequest: function() {
       this.isMounted = false;
 
-      var query = this.user_id == null ? "?" : "?id=" + this.user_id + "&";
-      if(this.next != null) {
-        query += "next=" + this.next;
-      }
+      var data = {};
+      if(this.user_id != null) data['id'] = this.user_id;
+      if(this.next != null) data['next'] = this.next;
+      var query = this.$root.buildQuery(data);
       
       axios.get("/api/timeline" + query).then(res => {
         if(this.statuses.length == 0) {

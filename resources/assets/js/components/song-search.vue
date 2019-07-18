@@ -50,13 +50,15 @@ export default {
     request: function() {
       this.isMounted = false;
       if(this.setPlayer != null) clearTimeout(this.setPlayer);
-    
-      var query = '?';
-      query += 'source=' + this.source;
-      query += '&keyword=' + this.keyword;
-      query += '&page=' + this.pageValue;
-      query += '&per_page=' + this.perPage;
-      
+
+      var data = {};
+      data['source'] = this.source;
+      data['keyword'] = this.keyword;
+      data['page'] = this.pageValue;
+      data['per_page'] = this.perPage;
+      data['with_state'] = '1';
+      var query = this.$root.buildQuery(data);
+
       axios.get('/api/songs' + query).then(res => {
         this.songs = res.data;
         this.isMounted = true;
