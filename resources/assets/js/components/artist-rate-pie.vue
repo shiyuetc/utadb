@@ -1,6 +1,6 @@
 <template>
   <div class="graph">
-    <apexChart height="100%" type="donut" :options="options" :series="series"></apexChart>
+    <apexChart height="300px" type="donut" :options="options" :series="series"></apexChart>
   </div>
 </template>
 <script>
@@ -79,7 +79,7 @@ export default {
             countSum += data['count'];
           });
 
-          otherCount = this.registered_count - countSum;
+          var otherCount = this.registered_count - countSum;
           if(otherCount > 0) {
             this.options.labels.push('その他');
             this.series.push(otherCount);
