@@ -18,6 +18,7 @@ Route::get('notification', 'NotificationController@index')->name('notification')
 
 Route::prefix('@{id}')->group(function() {
   Route::get('/', 'UserController@index')->name('user');
+  Route::get('records', 'UserController@records')->name('user.records');
   Route::get('status/{state}', 'UserController@status')->name('user.status')
     ->where('state', 'all|mastered|training|stacked');
   Route::get('common', 'UserController@common')->name('user.common')->middleware('auth');
