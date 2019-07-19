@@ -304,6 +304,11 @@ div.copyright p {
   div.event-buttons div button {
     font-size: 11px !important;
   }
+
+  div.graph {
+    width: 100% !important;
+    display: block !important;
+  }
 }
 /* 698px以下 */
 @media (max-width: 698px) {
@@ -665,3 +670,11 @@ table.setting-table tr td:last-child {
   width: 80%;
 }
 /* #endregion */
+
+div.graph {
+  display: inline-block;
+  width: 50%;
+  height: 300px;
+  margin: 10px 0 18px 0;
+  vertical-align: top;
+}
