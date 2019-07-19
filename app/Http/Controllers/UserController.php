@@ -17,6 +17,11 @@ class UserController extends Controller
         return view('pages.user', ['user' => $request->user]);
     }
 
+    public function records(Request $request)
+    {
+        return view('pages.user-records', ['user' => $request->user]);
+    }
+
     public function status(Request $request)
     {
         $stateArray = [
