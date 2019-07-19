@@ -39,7 +39,8 @@
       </div>
     </div>
     <loadProgress v-model="this.statuses.length" :itemName="'投稿'"/>
-    <button v-show="this.isMounted && this.next != null" class="button button-default" @click="statusesRequest">さらに読み込む...</button>
+    <button v-show="this.count == 50 && this.isMounted && this.next != null" class="button button-default" @click="statusesRequest">さらに読み込む...</button>
+    <button v-show="this.count != 50 && this.isMounted && this.next != null" class="button button-default" @click="redirectUrl('/@' + screen_name + '/records')">もっと見る</button>
   </div>
 </template>
 <script>
@@ -58,6 +59,16 @@ export default {
       type: String,
       required: false,
       default: null
+    },
+    screen_name: {
+      type: String,
+      required: false,
+      default: null
+    },
+    count: {
+      type: Number,
+      required: false,
+      default: 50
     }
   },
   data() {
@@ -71,12 +82,16 @@ export default {
     };
   },
   methods: {
+    redirectUrl: function (url) {
+        location.href = url;
+    },
     statusesRequest: function() {
       this.isMounted = false;
 
       var data = {};
       if(this.user_id != null) data['id'] = this.user_id;
       if(this.next != null) data['next'] = this.next;
+      data['count'] = this.count;
       var query = this.$root.buildQuery(data);
       
       axios.get("/api/timeline" + query).then(res => {
@@ -87,7 +102,7 @@ export default {
             this.statuses.push(status);
           });
         }
-        this.next = res.data.length == 50 ? res.data[res.data.length - 1]['id'] : null;
+        this.next = res.data.length == this.count ? res.data[res.data.length - 1]['id'] : null;
         this.isMounted = true;
         setTimeout("initializePlayer()", 1000);
       }).catch(err => {
