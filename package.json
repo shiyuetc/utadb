@@ -36,6 +36,8 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "v-tooltip": "^2.0.2"
+        "apexcharts": "^3.8.2",
+        "v-tooltip": "^2.0.2",
+        "vue-apexcharts": "^1.4.0"
     }
 }
