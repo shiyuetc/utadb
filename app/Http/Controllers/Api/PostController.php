@@ -18,10 +18,12 @@ class PostController extends ApiController
     {
         $this->QueryValidate($request, [
             'id' => 'nullable|numeric',
+            'count' => 'nullable|numeric|between:1,50',
         ]);
 
         $user_id = $request->query('id', null);
         $next_id = $request->query('next', null);
+        $count = $request->query('count', 50);
 
         $query = Post::select('posts.id', 'posts.user_id', 'posts.song_id', 'posts.old_state', 'posts.state', DB::raw('IFNULL(statuses.state, 0) as my_state'),  DB::raw('IFNULL(posts.like_count, 0) as like_count'), DB::raw('IF(likes.id IS NOT NULL, 1, 0) as is_liked'), 'posts.created_at')
         ->leftjoin('statuses', function($join) {
@@ -40,7 +42,7 @@ class PostController extends ApiController
         if(!is_null($next_id)) $query = $query->where('posts.id', '<', $next_id);
 
         $response = $query
-            ->take(50)
+            ->take($count)
             ->with(['user', 'song'])
             ->orderBy('id', 'desc')
             ->get();
