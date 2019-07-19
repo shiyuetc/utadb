@@ -93,7 +93,6 @@ class StatusController extends ApiController
             $user->record_count++;
             $user->save();
             DB::commit();
-            $response['user']->record_count++;
         } catch (\Exception $e){
             DB::rollBack();
             return response()->json()->setStatusCode(400);
