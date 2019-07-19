@@ -13,12 +13,13 @@
       <div><button class="button button-default" onclick="location='{{ route('user.random', ['id' => $user->screen_name]) }}'"><i class="fas fa-sync-alt"></i>&nbsp;ランダム選曲</button></div>
     </div>
   </div>
-  @if(Auth::check() && $user->id != auth()->id())
   <ul class="option-list list list-flex">
+    <li class="{{ Request::is('@*/records') ? ' active' : '' }}"><a href="{{ route('user.records', ['id' => $user->screen_name]) }}"><span class="hidden-sm-below"><i class="fas fa-book"></i>&nbsp;</span>投稿<span class="right-icon status-count">{{ $user->record_count }}件</span></a></li>
+    @if(Auth::check() && $user->id != auth()->id())
     <li class="{{ Request::is('@*/common') ? ' active' : '' }}"><a href="{{ route('user.common', ['id' => $user->screen_name]) }}"><span class="hidden-sm-below"><i class="fas fa-link"></i>&nbsp;</span>共通の曲<span class="right-icon status-count">{{ $user->common_count }}曲</span></a></li>
+    @endif
   </ul>
   <div class="border"></div>
-  @endif
   <ul class="user-statuses list list-flex">
     <li class="{{ Request::is('@*/status/all') ? ' active' : '' }}"><a href="{{ route('user.status', ['id' => $user->screen_name, 'state' => 'all']) }}"><span class="hidden-sm-below"><i class="fa fa-check"></i>&nbsp;</span>登録済み<span class="hidden-md-below">の曲</span><span class="right-icon status-count">{{ $user->stateCount() }}曲</span></a></li>
     <li class="{{ Request::is('@*/status/mastered') ? ' active' : '' }}"><a href="{{ route('user.status', ['id' => $user->screen_name, 'state' => 'mastered']) }}"><span class="hidden-sm-below"><i class="fa fa-check"></i>&nbsp;</span>習得済み<span class="hidden-md-below">の曲</span><span class="right-icon status-count">{{ $user->mastered_count }}曲</span></a></li>
