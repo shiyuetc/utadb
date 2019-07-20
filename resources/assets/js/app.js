@@ -31,8 +31,8 @@ Vue.component('song-infomation-component', require('./components/song-infomation
 
 Vue.component('user-search-component', require('./components/user-search.vue'));
 
-Vue.component('artist-rate-pie-component', require('./components/artist-rate-pie.vue'));
-Vue.component('status-stacked-component', require('./components/status-stacked.vue'));
+Vue.component('analysis-rate-component', require('./components/analysis-rate.vue'));
+Vue.component('analysis-activity-component', require('./components/analysis-activity.vue'));
 
 const app = new Vue({
     el: '#app',
