@@ -6,13 +6,12 @@
 @endsection
 
 @section('content')
-@component('components.section')
+@component('components.section', ['toggle' => true])
 @slot('title')
   <i class="fas fa-chart-bar"></i>&nbsp;分析データ
 @endslot
 @slot('contents')
-<analysis-rate-component :user="{{ $user }}"></analysis-rate-component>
-<analysis-activity-component :user="{{ $user }}"></analysis-activity-component>
+<analysis-chart-component :user="{{ $user }}"></analysis-chart-component>
 @endslot
 @endcomponent
 
