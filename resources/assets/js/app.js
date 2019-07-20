@@ -17,12 +17,12 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('analysis-chart-component', require('./components/analysis-chart.vue'));
 Vue.component('avatar-categories-component', require('./components/avatar-categories.vue'));
 Vue.component('notification-component', require('./components/notification.vue'));
 Vue.component('resource-counter-component', require('./components/resource-counter.vue'));
 
 Vue.component('timeline-component', require('./components/timeline.vue'));
-
 Vue.component('song-search-component', require('./components/song-search.vue'));
 Vue.component('song-from-artist-component', require('./components/song-from-artist.vue'));
 Vue.component('song-user-component', require('./components/song-user.vue'));
@@ -30,9 +30,6 @@ Vue.component('song-common-component', require('./components/song-common.vue'));
 Vue.component('song-infomation-component', require('./components/song-infomation.vue'));
 
 Vue.component('user-search-component', require('./components/user-search.vue'));
-
-Vue.component('analysis-rate-component', require('./components/analysis-rate.vue'));
-Vue.component('analysis-activity-component', require('./components/analysis-activity.vue'));
 
 const app = new Vue({
     el: '#app',

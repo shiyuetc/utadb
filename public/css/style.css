@@ -304,11 +304,6 @@ div.copyright p {
   div.event-buttons div button {
     font-size: 11px !important;
   }
-
-  div.chart-twin {
-    width: 100% !important;
-    display: block !important;
-  }
 }
 /* 698px以下 */
 @media (max-width: 698px) {
@@ -670,10 +665,3 @@ table.setting-table tr td:last-child {
   width: 80%;
 }
 /* #endregion */
-
-div.chart-twin {
-  display: inline-block;
-  width: 50%;
-  margin: 10px 0;
-  vertical-align: top;
-}
