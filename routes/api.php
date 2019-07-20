@@ -17,6 +17,7 @@ Route::group(['middleware' => 'api'], function(){
     Route::get('application/resource', 'Api\ApplicationController@resourceCount');
 
     Route::get('analysis/artist_rate', 'Api\ApplicationController@artistRate');
+    Route::get('analysis/activity', 'Api\ApplicationController@activity');
 
     Route::get('timeline', 'Api\PostController@index');
     
