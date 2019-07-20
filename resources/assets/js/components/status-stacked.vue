@@ -1,59 +1,84 @@
 <template>
-  <div class="graph">
-    <apexChart height="100%" type="bar" :options="options" :series="series"></apexChart>
+  <div class="chart-twin">
+    <div ref="activity"></div>
   </div>
 </template>
 <script>
-import apexChart from 'vue-apexcharts'
+import ApexCharts from 'apexcharts'
 
 export default {
-  components: {
-    apexChart
-  },
   props: {
-    user_id: {
-      type: String,
+    user: {
+      type: Object,
       required: true
     },
   },
   data() {
     return {
-      series: [{
-          name: '習得済みの曲',
-          data: [44, 55, 41, 67, 22, 43]
-        }, {
-          name: '練習中の曲',
-          data: [13, 23, 20, 8, 13, 27]
-        }, {
-          name: '気になる曲',
-          data: [11, 17, 15, 15, 21, 14]
-        }],
-      options: {
-        labels: [],
-        chart: {
-          stacked: true,
-          toolbar: {
-            show: false
+      activityChart: null
+    }
+  },
+  mounted() {
+    const chartOptions = {
+			chart: {
+				type: 'line',
+        height: 300
+      },
+      grid: {
+        row: {
+          colors: ['#f3f3f3', 'transparent'],
+          opacity: 0.5
+        },
+      },
+			series: [{
+        name: '投稿数',
+				data: []
+      }],
+      title: {
+        text: 'アクティビティ分析',
+        align: 'center'
+      },
+      xaxis: {
+        labels: {
+          show: false
+        }
+      },
+      yaxis: {
+        labels: {
+          show: false
+        }
+      }
+		};
+    this.activityChart = new ApexCharts(this.$refs.activity, chartOptions);
+    this.activityChart.render();
+    
+    axios.get("/api/analysis/activity?id=" + this.user.id).then(res => {
+      var result = res.data;
+
+      var categories = [];
+      var series = [];
+      Object.keys(result).forEach(function(key) {
+        categories.push(key + '月')
+        series.push(this[key]);
+      }, result);
+      
+      this.activityChart.updateOptions({
+        xaxis: {
+          categories: categories,
+          labels: {
+            show: true
           }
         },
-        title: {
-          text: "アクティビティ",
-          align: 'center'
-        },
-        xaxis: {
-          type: 'datetime',
-          categories: [
-            '01/01/2011 GMT', '01/02/2011 GMT', '01/03/2011 GMT', '01/04/2011 GMT',
-              '01/05/2011 GMT', '01/06/2011 GMT'
-          ],
-        },
-      }
-    }   
-  },
-  mounted: function() {
-    this.$nextTick(function () {
-      
-    })
+        yaxis: {
+          labels: {
+            show: true
+          }
+        }
+      });
+      this.activityChart.updateSeries([{
+        data: series
+      }]);
+    }).catch(err => { });
   }
 }
 </script>

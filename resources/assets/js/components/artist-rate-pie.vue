@@ -1,5 +1,5 @@
 <template>
-  <div class="graph">
+  <div class="chart-twin">
     <apexChart height="300px" type="donut" :options="options" :series="series"></apexChart>
   </div>
 </template>
@@ -11,14 +11,10 @@ export default {
     apexChart
   },
   props: {
-    user_id: {
-      type: String,
+    user: {
+      type: Object,
       required: true
-    },
-    registered_count: {
-      type: Number,
-      required: true
-    },
+    }
   },
   data() {
     return {
@@ -65,11 +61,12 @@ export default {
   },
   mounted: function() {
     this.$nextTick(function () {
-      if(this.registered_count == 0) {
+      var registeredCount = this.user.stacked_count + this.user.training_count + this.user.mastered_count;
+      if(registeredCount == 0) {
         this.options.labels.push('該当なし');
         this.series.push(1);
       } else {
-        axios.get("/api/analysis/artist_rate?id=" + this.user_id).then(res => {
+        axios.get("/api/analysis/artist_rate?id=" + this.user.id).then(res => {
           var result = res.data;
           var countSum = 0;
 
@@ -79,7 +76,7 @@ export default {
             countSum += data['count'];
           });
 
-          var otherCount = this.registered_count - countSum;
+          var otherCount = registeredCount - countSum;
           if(otherCount > 0) {
             this.options.labels.push('その他');
             this.series.push(otherCount);

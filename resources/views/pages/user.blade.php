@@ -11,8 +11,8 @@
   <i class="fas fa-chart-bar"></i>&nbsp;分析データ
 @endslot
 @slot('contents')
-<artist-rate-pie-component :user_id="'{{ $user->id }}'" :registered_count="{{ $user->stacked_count + $user->training_count + $user->mastered_count }}"></artist-rate-pie-component>
-<status-stacked-component :user_id="'{{ $user->id }}'"></status-stacked-component>
+<artist-rate-pie-component :user="{{ $user }}"></artist-rate-pie-component>
+<status-stacked-component :user="{{ $user }}"></status-stacked-component>
 @endslot
 @endcomponent
 
