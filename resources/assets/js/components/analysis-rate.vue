@@ -75,18 +75,10 @@ export default {
       axios.get("/api/analysis/artist_rate?id=" + this.user.id).then(res => {
         var artists = [];
         var counts = [];
-        var countSum = 0;
         res.data.forEach((data) => {
           artists.push(data['artist']);
           counts.push(data['count']);
-          countSum += data['count'];
         });
-        
-        var otherCount = registeredCount - countSum;
-        if(otherCount > 0) {
-          artists.push('その他');
-          counts.push(otherCount);
-        }
 
         this.rateChart.updateOptions({
           colors: ['#4685f9', '#0de396', '#f7b41f', '#fa4f61', '#7e54cd', '#aaa'],
