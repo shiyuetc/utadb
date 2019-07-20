@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 1.6.0 - (2019-07-20)
+### ✨Added
+- ユーザータイムラインページを追加
+- アカウントの分析データが表示されるように
+
 ## 1.5.0 - (2019-07-07)
 ### ✨Added
 - アーティストの詳細ページを追加
