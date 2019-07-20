@@ -24,9 +24,16 @@ class ApplicationController extends ApiController
         ])->setStatusCode(200);
     }
 
-    public function artistRate(Request $request)
+    /**
+     * Return analysis data of user.
+     * 
+     * @param Request $request
+     * @return array $response
+     */
+    public function analysis(Request $request)
     {
-        $response = Status::select(['artist', DB::raw('count(*) as count')])
+        $response = [];
+        $response['rate'] = Status::select(['artist', DB::raw('count(*) as count')])
             ->where('statuses.user_id', $request->id)
             ->join('songs', 'statuses.song_id', 'songs.id')
             ->orderBy('count', 'desc')
@@ -34,26 +41,19 @@ class ApplicationController extends ApiController
             ->limit(5)
             ->get();
 
-        return response()->json($response)->setStatusCode(200);
-    }
-
-    public function activity(Request $request)
-    {
-        $response = [];
         for($i = 5; $i >= 0; $i--) {
-            $response[Carbon::now()->subMonth($i)->month] = 0;
+            $response['activity'][Carbon::now()->subMonth($i)->month] = 0;
         }
-        
         $month_total = Post::select([DB::raw("DATE_FORMAT(created_at,'%c') as date"), DB::raw('count(*) as count')])
             ->where('user_id', $request->id)
             ->where('created_at', '>=', Carbon::now()->subMonth(5)->format('Y-m-01'))
             ->groupBy('date')
             ->get();
-        
         foreach($month_total as $total) {
-            $response[$total['date']] = $total['count'];
+            $response['activity'][$total['date']] = $total['count'];
         }
 
         return response()->json($response)->setStatusCode(200);
     }
+
 }
