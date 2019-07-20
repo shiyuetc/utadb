@@ -11,8 +11,8 @@
   <i class="fas fa-chart-bar"></i>&nbsp;分析データ
 @endslot
 @slot('contents')
-<artist-rate-pie-component :user="{{ $user }}"></artist-rate-pie-component>
-<status-stacked-component :user="{{ $user }}"></status-stacked-component>
+<analysis-rate-component :user="{{ $user }}"></analysis-rate-component>
+<analysis-activity-component :user="{{ $user }}"></analysis-activity-component>
 @endslot
 @endcomponent
 
