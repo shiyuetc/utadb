@@ -305,7 +305,7 @@ div.copyright p {
     font-size: 11px !important;
   }
 
-  div.graph {
+  div.chart-twin {
     width: 100% !important;
     display: block !important;
   }
@@ -671,10 +671,9 @@ table.setting-table tr td:last-child {
 }
 /* #endregion */
 
-div.graph {
+div.chart-twin {
   display: inline-block;
   width: 50%;
-  height: 300px;
-  margin: 10px 0 18px 0;
+  margin: 10px 0;
   vertical-align: top;
 }
