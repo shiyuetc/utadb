@@ -49,6 +49,7 @@ export default {
       var data = {};
       data['page'] = this.pageValue;
       data['per_page'] = this.perPage;
+      data['with_state'] = '1';
       var query = this.$root.buildQuery(data);
 
       axios.get('/api/songs/' + this.user_id + '/common' + query).then(res => {
