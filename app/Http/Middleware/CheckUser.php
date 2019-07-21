@@ -18,9 +18,8 @@ class CheckUser
     public function handle($request, Closure $next)
     {
         $user = User::where('screen_name', $request->id)->first();
-        if(is_null($user)) {
-            abort(404);
-        }
+        abort_if(is_null($user), 404);
+        
         $user->common_count = Status::commonCount($user->id);
         $request->merge(['user' => $user]);
         return $next($request);
