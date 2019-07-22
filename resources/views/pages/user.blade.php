@@ -8,7 +8,7 @@
 @section('content')
 @component('components.section', ['toggle' => true])
 @slot('title')
-  <i class="fas fa-chart-bar"></i>&nbsp;分析データ
+  <i class="fas fa-chart-bar"></i>&nbsp;分析チャート
 @endslot
 @slot('contents')
 <analysis-chart-component :user="{{ $user }}"></analysis-chart-component>
