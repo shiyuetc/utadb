@@ -591,10 +591,7 @@ div.alert.alert-danger .alert-close line {
 
   /* section */
   .section {
-    margin-bottom: 0 !important;
-    box-shadow: none !important;;
-    border-bottom: var(--break-border);
-    border-radius: 0 !important;;
+    border-radius: 0 !important;
   }
 
   /* alert */
