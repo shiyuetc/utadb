@@ -142,7 +142,8 @@ export default {
         },
         yaxis: {
           labels: {
-            show: true
+            show: true,
+            formatter: (value) => { return Math.floor(value) }
           }
         }
       });
