@@ -14,12 +14,12 @@ class UserController extends Controller
 
     public function index(Request $request)
     {
-        return view('pages.user', ['user' => $request->user]);
+        return view('pages.users.index', ['user' => $request->user]);
     }
 
     public function records(Request $request)
     {
-        return view('pages.user-records', ['user' => $request->user]);
+        return view('pages.users.records', ['user' => $request->user]);
     }
 
     public function status(Request $request)
@@ -36,7 +36,7 @@ class UserController extends Controller
             'page' => (isset($request->page) && $request->page >= 1 && $request->page <= 9999) ? $request->page : 1,
             'q' => isset($request->q) ? urlencode(trim($request->q)) : ''
         ];
-        return view('pages.user-status', $response);
+        return view('pages.users.status', $response);
     }
 
     public function common(Request $request)
@@ -45,7 +45,7 @@ class UserController extends Controller
             return redirect()->route('user', ['id' => auth()->user()->screen_name]);
         }
         $page = (isset($request->page) && $request->page >= 1 && $request->page <= 9999) ? $request->page : 1;
-        return view('pages.user-common', ['user' => $request->user, 'page' => $page]);
+        return view('pages.users.common', ['user' => $request->user, 'page' => $page]);
     }
 
     public function random(Request $request)
@@ -59,7 +59,7 @@ class UserController extends Controller
             return redirect()->route('song', ['id' => $status['song_id']]);
         } else {
             $alert = ['type' => 'danger', 'text' => '習得済みに登録されている曲が見つかりませんでした'];
-            return view('pages.user', ['user' => $request->user, 'alert' => $alert]);
+            return view('pages.users.index', ['user' => $request->user, 'alert' => $alert]);
         }
     }
 }
