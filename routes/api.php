@@ -24,8 +24,8 @@ Route::group(['middleware' => 'api'], function(){
 
     Route::prefix('songs')->group(function() {
         Route::get('/', 'Api\SongController@index');
-        Route::get('{id}', 'Api\SongController@user');
-        Route::get('{id}/common', 'Api\SongController@common');
+        Route::get('@{id}', 'Api\SongController@user');
+        Route::get('@{id}/common', 'Api\SongController@common');
     });
 
     Route::get('users', 'Api\UserController@index');
