@@ -52,7 +52,7 @@ export default {
       data['with_state'] = '1';
       var query = this.$root.buildQuery(data);
 
-      axios.get('/api/songs/' + this.user_id + '/common' + query).then(res => {
+      axios.get('/api/songs/@' + this.user_id + '/common' + query).then(res => {
         this.songs = res.data;
         this.isMounted = true;
         this.setPlayer = setTimeout("initializePlayer()", 1000);
