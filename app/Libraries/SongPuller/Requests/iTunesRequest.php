@@ -166,4 +166,23 @@ class iTunesRequest extends BasicRequest
         }
         return $response;
     }
+
+    public function getRecent()
+    {
+        $songs = $this->toJson($this->getRequest("https://rss.itunes.apple.com/api/v1/jp/itunes-music/recent-releases/all/10/explicit.json"))['feed']['results'];
+        foreach($songs as $song)
+        {
+            $response[] = $this->toSong(
+                $this->requestIndex,
+                $song["id"],
+                $song["name"],
+                (string)$song["artistId"],
+                $song["artistName"],
+                $song["artworkUrl100"],
+                null
+            );
+        }
+        return $response;
+    }
+    
 }

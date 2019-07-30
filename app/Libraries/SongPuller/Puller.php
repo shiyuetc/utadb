@@ -57,4 +57,11 @@ class Puller
         $class = new iTunesRequest();
         return $class->getRanking();
     }
+
+    public static function getRecent()
+    {
+        $class = new iTunesRequest();
+        return $class->getRecent();
+    }
+
 }
