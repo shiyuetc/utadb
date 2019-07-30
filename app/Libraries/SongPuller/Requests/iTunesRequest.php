@@ -30,7 +30,7 @@ class iTunesRequest extends BasicRequest
         $song = $this->toJson($this->getRequest($this->directUrl . $this->lookSongPath, $parameter))['results'];
         if(count($song) == 1) {
             $song = $song[0];
-            return $this->toSongModel(
+            return $this->toSong(
                 $this->requestIndex,
                 $song["trackId"],
                 $song["trackCensoredName"],
@@ -56,7 +56,7 @@ class iTunesRequest extends BasicRequest
         $songs = $this->toJson($this->getRequest($this->directUrl . $this->lookArtistPath, $parameter))['results'];
         foreach($songs as $song)
         {
-            return $this->toArtistModel(
+            return $this->toArtist(
                 $this->requestIndex,
                 $id,
                 $song["artistName"]
@@ -81,7 +81,7 @@ class iTunesRequest extends BasicRequest
         foreach($songs as $song)
         {
             if(isset($song["trackId"])) {
-                $response[] = $this->toSongModel(
+                $response[] = $this->toSong(
                     $this->requestIndex,
                     $song["trackId"],
                     $song["trackCensoredName"],
@@ -111,7 +111,7 @@ class iTunesRequest extends BasicRequest
         foreach($songs as $song)
         {
             if(isset($song["trackId"])) {
-                $response[] = $this->toSongModel(
+                $response[] = $this->toSong(
                     $this->requestIndex,
                     $song["trackId"],
                     $song["trackCensoredName"],
@@ -140,7 +140,7 @@ class iTunesRequest extends BasicRequest
         $artists = $this->toJson($this->getRequest($this->directUrl . $this->searchArtistPath, $parameter))['results'];
         foreach($artists as $artist)
         {
-            $response[] = $this->toArtistModel(
+            $response[] = $this->toArtist(
                 $this->requestIndex,
                 (string)$artist["artistId"],
                 $artist["artistName"]

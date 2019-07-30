@@ -55,7 +55,7 @@ class BasicRequest
 		return json_decode(mb_convert_encoding($html, 'UTF8', 'ASCII,JIS,UTF-8,EUC-JP,SJIS-WIN'), true);
     }
     
-    public function toSongModel($requestIndex, $id, $title, $artistId, $artist, $imageUrl = null, $audioUrl = null)
+    public function toSong($requestIndex, $id, $title, $artistId, $artist, $imageUrl = null, $audioUrl = null)
     {
         return [
             'id' => $requestIndex . $id,
@@ -67,7 +67,7 @@ class BasicRequest
         ];
     }
 
-    public function toArtistModel($requestIndex, $artistId, $artist)
+    public function toArtist($requestIndex, $artistId, $artist)
     {
         return [
             'artist_id' => $requestIndex . $artistId,

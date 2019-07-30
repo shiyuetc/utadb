@@ -28,7 +28,7 @@ class DamRequest extends BasicRequest
         if(isset($info[0])) {
             $info = $info[0];
             preg_match("/[0-9]+/", pq($info)->find("td.singer a")->attr("href"), $artistId);
-            return $this->toSongModel(
+            return $this->toSong(
                 $this->requestIndex,
                 $id,
                 pq($info)->find("p.artist")->text(),
@@ -47,7 +47,7 @@ class DamRequest extends BasicRequest
         $doc = \phpQuery::newDocument($this->getRequest($this->directUrl . $this->lookArtistPath, $parameter));
         $artist_name = $doc["p.artist"]->text();
         if(isset($artist_name)) {
-            return $this->toArtistModel(
+            return $this->toArtist(
                 $this->requestIndex,
                 $id,
                 $artist_name
@@ -68,7 +68,7 @@ class DamRequest extends BasicRequest
 		foreach($doc["table.list:eq(0) tr:not(:first)"] as $row) {
 			preg_match("/[0-9]+/", pq($row)->find("td:eq(0) a")->attr("href"), $songId);
             preg_match("/[0-9]+/", pq($row)->find("td:eq(1) a")->attr("href"), $artistId);
-            $response[] = $this->toSongModel(
+            $response[] = $this->toSong(
                 $this->requestIndex,
                 $songId[0],
                 pq($row)->find("td:eq(0)")->text(),
@@ -90,7 +90,7 @@ class DamRequest extends BasicRequest
         $artist_name = $doc["p.artist"]->text();
         foreach($doc["table.list:eq(0) tr:not(:first)"] as $row) {
 			preg_match("/[0-9]+/", pq($row)->find("td:eq(0) a")->attr("href"), $songId);
-            $response[] = $this->toSongModel(
+            $response[] = $this->toSong(
                 $this->requestIndex,
                 $songId[0],
                 trim(pq($row)->find("td:eq(0)")->text()),
@@ -112,7 +112,7 @@ class DamRequest extends BasicRequest
         $doc = \phpQuery::newDocument($this->postRequest($this->directUrl . $this->searchArtistPath, $parameter));
         foreach($doc["table.list:eq(0) tr:not(:first)"] as $row) {
             preg_match("/[0-9]+/", pq($row)->find("td:eq(0) a")->attr("href"), $artistId);
-            $response[] = $this->toArtistModel(
+            $response[] = $this->toArtist(
                 $this->requestIndex,
                 $artistId[0],
                 pq($row)->find("td:eq(0)")->text()
