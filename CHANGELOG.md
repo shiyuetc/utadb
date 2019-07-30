@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 1.7.0 - (2019-07-30)
+### ✨Added
+- 曲検索ページでランキング上位の曲が表示されるように
+- 曲検索ページで最近リリースされた曲が表示されるように
+
 ## 1.6.1 - (2019-07-21)
 ### 🐛Fixes
 - 共通曲のステータスが表示されない問題を修正
