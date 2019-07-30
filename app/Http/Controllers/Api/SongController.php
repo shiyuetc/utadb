@@ -10,6 +10,32 @@ use DB;
 
 class SongController extends ApiController
 {   
+    private function mergeState(&$response)
+    {
+        $song_ids = [];
+        foreach($response as $song) {
+            $song_ids[] = $song["id"];
+        }
+        
+        $states = Status::select('song_id', DB::raw('IFNULL(state, 0) as my_state'))
+            ->where('user_id', auth()->id())
+            ->whereIn('song_id', $song_ids)
+            ->get();
+        $temp_my_state = [];
+        foreach($states as $state)
+        {
+            $temp_my_state[$state->song_id] = $state->my_state;
+        }
+
+        $temp_response = $response;
+        $response = [];
+        foreach($temp_response as $temp)
+        {
+            $temp['my_state'] = $temp_my_state[$temp['id']] ?? 0;
+            $response[] = $temp;
+        }
+    }
+
     /**
      * Get song from local and global database.
      * 
@@ -61,28 +87,7 @@ class SongController extends ApiController
         }
 
         if($with_state && count($response) > 0) {
-            $song_ids = [];
-            foreach($response as $song) {
-                $song_ids[] = $song["id"];
-            }
-        
-            $states = Status::select('song_id', DB::raw('IFNULL(state, 0) as my_state'))
-                ->where('user_id', auth()->id())
-                ->whereIn('song_id', $song_ids)
-                ->get();
-            $temp_my_state = [];
-            foreach($states as $state)
-            {
-                $temp_my_state[$state->song_id] = $state->my_state;
-            }
-
-            $temp_response = $response;
-            $response = [];
-            foreach($temp_response as $temp)
-            {
-                $temp['my_state'] = $temp_my_state[$temp['id']] ?? 0;
-                $response[] = $temp;
-            }
+            $this->mergeState($response);
         }
 
         return response()->json($response)->setStatusCode(200);
@@ -206,30 +211,20 @@ class SongController extends ApiController
     {
         $response = Puller::getRanking();
         if(count($response) > 0) {
-            $song_ids = [];
-            foreach($response as $song) {
-                $song_ids[] = $song["id"];
-            }
-        
-            $states = Status::select('song_id', DB::raw('IFNULL(state, 0) as my_state'))
-                ->where('user_id', auth()->id())
-                ->whereIn('song_id', $song_ids)
-                ->get();
-            $temp_my_state = [];
-            foreach($states as $state)
-            {
-                $temp_my_state[$state->song_id] = $state->my_state;
-            }
-
-            $temp_response = $response;
-            $response = [];
-            foreach($temp_response as $temp)
-            {
-                $temp['my_state'] = $temp_my_state[$temp['id']] ?? 0;
-                $response[] = $temp;
-            }
+            $this->mergeState($response);
         }
 
         return response()->json($response)->setStatusCode(200);
     }
+
+    public function recent()
+    {
+        $response = Puller::getRecent();
+        if(count($response) > 0) {
+            $this->mergeState($response);
+        }
+
+        return response()->json($response)->setStatusCode(200);
+    }
+
 }
