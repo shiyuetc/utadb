@@ -26,6 +26,7 @@ Route::group(['middleware' => 'api'], function(){
         Route::get('/', 'Api\SongController@index');
         Route::get('@{id}', 'Api\SongController@user');
         Route::get('@{id}/common', 'Api\SongController@common');
+        Route::get('recent', 'Api\SongController@recent');
         Route::get('ranking', 'Api\SongController@ranking');
     });
 
