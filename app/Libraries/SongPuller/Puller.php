@@ -52,4 +52,9 @@ class Puller
         return $class->searchArtist($q, $page);
     }
 
+    public static function getRanking()
+    {
+        $class = new iTunesRequest();
+        return $class->getRanking();
+    }
 }
