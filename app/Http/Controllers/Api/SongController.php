@@ -202,4 +202,34 @@ class SongController extends ApiController
         return response()->json($response)->setStatusCode(200);
     }
 
+    public function ranking()
+    {
+        $response = Puller::getRanking();
+        if(count($response) > 0) {
+            $song_ids = [];
+            foreach($response as $song) {
+                $song_ids[] = $song["id"];
+            }
+        
+            $states = Status::select('song_id', DB::raw('IFNULL(state, 0) as my_state'))
+                ->where('user_id', auth()->id())
+                ->whereIn('song_id', $song_ids)
+                ->get();
+            $temp_my_state = [];
+            foreach($states as $state)
+            {
+                $temp_my_state[$state->song_id] = $state->my_state;
+            }
+
+            $temp_response = $response;
+            $response = [];
+            foreach($temp_response as $temp)
+            {
+                $temp['my_state'] = $temp_my_state[$temp['id']] ?? 0;
+                $response[] = $temp;
+            }
+        }
+
+        return response()->json($response)->setStatusCode(200);
+    }
 }

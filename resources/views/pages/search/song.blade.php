@@ -33,7 +33,16 @@
 @endslot
 @endcomponent
 
-@if(!empty($q))
+@if(empty($q))
+  @component('components.section', ['toggle' => true])
+  @slot('title')
+    <i class="fas fa-crown"></i>&nbsp;ランキング曲
+  @endslot
+  @slot('contents')
+    <song-ranking-component />
+  @endslot
+  @endcomponent
+@else
   @component('components.section', ['toggle' => true])
   @slot('title')
     <i class="fa fa-search"></i>&nbsp;ローカルからの検索結果
