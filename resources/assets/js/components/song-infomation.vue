@@ -20,7 +20,7 @@
         </tr>
         <tr>
           <td>アーティスト</td>
-          <td>{{ song.artist }}</td>
+          <td><a class="default-link" :href="'/artists/' + song.artist_id">{{ song.artist }}</a></td>
         </tr>
       </tbody>
     </table>
