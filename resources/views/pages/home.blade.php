@@ -2,7 +2,7 @@
 
 @section('sidebar')
 @include('widgets.user-infomation', ['user' => Auth::user(), 'hidden' => true])
-<!--@include('widgets.tweet-notification')-->
+  @include('widgets.tweet-notification')
 @endsection
 
 @section('content')
