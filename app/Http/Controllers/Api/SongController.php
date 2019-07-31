@@ -207,6 +207,11 @@ class SongController extends ApiController
         return response()->json($response)->setStatusCode(200);
     }
 
+    /**
+     * Get ranked song list.
+     * 
+     * @return array $response
+     */
     public function ranking()
     {
         $response = Puller::getRanking();
@@ -217,6 +222,11 @@ class SongController extends ApiController
         return response()->json($response)->setStatusCode(200);
     }
 
+    /**
+     * Get recent released song list.
+     * 
+     * @return array $response
+     */
     public function recent()
     {
         $response = Puller::getRecent();
