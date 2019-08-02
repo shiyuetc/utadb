@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 1.7.1 - (2019-08-02)
+### ✨Added
+- メインページで外部関連リンクが表示されるように
+
+### 🐛Fixes
+- ステータスのアイコンが異なって表示される問題を修正
+
 ## 1.7.0 - (2019-07-30)
 ### ✨Added
 - 曲検索ページでランキング上位の曲が表示されるように
