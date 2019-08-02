@@ -168,7 +168,7 @@ div.charts div.chart {
 @media (max-width: 460px) {
   div.charts div.chart {
     width: 100%;
-    display: block ;
+    display: block;
   }
 }
 </style>

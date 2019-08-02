@@ -267,7 +267,6 @@ div.copyright p {
     box-shadow: none;
     border-bottom: 1px solid #eaeaea;
   }
-  
   div.nav-dialog {
     right: -2px;
     width: 100%;
@@ -336,16 +335,20 @@ div.copyright p {
     width: 100% !important;
   }
 
+  div.event-buttons {
+    letter-spacing: -1em;
+  }
   div.event-buttons div {
     display: inline-block;
     width: 50%;
     box-sizing: border-box;
+    letter-spacing: 0em;
   }
   div.event-buttons div:nth-child(odd) {
-    padding-right: 4px;
+    padding-right: 3px;
   }
   div.event-buttons div:nth-child(even) {
-    padding-left: 4px;
+    padding-left: 3px;
   }
   div.event-buttons div button {
     font-size: 13px;
