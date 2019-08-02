@@ -34,7 +34,7 @@
       自分もしくは他のユーザーの更新をリスト形式で表示され、このページからサンプル音源の視聴や状態の更新を行うことが出来ます。
     @endslot
     @slot('subtext')
-      ※曲はiTunes及びDAMで配信されている項目を取得できます。
+      ※現時点で曲はiTunes及びDAMで配信されている項目を取得できます。
     @endslot
   @endcomponent
   @component('components.introduct', ['delay_time' => '2.2', 'capture_image' => 'users.jpg'])
@@ -43,9 +43,6 @@
     @endslot
     @slot('text')
       他のユーザーがそれぞれの状態に登録している曲やお互いに習得済みに登録している曲のリストを確認できます。
-    @endslot
-    @slot('subtext')
-      ※この項目に関しては今後のアップデートで徐々に追加していく予定です。
     @endslot
   @endcomponent
 </div>
