@@ -1,7 +1,7 @@
 <template>
   <div class="timeline">
-    <div class="articles statuses">
-      <div class="article status animated fadeIn" v-for="status in this.statuses" :key="status.id">
+    <div class="articles statuses animated fadeIn">
+      <div class="article status" v-for="status in this.statuses" :key="status.id">
         <div class="article-header">
           <p class="avatar"><a :href="'/@' + status.user.screen_name"><img :src="status.user.profile_image_url + '_small.png'" alt=""></a></p>
           <p class="text"><a class="bold underline" :href="'/@' + status.user.screen_name">{{ status.user.name }}</a>さんが「{{ statusJp[status.state] }}」に登録しました</p>
@@ -138,7 +138,9 @@ export default {
       axios.post("/api/likes/" + action + "?id=" + status.id).then(res => {
         this.isBusy = false;
       }).catch(err => {
-        window.location.href = "/login";
+        if(err.response.status === 403) {
+          window.location.href = "/login";
+        }
       });
     },
   },
