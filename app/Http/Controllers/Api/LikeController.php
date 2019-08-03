@@ -64,7 +64,7 @@ class LikeController extends ApiController
             $deleteCount = Like::where('post_id', $post->id)
                 ->where('user_id', auth()->id())
                 ->delete();
-            if($deleteCount != 1) throw new Exception();
+            if($deleteCount != 1) throw new \Exception();
             $post->like_count--;
             $post->save();
             Notification::remove($post->user->id ,$post->id);
