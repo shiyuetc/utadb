@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->integer('stacked_count')->default(0)->comment('気になる曲の数');
             $table->integer('training_count')->default(0)->comment('練習中の曲の数');
             $table->integer('mastered_count')->default(0)->comment('歌える曲の数');
-            $table->integer('follow_count')->default(0)->comment('フォローしている数');
+            $table->integer('following_count')->default(0)->comment('フォローしている数');
             $table->integer('follower_count')->default(0)->comment('フォローされている数');
             $table->text('profile_image_url')->nullable()->comment('プロフィール画像のURL');
             $table->string('email')->unique()->nullable()->comment('メールアドレス');
