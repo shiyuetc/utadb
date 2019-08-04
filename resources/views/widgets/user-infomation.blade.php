@@ -6,15 +6,11 @@
     <p class="name"><a class="bold underline" href="{{ route('user', ['id' => $user->screen_name]) }}">{{ $user->name }}&nbsp;(&#64;{{ $user->screen_name }})</a></p>
     <p class="description">{{ $user->description }}</p>
     <p class="created"><i class="fa fa-calendar-alt"></i>&nbsp;{{ date('Y年m月d日',  strtotime($user->created_at)) }}に登録&nbsp;({{ (strtotime(date('Y-m-d')) - strtotime(date_format(date_create($user->created_at), 'Y-m-d'))) / 86400 }}日経過)</p>
-    <div class="event-buttons">
-      @if($user->id == auth()->id())
-        <div><button class="button button-default" onclick="location='{{ route('settings.profile') }}'"><i class="fas fa-edit"></i>&nbsp;プロフィールの編集</button></div>
-      @endif
-      <div><button class="button button-default" onclick="location='{{ route('user.random', ['id' => $user->screen_name]) }}'"><i class="fas fa-sync-alt"></i>&nbsp;ランダム選曲</button></div>
-    </div>
+    <user-accessory-component :user="{{ $user }}" :is_auth="{{ Auth::check() ? 1 : 0}}" :is_me="{{ $user->id == auth()->id() ? 1 : 0 }}"></user-accessory-component>
   </div>
   <ul class="option-list list list-flex">
     <li class="{{ Request::is('@*/records') ? ' active' : '' }}"><a href="{{ route('user.records', ['id' => $user->screen_name]) }}"><span class="hidden-sm-below"><i class="fas fa-book"></i>&nbsp;</span>投稿<span class="right-icon status-count">{{ $user->record_count }}件</span></a></li>
+    <li class="{{ Request::is('@*/friends') ? ' active' : '' }}"><a href="{{ route('user.friends', ['id' => $user->screen_name]) }}"><span class="hidden-sm-below"><i class="fas fa-user-friends"></i>&nbsp;</span>フレンド<span class="right-icon status-count">{{ $user->following_count }} / {{ $user->follower_count }}人</span></a></li>
     @if(Auth::check() && $user->id != auth()->id())
     <li class="{{ Request::is('@*/common') ? ' active' : '' }}"><a href="{{ route('user.common', ['id' => $user->screen_name]) }}"><span class="hidden-sm-below"><i class="fas fa-link"></i>&nbsp;</span>共通の曲<span class="right-icon status-count">{{ $user->common_count }}曲</span></a></li>
     @endif
