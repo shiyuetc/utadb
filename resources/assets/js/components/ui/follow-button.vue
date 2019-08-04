@@ -1,7 +1,7 @@
 <template>
   <div>
     <button v-show="!isFollowing" @click="onFollowChange" :disabled="wait" class="button button-default"><i class="fas fa-user-plus"></i>&nbsp;フレンドに追加</button>
-    <button v-show="isFollowing && !mouseIn" @mouseover="mouseOver" @mouseleave="buttonLock = false;" :disabled="wait" class="button button-info"><i class="fas fa-user-friends"></i>&nbsp;フレンドに追加済み</button>
+    <button v-show="isFollowing && !mouseIn" @click="onFollowChange" @mouseover="mouseOver" @mouseleave="buttonLock = false;" :disabled="wait" class="button button-info"><i class="fas fa-user-friends"></i>&nbsp;フレンドに追加済み</button>
     <button v-show="isFollowing && mouseIn" @click="onFollowChange" @mouseleave="mouseIn = false;" :disabled="wait" class="button button-danger"><i class="fas fa-user-times"></i>&nbsp;フレンドを解除</button>
   </div>
 </template>
