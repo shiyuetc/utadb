@@ -44,7 +44,7 @@ class Notification extends Model
         ]);
     }
 
-    public static function remove($receiver_id, $context_id)
+    public static function remove($receiver_id, $context_id = null)
     {
         Notification::where('receiver_id', $receiver_id)
             ->where('sender_id', auth()->id())
