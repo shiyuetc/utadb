@@ -22,6 +22,11 @@ class UserController extends Controller
         return view('pages.users.records', ['user' => $request->user]);
     }
 
+    public function friends(Request $request)
+    {
+        return view('pages.users.friends', ['user' => $request->user]);
+    }
+
     public function status(Request $request)
     {
         $stateArray = [
