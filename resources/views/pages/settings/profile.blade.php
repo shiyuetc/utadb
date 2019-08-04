@@ -38,7 +38,7 @@
       </tr>
       <tr>
         <td></td>
-        <td><button class="button button-info" type="submit">編集を保存</button></td>
+        <td><button class="button button-info" type="submit"><i class="fas fa-save"></i>&nbsp;編集を保存</button></td>
       </tr>
     </table>
   </form>
