@@ -6,6 +6,8 @@
       <option value="food_we">食べ物(洋食) (14件)</option>
       <option value="food_cn">食べ物(中華) (14件)</option>
       <option value="food_other">食べ物(その他) (13件)</option>
+      <option value="animal">動物 (15件)</option>
+      <option value="fish">魚っぽい (11件)</option>
       <option value="plant">植物 (16件)</option>
       <option value="insect">昆虫 (16件)</option>
     </select>
