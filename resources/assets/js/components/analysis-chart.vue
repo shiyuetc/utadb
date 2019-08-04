@@ -79,7 +79,7 @@ export default {
         },
       },
 			series: [{
-        name: '投稿数',
+        name: '記録数',
 				data: []
       }],
       title: {

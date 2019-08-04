@@ -9,7 +9,7 @@
     <user-accessory-component :user="{{ $user }}" :is_auth="{{ Auth::check() ? 1 : 0}}" :is_me="{{ $user->id == auth()->id() ? 1 : 0 }}"></user-accessory-component>
   </div>
   <ul class="option-list list list-flex">
-    <li class="{{ Request::is('@*/records') ? ' active' : '' }}"><a href="{{ route('user.records', ['id' => $user->screen_name]) }}"><span class="hidden-sm-below"><i class="fas fa-book"></i>&nbsp;</span>投稿<span class="right-icon status-count">{{ $user->record_count }}件</span></a></li>
+    <li class="{{ Request::is('@*/records') ? ' active' : '' }}"><a href="{{ route('user.records', ['id' => $user->screen_name]) }}"><span class="hidden-sm-below"><i class="fas fa-book"></i>&nbsp;</span>記録<span class="right-icon status-count">{{ $user->record_count }}件</span></a></li>
     <li class="{{ Request::is('@*/friends') ? ' active' : '' }}"><a href="{{ route('user.friends', ['id' => $user->screen_name]) }}"><span class="hidden-sm-below"><i class="fas fa-user-friends"></i>&nbsp;</span>フレンド<span class="right-icon status-count">{{ $user->following_count }} / {{ $user->follower_count }}人</span></a></li>
     @if(Auth::check() && $user->id != auth()->id())
     <li class="{{ Request::is('@*/common') ? ' active' : '' }}"><a href="{{ route('user.common', ['id' => $user->screen_name]) }}"><span class="hidden-sm-below"><i class="fas fa-link"></i>&nbsp;</span>共通の曲<span class="right-icon status-count">{{ $user->common_count }}曲</span></a></li>
