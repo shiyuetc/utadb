@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 1.8.0 - (2019-08-04)
+### ✨Added
+- 他のユーザーに対してフレンド追加/解除ができるように
+- 新しくプロフィール画像(動物, 魚っぽい)を追加
+
 ## 1.7.1 - (2019-08-02)
 ### ✨Added
 - メインページで外部関連リンクが表示されるように
