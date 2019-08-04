@@ -31,6 +31,9 @@ Route::group(['middleware' => 'api'], function(){
     });
 
     Route::get('users', 'Api\UserController@index');
+
+    Route::get('friends/following', 'Api\FriendController@following');
+    Route::get('friends/followers', 'Api\FriendController@followers');
 });
 
 Route::group(['middleware' => ['api', 'auth.api']], function(){
@@ -41,4 +44,7 @@ Route::group(['middleware' => ['api', 'auth.api']], function(){
 
     Route::post('likes/create', 'Api\LikeController@create');
     Route::post('likes/destroy', 'Api\LikeController@destroy');
+
+    Route::post('friends/create', 'Api\FriendController@create');
+    Route::post('friends/destroy', 'Api\FriendController@destroy');
 });
