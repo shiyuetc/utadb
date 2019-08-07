@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', "{$user->name}(@{$user->screen_name})さんの投稿")
+@section('title', "{$user->name}(@{$user->screen_name})さんの記録")
 
 @section('sidebar')
 @include('widgets.user-infomation', ['user' => $user])
