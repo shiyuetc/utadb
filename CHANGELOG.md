@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## 1.8.1 - (2019-08-05)
+## 1.8.1 - (2019-08-07)
 ### 🐛Fixes
 - 「投稿」の表記を「記録」に変更
 - 端末上でフレンドの解除がしづらい問題を修正
