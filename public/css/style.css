@@ -336,13 +336,13 @@ div.copyright p {
   }
 
   div.event-buttons {
-    letter-spacing: -1em;
+    display: flex;
+    flex-wrap: wrap;
   }
   div.event-buttons div {
     display: inline-block;
     width: 50%;
     box-sizing: border-box;
-    letter-spacing: 0em;
   }
   div.event-buttons div:nth-child(odd) {
     padding-right: 3px;
