@@ -20,7 +20,7 @@
   <i class="fab fa-react"></i>&nbsp;ユーザータイムライン
 @endslot
 @slot('contents')
-  <timeline-component :user_id="'{{ $user->id }}'" :screen_name="'{{ $user->screen_name }}'" :count="5"/>
+  <timeline-component :user="{{ $user }}" :count="5"/>
 @endslot
 @endcomponent
 @endsection

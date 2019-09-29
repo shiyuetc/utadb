@@ -40,7 +40,7 @@
     </div>
     <loadProgress v-model="this.statuses.length" :itemName="'投稿'"/>
     <button v-show="this.count == 50 && this.isMounted && this.next != null" class="button button-default" @click="statusesRequest">さらに読み込む...</button>
-    <button v-show="this.count != 50 && this.isMounted && this.next != null" class="button button-default" @click="redirectUrl('/@' + screen_name + '/records')">もっと見る</button>
+    <button v-show="this.count != 50 && this.isMounted && this.next != null" class="button button-default" @click="redirectUrl('/@' + user.screen_name + '/records')">もっと見る</button>
   </div>
 </template>
 <script>
@@ -55,13 +55,8 @@ export default {
     updateSelect
   },
   props: {
-    user_id: {
-      type: String,
-      required: false,
-      default: null
-    },
-    screen_name: {
-      type: String,
+    user: {
+      type: Object,
       required: false,
       default: null
     },
@@ -89,7 +84,7 @@ export default {
       this.isMounted = false;
 
       var data = {};
-      if(this.user_id != null) data['id'] = this.user_id;
+      if(this.user != null) data['id'] = this.user.id;
       if(this.next != null) data['next'] = this.next;
       data['count'] = this.count;
       var query = this.$root.buildQuery(data);
@@ -110,15 +105,15 @@ export default {
       });
     },
     updatedStatus: function(response) {
-      if(this.user_id == null) {
+      if(this.user == null) {
         let selects = this.$refs[response.id];
         for (var i = 0; i < selects.length; i++) {
           selects[i].stateValue = response.new_state;
         }
       }
-      var user = response.user;
-      if(this.user_id == null || this.user_id == user.id) {
-        updateUserStatuses(user);
+      var responseUser = response.user;
+      if(this.user == null || this.user.id == responseUser.id) {
+        updateUserStatuses(responseUser);
       }
     },
     postLike: function(status) {

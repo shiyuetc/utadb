@@ -11,7 +11,7 @@
   <i class="fab fa-react"></i>&nbsp;ユーザータイムライン
 @endslot
 @slot('contents')
-  <timeline-component :user_id="'{{ $user->id }}'"/>
+  <timeline-component :user="{{ $user }}"/>
 @endslot
 @endcomponent
 @endsection
