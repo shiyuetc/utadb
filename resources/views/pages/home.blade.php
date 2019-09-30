@@ -22,7 +22,7 @@
   <i class="fab fa-react"></i>&nbsp;ローカルタイムライン
 @endslot
 @slot('contents')
-  <timeline-component/>
+  <timeline-component :logined_id="{{ Auth::check() ? Auth::id() : -1 }}"/>
 @endslot
 @endcomponent
 @endsection

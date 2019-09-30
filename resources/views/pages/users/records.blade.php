@@ -11,7 +11,7 @@
   <i class="fab fa-react"></i>&nbsp;ユーザータイムライン
 @endslot
 @slot('contents')
-  <timeline-component :user="{{ $user }}"/>
+  <timeline-component :user="{{ $user }}" :logined_id="{{ Auth::check() ? Auth::id() : -1 }}"/>
 @endslot
 @endcomponent
 @endsection

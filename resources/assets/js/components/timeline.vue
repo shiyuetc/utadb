@@ -62,6 +62,11 @@ export default {
       required: false,
       default: null
     },
+    logined_id: {
+      type: Number,
+      required: false,
+      default: -1
+    },
     count: {
       type: Number,
       required: false,
