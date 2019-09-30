@@ -29,12 +29,14 @@
         </div>
         <div class="article-footer">
           <p class="date"><subtract-date :date="status.created_at"></subtract-date></p>
-          <p class="like" @click="postLike(status)">
-            <span :class="[ status.is_liked ? 'liked' : 'unlike']">
-              <i :class="[[ status.is_liked ? 'fas' : 'far'], 'fa-heart']"></i>
-              <a v-show="status.like_count > 0">{{ status.like_count }}</a>
-            </span>
-          </p>
+          <div class="actions">
+            <button class="like" @click="postLike(status)">
+              <span :class="[ status.is_liked ? 'liked' : 'unlike']">
+                <i :class="[[ status.is_liked ? 'fas' : 'far'], 'fa-heart']"></i>
+                <a v-show="status.like_count > 0">{{ status.like_count }}</a>
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
