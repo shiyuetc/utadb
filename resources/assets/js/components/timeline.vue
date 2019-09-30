@@ -36,6 +36,21 @@
                 <a v-show="status.like_count > 0">{{ status.like_count }}</a>
               </span>
             </button>
+            <button class="ellipsis" @click="toggleDialog(status.id)" @blur="hideDialog(status.id)">
+              <span :id="'ellipsis-' + status.id"><i class="fas fa-ellipsis-h"></i></span>
+              <div :id="'dialog-' + status.id" class="sub-actions-dialog dialog">
+                <div class="dialog-panel">
+                  <ul class="dialog-group">
+                    <li class="dialog-item inverse-dialog-item">
+                      <a :href="'statuses/' + status.id" target="_blank"><i class="fas fa-sd-card"></i><span class="indent">記録詳細を表示</span></a>
+                    </li>
+                    <li v-show="logined_id == status.user.id" class="dialog-item danger-dialog-item" @click="destroyStatus(status.id)">
+                      <a><i class="fas fa-trash-alt"></i><span class="indent">記録の削除</span></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </button>
           </div>
         </div>
       </div>
@@ -145,6 +160,41 @@ export default {
         }
       });
     },
+    destroyStatus: function(id) {
+      if(this.isBusy) return;
+      this.isBusy = true;
+
+      if(confirm('選択した記録を削除しますか？\r\n※この処理は取り消しできません。')) {
+        axios.post("/api/statuses/destroy", { id:id }).then(res => {
+          updateUserStatuses(res.data.user);
+        }).catch(err => {
+          if(err.response.status === 403) {
+            window.location.href = "/login";
+          }
+        });
+        var index = this.statuses.findIndex((v) => v.id === id);
+        this.statuses.splice(index, 1);
+      }
+      this.isBusy = false;
+    },
+    toggleDialog: function(id) {
+      var dialog = $("#dialog-" + id);
+      if (dialog.hasClass("active")) {
+        dialog.fadeOut('fast');
+      } else {
+        dialog.fadeIn('fast');
+      }
+      dialog.toggleClass("active");
+      $("#ellipsis-" + id).toggleClass("active");
+    },
+    hideDialog: function(id) {
+      var dialog = $("#dialog-" + id);
+      if (dialog.hasClass("active")) {
+        dialog.fadeOut('fast');
+        dialog.removeClass("active");
+      }
+      $("#ellipsis-" + id).removeClass("active");
+    },
   },
   mounted() {
     this.$nextTick(function () {
@@ -179,6 +229,16 @@ div.status div.actions {
     }
     span.liked:hover {
       color: #c32222;
+    }
+  }
+  button.ellipsis {
+    position: relative;
+    span:hover i, span.active i {
+      color: #0366d6;
+    }
+    div.sub-actions-dialog {
+      right: 0;
+      bottom: 18px;
     }
   }
 }
