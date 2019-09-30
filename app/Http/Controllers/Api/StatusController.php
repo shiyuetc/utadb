@@ -129,6 +129,32 @@ class StatusController extends ApiController
         return response()->json($response)->setStatusCode(200);
     }
     
+    public function destroy(Request $request)
+    {
+        $this->QueryValidate($request, [
+            'id' => ApiRequestRules::getPostIdRule(),
+        ]);
+
+        $user = auth()->user();
+        $post = Post::find($request->id);
+        if(is_null($post)) return response()->json()->setStatusCode(404);
+        if($post->user->id != $user->id) return response()->json()->setStatusCode(422);
+
+        DB::beginTransaction();
+        try {
+            $deleteCount = $post->delete();
+            if($deleteCount != 1) throw new \Exception();
+            $user->record_count--;
+            $user->save();
+            DB::commit();
+        } catch (\Exception $e){
+            DB::rollBack();
+            return response()->json()->setStatusCode(400);
+        }
+
+        return response()->json()->setStatusCode(200);
+    }
+
     public function registereUser(Request $request)
     {
         $this->QueryValidate($request, [
