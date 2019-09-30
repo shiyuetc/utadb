@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 1.9.0 - (2019-10-XX)
+### ✨Added
+- 記録の削除ができるように
+
+### 🐛Fixes
+- 状態更新時にステータス表示がずれて表示される問題を修正
+
 ## 1.8.1 - (2019-08-07)
 ### 🐛Fixes
 - 「投稿」の表記を「記録」に変更
