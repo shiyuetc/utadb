@@ -16,6 +16,11 @@ class ApiRequestRules
         return 'nullable|numeric|between:1,9999';
     }
 
+    public static function getPostIdRule()
+    {
+        return 'required|string|digits:14';
+    }
+    
     public static function getQRule()
     {
         return 'required|string|between:1,20';
