@@ -559,35 +559,6 @@ div.event-buttons {
 
 /* #endregion */
 
-/* #region statuses */
-div.status div.actions {
-  float: right;
-}
-div.actions button {
-  display: inline;
-  margin: 0;
-  padding: 1px 4px;
-  border: none;
-  background: transparent;
-  outline: none;
-  cursor: pointer;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
-}
-div.actions button.like span.unlike:hover {
-  color: #db3333;
-}
-div.actions button.like span.liked {
-  color: #db3333;
-}
-div.actions p.like span.liked:hover {
-  color: #c32222;
-}
-/* #endregion */
-
 /* #region music-table */
 table.music-table {
   width: 100%;

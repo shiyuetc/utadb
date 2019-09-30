@@ -153,3 +153,33 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+div.status div.actions {
+  float: right;
+  button {
+    display: inline;
+    margin: 0;
+    padding: 1px 4px;
+    border: none;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+  }
+  button.like {
+    span.unlike:hover {
+      color: #db3333;
+    }
+    span.liked {
+      color: #db3333;
+    }
+    span.liked:hover {
+      color: #c32222;
+    }
+  }
+}
+</style>
