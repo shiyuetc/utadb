@@ -153,12 +153,13 @@ export default {
       }
       
       axios.post("/api/likes/" + action + "?id=" + status.id).then(res => {
-        this.isBusy = false;
+        
       }).catch(err => {
         if(err.response.status === 403) {
           window.location.href = "/login";
         }
       });
+      this.isBusy = false;
     },
     destroyStatus: function(id) {
       if(this.isBusy) return;
