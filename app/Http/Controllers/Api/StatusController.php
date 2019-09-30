@@ -152,7 +152,7 @@ class StatusController extends ApiController
             return response()->json()->setStatusCode(400);
         }
 
-        return response()->json()->setStatusCode(200);
+        return response()->json(['user' => $user])->setStatusCode(200);
     }
 
     public function registereUser(Request $request)
