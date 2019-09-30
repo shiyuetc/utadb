@@ -20,8 +20,9 @@ function toggleSection(head) {
 function updateUserStatuses(user) {
 	var statusCountElements = document.getElementsByClassName('status-count');
 	statusCountElements[0].textContent = user.record_count + '件';
-	statusCountElements[1].textContent = (user.stacked_count + user.training_count + user.mastered_count) + '曲';
-	statusCountElements[2].textContent = user.mastered_count + '曲';
-	statusCountElements[3].textContent = user.training_count + '曲';
-	statusCountElements[4].textContent = user.stacked_count + '曲';
+	statusCountElements[1].textContent = user.following_count + ' / ' + user.follower_count + '人';
+	statusCountElements[2].textContent = (user.stacked_count + user.training_count + user.mastered_count) + '曲';
+	statusCountElements[3].textContent = user.mastered_count + '曲';
+	statusCountElements[4].textContent = user.training_count + '曲';
+	statusCountElements[5].textContent = user.stacked_count + '曲';
 }
