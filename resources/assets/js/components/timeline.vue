@@ -162,7 +162,7 @@ export default {
       if(this.isBusy) return;
       this.isBusy = true;
 
-      if(confirm('選択した記録を削除しますか？\r\n※この処理は取り消しできません。')) {
+      if(confirm('選択した記録を削除しますか？\r\n※記録を削除しても曲の状態は変更されません。また、この処理は取り消しできません。')) {
         axios.post("/api/statuses/destroy", { id:id }).then(res => {
           updateUserStatuses(res.data.user);
         }).catch(err => {
