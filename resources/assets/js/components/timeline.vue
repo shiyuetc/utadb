@@ -42,7 +42,7 @@
                 <div class="dialog-panel">
                   <ul class="dialog-group">
                     <li v-show="logined_id == status.user.id" class="dialog-item danger-dialog-item" @click="destroyStatus(status.id)">
-                      <a><i class="fas fa-trash-alt"></i><span class="indent">記録の削除</span></a>
+                      <a><i class="fas fa-trash-alt"></i>記録の削除</a>
                     </li>
                   </ul>
                 </div>

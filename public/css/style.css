@@ -229,18 +229,18 @@ div.copyright p {
     border-bottom: 1px solid #eaeaea;
   }
   div.nav-dialog {
-    right: -2px;
+    right: -1px;
     width: 100%;
     box-sizing: border-box;
   }
-  ul.dialog-group {
+  div.nav-dialog ul.dialog-group {
     display: flex;
   }
-  li.dialog-item {
+  div.nav-dialog li.dialog-item {
     width: 33.3333%;
     border-right: 1px solid #eaeaea;
   }
-  li.dialog-item a {
+  div.nav-dialog li.dialog-item a {
     min-width: auto;
     margin: 0 4px;
     padding: 18px 2px;
