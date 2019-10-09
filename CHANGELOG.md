@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## 1.9.0 - (2019-10-XX)
+## 1.9.0 - (2019-10-01)
 ### ✨Added
 - 記録の削除ができるように
 
