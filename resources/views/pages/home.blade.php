@@ -19,7 +19,7 @@
 @section('content')
 @component('components.section')
 @slot('title')
-  <i class="fab fa-react"></i>&nbsp;ローカルタイムライン
+  <i class="fas fa-book"></i>&nbsp;みんなの記録
 @endslot
 @slot('contents')
   <timeline-component :logined_id="{{ Auth::check() ? Auth::id() : -1 }}"/>
