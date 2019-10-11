@@ -73,7 +73,7 @@ div.cover-image-big .mediPlayer {
 
 .mediPlayer:hover {
 	background: #ffffff;
-	opacity: 0.8;
+	opacity: 0.5;
 }
 
 .mediPlayer .control {
