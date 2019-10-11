@@ -8,7 +8,12 @@
 @section('content')
 @component('components.section', ['toggle' => true])
 @slot('title')
-  <i class="fas fa-user-friends"></i>&nbsp;あなたが追加したフレンド
+  <i class="fas fa-user-friends"></i>&nbsp;
+  @if(Auth::check() && Auth::id() == $user->id)
+    あなたが追加したフレンド
+  @else
+    {{ $user->name }}さんが追加したフレンド
+  @endif
 @endslot
 @slot('contents')
   <user-friends-component :type="'following'" :user="{{ $user }}"></user-friends-component>
@@ -17,7 +22,12 @@
 
 @component('components.section', ['toggle' => true])
 @slot('title')
-  <i class="fas fa-user-friends"></i>&nbsp;あなたを追加したフレンド
+  <i class="fas fa-user-friends"></i>&nbsp;
+  @if(Auth::check() && Auth::id() == $user->id)
+    あなたを追加したフレンド
+  @else
+    {{ $user->name }}さんを追加したフレンド
+  @endif
 @endslot
 @slot('contents')
   <user-friends-component :type="'followers'" :user="{{ $user}}"></user-friends-component>
