@@ -24,6 +24,7 @@ Vue.component('notification-component', require('./components/notification.vue')
 Vue.component('resource-counter-component', require('./components/resource-counter.vue'));
 
 Vue.component('timeline-component', require('./components/timeline.vue'));
+Vue.component('status-infomation-component', require('./components/status-infomation.vue'));
 Vue.component('song-ranking-component', require('./components/song-ranking.vue'));
 Vue.component('song-recent-component', require('./components/song-recent.vue'));
 Vue.component('song-search-component', require('./components/song-search.vue'));
