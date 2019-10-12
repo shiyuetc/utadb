@@ -463,6 +463,7 @@ select.select {
   color: inherit;
   font-size: 12px;
   outline: none;
+  cursor: pointer;
   transition: border-color 0.2s;
 	-moz-transition: border-color 0.2s;
 	-webkit-transition: border-color 0.2s;

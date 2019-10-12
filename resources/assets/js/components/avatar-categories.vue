@@ -58,6 +58,7 @@ div.avatars {
     float: left;
     margin: 0;
     text-align: center;
+    cursor: pointer;
     p {
       margin: 0;
       font-size: 14px;
@@ -65,7 +66,6 @@ div.avatars {
     img {
       width: 48px;
       height: 48px;
-      cursor: pointer;
     }
   }
 }
