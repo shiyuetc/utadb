@@ -1,6 +1,14 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 1.10.0 - (2019-10-09)
+### ✨Added
+- 記録の詳細ページを追加
+
+### 🐛Fixes
+- 「タイムライン」の表記を「～の記録」に変更
+- 一部の画面でステータス変更時に同じ曲の記録が更新されない問題を修正
+
 ## 1.9.0 - (2019-10-01)
 ### ✨Added
 - 記録の削除ができるように
