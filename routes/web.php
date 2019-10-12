@@ -31,6 +31,9 @@ Route::get('songs/{id}', 'SongController@index')->name('song')
 Route::get('artists/{id}', 'ArtistController@index')->name('artist')
   ->where('id', '\d{5,18}');
 
+Route::get('statuses/{id}', 'PostController@index')->name('post')
+  ->where('id', '\d{14}');
+
 Route::group(['prefix' => 'search', 'middleware' => 'auth'], function() {
   Route::get('user', 'SearchController@searchUser')->name('search.user');
   Route::get('song', 'SearchController@searchSong')->name('search.song');
@@ -47,6 +50,9 @@ Route::group(['prefix' => 'settings', 'middleware' => 'auth'], function() {
     Route::post('password', 'SettingController@updatePassword')->name('settings.account.password');
     Route::post('deactivate', 'SettingController@updateDeactivate')->name('settings.account.deactivate');
     Route::post('undeactivate', 'SettingController@updateUndeactivate')->name('settings.account.undeactivate');
+  });
+  Route::prefix('other')->group(function() {
+    Route::get('/', 'SettingController@showOtherSettingForm')->name('settings.other');
   });
 });
 
