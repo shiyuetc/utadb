@@ -124,11 +124,9 @@ export default {
       });
     },
     updatedStatus: function(response) {
-      if(this.user == null) {
-        let selects = this.$refs[response.id];
-        for (var i = 0; i < selects.length; i++) {
-          selects[i].stateValue = response.new_state;
-        }
+      let selects = this.$refs[response.id];
+      for (var i = 0; i < selects.length; i++) {
+        selects[i].stateValue = response.new_state;
       }
       var responseUser = response.user;
       if(this.user == null || this.user.id == responseUser.id) {
