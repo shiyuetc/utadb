@@ -41,6 +41,9 @@
               <div :id="'dialog-' + status.id" class="sub-actions-dialog dialog">
                 <div class="dialog-panel">
                   <ul class="dialog-group">
+                    <li class="dialog-item default-dialog-item">
+                      <a :href="'/statuses/' + status.id" target="_blank"><i class="fas fa-info"></i>記録の詳細</a>
+                    </li>
                     <li v-show="logined_id == status.user.id" class="dialog-item danger-dialog-item" @click="destroyStatus(status.id)">
                       <a><i class="fas fa-trash-alt"></i>記録の削除</a>
                     </li>
