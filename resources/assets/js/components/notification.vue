@@ -5,7 +5,7 @@
         <div class="article-header">
           <p class="avatar"><a :href="'/@' + notification.sender.screen_name"><img :src="notification.sender.profile_image_url + '_small.png'" alt=""></a></p>
           <p class="text" v-if="notification.kind == 'like'">
-            <a class="default-link" :href="'/@' + notification.sender.screen_name">{{ notification.sender.name }}</a>さんに【<a class="default-link" :href="'/artists/' + notification.song.artist_id">{{ notification.song.artist }}</a> / <a class="default-link" :href="'/songs/' + notification.song.id">{{ notification.song.title }}</a>】を「{{ statusJp[notification.post.state] }}」に登録した投稿がいいねされました
+            <a class="default-link" :href="'/@' + notification.sender.screen_name">{{ notification.sender.name }}</a>さんに【<a class="default-link" :href="'/artists/' + notification.song.artist_id">{{ notification.song.artist }}</a> / <a class="default-link" :href="'/songs/' + notification.song.id">{{ notification.song.title }}</a>】を「{{ statusJp[notification.post.state] }}」に登録した<a class="default-link" :href="'/statuses/' + notification.post.id">記録</a>がいいねされました
           </p>
           <p class="text" v-if="notification.kind == 'follow'">
             <a class="default-link" :href="'/@' + notification.sender.screen_name">{{ notification.sender.name }}</a>さんがあなたをフレンドに追加しました
