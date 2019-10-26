@@ -10,7 +10,7 @@
 
 ## License
 
-<p>Copyright 2018/05-2019 shiyu</p>
+<p>Copyright 2018/05-2019 shiyuetc</p>
 <p>This application is released under the MIT License, see LICENSE.</p>
 
 ## Author
