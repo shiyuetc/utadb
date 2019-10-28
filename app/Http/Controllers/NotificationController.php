@@ -13,6 +13,6 @@ class NotificationController extends Controller
 
     public function index() 
     {
-        return view('pages.notification');
+        return view('pages.notifications');
     }
 }
