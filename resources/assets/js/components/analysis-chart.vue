@@ -154,16 +154,16 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 div.charts {
   letter-spacing: -1em;
-}
-div.charts div.chart {
-  display: inline-block;
-  width: 50%;
-  margin: 10px 0;
-  vertical-align: top;
-  letter-spacing: 0em;
+  div.chart {
+    display: inline-block;
+    width: 50%;
+    margin: 10px 0;
+    vertical-align: top;
+    letter-spacing: 0em;
+  }
 }
 @media (max-width: 460px) {
   div.charts div.chart {
