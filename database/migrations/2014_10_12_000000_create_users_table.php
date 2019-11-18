@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id')->comment('主キー');
             $table->string('screen_name', 15)->unique()->comment('ユーザー識別用ID');
-            $table->string('name', 20)->comment('ユーザー名');
+            $table->string('name', 30)->comment('ユーザー名');
             $table->string('description', 255)->nullable()->comment('紹介文');
             $table->integer('record_count')->default(0)->comment('登録した回数');
             $table->integer('stacked_count')->default(0)->comment('気になる曲の数');
