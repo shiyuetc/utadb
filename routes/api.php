@@ -14,13 +14,13 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['middleware' => 'api'], function(){
-    Route::get('application/resource', 'Api\ApplicationController@resourceCount');
     Route::get('analysis', 'Api\ApplicationController@analysis');
+    Route::get('application/resource', 'Api\ApplicationController@resourceCount');
 
-    Route::get('timeline', 'Api\PostController@index');
-    
-    Route::get('statuses/lookup', 'Api\StatusController@lookup');
-    Route::get('statuses/registereUser', 'Api\StatusController@registereUser');
+    Route::prefix('friends')->group(function() {
+        Route::get('following', 'Api\FriendController@following');
+        Route::get('followers', 'Api\FriendController@followers');
+    });
 
     Route::prefix('songs')->group(function() {
         Route::get('/', 'Api\SongController@index');
@@ -30,22 +30,35 @@ Route::group(['middleware' => 'api'], function(){
         Route::get('ranking', 'Api\SongController@ranking');
     });
 
+    Route::prefix('statuses')->group(function() {
+        Route::get('lookup', 'Api\StatusController@lookup');
+        Route::get('registereUser', 'Api\StatusController@registereUser');
+    });
+
+    Route::get('timeline', 'Api\PostController@index');
+
     Route::get('users', 'Api\UserController@index');
 
-    Route::get('friends/following', 'Api\FriendController@following');
-    Route::get('friends/followers', 'Api\FriendController@followers');
 });
 
 Route::group(['middleware' => ['api', 'auth.api']], function(){
     Route::get('avatars', 'Api\AvatarController@index');
+
+    Route::prefix('friends')->group(function() {
+        Route::post('create', 'Api\FriendController@create');
+        Route::post('destroy', 'Api\FriendController@destroy');
+    });
+
+    Route::prefix('likes')->group(function() {
+        Route::post('create', 'Api\LikeController@create');
+        Route::post('destroy', 'Api\LikeController@destroy');
+    });
+
     Route::get('notifications', 'Api\NotificationController@index');
     
-    Route::post('statuses/update', 'Api\StatusController@update');
-    Route::post('statuses/destroy', 'Api\StatusController@destroy');
+    Route::prefix('statuses')->group(function() {
+        Route::post('update', 'Api\StatusController@update');
+        Route::post('destroy', 'Api\StatusController@destroy');
+    });
 
-    Route::post('likes/create', 'Api\LikeController@create');
-    Route::post('likes/destroy', 'Api\LikeController@destroy');
-
-    Route::post('friends/create', 'Api\FriendController@create');
-    Route::post('friends/destroy', 'Api\FriendController@destroy');
 });
