@@ -10,6 +10,12 @@ use DB;
 
 class FriendController extends ApiController
 {   
+    /**
+     * Return following user array.
+     * 
+     * @param Request $request
+     * @return array $response
+     */
     public function following(Request $request)
     {
         $this->QueryValidate($request, [
@@ -34,6 +40,12 @@ class FriendController extends ApiController
         return response()->json($response)->setStatusCode(200);
     }
 
+    /**
+     * Return follower user array.
+     * 
+     * @param Request $request
+     * @return array $response
+     */
     public function followers(Request $request)
     {
         $this->QueryValidate($request, [
@@ -58,6 +70,12 @@ class FriendController extends ApiController
         return response()->json($response)->setStatusCode(200);
     }
 
+    /**
+     * Create follow a user.
+     * 
+     * @param Request $request
+     * @return bool
+     */
     public function create(Request $request)
     {
         $this->QueryValidate($request, [
@@ -90,6 +108,12 @@ class FriendController extends ApiController
         }
     }
 
+    /**
+     * Create unfollow a user.
+     * 
+     * @param Request $request
+     * @return bool
+     */
     public function destroy(Request $request)
     {
         $this->QueryValidate($request, [
