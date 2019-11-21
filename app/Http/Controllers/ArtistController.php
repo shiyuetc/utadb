@@ -10,8 +10,7 @@ class ArtistController extends Controller
 {
     public function index($id)
     {
-        $artist = Puller::lookArtist($id);
-        if(is_null($artist)) {
+        if(is_null($artist = Puller::lookArtist($id))) {
             return view('errors.404');
         }
         return view('pages.artist', ['artist' => new Artist($artist['artist_id'], $artist['artist'])]);

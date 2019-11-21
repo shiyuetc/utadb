@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Libraries\Rivision;
 use App\Models\Status;
 use Illuminate\Http\Request;
 
@@ -38,8 +39,8 @@ class UserController extends Controller
         $response = [
             'user' => $request->user,
             'state' => $stateArray[$request->state],
-            'page' => (isset($request->page) && $request->page >= 1 && $request->page <= 9999) ? $request->page : 1,
-            'q' => isset($request->q) ? urlencode(trim($request->q)) : ''
+            'page' => Rivision::page($request->page),
+            'q' => Rivision::q($request->q)
         ];
         return view('pages.users.status', $response);
     }
@@ -49,7 +50,7 @@ class UserController extends Controller
         if(auth()->id() == $request->user->id) {
             return redirect()->route('user', ['id' => auth()->user()->screen_name]);
         }
-        $page = (isset($request->page) && $request->page >= 1 && $request->page <= 9999) ? $request->page : 1;
+        $page = Rivision::page($request->page);
         return view('pages.users.common', ['user' => $request->user, 'page' => $page]);
     }
 

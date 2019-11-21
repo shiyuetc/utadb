@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Libraries\Rivision;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
@@ -9,8 +10,8 @@ class SearchController extends Controller
     public function searchUser(Request $request)
     {
         $response = [
-            'q' => isset($request->q) ? urlencode(trim($request->q)) : '',
-            'page' => (isset($request->page) && $request->page >= 1 && $request->page <= 9999) ? $request->page : 1
+            'q' => Rivision::q($request->q),
+            'page' => Rivision::page($request->page)
         ];
         return view('pages.search.user', $response);
     }
@@ -19,8 +20,8 @@ class SearchController extends Controller
     {
         $response = [
             'source' => (isset($request->source) && $request->source >= 0 && $request->source <= 1) ? $request->source : 0,
-            'q' => isset($request->q) ? urlencode(trim($request->q)) : '',
-            'page' => (isset($request->page) && $request->page >= 1 && $request->page <= 9999) ? $request->page : 1
+            'q' => Rivision::q($request->q),
+            'page' => Rivision::page($request->page)
         ];
         return view('pages.search.song', $response);
     }
