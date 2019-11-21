@@ -257,6 +257,10 @@ table.object-table th {
   font-weight: normal;
 	font-size: 12px;
 }
+table.object-table th.left-bring {
+  padding-left: 12px;
+  text-align: left;
+}
 table.object-table tbody tr {
   transition: background-color 0.2;
   -moz-transition: background-color 0.2s;

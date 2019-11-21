@@ -4,7 +4,7 @@
       <thead>
         <tr>
           <th class="avatar-column"></th>
-          <th class="name-column">ユーザー名</th>
+          <th class="left-bring">ユーザー名</th>
           <th><span class="hidden-sm-below">習得</span>済<span class="hidden-sm-below">み</span></th>
           <th><span class="hidden-sm-below">練習</span>中</th>
           <th>気<span class="hidden-sm-below">になる</span></th>

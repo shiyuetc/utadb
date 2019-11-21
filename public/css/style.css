@@ -552,10 +552,6 @@ table.music-table td.action-cell {
 table.user-table th.avatar-column {
 	width: 52px;
 }
-table.user-table th.name-column {
-  padding: 0 12px;
-  text-align: left;
-}
 table.user-table td img.avatar {
   width: 42px;
   height: auto;
