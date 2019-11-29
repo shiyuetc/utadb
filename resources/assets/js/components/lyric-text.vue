@@ -1,9 +1,11 @@
 <template>
-  <div class="lyric-text">
+  <div class="component">
+    <p class="title">歌詞</p>
     <loadProgress v-model="this.lyric.length" :itemName="'歌詞'"/>
-    <span class="animated fadeIn" v-show="isMounted" v-html="lyric"></span>
-
-</div>
+    <div class="lyric">
+      <span class="animated fadeIn" v-show="isMounted" v-html="lyric"></span>
+    </div>
+  </div>
 </template>
 <script>
 import loadProgress from './widgets/load-progress.vue';
@@ -47,9 +49,19 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-div.lyric-text {
+div.component {
   margin: 8px 0;
-  padding: 10px 12px 24px 12px;
   border: 1px solid #ccc;
+  p.title {
+    margin: 0;
+    padding: 6px;
+    background: #eee;
+    border-bottom: 1px solid #ccc;
+    font-size: 12px;
+    text-align: center;
+  }
+  div.lyric {
+    padding: 12px 12px 24px 12px;
+  }
 }
 </style>
