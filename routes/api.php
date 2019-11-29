@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['middleware' => 'api'], function(){
+Route::middleware('api')->group(function() {
     Route::get('analysis', 'Api\ApplicationController@analysis');
     Route::get('application/resource', 'Api\ApplicationController@resourceCount');
 
@@ -39,26 +39,24 @@ Route::group(['middleware' => 'api'], function(){
 
     Route::get('users', 'Api\UserController@index');
 
-});
-
-Route::group(['middleware' => ['api', 'auth.api']], function(){
-    Route::get('avatars', 'Api\AvatarController@index');
-
-    Route::prefix('friends')->group(function() {
-        Route::post('create', 'Api\FriendController@create');
-        Route::post('destroy', 'Api\FriendController@destroy');
-    });
-
-    Route::prefix('likes')->group(function() {
-        Route::post('create', 'Api\LikeController@create');
-        Route::post('destroy', 'Api\LikeController@destroy');
-    });
-
-    Route::get('notifications', 'Api\NotificationController@index');
+    Route::middleware('auth.api')->group(function() {
+        Route::get('avatars', 'Api\AvatarController@index');
     
-    Route::prefix('statuses')->group(function() {
-        Route::post('update', 'Api\StatusController@update');
-        Route::post('destroy', 'Api\StatusController@destroy');
+        Route::prefix('friends')->group(function() {
+            Route::post('create', 'Api\FriendController@create');
+            Route::post('destroy', 'Api\FriendController@destroy');
+        });
+    
+        Route::prefix('likes')->group(function() {
+            Route::post('create', 'Api\LikeController@create');
+            Route::post('destroy', 'Api\LikeController@destroy');
+        });
+    
+        Route::get('notifications', 'Api\NotificationController@index');
+        
+        Route::prefix('statuses')->group(function() {
+            Route::post('update', 'Api\StatusController@update');
+            Route::post('destroy', 'Api\StatusController@destroy');
+        });
     });
-
 });
