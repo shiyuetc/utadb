@@ -10,7 +10,7 @@
         "type": "git",
         "url": "git+https://github.com/shiyuetc/utadb.git"
     },
-    "author": "shiyu",
+    "author": "shiyuetc",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/shiyuetc/utadb/issues"
