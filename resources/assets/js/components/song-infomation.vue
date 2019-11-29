@@ -58,8 +58,9 @@
       </tbody>
     </table>
     <ul class="link-items">
-      <li><a :href="'https://www.google.com/search?q=' + song.artist + '+' + song.title" target="_blank"><img src="/images/icons/icon-google.png" alt=""></a></li>
-      <li><a :href="'https://www.youtube.com/results?search_query=' + song.artist + '+' + song.title" target="_blank"><img src="/images/icons/icon-youtube.png" alt=""></a></li>
+      <li><a :href="'https://www.google.com/search?q=' + song.artist + '+' + song.title" target="_blank"><img src="/images/icons/icon-google.png" alt="" v-tooltip.top-center="'Googleで検索'"></a></li>
+      <li><a :href="'https://www.youtube.com/results?search_query=' + song.artist + '+' + song.title" target="_blank"><img src="/images/icons/icon-youtube.png" alt="" v-tooltip.top-center="'Youtubeで検索'"></a></li>
+      <li><a :href="'https://open.spotify.com/search/' + song.artist + ' ' + song.title" target="_blank"><img src="/images/icons/icon-spotify.png" alt="" v-tooltip.top-center="'Spotifyで検索'"></a></li>
     </ul>
     <LyricText :artist="song.artist" :title="song.title"/>
   </div>
