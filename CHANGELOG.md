@@ -1,6 +1,14 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 1.10.1 - (2019-11-29)
+### ✨Added
+- 曲の詳細ページで歌詞が表示されるように
+- 簡易的なデータの全件表示ができるように
+
+### 🐛Fixes
+- キーワード未入力時にクリアボタンが押せる問題を修正
+
 ## 1.10.0 - (2019-10-09)
 ### ✨Added
 - 記録の詳細ページを追加
