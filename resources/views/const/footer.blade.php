@@ -13,7 +13,7 @@
 @if (app()->isLocal() || app()->runningUnitTests())
   <script src="{{ mix('js/app.js') }}"></script>
 @else 
-  <script src="./public/js/app.js"></script>
+  <script src="{{ config('app.url') }}/js/app.js"></script>
 @endif
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>

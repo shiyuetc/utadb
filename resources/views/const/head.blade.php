@@ -7,7 +7,7 @@
 <meta name="author" content="shiyu">
 <meta property="og:title" content="Utadb">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://utadb.xvs.jp/">
+<meta property="og:url" content="{{ config('app.url') }}">
 <meta property="og:description" content="Utadb は自分の持ち歌（歌える曲）や気になった曲を記録して管理したりユーザー同士で共有ができるWebサービスです。カラオケ等へ行くとき用にメモ感覚で簡単に使えます。">
 <meta property="og:site_name" content="Utadb">
 <meta property="og:image" content="{{ asset('images/icons/flag.png') }}"/>
