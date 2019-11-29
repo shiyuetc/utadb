@@ -21,7 +21,7 @@
           <button class="button button-info const-height" type="submit" name="filter" value="#"><i class="fas fa-filter"></i><span class="hidden-md-below">&nbsp;絞り込み</span></button>
         </td>
         <td nowrap>
-          <button class="button button-danger const-height" type="reset" onclick="location.href='{{ url()->current() }}'"><i class="fas fa-minus"></i><span class="hidden-md-below">&nbsp;クリア</span></button>
+        <button class="button button-danger const-height" type="reset" onclick="location.href='{{ url()->current() }}'" {{ empty($_GET['q']) ? 'disabled' : '' }}><i class="fas fa-minus"></i><span class="hidden-md-below">&nbsp;クリア</span></button>
         </td>
       </tr>
     </table>
