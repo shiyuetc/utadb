@@ -28,6 +28,7 @@ Route::middleware('api')->group(function() {
         Route::get('@{id}/common', 'Api\SongController@common');
         Route::get('recent', 'Api\SongController@recent');
         Route::get('ranking', 'Api\SongController@ranking');
+        Route::get('lyric', 'Api\SongController@getLyric');
     });
 
     Route::prefix('statuses')->group(function() {

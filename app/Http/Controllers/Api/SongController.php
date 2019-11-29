@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Libraries\SongPuller\Puller;
+use App\Libraries\ToLyric;
 use App\Models\Song;
 use App\Models\Status;
 use Illuminate\Http\Request;
@@ -237,4 +238,9 @@ class SongController extends ApiController
         return response()->json($response)->setStatusCode(200);
     }
 
+    public function getLyric(Request $request)
+    {
+        $response = ToLyric::get($request->artist, $request->title);
+        return response()->json($response)->setStatusCode(200);
+    }
 }
