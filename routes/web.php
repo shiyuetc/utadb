@@ -53,6 +53,7 @@ Route::group(['prefix' => 'settings', 'middleware' => 'auth'], function() {
   });
   Route::prefix('other')->group(function() {
     Route::get('/', 'SettingController@showOtherSettingForm')->name('settings.other');
+    Route::get('export', 'SettingController@export')->name('settings.other.export');
   });
 });
 
