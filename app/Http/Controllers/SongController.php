@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Libraries\SongPuller\Puller;
 use App\Models\Song;
 use App\Models\Status;
-use Illuminate\Http\Request;
 use DB;
 
 class SongController extends Controller
