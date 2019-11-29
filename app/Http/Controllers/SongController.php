@@ -31,6 +31,7 @@ class SongController extends Controller
                 $song = new Song();
                 $song->id = $puller_song["id"];
                 $song->title = $puller_song["title"];
+                $song->artist_id = $puller_song["artist_id"];
                 $song->artist = $puller_song["artist"];
                 $song->image_url = $puller_song["image_url"];
                 $song->audio_url = $puller_song["audio_url"];
