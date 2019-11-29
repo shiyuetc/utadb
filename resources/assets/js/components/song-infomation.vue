@@ -101,7 +101,7 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style lang="scss" scoped>
 div.song-infomation {
   margin: 18px 12px;
 }
@@ -109,30 +109,30 @@ table.infomation-table {
   width: 100%;
   margin: 12px 0;
   border-collapse: collapse;
-}
-table.infomation-table th {
-  padding: 6px 0;
-  border: 1px solid #ccc;
-  background: #eee;
-  font-weight: normal;
-	font-size: 12px;
-	text-align: center;
-}
-table.infomation-table td {
-  padding: 6px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-}
-table.infomation-table td:nth-child(2n+1) {
-  width: 120px;
-  background: #eee;
-	text-align: right;
-}
-table.infomation-table img.avatar {
-  width: 32px;
-  height: 32px;
-  margin: 0 2px;
-  border-radius: 100%;
+  th {
+    padding: 6px 0;
+    border: 1px solid #ccc;
+    background: #eee;
+    font-weight: normal;
+    font-size: 12px;
+    text-align: center;
+  }
+  td {
+    padding: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+  td:nth-child(2n+1) {
+    width: 120px;
+    background: #eee;
+    text-align: right;
+  }
+  img.avatar {
+    width: 32px;
+    height: 32px;
+    margin: 0 2px;
+    border-radius: 100%;
+  }
 }
 ul.link-items {
   display: flex;
@@ -140,21 +140,21 @@ ul.link-items {
   justify-content: flex-end;
   margin: 0;
   padding-left: 0;
-}
-ul.link-items li a {
-  display: block;
-  margin-left: 4px;
-  border: 1px solid #ccc;
-  transition: background-color 0.2s;
-	-moz-transition: background-color 0.2s;
-	-webkit-transition: background-color 0.2s;
-	-o-transition: background-color 0.2s;
-  -ms-transition: background-color 0.2s;
-}
-ul.link-items li a:hover {
-  background: #eaeaea;
-}
-ul.link-items li a img {
-  vertical-align: bottom;
+  li a {
+    display: block;
+    margin-left: 4px;
+    border: 1px solid #ccc;
+    transition: background-color 0.2s;
+    -moz-transition: background-color 0.2s;
+    -webkit-transition: background-color 0.2s;
+    -o-transition: background-color 0.2s;
+    -ms-transition: background-color 0.2s;
+    img {
+      vertical-align: bottom;
+    }
+  }
+  li a:hover {
+    background: #eaeaea;
+  }
 }
 </style>
