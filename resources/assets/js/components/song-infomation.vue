@@ -61,15 +61,18 @@
       <li><a :href="'https://www.google.com/search?q=' + song.artist + '+' + song.title" target="_blank"><img src="/images/icons/icon-google.png" alt=""></a></li>
       <li><a :href="'https://www.youtube.com/results?search_query=' + song.artist + '+' + song.title" target="_blank"><img src="/images/icons/icon-youtube.png" alt=""></a></li>
     </ul>
+    <LyricText :artist="song.artist" :title="song.title"/>
   </div>
 </template>
 <script>
 import VTooltip  from 'v-tooltip';
 import UpdateSelect from './ui/update-select.vue';
+import LyricText from './lyric-text.vue';
 
 export default {
   components: {
-    UpdateSelect
+    UpdateSelect,
+    LyricText
   },
   props: {
     song: {
