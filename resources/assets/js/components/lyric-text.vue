@@ -1,9 +1,10 @@
 <template>
   <div class="component">
     <p class="title">歌詞</p>
-    <loadProgress v-model="this.lyric.length" :itemName="'歌詞'"/>
     <div class="lyric">
-      <span class="animated fadeIn" v-show="isMounted" v-html="lyric"></span>
+      <loadProgress v-model="this.lyric.length" :itemName="'歌詞'"/>
+      <span class="text animated fadeIn" v-show="isMounted" v-html="lyric"></span>
+      <div style="height:12px;" v-show="this.lyric != ''"></div>
     </div>
   </div>
 </template>
@@ -61,7 +62,7 @@ div.component {
     text-align: center;
   }
   div.lyric {
-    padding: 12px 12px 24px 12px;
+    padding: 12px;
   }
 }
 </style>
