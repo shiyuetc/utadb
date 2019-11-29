@@ -1,6 +1,14 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 1.10.2 - (2019-11-30)
+### ✨Added
+- 曲の詳細ページでSpotifyへの検索ができるように
+- 外部関連サイトに新しくリンクを追加
+
+### 🐛Fixes
+- 曲の詳細ページでアーティスト名のURLがおかしい問題を修正
+
 ## 1.10.1 - (2019-11-29)
 ### ✨Added
 - 曲の詳細ページで歌詞が表示されるように
