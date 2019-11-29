@@ -6,6 +6,8 @@ class ToLyric
 {
     public static function get($artist, $title)
     {
+        $artist = str_replace(' ', '+', $artist);
+        $title = str_replace(' ', '+', $title);
         $response = [];
         try {
             $html = file_get_contents("http://search.j-lyric.net/?ct=2&ca=2&cl=2&ka={$artist}&kt={$title}");
