@@ -3,6 +3,7 @@
 
 @section('sidebar')
 @include('widgets.user-infomation', ['user' => $user])
+@include('widgets.share')
 @endsection
 
 @section('content')

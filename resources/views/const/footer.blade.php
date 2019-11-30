@@ -22,7 +22,9 @@
 @php
   $scripts = [
     ['avatar_button'],
+    ['facebook_share', 'https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v5.0'],
     ['twitter_widgets', 'https://platform.twitter.com/widgets.js'],
+    ['twitter_share', 'https://platform.twitter.com/widgets.js']
   ]
 @endphp
 @foreach ($scripts as $script)
