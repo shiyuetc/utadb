@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Export')
+@section('title', 'データのエクスポート')
 @section('page_type', 'inner')
 
 @section('content')
