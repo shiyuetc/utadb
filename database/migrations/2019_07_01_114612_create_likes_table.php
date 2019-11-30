@@ -18,7 +18,7 @@ class CreateLikesTable extends Migration
             $table->string('post_id', 14);
             $table->integer('user_id')->unsigned();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unique(['post_id', 'user_id']);
         });
