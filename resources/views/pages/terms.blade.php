@@ -3,9 +3,13 @@
 @section('page_type', 'inner')
 
 @section('content')
-<div class="section document">
-  <h1 class="title"><i class="far fa-check-square"></i>&nbsp;利用規約</h1>
-  <p class="text">この利用規約（以下「本規約」といいます。）は 運営者（以下「運営」といいます。）がこのウェブサイト上で提供するサービス（以下「本サービス」といいます。）の利用条件を定めるものです。登録ユーザーの皆さま（以下「ユーザー」といいます。）には本規約に従って、本サービスをご利用いただきます。</p>
+@component('components.section', ['padding' => true])
+@slot('title')
+  <i class="far fa-check-square"></i>&nbsp;利用規約
+@endslot
+@slot('contents')
+<div class="document">
+  この利用規約（以下「本規約」といいます。）は 運営者（以下「運営」といいます。）がこのウェブサイト上で提供するサービス（以下「本サービス」といいます。）の利用条件を定めるものです。登録ユーザーの皆さま（以下「ユーザー」といいます。）には本規約に従って、本サービスをご利用いただきます。
 
   <h2 class="sub-title">第1条（適用）</h2>
   <ol class="items">
@@ -110,4 +114,6 @@
 
   <p class="thats-all">以上 2019年6月13日 制定</p>
 </div>
+@endslot
+@endcomponent
 @endsection

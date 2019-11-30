@@ -104,6 +104,9 @@ div.section > div.header span.section-toggle.hidden i {
 div.section > div.contents.partition-border {
   border-top: var(--break-border);
 }
+div.section > div.contents {
+  font-size: 15px;
+}
 /* #endregion */
 /* #region article */
 div.articles > div.article {
