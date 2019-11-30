@@ -1,7 +1,7 @@
 {
     "name": "utadb",
     "description": "Song repertoire management system.",
-    "version": "1.10.2",
+    "version": "1.4.2",
     "main": "webpack.mix.js",
     "directories": {
         "test": "tests"
