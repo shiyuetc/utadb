@@ -14,6 +14,7 @@
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('terms', function () {return view('pages.terms');})->name('terms');
 Route::get('privacy', function () {return view('pages.privacy');})->name('privacy');
+Route::get('help', function () {return view('pages.help');})->name('help');
 Route::get('notifications', 'NotificationController@index')->name('notifications');
 
 Route::prefix('@{id}')->group(function() {

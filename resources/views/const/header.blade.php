@@ -56,6 +56,9 @@
             </ul>
             <ul class="dialog-group">
               <li class="dialog-item inverse-dialog-item">
+                <a href="{{ route('help') }}"><i class="fas fa-question-circle"></i><span class="indent">ヘルプ</span></a>
+              </li>
+              <li class="dialog-item inverse-dialog-item">
                 <a href="{{ route('settings.profile') }}"><i class="fas fa-cog"></i><span class="indent">設定</span></a>
               </li>
             </ul>
