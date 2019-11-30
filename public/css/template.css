@@ -69,7 +69,7 @@ div.section {
   background: #fff;
   word-wrap: break-word;
 }
-div.section.section-padding {
+div.section.section-padding div.contents {
   padding: 10px 12px;
 }
 div.section > div.header {
