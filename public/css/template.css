@@ -248,6 +248,20 @@ ul.list li span.right-icon:after {
 	clear: both;
 	content: "";
 }
+ul.list-angle span.right-icon {
+  margin-right: 6px;
+  transition: margin-right 0.2s;
+	-moz-transition: margin-right 0.2s;
+	-webkit-transition: margin-right 0.2s;
+	-o-transition: margin-right 0.2s;
+  -ms-transition: margin-right 0.2s;
+}
+ul.list-angle li a:hover span.right-icon {
+  margin-right: 0;
+}
+ul.list-angle li.active a span.right-icon {
+  margin-right: 0;
+}
 /* #endregion */
 /* #region table */
 table.object-table {

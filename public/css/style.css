@@ -567,21 +567,6 @@ table.user-table td.state-count-cell {
 /* #endregion */
 
 /* #region settings */
-ul.setting-list span.right-icon {
-  margin-right: 6px;
-  transition: margin-right 0.2s;
-	-moz-transition: margin-right 0.2s;
-	-webkit-transition: margin-right 0.2s;
-	-o-transition: margin-right 0.2s;
-  -ms-transition: margin-right 0.2s;
-}
-ul.setting-list li a:hover span.right-icon {
-  margin-right: 0;
-}
-ul.setting-list li.active a span.right-icon {
-  margin-right: 0;
-}
-
 table.setting-table {
   width: 100%;
 }
