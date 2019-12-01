@@ -52,10 +52,10 @@ Route::group(['prefix' => 'settings', 'middleware' => 'auth'], function() {
     Route::post('deactivate', 'SettingController@updateDeactivate')->name('settings.account.deactivate');
     Route::post('undeactivate', 'SettingController@updateUndeactivate')->name('settings.account.undeactivate');
   });
-  Route::prefix('other')->group(function() {
-    Route::get('/', 'SettingController@showOtherSettingForm')->name('settings.other');
-    Route::get('export', 'SettingController@export')->name('settings.other.export');
-  });
+});
+
+Route::group(['prefix' => 'tools', 'middleware' => 'auth'], function() {
+  Route::get('export', 'ToolController@showExport')->name('tools.export');
 });
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

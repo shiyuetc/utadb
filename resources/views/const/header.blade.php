@@ -59,6 +59,9 @@
                 <a href="{{ route('help') }}"><i class="fas fa-question-circle"></i><span class="indent">ヘルプ</span></a>
               </li>
               <li class="dialog-item inverse-dialog-item">
+                <a href="{{ route('tools.export') }}"><i class="fas fa-tools"></i><span class="indent">便利ツール</span></a>
+              </li>
+              <li class="dialog-item inverse-dialog-item">
                 <a href="{{ route('settings.profile') }}"><i class="fas fa-cog"></i><span class="indent">設定</span></a>
               </li>
             </ul>

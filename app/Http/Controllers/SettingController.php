@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Avatar;
 use App\Models\Deactivate;
-use App\Models\Status;
-use App\Models\User;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Http\Requests\UpdateEmailRequest;
 use App\Http\Requests\UpdatePasswordRequest;
@@ -82,44 +80,5 @@ class SettingController extends Controller
             ->with($result ? 'status' : 'error', 
                 __($result ? "アカウントの削除申請を解除しました" : 'アカウントの削除申請の解除に失敗しました'));
     }
-
-    public function export(Request $request)
-    {
-        $data = [];
-        $state = $request->query('state', 0);
-        if(!is_numeric($state) || $state > 3 || $state < 0) $state = 0;
-        $sort = $request->query('sort', 'artist_asc');
-
-        $query = Status::select('statuses.song_id')
-            ->where('statuses.user_id', auth()->user()->id);
-
-        if($state != 0) $query = $query->where('statuses.state', $state);
-
-        switch($sort) {
-            default:
-                $query = $query->orderBy('artist', 'asc');
-                break;
-            case 'artist_desc':
-                $query = $query->orderBy('artist', 'desc');
-                break;
-            case 'title_asc':
-                $query = $query->orderBy('title', 'asc');
-                break;
-            case 'title_desc':
-                $query = $query->orderBy('title', 'desc');
-                break;
-        }
-        
-        $temp_response = $query
-            ->with('song')
-            ->join('songs', 'statuses.song_id', 'songs.id')
-            ->limit(10000)
-            ->get();
-
-        foreach($temp_response as $temp) {
-            $data[] = $temp->song;
-        }
-
-        return view('pages.export', ['data' => $data]);
-    }
+    
 }
