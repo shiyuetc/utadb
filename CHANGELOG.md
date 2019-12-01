@@ -1,6 +1,14 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 1.4.3 - (2019-12-01)
+### ✨Added
+- ヘルプページを追加
+- ユーザーページでTwitterとFacebookにシェアできるように
+
+### 🐛Fixes
+- いいねされた記録の削除ができない問題を修正
+
 ## 1.4.2 - (2019-11-30)
 ### ✨Added
 - 曲の詳細ページでSpotifyへの検索ができるように
