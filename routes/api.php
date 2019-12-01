@@ -14,8 +14,10 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('api')->group(function() {
-    Route::get('analysis', 'Api\ApplicationController@analysis');
-    Route::get('application/resource', 'Api\ApplicationController@resourceCount');
+    Route::prefix('application')->group(function() {
+        Route::get('analysis', 'Api\ApplicationController@analysis');
+        Route::get('resource', 'Api\ApplicationController@resource');
+    });
 
     Route::prefix('friends')->group(function() {
         Route::get('following', 'Api\FriendController@following');
@@ -52,7 +54,7 @@ Route::middleware('api')->group(function() {
             Route::post('create', 'Api\LikeController@create');
             Route::post('destroy', 'Api\LikeController@destroy');
         });
-    
+
         Route::get('notifications', 'Api\NotificationController@index');
         
         Route::prefix('statuses')->group(function() {

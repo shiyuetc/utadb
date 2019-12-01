@@ -103,7 +103,7 @@ export default {
     this.rateChart.render();
     this.activityChart.render();
 
-    axios.get("/api/analysis?id=" + this.user.id).then(res => {
+    axios.get("/api/application/analysis?id=" + this.user.id).then(res => {
       var rateResult = res.data['rate'];
       var activityResult = res.data['activity'];
       

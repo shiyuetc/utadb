@@ -12,19 +12,6 @@ use DB;
 class ApplicationController extends ApiController
 {   
     /**
-     * Return all user count and all post count.
-     * 
-     * @return array $response
-     */
-    public function resourceCount()
-    {
-        return response()->json([
-            'user_count' => User::count(),
-            'post_count' => Post::count()
-        ])->setStatusCode(200);
-    }
-
-    /**
      * Return analysis data of user.
      * 
      * @param Request $request
@@ -54,6 +41,19 @@ class ApplicationController extends ApiController
         }
 
         return response()->json($response)->setStatusCode(200);
+    }
+
+    /**
+     * Return all user count and all post count.
+     * 
+     * @return array $response
+     */
+    public function resource()
+    {
+        return response()->json([
+            'user_count' => User::count(),
+            'post_count' => Post::count()
+        ])->setStatusCode(200);
     }
 
 }
