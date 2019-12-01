@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('title', 'ヘルプ')
-@section('page_type', 'inner')
+
+@section('sidebar')
+@include('widgets.user-infomation', ['user' => Auth::user(), 'hidden' => true])
+@endsection
 
 @section('content')
 @component('components.question', ['title' => 'このサイトについて'])
