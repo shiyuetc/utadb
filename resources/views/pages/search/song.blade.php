@@ -43,6 +43,7 @@
   @endslot
   @endcomponent
 
+  {{--
   @component('components.section', ['toggle' => true])
   @slot('title')
     <i class="fas fa-star"></i>&nbsp;最近のリリース曲
@@ -51,6 +52,7 @@
     <song-recent-component />
   @endslot
   @endcomponent
+  --}}
 @else
   @component('components.section', ['toggle' => true])
   @slot('title')
