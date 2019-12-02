@@ -23,7 +23,7 @@
             <p class="artist"><a class="default-link" :href="'/artists/' + song.artist_id">{{ song.artist }}</a></p>
           </td>
           <td class="action-cell">
-            <updateSelect @updated="updatedStatus" :id="song.id" :state="song.my_state"/>
+            <UpdateSelect @updated="updatedStatus" :id="song.id" :state="song.my_state"/>
           </td>
         </tr>
       </tbody>
@@ -31,11 +31,11 @@
   </div>
 </template>
 <script>
-import updateSelect from '../ui/update-select.vue';
+import UpdateSelect from '../ui/update-select.vue';
 
 export default {
   components: {
-    updateSelect
+    UpdateSelect
   },
   model: {
     prop: 'songs'

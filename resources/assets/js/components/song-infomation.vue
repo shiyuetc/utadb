@@ -7,7 +7,7 @@
       </div>
     </div>
     <div style="text-align: center;">
-      <updateSelect @updated="updatedStatus" :id="song.id" :state="my_state_value"/>
+      <UpdateSelect @updated="updatedStatus" :id="song.id" :state="my_state_value"/>
     </div>
     <table class="infomation-table">
       <thead>

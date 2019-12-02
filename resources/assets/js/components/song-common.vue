@@ -1,20 +1,20 @@
 <template>
   <div>
-    <loadProgress v-model="this.songs.length" :itemName="'曲'"/>
-    <songs v-if="this.songs.length > 0" @updated="updatedStatus" v-model="this.songs"/>
-    <pagination @paging="request" v-model="this.songs.length"/>
+    <LoadProgress v-model="this.songs.length" :itemName="'曲'"/>
+    <Songs v-if="this.songs.length > 0" @updated="updatedStatus" v-model="this.songs"/>
+    <Pagination @paging="request" v-model="this.songs.length"/>
   </div>
 </template>
 <script>
-import loadProgress from './widgets/load-progress.vue';
-import pagination from './widgets/pagination.vue';
-import songs from './common/songs.vue';
+import LoadProgress from './widgets/load-progress.vue';
+import Pagination from './widgets/pagination.vue';
+import Songs from './common/songs.vue';
 
 export default {
   components: {
-    loadProgress,
-    pagination,
-    songs
+    LoadProgress,
+    Pagination,
+    Songs
   },
   props: {
     user_id: {

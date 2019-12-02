@@ -9,11 +9,11 @@
   </div>
 </template>
 <script>
-import loadProgress from './widgets/load-progress.vue';
+import LoadProgress from './widgets/load-progress.vue';
 
 export default {
   components: {
-    loadProgress
+    LoadProgress
   },
   props: {
     artist: {

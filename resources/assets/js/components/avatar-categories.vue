@@ -11,7 +11,7 @@
       <option value="plant">植物 (16件)</option>
       <option value="insect">昆虫 (16件)</option>
     </select>
-    <load-progress/>
+    <LoadProgress />
     <div v-if="isMounted" class="avatars">
       <label class="avatar" v-for="(avatar, index) in avatars" :key='index' v-tooltip.top-center="avatar.name">
         <img :src="'/images/profile_image/' + avatar.category + '/' + avatar.id + '_small.png'" alt="">

@@ -22,26 +22,26 @@
                 <p class="artist"><a class="default-link" :href="'/artists/' + status.song.artist_id">{{ status.song.artist }}</a></p>
               </td>
               <td class="action-cell">
-                <updateSelect :ref="status.song.id" @updated="updatedStatus" :id="status.song.id" :state="status.my_state"/>
+                <UpdateSelect :ref="status.song.id" @updated="updatedStatus" :id="status.song.id" :state="status.my_state"/>
               </td>
             </tr>
           </table>
         </div>
         <div class="article-footer">
-          <p class="date"><subtract-date :date="status.created_at"></subtract-date> ({{ status.created_at }})</p>
+          <p class="date"><SubtractDate :date="status.created_at"/> ({{ status.created_at }})</p>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import subtractDate from './ui/subtract-date.vue';
-import updateSelect from './ui/update-select.vue';
+import SubtractDate from './ui/subtract-date.vue';
+import UpdateSelect from './ui/update-select.vue';
 
 export default {
   components: {
-    subtractDate,
-    updateSelect
+    SubtractDate,
+    UpdateSelect
   },
   props: {
     status: {

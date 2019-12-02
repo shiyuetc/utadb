@@ -1,17 +1,17 @@
 <template>
   <div>
-    <loadProgress v-model="this.songs.length" :itemName="'曲'"/>
-    <songs v-if="this.songs.length > 0" @updated="updatedStatus" v-model="this.songs"/>
+    <LoadProgress v-model="this.songs.length" :itemName="'曲'"/>
+    <Songs v-if="this.songs.length > 0" @updated="updatedStatus" v-model="this.songs"/>
   </div>
 </template>
 <script>
-import loadProgress from './widgets/load-progress.vue';
-import songs from './common/songs.vue';
+import LoadProgress from './widgets/load-progress.vue';
+import Songs from './common/songs.vue';
 
 export default {
   components: {
-    loadProgress,
-    songs
+    LoadProgress,
+    Songs
   },
   data() {
     return {

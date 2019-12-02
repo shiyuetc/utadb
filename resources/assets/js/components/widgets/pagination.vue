@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     paging: function(direction) {
-      $('body,html').animate({
+      $('body, html').animate({
         scrollTop: 0
       }, 200);
       this.$parent.pageValue += direction;

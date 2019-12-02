@@ -32,12 +32,8 @@ export default {
   },
   methods: {
     updateStatus: function() {
-      if (this.wait) return;
-      this.wait = true;
-      
-      axios.post("/api/statuses/update", {
-          id: this.id,
-          state: this.stateValue
+      if (this.wait) return; this.wait = true;
+      axios.post("/api/statuses/update", { id: this.id, state: this.stateValue
         }).then(res => {
           this.$emit('updated', res.data);
           this.wait = false;

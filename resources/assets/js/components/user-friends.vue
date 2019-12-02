@@ -1,20 +1,20 @@
 <template>
   <div>
-    <loadProgress v-model="users.length" :itemName="'ユーザー'"/>
-    <users v-model="this.users"/>
-    <pagination @paging="request" v-model="users.length"/>
+    <LoadProgress v-model="users.length" :itemName="'ユーザー'"/>
+    <Users v-model="this.users"/>
+    <Pagination @paging="request" v-model="users.length"/>
   </div>
 </template>
 <script>
-import loadProgress from './widgets/load-progress.vue';
-import pagination from './widgets/pagination.vue';
-import users from './common/users.vue';
+import LoadProgress from './widgets/load-progress.vue';
+import Pagination from './widgets/pagination.vue';
+import Users from './common/users.vue';
 
 export default {
   components: {
-    loadProgress,
-    pagination,
-    users,
+    LoadProgress,
+    Pagination,
+    Users,
   },
   props: {
     type: {

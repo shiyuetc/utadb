@@ -12,21 +12,21 @@
           </p>
         </div>
         <div class="article-footer">
-          <p class="date"><subtract-date :date="notification.created_at"></subtract-date></p>
+          <p class="date"><SubtractDate :date="notification.created_at"/></p>
         </div>
       </div>
     </div>
-    <loadProgress v-model="this.notifications.length" :itemName="'通知'"/>
+    <LoadProgress v-model="this.notifications.length" :itemName="'通知'"/>
   </div>
 </template>
 <script>
-import loadProgress from './widgets/load-progress.vue';
-import subtractDate from './ui/subtract-date.vue';
+import LoadProgress from './widgets/load-progress.vue';
+import SubtractDate from './ui/subtract-date.vue';
 
 export default {
   components: {
-    loadProgress,
-    subtractDate
+    LoadProgress,
+    SubtractDate
   },
   data() {
     return {

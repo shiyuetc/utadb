@@ -22,13 +22,13 @@
                 <p class="artist"><a class="default-link" :href="'/artists/' + status.song.artist_id">{{ status.song.artist }}</a></p>
               </td>
               <td class="action-cell">
-                <updateSelect :ref="status.song.id" @updated="updatedStatus" :id="status.song.id" :state="status.my_state"/>
+                <UpdateSelect :ref="status.song.id" @updated="updatedStatus" :id="status.song.id" :state="status.my_state"/>
               </td>
             </tr>
           </table>
         </div>
         <div class="article-footer">
-          <p class="date"><subtract-date :date="status.created_at"></subtract-date></p>
+          <p class="date"><SubtractDate :date="status.created_at"/></p>
           <div class="actions">
             <button class="like" @click="postLike(status)">
               <span :class="[ status.is_liked ? 'liked' : 'unlike']">
@@ -55,21 +55,21 @@
         </div>
       </div>
     </div>
-    <loadProgress v-model="this.statuses.length" :itemName="'投稿'"/>
+    <LoadProgress v-model="this.statuses.length" :itemName="'投稿'"/>
     <button v-show="this.count == 50 && this.isMounted && this.next != null" class="button button-default" @click="statusesRequest">さらに読み込む...</button>
     <button v-show="this.count != 50 && this.isMounted && this.next != null" class="button button-default" @click="redirectUrl('/@' + user.screen_name + '/records')">もっと見る</button>
   </div>
 </template>
 <script>
-import loadProgress from './widgets/load-progress.vue';
-import subtractDate from './ui/subtract-date.vue';
-import updateSelect from './ui/update-select.vue';
+import LoadProgress from './widgets/load-progress.vue';
+import SubtractDate from './ui/subtract-date.vue';
+import UpdateSelect from './ui/update-select.vue';
 
 export default {
   components: {
-    loadProgress,
-    subtractDate,
-    updateSelect
+    LoadProgress,
+    SubtractDate,
+    UpdateSelect
   },
   props: {
     user: {
