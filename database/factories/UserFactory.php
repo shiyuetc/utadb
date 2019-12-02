@@ -15,7 +15,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Models\User::class, function (Faker $faker) {
     return [
-        'screen_name' => str_replace('.', '', $faker->userName),
+        'screen_name' => mb_strimwidth(str_replace('.', '_', $faker->userName), 0, 15, ''),
         'name' => $faker->name,
         'profile_image_url' => 'http://localhost/images/profile_image/monster/monster_' . $faker->regexify('[a-l]'),
         'email' => $faker->unique()->safeEmail,
