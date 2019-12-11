@@ -40,6 +40,7 @@ const app = new Vue({
     el: '#app',
     methods: {
         buildQuery: function(data) {
+            if(data.length == 0) return '';
             var query = '?';
             Object.keys(data).forEach(function(key) {
                 query += key + '=' + this[key] + '&'
