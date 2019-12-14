@@ -7,8 +7,11 @@
 
 import Vue from 'vue';
 import router from './router';
+import titleUtil from './util/title';
 
 require('./bootstrap');
+
+Vue.mixin(titleUtil);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
