@@ -5,11 +5,10 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import Vue from 'vue'
+import Vue from 'vue';
+import router from './router';
 
 require('./bootstrap');
-
-window.Vue = require('vue');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -17,27 +16,9 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('user-accessory-component', require('./components/user-accessory.vue'));
-Vue.component('analysis-chart-component', require('./components/analysis-chart.vue'));
-Vue.component('avatar-categories-component', require('./components/avatar-categories.vue'));
-Vue.component('notification-component', require('./components/notification.vue'));
-Vue.component('resource-counter-component', require('./components/resource-counter.vue'));
-
-Vue.component('timeline-component', require('./components/timeline.vue'));
-Vue.component('status-infomation-component', require('./components/status-infomation.vue'));
-Vue.component('song-ranking-component', require('./components/song-ranking.vue'));
-// Vue.component('song-recent-component', require('./components/song-recent.vue'));
-Vue.component('song-search-component', require('./components/song-search.vue'));
-Vue.component('song-from-artist-component', require('./components/song-from-artist.vue'));
-Vue.component('song-user-component', require('./components/song-user.vue'));
-Vue.component('song-common-component', require('./components/song-common.vue'));
-Vue.component('song-infomation-component', require('./components/song-infomation.vue'));
-
-Vue.component('user-friends-component', require('./components/user-friends.vue'));
-Vue.component('user-search-component', require('./components/user-search.vue'));
-
 const app = new Vue({
     el: '#app',
+    router,
     methods: {
         buildQuery: function(data) {
             if(data.length == 0) return '';
@@ -47,5 +28,6 @@ const app = new Vue({
             }, data);
             return query;
         }
-    }
+    },
+    render: h => h(require('./components/App.vue')),
 });
