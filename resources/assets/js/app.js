@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -8,6 +7,7 @@
 import Vue from 'vue';
 import router from './router';
 import titleUtil from './util/title';
+import store from './store';
 
 require('./bootstrap');
 
@@ -20,17 +20,18 @@ Vue.mixin(titleUtil);
  */
 
 const app = new Vue({
-    el: '#app',
-    router,
-    methods: {
-        buildQuery: function(data) {
-            if(data.length == 0) return '';
-            var query = '?';
-            Object.keys(data).forEach(function(key) {
-                query += key + '=' + this[key] + '&'
-            }, data);
-            return query;
-        }
-    },
-    render: h => h(require('./components/App.vue')),
+  el: '#app',
+  router,
+  store,
+  methods: {
+    buildQuery: function (data) {
+      if (data.length == 0) return '';
+      var query = '?';
+      Object.keys(data).forEach(function (key) {
+        query += key + '=' + this[key] + '&'
+      }, data);
+      return query;
+    }
+  },
+  render: h => h(require('./components/App.vue')),
 });
