@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Notifications\CustomResetPassword;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 use DB;
 
 class User extends Authenticatable implements JWTSubject
