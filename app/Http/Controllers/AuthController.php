@@ -22,4 +22,10 @@ class AuthController extends ApiController
             'user' => User::where('screen_name', $credentials['screen_name'])->get()
         ]);
     }
+
+    public function logout() 
+    {
+        auth()->logout();
+        return response()->json();
+    }
 }
