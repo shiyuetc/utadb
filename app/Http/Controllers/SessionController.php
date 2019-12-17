@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class AuthController extends ApiController
+class SessionController extends ApiController
 {
-    public function login(Request $request) 
+    public function create(Request $request) 
     {
         $credentials = [
             'screen_name' => $request->input('screen_name'),
@@ -23,7 +23,7 @@ class AuthController extends ApiController
         ]);
     }
 
-    public function logout() 
+    public function delete() 
     {
         auth()->logout();
         return response()->json();

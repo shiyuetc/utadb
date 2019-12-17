@@ -27,7 +27,7 @@ export default new Vuex.Store({
   },
   actions: {
     login({ commit }, payload) {
-      axios.post('/api/login', {
+      axios.post('/api/session', {
         screen_name: payload.id,
         password: payload.password
       }).then(res => {
@@ -45,7 +45,7 @@ export default new Vuex.Store({
       });
     },
     logout({ commit }) {
-      axios.post('/api/logout').then(res => {
+      axios.delete('/api/session').then(res => {
         axios.defaults.headers.common['Authorization'] = '';
         commit('logout');
         router.push({ path: '/' });

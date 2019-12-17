@@ -14,9 +14,9 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('api')->group(function() {
-    Route::post('login', 'AuthController@login');
+    Route::post('session', 'SessionController@create');
 });
 
 Route::middleware('auth:api')->group(function() {
-    Route::post('logout', 'AuthController@logout');
+    Route::delete('session', 'SessionController@delete');
 });
