@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import createPersistedState from "vuex-persistedstate";
 import router from '../router';
 import alert from "./modules/alert";
 
@@ -61,5 +62,10 @@ export default new Vuex.Store({
   },
   modules: {
     alert
-  }
+  },
+  plugins: [createPersistedState({
+    key: 'Utadb',
+    paths: ['token', 'i'],
+    storage: window.sessionStorage
+  })]
 });
