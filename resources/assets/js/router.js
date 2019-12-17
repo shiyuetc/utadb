@@ -15,6 +15,11 @@ const routes = [
     name: 'register',
     component: require('./components/pages/Register.vue'),
   },
+  {
+    path: '/login',
+    name: 'login',
+    component: require('./components/pages/Login.vue'),
+  },
 ];
 
 const router = new VueRouter({
