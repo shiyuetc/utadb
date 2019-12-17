@@ -10,6 +10,11 @@ const routes = [
     name: 'home',
     component: require('./components/pages/Home.vue'),
   },
+  {
+    path: '/register',
+    name: 'register',
+    component: require('./components/pages/Register.vue'),
+  },
 ];
 
 const router = new VueRouter({
