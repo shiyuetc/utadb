@@ -8,12 +8,12 @@ class ApiController extends Controller
 {
     protected $errors = [
         401 => 'Unauthorized.',
-        500 => ''
+        500 => 'Internal Server Error.'
     ];
 
     public function ExceptionResponse($statusCode = 500, $message = null)
     {
-        $response['errors'] = is_null($message) ? $this->errors[$statusCode] : $message;
+        $response['errors']['message'] = is_null($message) ? $this->errors[$statusCode] : $message;
         throw new HttpResponseException(response()->json($response, $statusCode));
     }
 }
