@@ -4,11 +4,13 @@ import store from './store';
 
 Vue.use(VueRouter);
 
-const routes = [{
-  path: '/',
-  name: 'welcome',
-  component: require('./components/Welcome.vue')
-}];
+const routes = [
+  {
+    path: '/',
+    name: 'home',
+    component: require('./components/pages/Home.vue'),
+  },
+];
 
 const router = new VueRouter({
   mode: 'history',
@@ -16,11 +18,9 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  store.commit('alert/setAlert', {
-    'message': ''
-  });
+  store.commit('alert/setAlert', { 'message': '' });
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!store.getters['auth/isLogin']) {
+    if (!store.getters.isLogin) {
       next({
         path: '/login',
         query: {
