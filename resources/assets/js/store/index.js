@@ -34,7 +34,7 @@ export default new Vuex.Store({
       }).then(res => {
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + res.data.access_token;
         commit('login', res.data);
-        router.push({ path: '/' });
+        router.push({ name: 'home' });
         commit('alert/setAlert', {
           'message': 'ログインしました。'
         }, { root: true });
@@ -46,18 +46,10 @@ export default new Vuex.Store({
       });
     },
     logout({ commit }) {
-      axios.delete('/api/session').then(res => {
-        axios.defaults.headers.common['Authorization'] = '';
-        commit('logout');
-        router.push({ path: '/' });
-        commit('alert/setAlert', {
-          'message': 'ログアウトしました。'
-        }, { root: true });
-      }).catch(error => {
-        commit('alert/setAlert', {
-          'message': 'ログアウトに失敗しました。'
-        }, { root: true });
-      });
+      axios.delete('/api/session').then(res => {}).catch(error => {});
+      axios.defaults.headers.common['Authorization'] = '';
+      commit('logout');
+      router.push({ name: 'welcome', query: 'l' });
     }
   },
   modules: {
