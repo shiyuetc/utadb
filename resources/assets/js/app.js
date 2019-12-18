@@ -13,6 +13,13 @@ require('./bootstrap');
 
 Vue.mixin(titleUtil);
 
+if (localStorage.getItem('Utadb')) {
+  const strageData = JSON.parse(localStorage.getItem('Utadb'));
+  if (strageData.token) {
+      axios.defaults.headers.common['Authorization'] = 'Bearer ' + strageData.token;
+  }
+}
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
