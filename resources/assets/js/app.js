@@ -5,6 +5,7 @@
  */
 
 import Vue from 'vue';
+import VueProgressBar from 'vue-progressbar'
 import router from './router';
 import titleUtil from './util/title';
 import store from './store';
@@ -12,6 +13,15 @@ import store from './store';
 require('./bootstrap');
 
 Vue.mixin(titleUtil);
+
+Vue.use(VueProgressBar, {
+  color: '#d63e37',
+  transition: {
+    speed: '0.2s',
+    opacity: '0.6s',
+    termination: 300
+  }
+});
 
 if (localStorage.getItem('Utadb')) {
   const strageData = JSON.parse(localStorage.getItem('Utadb'));
