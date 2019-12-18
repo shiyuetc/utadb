@@ -58,6 +58,6 @@ export default new Vuex.Store({
   plugins: [createPersistedState({
     key: 'Utadb',
     paths: ['token', 'i'],
-    storage: window.sessionStorage
+    storage: window.localStorage
   })]
 });
