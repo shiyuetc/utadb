@@ -41,6 +41,7 @@
     "dependencies": {
         "apexcharts": "^3.8.2",
         "v-tooltip": "^2.0.2",
-        "vue-apexcharts": "^1.4.0"
+        "vue-apexcharts": "^1.4.0",
+        "vue-progressbar": "^0.7.5"
     }
 }
