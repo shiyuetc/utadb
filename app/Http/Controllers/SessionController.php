@@ -19,7 +19,7 @@ class SessionController extends ApiController
 
         return response()->json([
             'access_token' => $token,
-            'user' => User::where('screen_name', $credentials['screen_name'])->get()
+            'user' => User::where('screen_name', $credentials['screen_name'])->first()
         ]);
     }
 
