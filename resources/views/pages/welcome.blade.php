@@ -12,21 +12,17 @@
   </div>
 </div>
 <div class="introducts margin">
-  @component('components.introduct', ['delay_time' => '0.2', 'capture_image' => 'training.jpg'])
+  @component('components.introduct', ['delay_time' => '0.2', 'thumbnail' => 'training.jpg'])
     @slot('title')
       シンプルな持ち曲の管理システム
     @endslot
     @slot('text')
-      曲の状態を気になる、習得中、習得済みの3つに振り分けて現在の状態を一目できます。
-    @endslot
-    @slot('subtext')
-      ※分け方の目安<br>
-      習得済み : 既に習得していて最後まで歌える状態の曲等<br>
-      練習中　 : 練習中や、歌詞を覚えている途中の曲等<br>
-      気になる曲 : 気になっている又は、習得する予定の曲等
+      iTunesもしくはDAM CHANNELで配信されている曲の中からお好みで「気になる」、「習得中」、「習得済み」の3つの状態に振り分けて現在の状態を管理できます。<br>
+    振り分けた曲は状態ごとに一覧で閲覧でき、いつでも任意の状態に変更可能です。<br>
+    また、キーワードにマッチした曲のみを抽出して表示することもできます。
     @endslot
   @endcomponent
-  @component('components.introduct', ['delay_time' => '1.2', 'capture_image' => 'timeline.jpg'])
+  @component('components.introduct', ['delay_time' => '1.2', 'thumbnail' => 'timeline.jpg'])
     @slot('title')
       みんなの更新が見れるタイムライン機能
     @endslot
@@ -37,12 +33,12 @@
       ※現時点で曲はiTunes及びDAMで配信されている項目を取得できます。
     @endslot
   @endcomponent
-  @component('components.introduct', ['delay_time' => '2.2', 'capture_image' => 'users.jpg'])
+  @component('components.introduct', ['delay_time' => '2.2', 'thumbnail' => 'analysis.jpg'])
     @slot('title')
-      他のユーザーとの情報共有
+      登録曲の傾向や利用頻度を自動で分析
     @endslot
     @slot('text')
-      他のユーザーがそれぞれの状態に登録している曲やお互いに習得済みに登録している曲のリストを確認できます。
+      登録されたデータを元に、どのようなアーティストの曲を多く登録しているか等、月毎の利用頻度を見やすいチャートで可視化できます。
     @endslot
   @endcomponent
 </div>

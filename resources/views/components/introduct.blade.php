@@ -7,6 +7,6 @@
     @endif
   </div>
   <div class="capture">
-    <img src="images/captures/{{ $capture_image }}" alt="capture">
+    <img src="images/thumbnails/{{ $thumbnail }}" alt="capture">
   </div>
 </div>
