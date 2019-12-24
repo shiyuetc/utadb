@@ -235,14 +235,13 @@ div.copyright p {
   }
   div.nav-dialog ul.dialog-group {
     display: flex;
+    padding: 0;
   }
   div.nav-dialog li.dialog-item {
     width: 33.3333%;
-    border-right: 1px solid #eaeaea;
   }
   div.nav-dialog li.dialog-item a {
     min-width: auto;
-    margin: 0 4px;
     padding: 18px 2px;
     line-height: 22px;
     box-sizing: border-box;
