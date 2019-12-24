@@ -3,7 +3,7 @@
     <div class="articles statuses animated fadeIn">
       <div class="article status" v-for="status in this.statuses" :key="status.id">
         <div class="article-header">
-          <p class="avatar"><a :href="'/@' + status.user.screen_name"><img :src="status.user.profile_image_url + '_small.png'" alt=""></a></p>
+          <p class="avatar"><a :href="'/@' + status.user.screen_name"><img :src="'/images/profile_image/' + status.user.profile_image + '_small.png'" alt=""></a></p>
           <p class="text"><a class="bold underline" :href="'/@' + status.user.screen_name">{{ status.user.name }}</a>さんが「{{ statusJp[status.state] }}」に登録しました</p>
         </div>
         <div class="article-body">

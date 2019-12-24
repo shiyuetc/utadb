@@ -36,7 +36,7 @@ class SettingController extends Controller
         if(isset($request->avatar)) {
             $avatar = Avatar::find($request->avatar);
             if(isset($avatar)) {
-                $user->profile_image_url = env('APP_URL') . "/images/profile_image/{$avatar->category}/{$avatar->id}";
+                $user->profile_image = "{$avatar->category}/{$avatar->id}";
             }
         }
         $result = $user->save();

@@ -73,7 +73,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'profile_image_url' => env('APP_URL') . '/images/profile_image/monster/monster_' . $rand_alpha,
+            'profile_image' => 'monster/monster_' . $rand_alpha,
         ]);
     }
 

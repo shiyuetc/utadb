@@ -34,7 +34,7 @@
           <td>
             <div>
               <a v-for="(user, index) in this.users[3]" :key='index' :href="'/@' + user.screen_name">
-                <img class="avatar" :src="user.profile_image_url + '_small.png'" alt="" v-tooltip.top-center="user.name + ' (@' + user.screen_name + ')'">
+                <img class="avatar" :src="'/images/profile_image/' + user.profile_image + '_small.png'" alt="" v-tooltip.top-center="user.name + ' (@' + user.screen_name + ')'">
               </a>
             </div>
           </td>
@@ -43,7 +43,7 @@
           <td>練習中</td>
           <td>
             <a v-for="(user, index) in this.users[2]" :key='index' :href="'/@' + user.screen_name">
-              <img class="avatar" :src="user.profile_image_url + '_small.png'" alt="" v-tooltip.top-center="user.name + ' (@' + user.screen_name + ')'">
+              <img class="avatar" :src="'/images/profile_image/' + user.profile_image + '_small.png'" alt="" v-tooltip.top-center="user.name + ' (@' + user.screen_name + ')'">
             </a>
           </td>
         </tr>
@@ -51,7 +51,7 @@
           <td>気になる</td>
           <td>
             <a v-for="(user, index) in this.users[1]" :key='index' :href="'/@' + user.screen_name">
-              <img class="avatar" :src="user.profile_image_url + '_small.png'" alt="" v-tooltip.top-center="user.name + ' (@' + user.screen_name + ')'">
+              <img class="avatar" :src="'/images/profile_image/' + user.profile_image + '_small.png'" alt="" v-tooltip.top-center="user.name + ' (@' + user.screen_name + ')'">
             </a>
           </td>
         </tr>

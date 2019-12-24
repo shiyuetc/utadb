@@ -1,7 +1,7 @@
 <div class="user-infomation section{{ !empty($hidden) ? ' section-hidden' : '' }}">
   <div class="user-profile">
     <div class="avatar-box">
-      <a href="{{ route('user', ['id' => $user->screen_name]) }}"><img class="avatar" src="{{ $user->profile_image_url }}.png" alt="avatar"></a>
+      <a href="{{ route('user', ['id' => $user->screen_name]) }}"><img class="avatar" src="{{ asset('images/profile_image/' . $user->profile_image . '.png') }}" alt="avatar"></a>
     </div>
     <p class="name"><a class="bold underline" href="{{ route('user', ['id' => $user->screen_name]) }}">{{ $user->name }}&nbsp;(&#64;{{ $user->screen_name }})</a></p>
     <p class="description">{{ $user->description }}</p>

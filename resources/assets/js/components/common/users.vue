@@ -13,7 +13,7 @@
       </thead>
       <tbody>
         <tr v-for="(user, index) in this.users" :key='index'>
-          <td><a :href="'/@' + user.screen_name"><img class="avatar" :src="user.profile_image_url + '_small.png'" alt=""></a></td>
+          <td><a :href="'/@' + user.screen_name"><img class="avatar" :src="'/images/profile_image/' + user.profile_image + '_small.png'" alt=""></a></td>
           <td><a :href="'/@' + user.screen_name" class="default-link">{{ user.name }}(@{{ user.screen_name }})</a></td>
           <td class="state-count-cell">{{ user.mastered_count }}</td>
           <td class="state-count-cell">{{ user.training_count }}</td>
