@@ -1,6 +1,6 @@
 @component('components.section', ['toggle' => true])
 @slot('title')
-  <i class="fas fa-tools"></i>&nbsp;ツール
+  <i class="fas fa-tools"></i>&nbsp;便利ツール
 @endslot
 @slot('contents')
   <ul class="list list-angle">
