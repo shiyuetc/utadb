@@ -13,6 +13,7 @@ class ToolController extends Controller
         $state = $request->query('state', 0);
         if(!is_numeric($state) || $state > 3 || $state < 0) $state = 0;
         $sort = $request->query('sort', 'artist_asc');
+        $view = $request->query('view', 'table');
 
         $query = Status::select('statuses.song_id')
             ->where('statuses.user_id', auth()->user()->id);
@@ -35,7 +36,7 @@ class ToolController extends Controller
         }
         
         $temp_response = $query
-            ->with('song')
+            ->with('song:id,artist,title')
             ->join('songs', 'statuses.song_id', 'songs.id')
             ->limit(10000)
             ->get();
@@ -44,7 +45,7 @@ class ToolController extends Controller
             $response[] = $temp->song;
         }
 
-        $options = ['state' => $state, 'sort' => $sort];
+        $options = ['state' => $state, 'sort' => $sort, 'view' => $view];
         return view('pages.tools.export', ['options' => $options, 'data' => $response]);
     }
     

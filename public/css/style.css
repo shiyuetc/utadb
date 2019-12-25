@@ -582,3 +582,13 @@ table.setting-table tr td:last-child {
   width: 80%;
 }
 /* #endregion */
+
+div.fill {
+  margin: 8px 12px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  background: #f1f1f1;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: text;
+}
