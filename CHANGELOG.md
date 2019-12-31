@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 1.3.1? - (2019-12-31)
+### ✨Added
+- エクスポートの表示形式をCSVとJSONに対応
+
+### 🐛Fixes
+- 序文の内容を修正
+
 ## 1.3.0 - (2019-12-11)
 ### ✨Added
 - 便利ツールページを追加
