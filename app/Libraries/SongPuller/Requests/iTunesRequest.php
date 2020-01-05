@@ -97,6 +97,7 @@ class iTunesRequest extends BasicRequest
 
     public function searchSongFromArtist($id, $page)
     {
+        if($page > 10) return [];
         $response = [];
         $parameter = [
 			'country' => 'JP',
@@ -104,11 +105,10 @@ class iTunesRequest extends BasicRequest
 			'media' => 'music',
             'entity' => 'song',
             "id" => $id,
-			'limit' => '20',
-			'offset' => ($page - 1) * 20
+			'limit' => $page * 20
         ];
         $songs = $this->toJson($this->getRequest($this->directUrl . $this->searchSongFromArtistPath, $parameter))['results'];
-        foreach($songs as $song)
+        foreach(array_slice($songs , ($page - 1) * 20) as $song)
         {
             if(isset($song["trackId"])) {
                 $response[] = $this->toSong(
