@@ -1,11 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## 1.3.1? - (2019-12-31)
+## 1.3.1 - (2020-01-05)
 ### ✨Added
 - エクスポートの表示形式をCSVとJSONに対応
 
 ### 🐛Fixes
+- アーティストID検索でページングしても1ページ目の曲が表示される問題を修正
+- 記録の詳細画面でプロフィール画像が表示されない問題を修正
 - 序文の内容を修正
 
 ## 1.3.0 - (2019-12-11)
